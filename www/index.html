@@ -24,8 +24,8 @@
         			$('#flightList').append(
                         '<li>' +
                             '<a href="#">' +
-        				        '<h4>' + flight.CITY + '</h4>' +
-        				        '<p>' + flight.COUNTRY + '</p>' +
+        				        '<h4>' + flight.NAME + '</h4>' +
+        				        '<p>' + flight.STREET + '</p>' +
         				    '</a>' + 
                         '</li>');
         		});
@@ -35,7 +35,7 @@
             $('#flightListPage').bind('pageinit', function(event) {
                 
                 $.ajax({
-                    url: "http://pub2-174.env.cloudshare.com:8000/sflight/sflight/api/agencies",
+                    url: "http://pub2-96.env.cloudshare.com:8000/sflight/sflight/api/agencies",
                     dataType: "jsonp",
                     success: function(data) {
                         flightList(data)
