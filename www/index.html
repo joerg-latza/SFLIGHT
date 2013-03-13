@@ -20,7 +20,7 @@
             
             var flightList = function (data) {
                 $('#flightList li').remove();
-        		$.each(data.items, function(index, flight) {
+        		$.each(data, function(index, flight) {
         			$('#flightList').append(
                         '<li>' +
                             '<a href="#">' +
@@ -35,7 +35,7 @@
             $('#flightListPage').bind('pageinit', function(event) {
                 
                 $.ajax({
-                    url: "pub10-220.env.cloudshare.com:8000/sflight/sflight/agencies",
+                    url: "http://pub2-174.env.cloudshare.com:8000/sflight/sflight/api/agencies",
                     dataType: "jsonp",
                     success: function(data) {
                         flightList(data)
