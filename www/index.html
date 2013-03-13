@@ -18,34 +18,51 @@
         </div>
         <script>
             
+            function hana(host, query, success, error) {
+                $.ajax({
+                    url: host + "/lib/lib/db?sql=" + query,
+                    dataType: "jsonp",
+                    success: success || function() {},
+                    error: error || function() {}
+                });  
+            }
+            
             var flightList = function (data) {
                 $('#flightList li').remove();
         		$.each(data, function(index, flight) {
         			$('#flightList').append(
                         '<li>' +
                             '<a href="#">' +
-        				        '<h4>' + flight.CITY + '</h4>' +
-        				        '<p>' + flight.COUNTRY + '</p>' +
+        				        '<h4>' + flight.NAME + '</h4>' +
+        				        '<p>' + flight.STREET + '</p>' +
         				    '</a>' + 
                         '</li>');
         		});
         		$('#flightList').listview('refresh');
             }
-            
+
             $('#flightListPage').bind('pageinit', function(event) {
-                
-                $.ajax({
-                    url: "http://pub2-96.env.cloudshare.com:8000/sflight/sflight/api/agencies",
-                    dataType: "jsonp",
-                    success: function(data) {
-                        flightList(data)
-                    },
-                    error: function(data) {
-                        flightList({items: [{NAME: "Agency AAA", STREET: "Street"}, {NAME: "Agency AAA", STREET: "Street"}]});
-                    }
-                });  
+
+                hana("http://pub2-96.env.cloudshare.com:8000", "SELECT * FROM SFLIGHT.STRAVELAG", function(data) {
+                    flightList(data);
+                });
 
             });
+
+//            $('#flightListPage').bind('pageinit', function(event) {
+//
+//                $.ajax({
+//                    url: "http://pub2-96.env.cloudshare.com:8000/sflight/sflight/api/agencies",
+//                    dataType: "jsonp",
+//                    success: function(data) {
+//                        flightList(data)
+//                    },
+//                    error: function(data) {
+//                        flightList({items: [{NAME: "Agency AAA", STREET: "Street"}, {NAME: "Agency AAA", STREET: "Street"}]});
+//                    }
+//                });  
+//
+//            });
             
         </script>
     </body>
