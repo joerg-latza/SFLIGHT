@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema Namespace="AppDesignerDataModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2007/05/edm"> 
+		 	<EntityType Name="Timecard"> 
+		 		<Key> 
+		 			<PropertyRef Name="id"/>
+		 		</Key> 
+		 		<Property Name="id" 					Type="Edm.String"/> 
+		 		<Property Name="timeRecordedThisMonth" 	Type="Edm.String"/> 		
+			</EntityType>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

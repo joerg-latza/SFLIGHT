@@ -1,0 +1,15 @@
+{
+  "name" : "untitledproject",
+  "description" : "Timecard Application",
+  "contributors" : [ {
+    "name" : "Christoph Haefner",
+    "email" : "christoph.haefner@sap.com"
+  } ],
+  "version" : "1.0",
+  "main" : "Application.js",
+  "dependencies" : {
+    "sap.m" : "1.7"
+  },
+  "keywords" : [ ],
+  "images" : { }
+}
