@@ -1,64 +1,56 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Employee Directory</title>
+        <title>Stay Hungry</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
         <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>    
+        <script src="http://pub10-20.env.cloudshare.com:8000/lib/lib/hana.js"></script></script>
     </head>
     <body>
-        <div id="flightListPage" data-role="page">
+        <div id="objectListPage" data-role="page">
             <div data-role="header" data-position="fixed">
-                <h1>SFLIGHT</h1>
+                <h1>STAY HUNGRY</h1>
             </div>
             <div data-role="content">
-                <ul id="flightList" data-role="listview" data-filter="true"></ul>
+                <ul id="objectList" data-role="listview" data-filter="true"></ul>
             </div>
         </div>
         <script>
-            
-            function hana(host, query, success, error) {
-                $.ajax({
-                    url: host + "/lib/lib/db?sql=" + query,
-                    dataType: "jsonp",
-                    success: success || function() {},
-                    error: error || function() {}
-                });  
-            }
-            
-            var flightList = function (data) {
-                $('#flightList li').remove();
+
+            var objectList = function (data) {
+                $('#objectList li').remove();
         		$.each(data, function(index, flight) {
-        			$('#flightList').append(
+        			$('#objectList').append(
                         '<li>' +
                             '<a href="#">' +
-        				        '<h4>' + flight.NAME + '</h4>' +
-        				        '<p>' + flight.STREET + '</p>' +
+        				        '<h4>' + flight.EMPLOYEE + '</h4>' +
+        				        '<p>' + flight.THISDAY + '</p>' +
         				    '</a>' + 
                         '</li>');
         		});
-        		$('#flightList').listview('refresh');
+        		$('#objectList').listview('refresh');
             }
 
-            $('#flightListPage').bind('pageinit', function(event) {
+            $('#objectListPage').bind('pageinit', function(event) {
 
-                hana("http://pub2-96.env.cloudshare.com:8000", "SELECT * FROM SFLIGHT.STRAVELAG", function(data) {
-                    flightList(data);
+                hana("http://pub10-20.env.cloudshare.com:8000", "SELECT * FROM RDE_SAPPHIRE.RenounceMeals", function(data) {
+                    objectList(data);
                 });
 
             });
 
-//            $('#flightListPage').bind('pageinit', function(event) {
+//            $('#objectListPage').bind('pageinit', function(event) {
 //
 //                $.ajax({
 //                    url: "http://pub2-96.env.cloudshare.com:8000/sflight/sflight/api/agencies",
 //                    dataType: "jsonp",
 //                    success: function(data) {
-//                        flightList(data)
+//                        objectList(data)
 //                    },
 //                    error: function(data) {
-//                        flightList({items: [{NAME: "Agency AAA", STREET: "Street"}, {NAME: "Agency AAA", STREET: "Street"}]});
+//                        objectList({items: [{NAME: "Agency AAA", STREET: "Street"}, {NAME: "Agency AAA", STREET: "Street"}]});
 //                    }
 //                });  
 //
