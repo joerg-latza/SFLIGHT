@@ -1,0 +1,1 @@
+$.import("sflight.sflight.lib", "xs");var xs = $.sflight.sflight.lib.xs;var app = xs.create();app.get("/checkin", function(req, res) {	xs.queryAll("SELECT * FROM RDE_SAPPHIRE.RENOUNCEMEALS WHERE EMPLOYEE = '" + req.user.name + "'", [], function(err, objects) {		res.end(JSON.stringify(objects));	});});app.listen();
