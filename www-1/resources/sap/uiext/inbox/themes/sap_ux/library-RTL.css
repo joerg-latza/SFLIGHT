@@ -1,0 +1,255 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ */
+/* Global CSS for 'base' theme */
+/* ---------------------------------------------------------------------------------------- */
+/* TMP during LESS convertion ---- to be deleted */
+/* may be required by SubstitutionRulesManager.css in inbox lib */
+/* ---------------------------------------------------------------------------------------- */
+.sapUiExtInboxToolbarRight {
+  float: left;
+}
+.sapUiExtInboxfontBold {
+  font-weight: bold;
+}
+.sapUiExtInboxCustomTable > .sapUiTblCtrlCnt > .sapUiTblCtrl > tbody > tr > td > .sapUiTblCnt > .sapUiTf,
+.sapUiTblCtrl > tbody > tr > td > .sapUiTblCnt > .sapUiTfCombo {
+  font-size: 12px;
+}
+.sapUiExtInboxCustomTable > .sapUiTblCtrlCnt > .sapUiTblCtrl > thead > tr > th > .sapUiTblCnt > .sapUiLbl {
+  /*     font-family: BentonSans, sans-serif;*/
+
+  font-size: 13px;
+  font-weight: bold;
+}
+.sapUiExtInboxCustomTable {
+  /*      font-family: BentonSans, sans-serif;*/
+
+  font-size: 12px;
+}
+.sapUiExtInboxToolBarContainerHeight {
+  /*  height: 27px;*/
+
+}
+.sapUiExtInboxActionButtonsToolbarContainer > .sapUiTbCont > .sapUiTbInner {
+  margin-left: 0px;
+}
+/*
+.sapUiExtInboxExactBrw > .sapUiUx3ExactLstTop > .sapUiUx3ExactLstLst {
+        visibility:hidden;
+        width:0px;
+ }
+.sapUiExtInboxExactBrw > .sapUiUx3ExactLstTop > .sapUiUx3ExactLstHead{
+        visibility:hidden;
+        width:0px;
+}
+.sapUiExtInboxExactBrw > .sapUiUx3ExactLstTop > .sapUiUx3ExactLstRSz{
+		visibility:hidden;
+		width:0px;
+		left:0px;
+}
+.sapUiExtInboxExactBrw > .sapUiUx3ExactLstTop > .sapUiUx3ExactLstCntnt{
+	right: auto !important;
+    left: auto !important;
+    width:100%;
+}
+*/
+.sapUiExtInboxSearchField {
+  /* height: 27px;*/
+
+  width: 25ex;
+}
+.sapUiExtInboxSearchField > .sapUiSearchFieldTf {
+  /* height:27px;*/
+
+}
+.sapUiExtInboxComboBox {
+  width: 25ex;
+}
+.sapUiExtInboxEmptyLabel {
+  height: 22px;
+  width: 100%;
+}
+.sapUiExtInboxLnkDsbl {
+  text-decoration: none !important;
+}
+.sapUiExtInboxLnkNoUnderline {
+  text-decoration: none !important;
+}
+.sapUiExtInboxRedColor,
+.sapUiExtInboxRedColor:hover {
+  color: #ED6F58;
+  font-weight: bold;
+  text-decoration: none;
+}
+.sapUiExtInboxSettingsButton {
+  /*background-color: transparent;*/
+
+}
+.sapUiExtInboxSettingsButton:focus,
+.sapUiExtInboxSettingsButton:hover {
+  outline: 1px solid #00689E;
+  background-color: transparent;
+  color: FF0000;
+}
+.sapUiExtInboxBackgroundColour {
+  background-color: white;
+}
+.sapUiExtInboxBorderFillColor {
+  border-style: solid;
+  border-color:#FFFFFF #FFFFFF #F2F2F2 #FFFFFF;
+}
+.sapUiExtInboxRowRepeaterLayoutBorder {
+  border-style: solid;
+  border-color: lightgrey;
+  border-width:1px 1px 0 1px;
+}
+.sapUiExtInboxRowRepeaterBorder {
+  border-bottom: 1px solid lightGrey;
+}
+.sapUIExtInboxTextGrayColor {
+  color: DarkGray;
+}
+.sapUIExtInboxCustomAttributesBorder {
+  border-top: 1px solid lightGrey;
+  border-collapse: initial;
+  padding-top: 10px;
+}
+.sapUIExtInboxCATaskDetailsPadRight {
+  padding-left: 60px;
+}
+.sapUIExtInboxDotSeperatorStyle {
+  color: #555;
+  font-weight: bold;
+}
+.sapUiExtInboxRowRepeaterTaskInitiatorPadLeft {
+  padding-right: 20px;
+}
+.sapUiExtInboxRowRepeaterTaskDetailsStyle {
+  padding-right: 15px;
+}
+.sapUiExtInboxRRFirstRowStyle {
+  padding-top: 10px;
+}
+.sapUIExtInboxRRTextColourStyle {
+  color: #555;
+}
+.sapUiExtInboxRRPaddingRight {
+  padding-left: 10px;
+}
+.sapUiExtInboxRowRepeaterSortBy {
+  background-color: transparent;
+  /*   border-style:none;
+	   border-color:transparent;
+	   border-width: 0px 0px 0 0px;
+	   */
+
+}
+.sapUiExtInboxCustomAttLabel {
+  color: #8E8E8E;
+  text-align: right !important;
+}
+.sapUiExtInboxColumnTextLeftAlignment {
+  text-align: left !important;
+  border: none !important;
+}
+.sapUiExtInboxCustomAttValue {
+  width: 150px;
+}
+.sapUiExtInboxRefreshedOnStyle {
+  color: #A4A4A4;
+  padding-top: 4px;
+}
+.sapUiExtInboxPaddingBottom {
+  padding-bottom: 1px;
+}
+.sapUiExtInboxSegmentedButtonTransparent {
+  background-color: transparent !important;
+}
+.sapUiExtInboxSegmentedButtonTransparent:hover {
+  background-color: #666 !important;
+}
+.sapUiExtInboxSegmentedButtonTransparentSelected {
+  background-color: #007CC0 !important;
+}
+.sapUiExtInboxValueHelpTextStyle {
+  font-style: italic;
+  font-weight: normal;
+  color: #8E8E8E;
+}
+/* ============================================= */
+/* CSS for controlsap.uiext.inbox/SubstitutionRulesManager.control */
+/* ============================================= */
+.sapuiextinbox-SubstitutionRulesManager {
+  color: #008000;
+  border: 1px solid blue;
+}
+.newSubstitutionLink {
+  font-weight: bold;
+  font-size: 14px;
+}
+.verticalLayoutStyle {
+  margin: 0 20px;
+}
+.greyFillColor {
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
+  border: 1px solid;
+}
+.borderFillColorGreen {
+  border-color: #D9F7B8;
+  border-style: solid;
+  border-width:1px 1px 0 1px;
+}
+.shadowEffectGreen {
+  box-shadow:0 0 10px 5px #D9F7B8;
+  border-collapse: separate;
+}
+.borderFillColorGray {
+  border-color: #D8D8D8;
+  border-style: solid;
+  border-width:1px 1px 0 1px;
+}
+.shadowEffectGray {
+  box-shadow:0 0 10px 5px #D8D8D8;
+  border-collapse: separate;
+}
+.blueFontColor {
+  color: #4589DF;
+  font-weight: bold;
+}
+.grayFontColor {
+  color: #838383;
+}
+.blackFontColor {
+  color: black;
+}
+.textFontColour {
+  color: white;
+}
+.deleteImageStyle {
+  height: 16px;
+  width: 16px;
+}
+.sapUiUx3OCContent {
+  overflow-y: auto;
+  max-height: 90%;
+}
+.customMargin {
+  padding-left: 3px;
+}
+.mySapUiMltPadRight {
+  padding:3px 1px 8px 50px;
+}
+.mysapUiMlt {
+  color: #C7C7C7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+.sapUiExtInboxSubstitutionValueHelpTextStyle {
+  font-style: italic;
+  font-weight: normal;
+  color: #8E8E8E;
+}

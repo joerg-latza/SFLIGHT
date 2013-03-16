@@ -1,0 +1,45 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ */
+/* Global CSS for 'base' theme */
+/* ---------------------------------------------------------------------------------------- */
+/* TMP during LESS convertion ---- to be deleted */
+/* may be required by SubstitutionRulesManager.css in inbox lib */
+/* ---------------------------------------------------------------------------------------- */
+/* ============================================= */
+/* CSS for controlsap.service.visualization/Bar.control */
+/* ============================================= */
+.sapservicevisualization-Bar {
+  color: #000000;
+  border: 1px solid blue;
+}
+/* ============================================= */
+/* CSS for control sap.service.visualization/Column.control */
+/* ============================================= */
+.sapServiceVisualizationColumn {
+  color: #000000;
+  border: 1px solid blue;
+}
+/* ============================================= */
+/* CSS for control sap.service.visualization/Combination.control */
+/* ============================================= */
+.sapservicevisualization-Combination {
+  color: #000000;
+  border: 1px solid blue;
+}
+/* ============================================= */
+/* CSS for control sap.service.visualization/Line.control */
+/* ============================================= */
+.sapservicevisualization-Line {
+  color: #000000;
+  border: 1px solid blue;
+}
+/* ============================================= */
+/* CSS for control sap.service.visualization.riv.chart/Pie.control */
+/* ============================================= */
+.sapservicevisualizationrivchart-Pie {
+  color: #000000;
+  border: 1px solid blue;
+}
