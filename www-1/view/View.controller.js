@@ -13,6 +13,9 @@ untitledproject.view.View = function () {
 	* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 	*/
 	untitledproject.view.View.prototype.onInit = function() {
+        jQuery.ajax("/sflight/sflight/app/hungry.xsjs/count", function(data) {
+            alert(data);
+        })
 			// Check the current state
 //		   OData.read(
 //			   {
