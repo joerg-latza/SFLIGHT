@@ -1,4 +1,4 @@
-jQuery.sap.declare({modName:"untitledproject.view.View", type:"controller"});
+V   jQuery.sap.declare({modName:"untitledproject.view.View", type:"controller"});
 
 jQuery.sap.require("sap.ui.model.odata.datajs");
 
@@ -14,7 +14,7 @@ untitledproject.view.View = function () {
 	*/
 	untitledproject.view.View.prototype.onInit = function() {
         alert("Loaded");
-        jQuery.ajax("/sflight/sflight/app/hungry.xsjs/count", function(data) {
+        jQuery.get("/sflight/sflight/app/hungry.xsjs/count", function(data) {
             alert(data);
             if(data) {
                 this.changeStateToYes();
@@ -41,8 +41,8 @@ untitledproject.view.View = function () {
 	   };
 	   
 	   untitledproject.view.View.prototype.onConfirm = function() {
-        jQuery.ajax("/sflight/sflight/app/hungry.xsjs/toggle", function(data) {
-        jQuery.ajax("/sflight/sflight/app/hungry.xsjs/count", function(data) {
+        jQuery.get("/sflight/sflight/app/hungry.xsjs/toggle", function(data) {
+        jQuery.get("/sflight/sflight/app/hungry.xsjs/count", function(data) {
             alert(data);
             if(data) {
                 this.changeStateToYes();
