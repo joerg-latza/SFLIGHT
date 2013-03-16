@@ -13,26 +13,15 @@ untitledproject.view.View = function () {
 	* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 	*/
 	untitledproject.view.View.prototype.onInit = function() {
+        alert("Loaded");
         jQuery.ajax("/sflight/sflight/app/hungry.xsjs/count", function(data) {
             alert(data);
+            if(data) {
+                this.changeStateToYes();
+            } else {
+                this.changeStateToNo();
+            }
         })
-			// Check the current state
-//		   OData.read(
-//			   {
-//				   requestUri: "http://pub3-1.env.cloudshare.com:8000/StayHungry/StayHungry.xsodata/MyRenounceMeals/$count",
-//				   method: "GET"
-//			   },
-//			   jQuery.proxy(function (data) {
-//				   // TODO: Correct if-Clause
-//				   if(data) {
-//					   this.changeStateToYes();
-//				   } else {
-//					   this.changeStateToNo();
-//				   }
-//    			},this),
-//    			function (err) { //Error Callback:
-//    			}
-//		   );
 	   };
 	   
 	   untitledproject.view.View.prototype.onAfterRendering = function() {
@@ -52,23 +41,14 @@ untitledproject.view.View = function () {
 	   };
 	   
 	   untitledproject.view.View.prototype.onConfirm = function() {
-		   // Check the current state
-		   OData.read(
-			   {
-				   requestUri: "http://pub10-20.env.cloudshare.com:8000/StayHungry/StayHungry.xsodata/MyRenounceMeals/$count",
-				   method: "GET"
-			   },
-			   jQuery.proxy(function (data) {
-				   // TODO: Correct if-Clause
-				   if(data) {
-					   this.changeStateToYes();
-				   } else {
-					   this.changeStateToNo();
-				   }
-//	    				alert(data);
-    			},this),
-    			function (err) { //Error Callback:
-//	    				alert(err.message);
-    			}
-		   );
+        jQuery.ajax("/sflight/sflight/app/hungry.xsjs/toggle", function(data) {
+        jQuery.ajax("/sflight/sflight/app/hungry.xsjs/count", function(data) {
+            alert(data);
+            if(data) {
+                this.changeStateToYes();
+            } else {
+                this.changeStateToNo();
+            }
+        })
+        });
 	   };
