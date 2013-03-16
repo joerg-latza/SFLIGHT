@@ -52,7 +52,7 @@ untitledproject.view.View = function () {
 		   // Check the current state
 		   OData.read(
 			   {
-				   requestUri: "http://pub3-1.env.cloudshare.com:8000/StayHungry/StayHungry.xsodata/MyRenounceMeals/$count",
+				   requestUri: "http://pub10-20.env.cloudshare.com:8000/StayHungry/StayHungry.xsodata/MyRenounceMeals/$count",
 				   method: "GET"
 			   },
 			   jQuery.proxy(function (data) {
