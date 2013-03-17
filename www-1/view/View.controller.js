@@ -13,11 +13,12 @@ untitledproject.view.View.prototype = jQuery.sap.newObject(sap.ui.core.mvc.Contr
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 */
 untitledproject.view.View.prototype.onInit = function() {
+    var me = this;
     jQuery.get("/sflight/sflight/app/hungry.xsjs/count", function(data) {
         if(data) {
-            this.changeStateToYes();
+            me.changeStateToYes();
         } else {
-            this.changeStateToNo();
+            me.changeStateToNo();
         }
     });
 };
@@ -39,14 +40,12 @@ untitledproject.view.View.prototype.changeStateToNo = function() {
 };
 
 untitledproject.view.View.prototype.onConfirm = function() {
-    jQuery.get("/sflight/sflight/app/hungry.xsjs/toggle", function(data) {
-        jQuery.get("/sflight/sflight/app/hungry.xsjs/count", function(data) {
-            alert(data);
-            if(data) {
-                this.changeStateToYes();
-            } else {
-                this.changeStateToNo();
-            }
-        })
+    var me = this;
+    jQuery.post("/sflight/sflight/app/hungry.xsjs/toggle", function(data) {
+        if(data) {
+            me.changeStateToYes();
+        } else {
+            me.changeStateToNo();
+        }
     });
 };
