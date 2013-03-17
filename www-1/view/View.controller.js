@@ -40,6 +40,7 @@ untitledproject.view.View.prototype.changeStateToNo = function() {
 };
 
 untitledproject.view.View.prototype.onConfirm = function() {
+    alert("click")
     var me = this;
     jQuery.post("/sflight/sflight/app/hungry.xsjs/toggle", function(data) {
         if(data) {
