@@ -63,8 +63,6 @@
 	showColumnVisibilityMenu: false, // boolean
 	showNoData: true, // boolean
 	visibleRowCountMode: sap.ui.table.VisibleRowCountMode.Fixed, // sap.ui.table.VisibleRowCountMode, since 1.9.2
-	fixedColumnCount: 0, // int
-	fixedRowCount: 0, // int
 	expandFirstLevel: false, // boolean
 	expandedVisibleRowCount: undefined, // int
 	expanded: false, // boolean
@@ -145,8 +143,6 @@
 	showColumnVisibilityMenu: false, // boolean
 	showNoData: true, // boolean
 	visibleRowCountMode: sap.ui.table.VisibleRowCountMode.Fixed, // sap.ui.table.VisibleRowCountMode, since 1.9.2
-	fixedColumnCount: 0, // int
-	fixedRowCount: 0, // int
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -207,8 +203,6 @@
 	showColumnVisibilityMenu: false, // boolean
 	showNoData: true, // boolean
 	visibleRowCountMode: sap.ui.table.VisibleRowCountMode.Fixed, // sap.ui.table.VisibleRowCountMode, since 1.9.2
-	fixedColumnCount: 0, // int
-	fixedRowCount: 0, // int
 	expandFirstLevel: false, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData

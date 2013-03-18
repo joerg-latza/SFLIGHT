@@ -396,7 +396,6 @@
 
 .sapUiAcdSectionHdr {
 	cursor: pointer;
-	line-height: 1;
 }
 
 .sapUiAcdSectionDis .sapUiAcdSectionHdr {
@@ -612,18 +611,6 @@
 .sapUiAppHdr .sapUiTv{
 	color: #5e6b7b;	
 }
-/* ================================================= */
-/* CSS for control sap.ui.commons/AutoComplete       */
-/* Base                                              */
-/* ================================================= */
-
-.sapUiTfBrd.sapUiTfCombo.sapUiTfAutoComp {
-    padding: 0;
-}
-/* ================================================= */
-/* CSS for control sap.ui.commons/AutoComplete       */
-/* Platinum                                          */
-/* ================================================= */
 /* ============================================= */
 /* CSS for control layout.uilib/BorderLayout.control */
 /* ============================================= */
@@ -1257,42 +1244,31 @@ html[data-sap-ui-browser="sf5"] .sapUiBtnS.sapUiBtnLite{
 }
 
 .sapUiCrslHorizontal .sapUiCrslPrevBtn {
-	position: absolute;
-	left: 0;
+	float: left;
 	text-align: center;
 }
 
 .sapUiCrslHorizontal .sapUiCrslNextBtn {
-	position: absolute;
-	right: 0;
+	float: right;
 	text-align: center;
 }
 
-.sapUiCrsl {
-	position: relative;
-}
-
 .sapUiCrslItm {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	position: relative;
+	padding: 5px;
 }
 
 .sapUiCrslHorizontal .sapUiCrslScl {
-	display:inline-block;
-	width: 250%;
+	display:inline-block; 
 }
 
 .sapUiCrslHorizontal .sapUiCrslItm {
 	float:left;
 	list-style: none;
-	padding: 0 5px;
 }
 
 .sapUiCrslVertical .sapUiCrslItm {
 	display:block;
 	list-style: none;
-	padding: 5px 0;
 }
 
 .sapUiCrslScl {
@@ -1304,19 +1280,14 @@ html[data-sap-ui-browser="sf5"] .sapUiBtnS.sapUiBtnLite{
 
 .sapUiCrslCnt {
 	overflow: hidden;
-	position: absolute;
 }
 
 .sapUiCrslVertical .sapUiCrslNextBtn {
 	text-align: center;
-	position: absolute;
-	bottom: 0;
 }
 
 .sapUiCrslVertical .sapUiCrslPrevBtn {
 	text-align: center;
-	position: absolute;
-	top: 0;
 }
 
 .sapUiCrslVertical .sapUiCrslNextBtn:hover {
@@ -2190,6 +2161,14 @@ html[data-sap-ui-browser="ie8"] .sapUiDlgGrip {
 	display: inline-block;
 }
 
+html[data-sap-ui-browser^="ie"] .sapUiFupInp .sapUiTf {
+	margin-right: 1px;
+}
+
+html[data-sap-ui-browser="ie8"] .sapUiFupInp .sapUiTf {
+	margin-right: 0px;
+}
+
 .sapUiFupInputMask {  /* the element masking the real (but hidden) file input, so the clickable area has exactly the same size as the visible control */
 	display: inline-block;
 	position: absolute;
@@ -2204,10 +2183,11 @@ html[data-sap-ui-browser="ie8"] .sapUiDlgGrip {
 	position: absolute;
 	opacity: 0;
 	top: 0px;
+	right: 0px;
 	bottom: 0px;
 	cursor: pointer;
 	cursor: hand;
-	left: -4em;       /* avoid the input field behind the file chooser */
+	left: -1200px;    /* avoid the input field behind the file chooser */
 	font-size: 500px; /* to make the field high enough for most themes; for themes with very large fonts this needs to be increased further */
 }
 
@@ -2276,6 +2256,36 @@ html[data-sap-ui-browser^="cr"] .sapUiFupInputMask > input {
 /* warning state */
 .sapUiFTVWarn {
 	background-color: @sapUiWarningBG;
+}
+
+/* ======================================================= */
+/* CSS for control sap.ui.commons/FormColumnLayout.control */
+/* ======================================================= */
+
+.sapUiFormColumnLayout{
+  color: @sapUiText;
+}
+
+.sapUiFormColumnLayout > header{
+	display: block;
+}
+/*
+.sapUiFormColumnLayout.sapUiFormContainer{
+	display: inline-block;
+}
+*/
+.sapUiFormColumnLayout .sapUiFormColumnLayoutFlex{
+	display: box;
+	display: -moz-box;
+	display: -webkit-box;
+}
+
+.sapUiFormColumnLayout .sapUiFormColumnLayoutFlex > .sapUiFormColumnLayoutCol{
+	box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
+	padding-left: 2px;
+	padding-right: 2px;	
 }
 /* ================================================= */
 /* CSS for control sap.ui.commons/FormLayout.control */
@@ -5068,7 +5078,7 @@ html[data-sap-ui-browser^="ie"] .sapUiRbGDummy{
 .sapUiRFL {
 	position: relative;
 	display: inline-block;
-	width: 99%; /* needed if rounding issues occur and padding was deactivated */
+	width: 100%;
 	
 	box-sizing: border-box;
 }
@@ -5089,20 +5099,9 @@ html[data-sap-ui-browser^="ie"] .sapUiRbGDummy{
 	overflow: auto;
 }
 
-.sapUiRFLPaddingClass {
-	padding: 3px 3px 0 0;
+.sapUiRFLContainer > div {
+	padding: 0 2.5px 5px 2.5px;
 }
-
-.sapUiRFLRow > .sapUiRFLContainer:first-child > .sapUiRFLContainerContent.sapUiRFLPaddingClass:first-child {
-	padding-left: 0;
-}
-
-
-
-/* ============================================================ */
-/* CSS for control sap.ui.commons.form/ResponsiveLayout.control */
-/* ============================================================ */
-
 .sapUiRtt {
 	font-family: @sapUiFontFamily; 
 	font-size: @sapUiFontSize;
@@ -5153,7 +5152,6 @@ html[data-sap-ui-browser^="ie"] .sapUiRbGDummy{
 	padding: 6px 8px;
 	max-width: 250px;
 	vertical-align: top;
-    word-wrap: break-word;
 }
 
 .sapUiRttBotL,
@@ -5802,26 +5800,11 @@ Three possible designs with corresponding CSS classes:
 	padding: 0 30px 0 0;
 }
 
-/*The cursor position in Chrome and Safari on Mac in LTR case is to far on the right*/
-html[data-sap-ui-browser^="cr"][data-sap-ui-os="mac"]:not([dir=rtl]) .sapUiSearchField > .sapUiSearchFieldTf > .sapUiTf,
-html[data-sap-ui-browser^="cr"][data-sap-ui-os="mac"]:not([dir=rtl]) .sapUiSearchField > .sapUiSearchFieldCb > .sapUiTf,
-html[data-sap-ui-browser^="sf"][data-sap-ui-os="mac"]:not([dir=rtl]) .sapUiSearchField > .sapUiSearchFieldTf > .sapUiTf,
-html[data-sap-ui-browser^="sf"][data-sap-ui-os="mac"]:not([dir=rtl]) .sapUiSearchField > .sapUiSearchFieldCb > .sapUiTf {
-	margin-left: -4px;
-	padding-left: 0px;
-}
-
-html[data-sap-ui-browser^="cr"][data-sap-ui-os="mac"]:not([dir=rtl]) .sapUiSearchField > .sapUiSearchFieldCb.sapUiSearchFieldCbProv > .sapUiTf,
-html[data-sap-ui-browser^="sf"][data-sap-ui-os="mac"]:not([dir=rtl]) .sapUiSearchField > .sapUiSearchFieldCb.sapUiSearchFieldCbProv > .sapUiTf {
-	padding-left: 16px;
-}
-
 .sapUiSearchFieldTf, .sapUiSearchFieldCb {
 	width: auto;
 	position: absolute;
 	left: 0;
 	right: 0;
-	min-width: 50px;
 }
 
 .sapUiSearchFieldNoExp .sapUiSearchFieldCb,
@@ -7560,6 +7543,7 @@ html[data-sap-ui-browser="ie8"] .sapUiTreeNode{
 }
 
 
+
 /* ============================================= */
 /* CSS for control sap.ui.commons.TriStateCheckBox.control */
 /* ============================================= */
@@ -7570,6 +7554,7 @@ html[data-sap-ui-browser="ie8"] .sapUiTreeNode{
 	overflow: hidden;
 	display: inline-block;
 	text-overflow: ellipsis;
+	margin-right: 20px;
 }
 
 /* If control is used on black/dark background */
@@ -7591,7 +7576,7 @@ html[data-sap-ui-browser="ie8"] .sapUiTreeNode{
 
 .sapUiTriCbInner.sapUiTriCbCheck,
 .sapUiTriCbInner.sapUiTriCbMix{
-	background-image: url(img/TriStateCheckBox.png);
+	background-image: url(img/TriStateCheckBox.png);	
 }
 
 .sapUiTriCbInner.sapUiTriCbMix{

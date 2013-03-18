@@ -56,7 +56,7 @@
 	height: '100%', // sap.ui.core.CSSSize
 	width: '100%', // sap.ui.core.CSSSize
 	visible: true, // boolean
-	defaultTransitionName: undefined, // string, since 1.7.1
+	defaultTransitionName: "slide", // string, since 1.7.1
 	homeIcon: undefined, // any
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
@@ -121,7 +121,6 @@
 	customIconWidth: undefined, // sap.ui.core.CSSSize
 	customIconHeight: undefined, // sap.ui.core.CSSSize
 	size: undefined, // sap.ui.core.CSSSize
-	design: "auto", // string
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -139,7 +138,6 @@
 	icon: undefined, // sap.ui.core.URI
 	iconFirst: true, // boolean
 	activeIcon: undefined, // sap.ui.core.URI
-	iconDensityAware: true, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -332,10 +330,8 @@
 	showUnread: false, // boolean
 	noDataText: undefined, // string
 	showNoData: true, // boolean
-	swipeDirection: sap.m.SwipeDirection.Both, // sap.m.SwipeDirection
 	threshold: 20, // int
 	triggerText: undefined, // string
-	scrollToLoad: false, // boolean, since 1.11
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -469,7 +465,6 @@
 	showUnread: false, // boolean
 	noDataText: undefined, // string
 	showNoData: true, // boolean
-	swipeDirection: sap.m.SwipeDirection.Both, // sap.m.SwipeDirection
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -513,7 +508,7 @@
 	height: '100%', // sap.ui.core.CSSSize
 	width: '100%', // sap.ui.core.CSSSize
 	visible: true, // boolean
-	defaultTransitionName: undefined, // string, since 1.7.1
+	defaultTransitionName: "slide", // string, since 1.7.1
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -684,7 +679,6 @@
 	width: "auto", // sap.ui.core.CSSSize
 	maxWidth: "100%", // sap.ui.core.CSSSize
 	title: "", // string
-	selectedKey: undefined, // string, since 1.11
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData

@@ -1,7 +1,6 @@
 Accordion.css
 AccordionSection.css
 ApplicationHeader.css
-AutoComplete.css
 Button.css
 CalloutBase.css
 Carousel.css
@@ -29,7 +28,6 @@ Panel.css
 ProgressIndicator.css
 RadioButton.css
 RatingIndicator.css
-ResponsiveLayout.css
 RichTooltip.css
 RoadMap.css
 RowRepeater.css

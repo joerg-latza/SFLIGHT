@@ -1,13 +1,11 @@
 Accordion.css
 AccordionSection.css
 ApplicationHeader.css
-AutoComplete.css
 Button.css
 CheckBox.css
 ComboBox.css
 DatePicker.css
 Dialog.css
-FormattedTextView.css
 GridLayout.css
 HorizontalDivider.css
 InPlaceEdit.css
@@ -114,7 +112,6 @@ img/roadmap/roundtrip_start.gif
 img/roadmap/roundtrip_start_dsbl.gif
 img/roadmap/startpoint.gif
 img/search
-img/search/clear.gif
 img/search/search.png
 img/slider
 img/slider/grip.png

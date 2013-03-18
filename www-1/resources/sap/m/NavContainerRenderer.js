@@ -1,44 +1,7 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2013 SAP AG. All rights reserved
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
  */
-
-jQuery.sap.declare("sap.m.NavContainerRenderer");
-
-/**
- * @class NavContainer renderer. 
- * @static
- */
-sap.m.NavContainerRenderer = {
-};
-
-
-/**
- * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
- * 
- * @param {sap.ui.core.RenderManager} oRenderManager the RenderManager that can be used for writing to the Render-Output-Buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
- */
-sap.m.NavContainerRenderer.render = function(rm, oControl) { 
-	// return immediately if control is invisible
-	if (!oControl.getVisible()) {
-		return;
-	}
-	
-	rm.write("<div");
-	rm.writeControlData(oControl);
-	rm.addClass("sapMNav");
-	rm.writeClasses();
-	rm.addStyle("width", oControl.getWidth());
-	rm.addStyle("height", oControl.getHeight());
-	rm.writeStyles();
-	rm.write(">"); // div element
-
-	var oContent = oControl.getCurrentPage();
-	if (oContent) {
-		rm.renderControl(oContent);
-	}
-
-	rm.write("</div>");
-};
+jQuery.sap.declare("sap.m.NavContainerRenderer");sap.m.NavContainerRenderer={};
+sap.m.NavContainerRenderer.render=function(r,c){if(!c.getVisible()){return}r.write("<div");r.writeControlData(c);r.addClass("sapMNav");if(jQuery.os.android&&jQuery.os.fVersion===2.3){r.addClass("sapMNavAndroid2-3")}r.writeClasses();r.addStyle("width",c.getWidth());r.addStyle("height",c.getHeight());r.writeStyles();r.write(">");var C=c.getCurrentPage();if(C){r.renderControl(C)}r.write("</div>")};

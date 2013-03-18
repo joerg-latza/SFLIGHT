@@ -1,6 +1,5 @@
 BrowserScrollbar.css
 BusyIndicator.css
-LocalBusyIndicator.css
 Shadow.css
 global.css
 img

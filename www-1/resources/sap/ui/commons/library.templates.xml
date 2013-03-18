@@ -68,48 +68,6 @@
 })
 ]]></jsTemplate>
 </Template>
-<Template name="sap.ui.commons.AutoComplete" alias="AutoComplete,Complete">
-	<jsTemplate><![CDATA[new sap.ui.commons.AutoComplete({
-	id: "${id}", // sap.ui.core.ID
-	value: '', // string
-	textDirection: sap.ui.core.TextDirection.Inherit, // sap.ui.core.TextDirection
-	enabled: true, // boolean
-	editable: true, // boolean
-	visible: true, // boolean
-	required: false, // boolean
-	width: undefined, // sap.ui.core.CSSSize
-	maxLength: 0, // int
-	valueState: sap.ui.core.ValueState.None, // sap.ui.core.ValueState
-	textAlign: sap.ui.core.TextAlign.Begin, // sap.ui.core.TextAlign
-	imeMode: sap.ui.core.ImeMode.Auto, // sap.ui.core.ImeMode
-	design: sap.ui.core.Design.Standard, // sap.ui.core.Design
-	helpId: '', // string
-	accessibleRole: sap.ui.core.AccessibleRole.Textbox, // sap.ui.core.AccessibleRole
-	name: undefined, // string
-	maxPopupItems: 10, // int
-	displaySecondaryValues: false, // boolean
-	selectedKey: undefined, // string
-	selectedItemId: undefined, // string
-	enableScrolling: true, // boolean
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	items: [], // sap.ui.core.ListItem
-	ariaDescribedBy: [], // sap.ui.core.Control
-	ariaLabelledBy: [], // sap.ui.core.Control
-	listBox: undefined, // sap.ui.commons.ListBox
-	change: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	liveChange: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	suggest: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
 <Template name="sap.ui.commons.Button" alias="Button">
 	<jsTemplate><![CDATA[new sap.ui.commons.Button({
 	id: "${id}", // sap.ui.core.ID
@@ -161,13 +119,7 @@
 	}, this],
 	beforeOpen: [function (oEvent) {
 		var ${control} = oEvent.getSource();
-	}, this],
-	opened: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this], // since 1.11.0
-	closed: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this] // since 1.11.0
+	}, this]
 })
 ]]></jsTemplate>
 </Template>
@@ -194,13 +146,7 @@
 	}, this],
 	beforeOpen: [function (oEvent) {
 		var ${control} = oEvent.getSource();
-	}, this],
-	opened: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this], // since 1.11.0
-	closed: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this] // since 1.11.0
+	}, this]
 })
 ]]></jsTemplate>
 </Template>
@@ -215,7 +161,6 @@
 	animationDuration: 500, // int
 	visibleItems: undefined, // int
 	handleSize: 22, // int
-	firstVisibleIndex: 0, // int, since 1.11.0
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -353,7 +298,6 @@
 	modal: false, // boolean
 	accessibleRole: sap.ui.core.AccessibleRole.Dialog, // sap.ui.core.AccessibleRole
 	keepInWindow: false, // boolean, since 1.9.0
-	autoClose: false, // boolean, since 1.10
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -522,7 +466,6 @@
 	visible: true, // boolean
 	icon: undefined, // sap.ui.core.URI
 	textAlign: sap.ui.core.TextAlign.Begin, // sap.ui.core.TextAlign
-	required: false, // boolean, since 1.11.0
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -1475,6 +1418,16 @@
 })
 ]]></jsTemplate>
 </Template>
+<Template name="sap.ui.commons.form.FormColumnLayout" alias="FormColumnLayout,Layout">
+	<jsTemplate><![CDATA[new sap.ui.commons.form.FormColumnLayout({
+	id: "${id}", // sap.ui.core.ID
+	columns: 1, // int
+	tooltip: undefined, // sap.ui.core.TooltipBase
+	customData: [], // sap.ui.core.CustomData
+	layoutData: undefined // sap.ui.core.LayoutData
+})
+]]></jsTemplate>
+</Template>
 <Template name="sap.ui.commons.form.FormContainer" alias="FormContainer,Container">
 	<jsTemplate><![CDATA[new sap.ui.commons.form.FormContainer({
 	id: "${id}", // sap.ui.core.ID
@@ -1533,15 +1486,6 @@
 	<jsTemplate><![CDATA[new sap.ui.commons.form.GridLayout({
 	id: "${id}", // sap.ui.core.ID
 	singleColumn: false, // boolean
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.ui.commons.form.ResponsiveLayout" alias="ResponsiveLayout,Layout">
-	<jsTemplate><![CDATA[new sap.ui.commons.form.ResponsiveLayout({
-	id: "${id}", // sap.ui.core.ID
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1685,7 +1629,6 @@
 	minWidth: 100, // int
 	weight: 1, // int
 	linebreak: false, // boolean
-	margin: true, // boolean, since 1.11.0
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData

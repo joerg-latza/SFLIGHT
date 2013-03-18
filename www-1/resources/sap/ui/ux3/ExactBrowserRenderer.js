@@ -1,62 +1,7 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2013 SAP AG. All rights reserved
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
  */
-
-// Provides default renderer for the sap.ui.ux3.ExactBrowser
-jQuery.sap.declare("sap.ui.ux3.ExactBrowserRenderer");
-
-/**
- * @class ExactBrowser renderer.
- * @static
- */
-sap.ui.ux3.ExactBrowserRenderer = {
-};
-
-
-/**
- * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
- *
- * @param {sap.ui.core.RenderManager} oRenderManager the RenderManager that can be used for writing to the Render-Output-Buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
- */
-sap.ui.ux3.ExactBrowserRenderer.render = function(oRenderManager, oControl){
-	if(!oControl.getVisible()) {
-		return;
-	}
-	
-	var rm = oRenderManager;
-	rm.write("<div");
-	rm.writeControlData(oControl);
-	rm.addClass("sapUiUx3ExactBrwsr");
-	rm.writeClasses();
-	rm.writeAttribute("role", "region");
-	if(oControl.getShowHeader()){
-		rm.writeAttribute("aria-labelledby", oControl.getId()+"-hdtitle");
-	}
-	if(oControl.getFollowUpControl()){
-		rm.writeAttribute("aria-controls", oControl.getFollowUpControl());
-	}
-
-	var sTooltip = oControl.getTooltip_AsString();
-	if(sTooltip) {
-		rm.writeAttributeEscaped("title", sTooltip);
-	}
-	rm.write(">");
-
-	if(oControl.getShowHeader()){
-		rm.write("<div class=\"sapUiUx3ExactBrwsrHd\"><h2 id=\""+oControl.getId()+"-hdtitle\">");
-		rm.write(jQuery.sap.escapeHTML(oControl.getHeaderTitle()));
-		rm.write("</h2><div class=\"sapUiUx3ExactBrwsrHdTool\" role=\"toolbar\">");
-		if(oControl.getEnableSave()){
-			rm.renderControl(oControl._saveButton);
-		}
-		if(oControl.getEnableReset()){
-			rm.renderControl(oControl._resetButton);
-		}
-		rm.write("</div></div>");
-	}
-	rm.renderControl(oControl._rootList);
-	rm.write("</div>");
-};
+jQuery.sap.declare("sap.ui.ux3.ExactBrowserRenderer");sap.ui.ux3.ExactBrowserRenderer={};
+sap.ui.ux3.ExactBrowserRenderer.render=function(r,c){if(!c.getVisible()){return}var a=r;a.write("<div");a.writeControlData(c);a.addClass("sapUiUx3ExactBrwsr");a.writeClasses();a.writeAttribute("role","region");if(c.getShowHeader()){a.writeAttribute("aria-labelledby",c.getId()+"-hdtitle")}if(c.getFollowUpControl()){a.writeAttribute("aria-controls",c.getFollowUpControl())}var t=c.getTooltip_AsString();if(t){a.writeAttributeEscaped("title",t)}a.write(">");if(c.getShowHeader()){a.write("<div class=\"sapUiUx3ExactBrwsrHd\"><h2 id=\""+c.getId()+"-hdtitle\">");a.write(jQuery.sap.escapeHTML(c.getHeaderTitle()));a.write("</h2><div class=\"sapUiUx3ExactBrwsrHdTool\" role=\"toolbar\">");if(c.getEnableSave()){a.renderControl(c._saveButton)}if(c.getEnableReset()){a.renderControl(c._resetButton)}a.write("</div></div>")}a.renderControl(c._rootList);a.write("</div>")};

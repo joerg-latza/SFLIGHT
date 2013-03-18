@@ -1,0 +1,8 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ * 
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ */
+jQuery.sap.declare("sap.ui.commons.form.FormColumnLayoutRenderer");jQuery.sap.require("sap.ui.commons.form.FormLayoutRenderer");sap.ui.commons.form.FormColumnLayoutRenderer=sap.ui.core.Renderer.extend(sap.ui.commons.form.FormLayoutRenderer);
+sap.ui.commons.form.FormColumnLayoutRenderer.renderForm=function(r,l,f){r.write("<div");r.writeControlData(l);r.addClass("sapUiFormColumnLayout");r.writeClasses();r.write(">");this.renderTitle(r,f.getTitle(),undefined,false);var c=l.getColumns();r.write("<DIV");r.addClass("sapUiFormColumnLayoutFlex");r.writeClasses();r.write(">");var C=f.getFormContainers();for(var i=0;i<c;i++){r.write("<DIV");r.addClass("sapUiFormColumnLayoutCol");r.writeClasses();r.write(">");var C=f.getFormContainers();for(var j=i,a=C.length;j<a;j=j+c){var o=C[j];this.renderContainer(r,l,o)}r.write("</DIV>")}r.write("</DIV></DIV>")};
+sap.ui.commons.form.FormColumnLayoutRenderer.renderContainer=function(r,L,c){var e=c.getExpandable();r.write("<section");r.writeElementData(c);r.addClass("sapUiFormContainer");if(c.getTooltip_AsString()){r.writeAttributeEscaped('title',c.getTooltip_AsString())}r.writeClasses();r.write(">");this.renderTitle(r,c.getTitle(),c._oExpandButton,e);var C=L.getColumns();r.write("<div id='"+c.getId()+"-content'");r.addClass("sapUiFormColumnLayoutFlex");r.writeClasses();if(e){if(!c.getExpanded()){r.addStyle("display","none");r.writeStyles()}}r.write(">");for(var k=0;k<C;k++){r.write("<DIV");r.addClass("sapUiFormColumnLayoutCol");r.writeClasses();r.write(">");var E=c.getFormElements();for(var l=k,a=E.length;l<a;l=l+C){var o=E[l];this.renderElement(r,L,o)}r.write("</div>")}r.write("</div></section>")};

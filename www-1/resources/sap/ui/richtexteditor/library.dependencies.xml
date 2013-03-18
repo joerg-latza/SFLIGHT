@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <library name="sap.ui.richtexteditor">
-  <module name="sap.ui.richtexteditor.RichTextEditor" size="42370" compressedSize="15828">
+  <module name="sap.ui.richtexteditor.RichTextEditor" size="42159" compressedSize="15623">
     <description>Provides control sap.ui.richtexteditor.RichTextEditor.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -17,8 +17,8 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.ui.richtexteditor.library" size="1186" compressedSize="442">
-    <description>Initialization Code and shared classes of library sap.ui.richtexteditor (1.11.0)</description>
+  </module>  <module name="sap.ui.richtexteditor.library" size="1184" compressedSize="441">
+    <description>Initialization Code and shared classes of library sap.ui.richtexteditor (1.9.2)</description>
     <requires>
       <module name="jquery.sap.global"/>
       <module name="sap.ui.core.Core"/>

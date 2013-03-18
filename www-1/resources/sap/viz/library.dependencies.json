@@ -2,23 +2,23 @@
   "modules" : [
     {
       "name" : "sap.viz.library",
-      "description" : "Initialization Code and shared classes of library sap.viz (1.11.0)",
-      "size" : 38214,
-      "compressedSize" : 10294,
+      "description" : "Initialization Code and shared classes of library sap.viz (1.9.2)",
+      "size" : 32685,
+      "compressedSize" : 8925,
       "required" : ["jquery.sap.global", "sap.ui.core.Core", "sap.ui.core.library", "sap.ui.thirdparty.d3", "sap.viz.libs.canvg", "sap.viz.libs.rgbcolor", "sap.viz.libs.sap-viz"],
-      "includes" : ["sap.viz.ui5.types.Axis_gridline_type", "sap.viz.ui5.types.Axis_position", "sap.viz.ui5.types.Axis_type", "sap.viz.ui5.types.Background_direction", "sap.viz.ui5.types.Background_drawingEffect", "sap.viz.ui5.types.Bar_drawingEffect", "sap.viz.ui5.types.Bubble_drawingEffect", "sap.viz.ui5.types.Combination_drawingEffect", "sap.viz.ui5.types.Datalabel_orientation", "sap.viz.ui5.types.Datalabel_outsidePosition", "sap.viz.ui5.types.Datalabel_paintingMode", "sap.viz.ui5.types.Datalabel_position", "sap.viz.ui5.types.Legend_alignment", "sap.viz.ui5.types.Legend_drawingEffect", "sap.viz.ui5.types.Legend_position", "sap.viz.ui5.types.Legend_type", "sap.viz.ui5.types.Line_drawingEffect", "sap.viz.ui5.types.Line_marker_shape", "sap.viz.ui5.types.Pie_drawingEffect", "sap.viz.ui5.types.Pie_valign", "sap.viz.ui5.types.Scatter_drawingEffect", "sap.viz.ui5.types.StackedVerticalBar_drawingEffect", "sap.viz.ui5.types.StackedVerticalBar_mode", "sap.viz.ui5.types.Title_alignment", "sap.viz.ui5.types.Tooltip_drawingEffect", "sap.viz.ui5.types.VerticalBar_drawingEffect", "sap.viz.ui5.types.controller.Interaction_selectability_mode"]
+      "includes" : ["sap.viz.ui5.types.Axis_gridline_type", "sap.viz.ui5.types.Axis_position", "sap.viz.ui5.types.Axis_type", "sap.viz.ui5.types.Background_direction", "sap.viz.ui5.types.Background_drawingEffect", "sap.viz.ui5.types.Bar_drawingEffect", "sap.viz.ui5.types.Bubble_drawingEffect", "sap.viz.ui5.types.Combination_drawingEffect", "sap.viz.ui5.types.Legend_alignment", "sap.viz.ui5.types.Legend_drawingEffect", "sap.viz.ui5.types.Legend_position", "sap.viz.ui5.types.Legend_type", "sap.viz.ui5.types.Line_drawingEffect", "sap.viz.ui5.types.Line_marker_shape", "sap.viz.ui5.types.Pie_drawingEffect", "sap.viz.ui5.types.Pie_valign", "sap.viz.ui5.types.Scatter_drawingEffect", "sap.viz.ui5.types.StackedVerticalBar_drawingEffect", "sap.viz.ui5.types.StackedVerticalBar_mode", "sap.viz.ui5.types.Title_alignment", "sap.viz.ui5.types.Tooltip_drawingEffect", "sap.viz.ui5.types.VerticalBar_drawingEffect", "sap.viz.ui5.types.controller.Interaction_selectability_mode"]
     },
     {
       "name" : "sap.viz.ui5.Bar",
       "description" : "Provides control sap.viz.ui5.Bar.",
-      "size" : 28004,
-      "compressedSize" : 3093,
+      "size" : 24509,
+      "compressedSize" : 2676,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.BarRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 384,
       "compressedSize" : 279,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -27,14 +27,14 @@
     {
       "name" : "sap.viz.ui5.Bubble",
       "description" : "Provides control sap.viz.ui5.Bubble.",
-      "size" : 29373,
-      "compressedSize" : 3325,
+      "size" : 25819,
+      "compressedSize" : 2899,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.BubbleRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 390,
       "compressedSize" : 285,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -43,14 +43,14 @@
     {
       "name" : "sap.viz.ui5.Column",
       "description" : "Provides control sap.viz.ui5.Column.",
-      "size" : 28452,
-      "compressedSize" : 3173,
+      "size" : 24897,
+      "compressedSize" : 2747,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.ColumnRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 390,
       "compressedSize" : 285,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -59,14 +59,14 @@
     {
       "name" : "sap.viz.ui5.Combination",
       "description" : "Provides control sap.viz.ui5.Combination.",
-      "size" : 29132,
-      "compressedSize" : 3293,
+      "size" : 25477,
+      "compressedSize" : 2852,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.CombinationRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 400,
       "compressedSize" : 295,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -75,126 +75,30 @@
     {
       "name" : "sap.viz.ui5.Donut",
       "description" : "Provides control sap.viz.ui5.Donut.",
-      "size" : 24684,
-      "compressedSize" : 2555,
+      "size" : 21145,
+      "compressedSize" : 2132,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.DonutRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 388,
       "compressedSize" : 283,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
       "includes" : []
     },
     {
-      "name" : "sap.viz.ui5.DualBar",
-      "description" : "Provides control sap.viz.ui5.DualBar.",
-      "size" : 29439,
-      "compressedSize" : 3334,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualBarRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 392,
-      "compressedSize" : 287,
-      "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualColumn",
-      "description" : "Provides control sap.viz.ui5.DualColumn.",
-      "size" : 29905,
-      "compressedSize" : 3417,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualColumnRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 398,
-      "compressedSize" : 293,
-      "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualCombination",
-      "description" : "Provides control sap.viz.ui5.DualCombination.",
-      "size" : 30615,
-      "compressedSize" : 3542,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualCombinationRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 408,
-      "compressedSize" : 303,
-      "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualLine",
-      "description" : "Provides control sap.viz.ui5.DualLine.",
-      "size" : 29586,
-      "compressedSize" : 3360,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualLineRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 394,
-      "compressedSize" : 289,
-      "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualStackedColumn",
-      "description" : "Provides control sap.viz.ui5.DualStackedColumn.",
-      "size" : 30935,
-      "compressedSize" : 3600,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualStackedColumn100",
-      "description" : "Provides control sap.viz.ui5.DualStackedColumn100.",
-      "size" : 31362,
-      "compressedSize" : 3676,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualStackedColumn100Renderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 418,
-      "compressedSize" : 313,
-      "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.DualStackedColumnRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 412,
-      "compressedSize" : 307,
-      "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
-      "includes" : []
-    },
-    {
       "name" : "sap.viz.ui5.Line",
       "description" : "Provides control sap.viz.ui5.Line.",
-      "size" : 28145,
-      "compressedSize" : 3118,
+      "size" : 24630,
+      "compressedSize" : 2698,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.LineRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 386,
       "compressedSize" : 281,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -203,14 +107,14 @@
     {
       "name" : "sap.viz.ui5.Pie",
       "description" : "Provides control sap.viz.ui5.Pie.",
-      "size" : 24460,
-      "compressedSize" : 2515,
+      "size" : 20961,
+      "compressedSize" : 2098,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.PieRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 384,
       "compressedSize" : 279,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -219,14 +123,14 @@
     {
       "name" : "sap.viz.ui5.Scatter",
       "description" : "Provides control sap.viz.ui5.Scatter.",
-      "size" : 28568,
-      "compressedSize" : 3193,
+      "size" : 24993,
+      "compressedSize" : 2764,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.ScatterRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 392,
       "compressedSize" : 287,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -235,22 +139,22 @@
     {
       "name" : "sap.viz.ui5.StackedColumn",
       "description" : "Provides control sap.viz.ui5.StackedColumn.",
-      "size" : 29440,
-      "compressedSize" : 3349,
+      "size" : 25745,
+      "compressedSize" : 2902,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.StackedColumn100",
       "description" : "Provides control sap.viz.ui5.StackedColumn100.",
-      "size" : 29849,
-      "compressedSize" : 3422,
+      "size" : 26094,
+      "compressedSize" : 2966,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseChart"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.StackedColumn100Renderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 410,
       "compressedSize" : 305,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -258,7 +162,7 @@
     },
     {
       "name" : "sap.viz.ui5.StackedColumnRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
       "size" : 404,
       "compressedSize" : 299,
       "required" : ["jquery.sap.global", "sap.viz.ui5.core.BaseChartRenderer"],
@@ -267,23 +171,23 @@
     {
       "name" : "sap.viz.ui5.core.BaseChart",
       "description" : "Provides control sap.viz.ui5.core.BaseChart.",
-      "size" : 12800,
-      "compressedSize" : 3221,
+      "size" : 11625,
+      "compressedSize" : 2377,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.ui.core.Control", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.core.BaseChartRenderer",
-      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved",
-      "size" : 1813,
-      "compressedSize" : 1005,
+      "description" : "! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved",
+      "size" : 1512,
+      "compressedSize" : 771,
       "required" : ["jquery.sap.global"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.core.BaseStructuredType",
       "description" : "Provides control sap.viz.ui5.core.BaseStructuredType.",
-      "size" : 5146,
+      "size" : 5145,
       "compressedSize" : 1081,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.ui.core.Element"],
       "includes" : []
@@ -291,7 +195,7 @@
     {
       "name" : "sap.viz.ui5.data.Dataset",
       "description" : "Provides control sap.viz.ui5.data.Dataset.",
-      "size" : 3047,
+      "size" : 3046,
       "compressedSize" : 346,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.ui.core.Element"],
       "includes" : []
@@ -299,39 +203,39 @@
     {
       "name" : "sap.viz.ui5.data.DimensionDefinition",
       "description" : "Provides control sap.viz.ui5.data.DimensionDefinition.",
-      "size" : 6535,
-      "compressedSize" : 1012,
+      "size" : 5426,
+      "compressedSize" : 524,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.ui.core.Element"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.data.FlattenedDataset",
       "description" : "Provides control sap.viz.ui5.data.FlattenedDataset.",
-      "size" : 18080,
-      "compressedSize" : 3137,
+      "size" : 18375,
+      "compressedSize" : 3119,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.data.Dataset"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.data.MeasureDefinition",
       "description" : "Provides control sap.viz.ui5.data.MeasureDefinition.",
-      "size" : 6491,
-      "compressedSize" : 1002,
+      "size" : 5386,
+      "compressedSize" : 518,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.ui.core.Element"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Axis",
       "description" : "Provides control sap.viz.ui5.types.Axis.",
-      "size" : 14275,
-      "compressedSize" : 1831,
+      "size" : 11586,
+      "compressedSize" : 1450,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Axis_axisline",
       "description" : "Provides control sap.viz.ui5.types.Axis_axisline.",
-      "size" : 3913,
+      "size" : 3912,
       "compressedSize" : 443,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -339,7 +243,7 @@
     {
       "name" : "sap.viz.ui5.types.Axis_gridline",
       "description" : "Provides control sap.viz.ui5.types.Axis_gridline.",
-      "size" : 7882,
+      "size" : 7881,
       "compressedSize" : 786,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -347,32 +251,16 @@
     {
       "name" : "sap.viz.ui5.types.Axis_label",
       "description" : "Provides control sap.viz.ui5.types.Axis_label.",
-      "size" : 5550,
-      "compressedSize" : 553,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.types.Axis_layoutInfo",
-      "description" : "Provides control sap.viz.ui5.types.Axis_layoutInfo.",
-      "size" : 4603,
-      "compressedSize" : 488,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.types.Axis_scale",
-      "description" : "Provides control sap.viz.ui5.types.Axis_scale.",
-      "size" : 5381,
-      "compressedSize" : 541,
+      "size" : 4671,
+      "compressedSize" : 495,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Axis_title",
       "description" : "Provides control sap.viz.ui5.types.Axis_title.",
-      "size" : 5444,
-      "compressedSize" : 556,
+      "size" : 5445,
+      "compressedSize" : 554,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
@@ -387,7 +275,7 @@
     {
       "name" : "sap.viz.ui5.types.Background_border",
       "description" : "Provides control sap.viz.ui5.types.Background_border.",
-      "size" : 7369,
+      "size" : 7372,
       "compressedSize" : 1094,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -395,7 +283,7 @@
     {
       "name" : "sap.viz.ui5.types.Background_border_bottom",
       "description" : "Provides control sap.viz.ui5.types.Background_border_bottom.",
-      "size" : 4041,
+      "size" : 4040,
       "compressedSize" : 465,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -403,7 +291,7 @@
     {
       "name" : "sap.viz.ui5.types.Background_border_left",
       "description" : "Provides control sap.viz.ui5.types.Background_border_left.",
-      "size" : 4017,
+      "size" : 4016,
       "compressedSize" : 461,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -411,7 +299,7 @@
     {
       "name" : "sap.viz.ui5.types.Background_border_right",
       "description" : "Provides control sap.viz.ui5.types.Background_border_right.",
-      "size" : 4029,
+      "size" : 4028,
       "compressedSize" : 463,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -419,7 +307,7 @@
     {
       "name" : "sap.viz.ui5.types.Background_border_top",
       "description" : "Provides control sap.viz.ui5.types.Background_border_top.",
-      "size" : 4005,
+      "size" : 4004,
       "compressedSize" : 459,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -427,31 +315,23 @@
     {
       "name" : "sap.viz.ui5.types.Bar",
       "description" : "Provides control sap.viz.ui5.types.Bar.",
-      "size" : 12406,
-      "compressedSize" : 1809,
+      "size" : 11434,
+      "compressedSize" : 1649,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Bar_animation",
       "description" : "Provides control sap.viz.ui5.types.Bar_animation.",
-      "size" : 5586,
-      "compressedSize" : 561,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.types.Bar_fillMode",
-      "description" : "Provides control sap.viz.ui5.types.Bar_fillMode.",
-      "size" : 5591,
-      "compressedSize" : 729,
+      "size" : 4813,
+      "compressedSize" : 506,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Bar_tooltip",
       "description" : "Provides control sap.viz.ui5.types.Bar_tooltip.",
-      "size" : 3911,
+      "size" : 3910,
       "compressedSize" : 439,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -459,39 +339,39 @@
     {
       "name" : "sap.viz.ui5.types.Bubble",
       "description" : "Provides control sap.viz.ui5.types.Bubble.",
-      "size" : 9275,
-      "compressedSize" : 1417,
+      "size" : 9208,
+      "compressedSize" : 1401,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Bubble_animation",
       "description" : "Provides control sap.viz.ui5.types.Bubble_animation.",
-      "size" : 4854,
+      "size" : 4853,
       "compressedSize" : 512,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
-      "name" : "sap.viz.ui5.types.Bubble_axisTooltip",
-      "description" : "Provides control sap.viz.ui5.types.Bubble_axisTooltip.",
-      "size" : 4873,
-      "compressedSize" : 517,
+      "name" : "sap.viz.ui5.types.Bubble_tooltip",
+      "description" : "Provides control sap.viz.ui5.types.Bubble_tooltip.",
+      "size" : 3930,
+      "compressedSize" : 445,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Combination",
       "description" : "Provides control sap.viz.ui5.types.Combination.",
-      "size" : 14009,
-      "compressedSize" : 2148,
+      "size" : 12956,
+      "compressedSize" : 1968,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Combination_animation",
       "description" : "Provides control sap.viz.ui5.types.Combination_animation.",
-      "size" : 4085,
+      "size" : 4084,
       "compressedSize" : 463,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -499,16 +379,8 @@
     {
       "name" : "sap.viz.ui5.types.Combination_bar",
       "description" : "Provides control sap.viz.ui5.types.Combination_bar.",
-      "size" : 4017,
+      "size" : 4016,
       "compressedSize" : 454,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.types.Combination_dataShape",
-      "description" : "Provides control sap.viz.ui5.types.Combination_dataShape.",
-      "size" : 4967,
-      "compressedSize" : 557,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
@@ -523,7 +395,7 @@
     {
       "name" : "sap.viz.ui5.types.Combination_line_marker",
       "description" : "Provides control sap.viz.ui5.types.Combination_line_marker.",
-      "size" : 5601,
+      "size" : 5529,
       "compressedSize" : 567,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -531,39 +403,31 @@
     {
       "name" : "sap.viz.ui5.types.Combination_tooltip",
       "description" : "Provides control sap.viz.ui5.types.Combination_tooltip.",
-      "size" : 3999,
+      "size" : 3998,
       "compressedSize" : 455,
-      "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
-      "includes" : []
-    },
-    {
-      "name" : "sap.viz.ui5.types.Datalabel",
-      "description" : "Provides control sap.viz.ui5.types.Datalabel.",
-      "size" : 16247,
-      "compressedSize" : 1572,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Legend",
       "description" : "Provides control sap.viz.ui5.types.Legend.",
-      "size" : 10173,
-      "compressedSize" : 1196,
+      "size" : 9403,
+      "compressedSize" : 1136,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Legend_title",
       "description" : "Provides control sap.viz.ui5.types.Legend_title.",
-      "size" : 4619,
-      "compressedSize" : 494,
+      "size" : 4620,
+      "compressedSize" : 492,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Line",
       "description" : "Provides control sap.viz.ui5.types.Line.",
-      "size" : 13365,
+      "size" : 13368,
       "compressedSize" : 1961,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -571,7 +435,7 @@
     {
       "name" : "sap.viz.ui5.types.Line_animation",
       "description" : "Provides control sap.viz.ui5.types.Line_animation.",
-      "size" : 4010,
+      "size" : 4009,
       "compressedSize" : 449,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -579,7 +443,7 @@
     {
       "name" : "sap.viz.ui5.types.Line_hoverline",
       "description" : "Provides control sap.viz.ui5.types.Line_hoverline.",
-      "size" : 3950,
+      "size" : 3949,
       "compressedSize" : 445,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -587,7 +451,7 @@
     {
       "name" : "sap.viz.ui5.types.Line_marker",
       "description" : "Provides control sap.viz.ui5.types.Line_marker.",
-      "size" : 5565,
+      "size" : 5564,
       "compressedSize" : 602,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -595,7 +459,7 @@
     {
       "name" : "sap.viz.ui5.types.Line_tooltip",
       "description" : "Provides control sap.viz.ui5.types.Line_tooltip.",
-      "size" : 3922,
+      "size" : 3921,
       "compressedSize" : 441,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -603,15 +467,15 @@
     {
       "name" : "sap.viz.ui5.types.Pie",
       "description" : "Provides control sap.viz.ui5.types.Pie.",
-      "size" : 10193,
-      "compressedSize" : 1419,
+      "size" : 9472,
+      "compressedSize" : 1363,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Pie_animation",
       "description" : "Provides control sap.viz.ui5.types.Pie_animation.",
-      "size" : 3997,
+      "size" : 3996,
       "compressedSize" : 447,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -619,39 +483,39 @@
     {
       "name" : "sap.viz.ui5.types.Pie_tooltip",
       "description" : "Provides control sap.viz.ui5.types.Pie_tooltip.",
-      "size" : 6420,
-      "compressedSize" : 622,
+      "size" : 5543,
+      "compressedSize" : 558,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Scatter",
       "description" : "Provides control sap.viz.ui5.types.Scatter.",
-      "size" : 10087,
-      "compressedSize" : 1476,
+      "size" : 10020,
+      "compressedSize" : 1460,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Scatter_animation",
       "description" : "Provides control sap.viz.ui5.types.Scatter_animation.",
-      "size" : 4868,
+      "size" : 4867,
       "compressedSize" : 514,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
-      "name" : "sap.viz.ui5.types.Scatter_axisTooltip",
-      "description" : "Provides control sap.viz.ui5.types.Scatter_axisTooltip.",
-      "size" : 4887,
-      "compressedSize" : 519,
+      "name" : "sap.viz.ui5.types.Scatter_tooltip",
+      "description" : "Provides control sap.viz.ui5.types.Scatter_tooltip.",
+      "size" : 3941,
+      "compressedSize" : 447,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.StackedVerticalBar",
       "description" : "Provides control sap.viz.ui5.types.StackedVerticalBar.",
-      "size" : 13166,
+      "size" : 13167,
       "compressedSize" : 1902,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -659,15 +523,15 @@
     {
       "name" : "sap.viz.ui5.types.StackedVerticalBar_animation",
       "description" : "Provides control sap.viz.ui5.types.StackedVerticalBar_animation.",
-      "size" : 5841,
-      "compressedSize" : 591,
+      "size" : 5023,
+      "compressedSize" : 536,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.StackedVerticalBar_tooltip",
       "description" : "Provides control sap.viz.ui5.types.StackedVerticalBar_tooltip.",
-      "size" : 4076,
+      "size" : 4075,
       "compressedSize" : 469,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -675,23 +539,23 @@
     {
       "name" : "sap.viz.ui5.types.Title",
       "description" : "Provides control sap.viz.ui5.types.Title.",
-      "size" : 5427,
-      "compressedSize" : 598,
+      "size" : 5428,
+      "compressedSize" : 596,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.Tooltip",
       "description" : "Provides control sap.viz.ui5.types.Tooltip.",
-      "size" : 5923,
-      "compressedSize" : 628,
+      "size" : 4848,
+      "compressedSize" : 565,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.VerticalBar",
       "description" : "Provides control sap.viz.ui5.types.VerticalBar.",
-      "size" : 11833,
+      "size" : 11834,
       "compressedSize" : 1713,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -699,15 +563,15 @@
     {
       "name" : "sap.viz.ui5.types.VerticalBar_animation",
       "description" : "Provides control sap.viz.ui5.types.VerticalBar_animation.",
-      "size" : 5722,
-      "compressedSize" : 577,
+      "size" : 4925,
+      "compressedSize" : 522,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.VerticalBar_tooltip",
       "description" : "Provides control sap.viz.ui5.types.VerticalBar_tooltip.",
-      "size" : 3999,
+      "size" : 3998,
       "compressedSize" : 455,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -715,7 +579,7 @@
     {
       "name" : "sap.viz.ui5.types.XYContainer",
       "description" : "Provides control sap.viz.ui5.types.XYContainer.",
-      "size" : 3144,
+      "size" : 3143,
       "compressedSize" : 372,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
@@ -723,16 +587,16 @@
     {
       "name" : "sap.viz.ui5.types.controller.Interaction",
       "description" : "Provides control sap.viz.ui5.types.controller.Interaction.",
-      "size" : 10899,
-      "compressedSize" : 1148,
+      "size" : 4498,
+      "compressedSize" : 626,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     },
     {
       "name" : "sap.viz.ui5.types.controller.Interaction_selectability",
       "description" : "Provides control sap.viz.ui5.types.controller.Interaction_selectability.",
-      "size" : 5557,
-      "compressedSize" : 667,
+      "size" : 4619,
+      "compressedSize" : 602,
       "required" : ["jquery.sap.global", "sap.viz.library", "sap.viz.ui5.core.BaseStructuredType"],
       "includes" : []
     }

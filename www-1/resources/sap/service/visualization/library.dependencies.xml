@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <library name="sap.service.visualization">
-  <module name="sap.service.visualization.ChartOption" size="9300" compressedSize="3135">
+  <module name="sap.service.visualization.ChartOption" size="9299" compressedSize="3135">
     <description>Provides control sap.service.visualization.ChartOption.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -9,7 +9,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.service.visualization.Themings" size="12012" compressedSize="5018">
+  </module>  <module name="sap.service.visualization.Themings" size="12011" compressedSize="5018">
     <description>Provides control sap.service.visualization.Themings.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -153,7 +153,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.service.visualization.dataset.SimpleDMDataset" size="15767" compressedSize="2953">
+  </module>  <module name="sap.service.visualization.dataset.SimpleDMDataset" size="15766" compressedSize="2953">
     <description>Provides control sap.service.visualization.dataset.SimpleDMDataset.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -166,8 +166,8 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.service.visualization.library" size="1457" compressedSize="714">
-    <description>Initialization Code and shared classes of library sap.service.visualization (1.11.0)</description>
+  </module>  <module name="sap.service.visualization.library" size="1455" compressedSize="713">
+    <description>Initialization Code and shared classes of library sap.service.visualization (1.9.2)</description>
     <requires>
       <module name="jquery.sap.global"/>
       <module name="sap.ui.core.Core"/>

@@ -14,7 +14,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	toolTip: undefined, // sap.viz.ui5.types.Tooltip
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -26,9 +25,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -53,7 +49,6 @@
 	title: undefined, // sap.viz.ui5.types.Title
 	legend: undefined, // sap.viz.ui5.types.Legend
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -67,9 +62,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -95,7 +87,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	toolTip: undefined, // sap.viz.ui5.types.Tooltip
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -107,9 +98,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -135,7 +123,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	toolTip: undefined, // sap.viz.ui5.types.Tooltip
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -147,9 +134,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -175,7 +159,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
 	plotArea: undefined, // sap.viz.ui5.types.Pie
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	beforeCreateViz: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
@@ -183,255 +166,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	selectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	deselectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.DualBar" alias="DualBar,Bar">
-	<jsTemplate><![CDATA[new sap.viz.ui5.DualBar({
-	id: "${id}", // sap.ui.core.ID
-	width: "640px", // sap.ui.core.CSSSize
-	height: "480px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	dataset: undefined, // sap.viz.ui5.data.Dataset
-	noData: undefined, // sap.ui.core.Control
-	title: undefined, // sap.viz.ui5.types.Title
-	legend: undefined, // sap.viz.ui5.types.Legend
-	toolTip: undefined, // sap.viz.ui5.types.Tooltip
-	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
-	xAxis: undefined, // sap.viz.ui5.types.Axis
-	yAxis: undefined, // sap.viz.ui5.types.Axis
-	background: undefined, // sap.viz.ui5.types.Background
-	plotArea: undefined, // sap.viz.ui5.types.Bar
-	xAxis2: undefined, // sap.viz.ui5.types.Axis
-	beforeCreateViz: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	showTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	selectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	deselectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.DualColumn" alias="DualColumn,Column">
-	<jsTemplate><![CDATA[new sap.viz.ui5.DualColumn({
-	id: "${id}", // sap.ui.core.ID
-	width: "640px", // sap.ui.core.CSSSize
-	height: "480px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	dataset: undefined, // sap.viz.ui5.data.Dataset
-	noData: undefined, // sap.ui.core.Control
-	title: undefined, // sap.viz.ui5.types.Title
-	legend: undefined, // sap.viz.ui5.types.Legend
-	toolTip: undefined, // sap.viz.ui5.types.Tooltip
-	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
-	yAxis: undefined, // sap.viz.ui5.types.Axis
-	xAxis: undefined, // sap.viz.ui5.types.Axis
-	background: undefined, // sap.viz.ui5.types.Background
-	plotArea: undefined, // sap.viz.ui5.types.VerticalBar
-	yAxis2: undefined, // sap.viz.ui5.types.Axis
-	beforeCreateViz: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	showTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	selectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	deselectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.DualCombination" alias="DualCombination,Combination">
-	<jsTemplate><![CDATA[new sap.viz.ui5.DualCombination({
-	id: "${id}", // sap.ui.core.ID
-	width: "640px", // sap.ui.core.CSSSize
-	height: "480px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	dataset: undefined, // sap.viz.ui5.data.Dataset
-	noData: undefined, // sap.ui.core.Control
-	title: undefined, // sap.viz.ui5.types.Title
-	legend: undefined, // sap.viz.ui5.types.Legend
-	toolTip: undefined, // sap.viz.ui5.types.Tooltip
-	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
-	yAxis: undefined, // sap.viz.ui5.types.Axis
-	xAxis: undefined, // sap.viz.ui5.types.Axis
-	background: undefined, // sap.viz.ui5.types.Background
-	plotArea: undefined, // sap.viz.ui5.types.Combination
-	yAxis2: undefined, // sap.viz.ui5.types.Axis
-	beforeCreateViz: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	showTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	selectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	deselectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.DualLine" alias="DualLine,Line">
-	<jsTemplate><![CDATA[new sap.viz.ui5.DualLine({
-	id: "${id}", // sap.ui.core.ID
-	width: "640px", // sap.ui.core.CSSSize
-	height: "480px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	dataset: undefined, // sap.viz.ui5.data.Dataset
-	noData: undefined, // sap.ui.core.Control
-	title: undefined, // sap.viz.ui5.types.Title
-	legend: undefined, // sap.viz.ui5.types.Legend
-	toolTip: undefined, // sap.viz.ui5.types.Tooltip
-	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
-	yAxis: undefined, // sap.viz.ui5.types.Axis
-	xAxis: undefined, // sap.viz.ui5.types.Axis
-	background: undefined, // sap.viz.ui5.types.Background
-	plotArea: undefined, // sap.viz.ui5.types.Line
-	yAxis2: undefined, // sap.viz.ui5.types.Axis
-	beforeCreateViz: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	showTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	selectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	deselectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.DualStackedColumn" alias="DualStackedColumn,Column">
-	<jsTemplate><![CDATA[new sap.viz.ui5.DualStackedColumn({
-	id: "${id}", // sap.ui.core.ID
-	width: "640px", // sap.ui.core.CSSSize
-	height: "480px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	dataset: undefined, // sap.viz.ui5.data.Dataset
-	noData: undefined, // sap.ui.core.Control
-	title: undefined, // sap.viz.ui5.types.Title
-	legend: undefined, // sap.viz.ui5.types.Legend
-	toolTip: undefined, // sap.viz.ui5.types.Tooltip
-	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
-	yAxis: undefined, // sap.viz.ui5.types.Axis
-	xAxis: undefined, // sap.viz.ui5.types.Axis
-	background: undefined, // sap.viz.ui5.types.Background
-	plotArea: undefined, // sap.viz.ui5.types.StackedVerticalBar
-	yAxis2: undefined, // sap.viz.ui5.types.Axis
-	beforeCreateViz: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	showTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	selectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	deselectData: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this]
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.DualStackedColumn100" alias="DualStackedColumn100,Column100">
-	<jsTemplate><![CDATA[new sap.viz.ui5.DualStackedColumn100({
-	id: "${id}", // sap.ui.core.ID
-	width: "640px", // sap.ui.core.CSSSize
-	height: "480px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined, // sap.ui.core.LayoutData
-	dataset: undefined, // sap.viz.ui5.data.Dataset
-	noData: undefined, // sap.ui.core.Control
-	title: undefined, // sap.viz.ui5.types.Title
-	legend: undefined, // sap.viz.ui5.types.Legend
-	toolTip: undefined, // sap.viz.ui5.types.Tooltip
-	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
-	yAxis: undefined, // sap.viz.ui5.types.Axis
-	xAxis: undefined, // sap.viz.ui5.types.Axis
-	background: undefined, // sap.viz.ui5.types.Background
-	plotArea: undefined, // sap.viz.ui5.types.StackedVerticalBar
-	yAxis2: undefined, // sap.viz.ui5.types.Axis
-	beforeCreateViz: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	showTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -457,7 +191,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	toolTip: undefined, // sap.viz.ui5.types.Tooltip
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -469,9 +202,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -497,7 +227,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
 	plotArea: undefined, // sap.viz.ui5.types.Pie
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	beforeCreateViz: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
@@ -505,9 +234,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -532,7 +258,6 @@
 	title: undefined, // sap.viz.ui5.types.Title
 	legend: undefined, // sap.viz.ui5.types.Legend
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -545,9 +270,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -573,7 +295,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	toolTip: undefined, // sap.viz.ui5.types.Tooltip
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -585,9 +306,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -613,7 +331,6 @@
 	legend: undefined, // sap.viz.ui5.types.Legend
 	toolTip: undefined, // sap.viz.ui5.types.Tooltip
 	interaction: undefined, // sap.viz.ui5.types.controller.Interaction
-	dataLabel: undefined, // sap.viz.ui5.types.Datalabel
 	yAxis: undefined, // sap.viz.ui5.types.Axis
 	xAxis: undefined, // sap.viz.ui5.types.Axis
 	background: undefined, // sap.viz.ui5.types.Background
@@ -625,9 +342,6 @@
 		var ${control} = oEvent.getSource();
 	}, this],
 	hideTooltip: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this],
-	initialized: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
 	selectData: [function (oEvent) {
@@ -713,7 +427,6 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Axis({
 	id: "${id}", // sap.ui.core.ID
 	isIndependentMode: false, // boolean
-	isPercentMode: false, // boolean
 	lineSize: "1", // string
 	color: "#6c6c6c", // string
 	type: sap.viz.ui5.types.Axis_type.value, // sap.viz.ui5.types.Axis_type
@@ -725,9 +438,7 @@
 	title: undefined, // sap.viz.ui5.types.Axis_title
 	gridline: undefined, // sap.viz.ui5.types.Axis_gridline
 	axisline: undefined, // sap.viz.ui5.types.Axis_axisline
-	label: undefined, // sap.viz.ui5.types.Axis_label
-	scale: undefined, // sap.viz.ui5.types.Axis_scale
-	layoutInfo: undefined // sap.viz.ui5.types.Axis_layoutInfo
+	label: undefined // sap.viz.ui5.types.Axis_label
 })
 ]]></jsTemplate>
 </Template>
@@ -760,31 +471,7 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Axis_label({
 	id: "${id}", // sap.ui.core.ID
 	visible: true, // boolean
-	numberFormat: "", // string
-	formatString: "null", // string
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.types.Axis_layoutInfo" alias="Axis_layoutInfo,Info">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Axis_layoutInfo({
-	id: "${id}", // sap.ui.core.ID
-	width: 0, // float
-	height: 0, // float
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.types.Axis_scale" alias="Axis_scale">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Axis_scale({
-	id: "${id}", // sap.ui.core.ID
-	fixedRange: false, // boolean
-	minValue: 0, // float
-	maxValue: 0, // float
+	numberFormat: undefined, // string
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -795,7 +482,7 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Axis_title({
 	id: "${id}", // sap.ui.core.ID
 	visible: false, // boolean
-	text: "null", // string
+	text: undefined, // string
 	applyAxislineColor: false, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
@@ -881,8 +568,7 @@
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
 	toolTip: undefined, // sap.viz.ui5.types.Bar_tooltip
-	animation: undefined, // sap.viz.ui5.types.Bar_animation
-	fillMode: undefined // sap.viz.ui5.types.Bar_fillMode
+	animation: undefined // sap.viz.ui5.types.Bar_animation
 })
 ]]></jsTemplate>
 </Template>
@@ -891,18 +577,6 @@
 	id: "${id}", // sap.ui.core.ID
 	dataLoading: true, // boolean
 	dataUpdating: true, // boolean
-	resizing: true, // boolean
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.types.Bar_fillMode" alias="Bar_fillMode,Mode">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Bar_fillMode({
-	id: "${id}", // sap.ui.core.ID
-	image: false, // boolean
-	imagePalette: [], // string[]
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -928,7 +602,7 @@
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
-	axisTooltip: undefined, // sap.viz.ui5.types.Bubble_axisTooltip
+	toolTip: undefined, // sap.viz.ui5.types.Bubble_tooltip
 	animation: undefined // sap.viz.ui5.types.Bubble_animation
 })
 ]]></jsTemplate>
@@ -944,11 +618,10 @@
 })
 ]]></jsTemplate>
 </Template>
-<Template name="sap.viz.ui5.types.Bubble_axisTooltip" alias="Bubble_axisTooltip,Tooltip">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Bubble_axisTooltip({
+<Template name="sap.viz.ui5.types.Bubble_tooltip" alias="Bubble_tooltip">
+	<jsTemplate><![CDATA[new sap.viz.ui5.types.Bubble_tooltip({
 	id: "${id}", // sap.ui.core.ID
-	visible: true, // boolean
-	formatString: [], // string[]
+	enabled: true, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -967,7 +640,6 @@
 	layoutData: undefined, // sap.ui.core.LayoutData
 	toolTip: undefined, // sap.viz.ui5.types.Combination_tooltip
 	animation: undefined, // sap.viz.ui5.types.Combination_animation
-	dataShape: undefined, // sap.viz.ui5.types.Combination_dataShape
 	bar: undefined, // sap.viz.ui5.types.Combination_bar
 	line: undefined // sap.viz.ui5.types.Combination_line
 })
@@ -987,17 +659,6 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Combination_bar({
 	id: "${id}", // sap.ui.core.ID
 	isRoundCorner: false, // boolean
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
-<Template name="sap.viz.ui5.types.Combination_dataShape" alias="Combination_dataShape,Shape">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Combination_dataShape({
-	id: "${id}", // sap.ui.core.ID
-	primaryAxis: [], // string[]
-	secondAxis: [], // string[]
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1037,35 +698,10 @@
 })
 ]]></jsTemplate>
 </Template>
-<Template name="sap.viz.ui5.types.Datalabel" alias="Datalabel">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Datalabel({
-	id: "${id}", // sap.ui.core.ID
-	visible: false, // boolean
-	isDonut: false, // boolean
-	type: "value", // string
-	automaticInOutside: true, // boolean
-	showZero: true, // boolean
-	isGeoChart: false, // boolean
-	isStackMode: false, // boolean
-	isPercentMode: false, // boolean
-	positionPreference: false, // boolean
-	outsideVisible: true, // boolean
-	outsidePosition: sap.viz.ui5.types.Datalabel_outsidePosition.up, // sap.viz.ui5.types.Datalabel_outsidePosition
-	paintingMode: sap.viz.ui5.types.Datalabel_paintingMode.rectCoordinate, // sap.viz.ui5.types.Datalabel_paintingMode
-	position: sap.viz.ui5.types.Datalabel_position.inside, // sap.viz.ui5.types.Datalabel_position
-	orientation: sap.viz.ui5.types.Datalabel_orientation.vertical, // sap.viz.ui5.types.Datalabel_orientation
-	formatString: [], // any[][]
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
 <Template name="sap.viz.ui5.types.Legend" alias="Legend">
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Legend({
 	id: "${id}", // sap.ui.core.ID
 	visible: true, // boolean
-	formatString: "null", // string
 	isHierarchical: false, // boolean
 	position: sap.viz.ui5.types.Legend_position.right, // sap.viz.ui5.types.Legend_position
 	type: sap.viz.ui5.types.Legend_type.ColorLegend, // sap.viz.ui5.types.Legend_type
@@ -1082,7 +718,7 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Legend_title({
 	id: "${id}", // sap.ui.core.ID
 	visible: false, // boolean
-	text: "null", // string
+	text: undefined, // string
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1154,7 +790,6 @@
 	id: "${id}", // sap.ui.core.ID
 	colorPalette: [], // string[]
 	isDonut: false, // boolean
-	isGeoPie: false, // boolean
 	valign: sap.viz.ui5.types.Pie_valign.top, // sap.viz.ui5.types.Pie_valign
 	drawingEffect: sap.viz.ui5.types.Pie_drawingEffect.normal, // sap.viz.ui5.types.Pie_drawingEffect
 	tooltip: undefined, // sap.ui.core.TooltipBase
@@ -1181,7 +816,6 @@
 	visible: true, // boolean
 	valueFormat: "n", // string
 	percentageFormat: ".0%", // string
-	formatString: [], // string[]
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1198,7 +832,7 @@
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
-	axisTooltip: undefined, // sap.viz.ui5.types.Scatter_axisTooltip
+	toolTip: undefined, // sap.viz.ui5.types.Scatter_tooltip
 	animation: undefined // sap.viz.ui5.types.Scatter_animation
 })
 ]]></jsTemplate>
@@ -1214,11 +848,10 @@
 })
 ]]></jsTemplate>
 </Template>
-<Template name="sap.viz.ui5.types.Scatter_axisTooltip" alias="Scatter_axisTooltip,Tooltip">
-	<jsTemplate><![CDATA[new sap.viz.ui5.types.Scatter_axisTooltip({
+<Template name="sap.viz.ui5.types.Scatter_tooltip" alias="Scatter_tooltip">
+	<jsTemplate><![CDATA[new sap.viz.ui5.types.Scatter_tooltip({
 	id: "${id}", // sap.ui.core.ID
-	visible: true, // boolean
-	formatString: [], // string[]
+	enabled: true, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1247,7 +880,6 @@
 	id: "${id}", // sap.ui.core.ID
 	dataLoading: true, // boolean
 	dataUpdating: true, // boolean
-	resizing: true, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1268,7 +900,7 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.Title({
 	id: "${id}", // sap.ui.core.ID
 	visible: false, // boolean
-	text: "null", // string
+	text: undefined, // string
 	alignment: sap.viz.ui5.types.Title_alignment.center, // sap.viz.ui5.types.Title_alignment
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
@@ -1281,7 +913,6 @@
 	id: "${id}", // sap.ui.core.ID
 	visible: true, // boolean
 	drawingEffect: sap.viz.ui5.types.Tooltip_drawingEffect.normal, // sap.viz.ui5.types.Tooltip_drawingEffect
-	formatString: [], // any[][]
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1309,7 +940,6 @@
 	id: "${id}", // sap.ui.core.ID
 	dataLoading: true, // boolean
 	dataUpdating: true, // boolean
-	resizing: true, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData
@@ -1338,13 +968,6 @@
 <Template name="sap.viz.ui5.types.controller.Interaction" alias="Interaction">
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.controller.Interaction({
 	id: "${id}", // sap.ui.core.ID
-	supportedEventNames: [], // string[]
-	enableMouseMove: true, // boolean
-	enableMouseOver: true, // boolean
-	enableMouseOut: true, // boolean
-	supportLassoEvent: true, // boolean
-	holdSelection: false, // boolean
-	preserveSelectionWhenDragging: false, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined, // sap.ui.core.LayoutData
@@ -1356,7 +979,6 @@
 	<jsTemplate><![CDATA[new sap.viz.ui5.types.controller.Interaction_selectability({
 	id: "${id}", // sap.ui.core.ID
 	mode: sap.viz.ui5.types.controller.Interaction_selectability_mode.multiple, // sap.viz.ui5.types.controller.Interaction_selectability_mode
-	selectWithCtrlKey: false, // boolean
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	layoutData: undefined // sap.ui.core.LayoutData

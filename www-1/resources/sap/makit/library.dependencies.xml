@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <library name="sap.makit">
-  <module name="sap.makit.Axis" size="6839" compressedSize="682">
+  <module name="sap.makit.Axis" size="6838" compressedSize="682">
     <description>Provides control sap.makit.Axis.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -9,7 +9,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.Category" size="5386" compressedSize="533">
+  </module>  <module name="sap.makit.Category" size="5385" compressedSize="533">
     <description>Provides control sap.makit.Category.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -18,7 +18,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.CategoryAxis" size="4839" compressedSize="624">
+  </module>  <module name="sap.makit.CategoryAxis" size="4838" compressedSize="624">
     <description>Provides control sap.makit.CategoryAxis.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -27,7 +27,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.Chart" size="47958">
+  </module>  <module name="sap.makit.Chart" size="47962">
     <description>Provides control sap.makit.Chart.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -39,13 +39,13 @@
       <module name="sap.makit.js.SybaseMA"/>
     </includes>
   </module>  <module name="sap.makit.ChartRenderer" size="1055" compressedSize="496">
-    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved</description>
+    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved</description>
     <requires>
       <module name="jquery.sap.global"/>
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.Column" size="5018" compressedSize="530">
+  </module>  <module name="sap.makit.Column" size="5017" compressedSize="530">
     <description>Provides control sap.makit.Column.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -63,7 +63,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.Series" size="5309" compressedSize="535">
+  </module>  <module name="sap.makit.Series" size="5308" compressedSize="535">
     <description>Provides control sap.makit.Series.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -72,7 +72,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.Value" size="5769" compressedSize="531">
+  </module>  <module name="sap.makit.Value" size="5768" compressedSize="531">
     <description>Provides control sap.makit.Value.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -81,7 +81,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.ValueAxis" size="4691" compressedSize="561">
+  </module>  <module name="sap.makit.ValueAxis" size="4690" compressedSize="561">
     <description>Provides control sap.makit.ValueAxis.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -90,7 +90,7 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.ValueBubble" size="11198" compressedSize="1533">
+  </module>  <module name="sap.makit.ValueBubble" size="11197" compressedSize="1533">
     <description>Provides control sap.makit.ValueBubble.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -99,8 +99,8 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.makit.library" size="7594" compressedSize="1444">
-    <description>Initialization Code and shared classes of library sap.makit (1.11.0)</description>
+  </module>  <module name="sap.makit.library" size="7587" compressedSize="1443">
+    <description>Initialization Code and shared classes of library sap.makit (1.9.2)</description>
     <requires>
       <module name="jquery.sap.global"/>
       <module name="sap.ui.core.Core"/>

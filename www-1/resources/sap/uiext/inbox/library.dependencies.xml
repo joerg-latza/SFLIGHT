@@ -1,13 +1,12 @@
 <?xml version="1.0" ?>
 <library name="sap.uiext.inbox">
-  <module name="sap.uiext.inbox.Inbox" size="273606" compressedSize="131110">
+  <module name="sap.uiext.inbox.Inbox" size="222961" compressedSize="103247">
     <description>Provides control sap.uiext.inbox.Inbox.</description>
     <requires>
       <module name="jquery.sap.global"/>
       <module name="sap.uiext.inbox.library"/>
       <module name="sap.ui.core.Control"/>
       <module name="sap.uiext.inbox.InboxConstants"/>
-      <module name="sap.uiext.inbox.InboxLink"/>
       <module name="sap.uiext.inbox.TaskInitialFilters"/>
       <module name="sap.uiext.inbox.InboxUtils"/>
       <module name="sap.uiext.inbox.SubstitutionRulesManager"/>
@@ -40,35 +39,28 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.uiext.inbox.InboxConstants" size="8818" compressedSize="7833">
-    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved</description>
-    <requires>
-      <module name="jquery.sap.global"/>
-    </requires>
-    <includes>
-    </includes>
-  </module>  <module name="sap.uiext.inbox.InboxLink" size="490" compressedSize="389">
-    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved</description>
+  </module>  <module name="sap.uiext.inbox.InboxConstants" size="6687" compressedSize="5966">
+    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved</description>
     <requires>
       <module name="jquery.sap.global"/>
     </requires>
     <includes>
     </includes>
   </module>  <module name="sap.uiext.inbox.InboxRenderer" size="940" compressedSize="395">
-    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved</description>
+    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved</description>
     <requires>
       <module name="jquery.sap.global"/>
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.uiext.inbox.InboxUtils" size="6108" compressedSize="3742">
+  </module>  <module name="sap.uiext.inbox.InboxUtils" size="5027" compressedSize="3140">
     <description>Utility functions for Inbox</description>
     <requires>
       <module name="jquery.sap.global"/>
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.uiext.inbox.SubstitutionRulesManager" size="66802" compressedSize="30485">
+  </module>  <module name="sap.uiext.inbox.SubstitutionRulesManager" size="66071" compressedSize="30078">
     <description>Provides control sap.uiext.inbox.SubstitutionRulesManager.</description>
     <requires>
       <module name="jquery.sap.global"/>
@@ -81,14 +73,14 @@
     <includes>
     </includes>
   </module>  <module name="sap.uiext.inbox.SubstitutionRulesManagerConstants" size="561" compressedSize="539">
-    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved</description>
+    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved</description>
     <requires>
       <module name="jquery.sap.global"/>
     </requires>
     <includes>
     </includes>
   </module>  <module name="sap.uiext.inbox.SubstitutionRulesManagerRenderer" size="1107" compressedSize="485">
-    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2013 SAP AG. All rights reserved</description>
+    <description>! SAP UI development toolkit for HTML5 (SAPUI5)  (c) Copyright 2009-2012 SAP AG. All rights reserved</description>
     <requires>
       <module name="jquery.sap.global"/>
     </requires>
@@ -109,8 +101,8 @@
     </requires>
     <includes>
     </includes>
-  </module>  <module name="sap.uiext.inbox.library" size="1265" compressedSize="574">
-    <description>Initialization Code and shared classes of library sap.uiext.inbox (1.11.0)</description>
+  </module>  <module name="sap.uiext.inbox.library" size="1263" compressedSize="573">
+    <description>Initialization Code and shared classes of library sap.uiext.inbox (1.9.2)</description>
     <requires>
       <module name="jquery.sap.global"/>
       <module name="sap.ui.core.Core"/>

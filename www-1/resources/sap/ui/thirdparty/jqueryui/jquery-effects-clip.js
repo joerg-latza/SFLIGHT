@@ -10,45 +10,4 @@
  * Depends:
  *	jquery.effects.core.js
  */
-(function( $, undefined ) {
-
-$.effects.clip = function(o) {
-
-	return this.queue(function() {
-
-		// Create element
-		var el = $(this), props = ['position','top','bottom','left','right','height','width'];
-
-		// Set options
-		var mode = $.effects.setMode(el, o.options.mode || 'hide'); // Set Mode
-		var direction = o.options.direction || 'vertical'; // Default direction
-
-		// Adjust
-		$.effects.save(el, props); el.show(); // Save & Show
-		var wrapper = $.effects.createWrapper(el).css({overflow:'hidden'}); // Create Wrapper
-		var animate = el[0].tagName == 'IMG' ? wrapper : el;
-		var ref = {
-			size: (direction == 'vertical') ? 'height' : 'width',
-			position: (direction == 'vertical') ? 'top' : 'left'
-		};
-		var distance = (direction == 'vertical') ? animate.height() : animate.width();
-		if(mode == 'show') { animate.css(ref.size, 0); animate.css(ref.position, distance / 2); } // Shift
-
-		// Animation
-		var animation = {};
-		animation[ref.size] = mode == 'show' ? distance : 0;
-		animation[ref.position] = mode == 'show' ? 0 : distance / 2;
-
-		// Animate
-		animate.animate(animation, { queue: false, duration: o.duration, easing: o.options.easing, complete: function() {
-			if(mode == 'hide') el.hide(); // Hide
-			$.effects.restore(el, props); $.effects.removeWrapper(el); // Restore
-			if(o.callback) o.callback.apply(el[0], arguments); // Callback
-			el.dequeue();
-		}});
-
-	});
-
-};
-
-})(jQuery);
+(function($,u){$.effects.clip=function(o){return this.queue(function(){var e=$(this),p=['position','top','bottom','left','right','height','width'];var m=$.effects.setMode(e,o.options.mode||'hide');var d=o.options.direction||'vertical';$.effects.save(e,p);e.show();var w=$.effects.createWrapper(e).css({overflow:'hidden'});var a=e[0].tagName=='IMG'?w:e;var r={size:(d=='vertical')?'height':'width',position:(d=='vertical')?'top':'left'};var b=(d=='vertical')?a.height():a.width();if(m=='show'){a.css(r.size,0);a.css(r.position,b/2)}var c={};c[r.size]=m=='show'?b:0;c[r.position]=m=='show'?0:b/2;a.animate(c,{queue:false,duration:o.duration,easing:o.options.easing,complete:function(){if(m=='hide')e.hide();$.effects.restore(e,p);$.effects.removeWrapper(e);if(o.callback)o.callback.apply(e[0],arguments);e.dequeue()}})})}})(jQuery);

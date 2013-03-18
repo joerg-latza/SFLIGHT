@@ -1,67 +1,7 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2013 SAP AG. All rights reserved
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
  */
-
- 
-jQuery.sap.declare("sap.m.SplitAppRenderer");
-jQuery.sap.require("sap.ui.core.Renderer");
-
-/**
- * @class SplitApp renderer. 
- * @static
- */
-sap.m.SplitAppRenderer = {
-};
-
-/**
- * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
- * 
- * @param {sap.ui.core.RenderManager} rm the RenderManager that can be used for writing to the Render-Output-Buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
- */
-sap.m.SplitAppRenderer.render = function(rm, oControl){
-	rm.write("<div");
-	rm.writeControlData(oControl);
-	rm.addClass("sapMSplitApp");
-	if(jQuery.device.is.tablet) {
-		if(jQuery.device.is.portrait) {
-			rm.addClass("sapMSplitAppPortrait");
-		}
-		switch(oControl.getMode()) {
-			case "ShowHideMode":
-				rm.addClass("sapMSplitAppShowHide");
-				break;
-			case "StretchCompress":
-				rm.addClass("sapMSplitAppStretchCompress");
-				break;
-			case "PopoverMode":
-				rm.addClass("sapMSplitAppPopover");
-				break;
-		}
-	}
-	rm.writeClasses();
-	rm.write(">"); // div element
-	if(jQuery.device.is.tablet) {
-		if(oControl.getMode() === "PopoverMode" && jQuery.device.is.portrait) {
-			oControl._oDetailNav.addStyleClass("sapMSplitAppDetail");
-			rm.renderControl(oControl._oDetailNav);
-			//add master to popover if it's not yet added
-			if(oControl._oPopOver.getContent().length === 0){
-				oControl._oPopOver.addAggregation("content", oControl._oMasterNav, true);
-			}
-		} else {
-			oControl._oMasterNav.addStyleClass("sapMSplitAppMaster");
-			rm.renderControl(oControl._oMasterNav);
-			
-			oControl._oDetailNav.addStyleClass("sapMSplitAppDetail");
-			rm.renderControl(oControl._oDetailNav);
-		}
-	}else {
-		oControl._oMasterNav.addStyleClass("sapMSplitAppMobile");
-		rm.renderControl(oControl._oMasterNav);
-	}
-	
-	 rm.write("</div>");
-};
+jQuery.sap.declare("sap.m.SplitAppRenderer");jQuery.sap.require("sap.ui.core.Renderer");sap.m.SplitAppRenderer={};
+sap.m.SplitAppRenderer.render=function(r,c){r.write("<div");r.writeControlData(c);r.addClass("sapMSplitApp");if(jQuery.device.is.tablet){if(!c._oldIsLandscape){r.addClass("sapMSplitAppPortrait")}switch(c.getMode()){case"ShowHideMode":r.addClass("sapMSplitAppShowHide");break;case"StretchCompress":r.addClass("sapMSplitAppStretchCompress");break;case"PopoverMode":r.addClass("sapMSplitAppPopover");break}}r.writeClasses();r.write(">");if(jQuery.device.is.tablet){if(c.getMode()==="PopoverMode"&&!c._oldIsLandscape){c._oDetailNav.addStyleClass("sapMSplitAppDetail");r.renderControl(c._oDetailNav)}else{c._oMasterNav.addStyleClass("sapMSplitAppMaster");r.renderControl(c._oMasterNav);c._oDetailNav.addStyleClass("sapMSplitAppDetail");r.renderControl(c._oDetailNav)}}else{c._oMasterNav.addStyleClass("sapMSplitAppMobile");r.renderControl(c._oMasterNav)}r.write("</div>")};

@@ -1,92 +1,9 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2013 SAP AG. All rights reserved
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
  */
- 
-jQuery.sap.declare("sap.m.CarouselRenderer");
-
-/**
- * @class Carousel renderer. 
- * @static
- */
-sap.m.CarouselRenderer = {
-};
-
-
-
-
-/**
- * Renders the Carousel's HTML, using the provided {@link sap.ui.core.RenderManager}.
- * 
- * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
- */
-sap.m.CarouselRenderer.render = function(rm, oCarousel){ 
-	// Return immediately if control is invisible or if there are no pages to be rendered
-	if (!oCarousel.getVisible()) {
-		return;
-	}
-
-	//div for pages
-	rm.write("<div");
-	rm.writeControlData(oCarousel);
-
-	rm.addStyle("width", oCarousel.getWidth());
-	rm.addStyle("height", oCarousel.getHeight());
-	rm.writeStyles();
-	
-	rm.addClass("sapMCrsl");
-	// add all classes (also custom classes) to carousel tag
-	rm.writeClasses();
-	rm.write(">");
-	
-	//visual indicator
-	if(oCarousel.getPageIndicatorPlacement() == sap.m.PlacementType.Top) {
-		this._renderPageIndicator(rm, oCarousel);
-	}
-	
-	//prepare the div which will contain the pages
-	if(!oCarousel._oSwipeView) {
-		rm.write("<div id="); rm.writeEscaped(oCarousel._getContentId()); rm.write(" class='sapMCrslCont'></div>");
-	}
-	
-	//visual indicator
-	if(oCarousel.getPageIndicatorPlacement() == sap.m.PlacementType.Bottom) {
-		this._renderPageIndicator(rm, oCarousel);
-	}
-	rm.write("</div>");	
-};
-
-
-/**
- * Renders the page indicator, using the provided {@link sap.ui.core.RenderManager}.
- * 
- * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
- * @private
- */
-sap.m.CarouselRenderer._renderPageIndicator = function(rm, oCarousel){
-	rm.write("<ul id="); + rm.writeEscaped(oCarousel._getNavId()); rm.write(" class='sapMCrslIndLst'>");
-	this.renderPageIndicatorDots(rm, oCarousel);
-	rm.write("</ul>");
-};
-
-
-/**
- * Renders the page indicator dots, using the provided {@link sap.ui.core.RenderManager}.
- * 
- * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
- * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
- */
-sap.m.CarouselRenderer.renderPageIndicatorDots = function(rm, oCarousel){
-	if(oCarousel.getShowPageIndicator()) {
-		rm.write("<div id="); rm.writeEscaped(oCarousel._getPrevBtnId()); rm.write(" class='sapMCrslIndLstBt'/>"); 
-		var dotCount = oCarousel.getPages().length;
-		for(var i= 0; i< dotCount; i ++) {
-			rm.write("<li id="); rm.writeEscaped(oCarousel._getNavId()); rm.write("-dot" + i + " class='sapMCrslIndLstIt'></li>");
-		}
-		rm.write("<div id="); rm.writeEscaped(oCarousel._getNextBtnId()); rm.write(" class='sapMCrslIndLstBt'/>"); 
-	}
-};
-
+jQuery.sap.declare("sap.m.CarouselRenderer");sap.m.CarouselRenderer={};
+sap.m.CarouselRenderer.render=function(r,c){if(!c.getVisible()){return}r.write("<div");r.writeControlData(c);r.addStyle("width",c.getWidth());r.addStyle("height",c.getHeight());r.writeStyles();r.addClass("sapMCrsl");r.writeClasses();r.write(">");if(c.getPageIndicatorPlacement()==sap.m.PlacementType.Top){this._renderPageIndicator(r,c)}if(!c._oSwipeView){r.write("<div id=");r.writeEscaped(c._getContentId());r.write(" class='sapMCrslCont'></div>")}if(c.getPageIndicatorPlacement()==sap.m.PlacementType.Bottom){this._renderPageIndicator(r,c)}r.write("</div>")};
+sap.m.CarouselRenderer._renderPageIndicator=function(r,c){r.write("<ul id=");+r.writeEscaped(c._getNavId());r.write(" class='sapMCrslIndLst'>");this.renderPageIndicatorDots(r,c);r.write("</ul>")};
+sap.m.CarouselRenderer.renderPageIndicatorDots=function(r,c){if(c.getShowPageIndicator()){r.write("<div id=");r.writeEscaped(c._getPrevBtnId());r.write(" class='sapMCrslIndLstBt'/>");var d=c.getPages().length;for(var i=0;i<d;i++){r.write("<li id=");r.writeEscaped(c._getNavId());r.write("-dot"+i+" class='sapMCrslIndLstIt'></li>")}r.write("<div id=");r.writeEscaped(c._getNextBtnId());r.write(" class='sapMCrslIndLstBt'/>")}};

@@ -1,68 +1,7 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2013 SAP AG. All rights reserved
+ * (c) Copyright 2009-2012 SAP AG. All rights reserved
  */
-
-jQuery.sap.declare("sap.m.InputRenderer");
-
-/**
- * @class Input renderer.
- * @static
- */
-sap.m.InputRenderer = {};
-
-sap.m.InputRenderer.render = function(rm, oInput) {
-
-	if(!oInput.getVisible()) {
-		return;
-	}
-
-	rm.write("<div ");
-	rm.writeControlData(oInput);
-	oInput.getWidth() && rm.addStyle("width", oInput.getWidth()) && rm.writeStyles();
-	!oInput.getEnabled() && rm.addClass("sapMInputDisabled");
-	oInput.getValueState() != "None" && rm.addClass("sapMInput" + oInput.getValueState());
-	rm.addClass("sapMInput");
-	rm.writeClasses();
-	rm.write(">");
-
-	// enable self-made placeholder
-	if (oInput._showLabelAsPlaceholder) {
-		rm.write("<label ");
-		rm.writeAttribute("id", oInput.getId() + "-placeholder");
-		rm.writeAttribute("for", oInput.getId() + "-inner");
-		rm.addClass("sapMInputPlaceholder");
-		rm.writeClasses();
-		rm.write(">");
-		rm.writeEscaped(oInput.getPlaceholder());
-		rm.write("</label>");
-	}
-
-	rm.write("<input id=" + oInput.getId() + "-inner");
-	rm.writeStyles();
-
-	if (!oInput.getEnabled()) {
-		rm.writeAttribute ("disabled", "disabled");
-		if (oInput.getType() == "Password") {
-			// required for JAWS reader on password fields on desktop:
-			rm.writeAttribute("readonly", "readonly");
-		}
-		rm.addClass("sapMInputDisabled");
-	}
-
-	// let the browser handle placeholder
-	if (!oInput._showLabelAsPlaceholder && oInput.getPlaceholder()) {
-		rm.writeAttribute("placeholder", oInput.getPlaceholder());
-	}
-
-	rm.writeAttribute("type", oInput.getType().toLowerCase());
-	oInput.getMaxLength() > 0 && rm.writeAttribute("maxlength", oInput.getMaxLength());
-	oInput.getValue() && rm.writeAttributeEscaped("value", oInput.getValue());
-
-	rm.addClass("sapMInputInner");
-	oInput.getValueState() != "None" && rm.addClass("sapMInput" + oInput.getValueState() + "Inner");
-	!oInput.getEnabled() && rm.addClass("sapMInputDisabled");
-	rm.writeClasses();
-	rm.write("></div>");
-};
+jQuery.sap.declare("sap.m.InputRenderer");sap.m.InputRenderer={};
+sap.m.InputRenderer.render=function(r,i){if(!i.getVisible()){return}r.write("<div ");r.writeControlData(i);i.getWidth()&&r.addStyle("width",i.getWidth())&&r.writeStyles();!i.getEnabled()&&r.addClass("sapMInputDisabled");i.getValueState()!="None"&&r.addClass("sapMInput"+i.getValueState());r.addClass("sapMInput");r.writeClasses();r.write(">");if(i._showLabelAsPlaceholder){r.write("<label ");r.writeAttribute("id",i.getId()+"-placeholder");r.writeAttribute("for",i.getId()+"-inner");r.addClass("sapMInputPlaceholder");r.writeClasses();r.write(">");r.writeEscaped(i.getPlaceholder());r.write("</label>")}r.write("<input id="+i.getId()+"-inner");r.writeStyles();if(!i.getEnabled()){r.writeAttribute("disabled","disabled");if(i.getType()=="Password"){r.writeAttribute("readonly","readonly")}r.addClass("sapMInputDisabled")}if(!i._showLabelAsPlaceholder&&i.getPlaceholder()){r.writeAttribute("placeholder",i.getPlaceholder())}r.writeAttribute("type",i.getType().toLowerCase());i.getMaxLength()>0&&r.writeAttribute("maxlength",i.getMaxLength());i.getValue()&&r.writeAttributeEscaped("value",i.getValue());r.addClass("sapMInputInner");i.getValueState()!="None"&&r.addClass("sapMInput"+i.getValueState()+"Inner");!i.getEnabled()&&r.addClass("sapMInputDisabled");r.writeClasses();r.write("></div>")};

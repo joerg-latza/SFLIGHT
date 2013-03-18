@@ -375,53 +375,6 @@
 	opacity: 0.5;
 	filter: alpha(opacity=50);
 }
-@sapUiLocalBusyIndicatorBG: fade(@sapUiExtraLightBG, 72%); 
-@sapUiLocalBusyIndicatorBG_IE: @sapUiExtraLightBG;
-@sapUiLocalBusyIndicatorBoxSize: ~"8px";
-
-@sapUiLocalBusyIndicatorBoxColor: @sapUiMediumBG;
-@sapUiLocalBusyIndicatorBoxColorActive: @sapUiBlackBG;
-@sapUiLocalBusyIndicatorBoxTransitionDuration: ~"380ms";
-
-.sapUiLocalBusyIndicator {
-	background-color: @sapUiLocalBusyIndicatorBG;
-}
-HTML[data-sap-ui-browser='ie8'] .sapUiLocalBusyIndicator {
-	background-color: @sapUiLocalBusyIndicatorBG_IE;
-}
-
-.sapUiLocalBusyIndicatorAnimation {
-	position: relative;
-}
-
-.sapUiLocalBusyIndicatorBox {
-	width: @sapUiLocalBusyIndicatorBoxSize;
-	height : @sapUiLocalBusyIndicatorBoxSize;
-	background-color: @sapUiLocalBusyIndicatorBoxColor;
-	float: left;
-	display: block;
-	margin-left: @sapUiLocalBusyIndicatorBoxSize;
-	
-	-moz-border-radius: 1px;
-	-webkit-border-radius: 1px;
-	border-radius: 1px;
-	
-	-moz-transition-property: background-color;
-	-moz-transition-duration: @sapUiLocalBusyIndicatorBoxTransitionDuration;
-	-moz-transition-timing-function: ease-in;
-	
-	-webkit-transition-property: background-color;
-	-webkit-transition-duration: @sapUiLocalBusyIndicatorBoxTransitionDuration;
-	-webkit-transition-timing-function: ease-in;
-	
-	transition-property: background-color;
-	transition-duration: @sapUiLocalBusyIndicatorBoxTransitionDuration;
-	transition-timing-function: ease-in;
-}
-
-.sapUiLocalBusyIndicatorBox:first-child {
-	margin-left: 0; 
-}
 
 /* ============================================= */
 /* CSS for control sap.ui.core/ScrollBar.control */

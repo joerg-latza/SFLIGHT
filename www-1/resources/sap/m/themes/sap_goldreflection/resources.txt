@@ -31,7 +31,6 @@ Select.css
 Slider.css
 SplitApp.css
 StandardListItem.css
-Support.css
 Switch.css
 Text.css
 TextArea.css

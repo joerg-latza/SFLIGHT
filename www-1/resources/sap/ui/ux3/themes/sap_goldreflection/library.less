@@ -174,64 +174,14 @@
 /* Global CSS for 'sap_goldreflection' theme */
 // central colors defined by UX
 
-// base.less for Quick Theming
-
-// [Label "Brand Color"]
-// [Description "The brand color"]
-// [Tags "Quick", "Color"]
-@sapBrandColor: #f0ab00;
-
-// [Label "Highlight Color"]
-// [Description "The color which is used to highlight screen elements"]
-// [Tags "Quick", "Content", "Color"]
-@sapHighlightColor: #007dc0;
-
-// [Label "Highlight Text Color"]
-// [Description "The text color which is used for highlighted screen elements"]
-// [Tags "Quick", "Content", "Color", "Font"]
-@sapHighlightTextColor: contrast(@sapHighlightColor, @sapTextColor, #fff);
-
-// [Label "Base Color"]
-// [Description "The color which is used to derive the most dominant background colors"]
-// [Tags "Quick", "Color"]
-@sapBaseColor: #ddd;
-
-// [Label "Background Color"]
-// [Description "The main background color of the screen"]
-// [Tags "Quick", "Color"]
-@sapBackgroundColor: #f2f2f2;
-
-// [Label "Background Image"]
-// [Description "The URI to the image which is shown as background"]
-// [Tags "Quick", "CSSURI"]
-@sapBackgroundImage: url();
-
-// [Label "Font Family"]
-// [Description "The prefered font familiy"]
-// [Tags "Quick", "Content", "Font"]
-@sapFontFamily: Arial, Helvetica, sans-serif, Verdana;
-
-// [Label "Text Color"]
-// [Description "The prefered text color"]
-// [Tags "Quick", "Content", "Color", "Font"]
-@sapTextColor: #000;
-
-// [Label "Link Color"]
-// [Description "Link Text Color"]
-// [Tags "Quick", "Content", "Color", "Font"]
-@sapLinkColor: darken(@sapHighlightColor,7);
-
-// [Label "Title Text Color"]
-// [Description "The text color of the title"]
-// [Tags "Quick", "Content", "Color", "Font"]
-@sapTitleColor: contrast(@sapBaseColor, lighten(@sapTextColor,20), #fff);
-
 
 // Brand Colors
 
-@sapUiBrand: @sapBrandColor;			// "Quick" default #F0AB00
+// [ThemingScope "Quick"]
+@sapUiBrand: #F0AB00;
 
-@sapUiHighlight: @sapHighlightColor;			// "Quick" default #007DC0
+// [ThemingScope "Quick"]
+@sapUiHighlight: #007CC0;
 
 
 // Accent Colors
@@ -257,14 +207,17 @@
 
 // Base Colors
 
-@sapUiBase: darken(@sapBaseColor,37);			// "Quick" default #7F7F7F
+// [ThemingScope "Quick"]
+@sapUiBase: hsl(hue(@sapUiHighlight), 0%, 50%);																					// default: s:0%, l:50% (l-range 32% - 55% ?);
 
-@sapUiBaseBG: darken(@sapBackgroundColor,45);			// "Quick" default #7F7F7F
+// [ThemingScope "Advanced"]
+@sapUiBaseBG: hsl(hue(@sapUiBase), saturation(@sapUiBase), lightness(@sapUiBase));			// default: s:0%, l:50% (l-range 32% - 55% ?);
 
 // [ThemingScope "Advanced"]
 @sapUiBaseBorder: hsl(hue(@sapUiBase), saturation(@sapUiBase), lightness(@sapUiBase));	// default: s:0%, l:50%
 
-@sapUiBaseText: @sapTextColor;			// "Quick" default #000000
+// [ThemingScope "Quick"]
+@sapUiBaseText: hsl(hue(@sapUiBase), saturation(@sapUiBase), 0%);												// default: s:0%, l:0%
 
 // [ThemingScope "Advanced"]
 @sapUiBaseLine: hsl(hue(@sapUiBase), saturation(@sapUiBase), lightness(@sapUiBase));		// default: s:0%, l:50%
@@ -337,8 +290,6 @@
 
 // Text Colors
 
-@sapUiHighlightText: @sapHighlightTextColor;
-
 // [ThemingScope "Advanced"]
 @sapUiExtraLightText: #707070;
 
@@ -362,7 +313,8 @@
 
 // Link
 
-@sapUiLink: darken(@sapHighlightColor,7);			// "Quick" default #00669C
+// [ThemingScope "Advanced"]
+@sapUiLink: #00679E;
 
 // [ThemingScope "Advanced"]
 @sapUiLinkInverted: #1BB1FF;
@@ -440,11 +392,10 @@
 
 /* ---------------------------------------------------------------------------------------- */
 
-@sapUiTextTitle: @sapTitleColor;			// "Quick" default #333333
+@sapUiTextTitle: @sapUiDarkText;
 
-@sapUiBackgroundImage: @sapBackgroundImage;			// "Quick"
-
-@sapUiFontFamily: @sapFontFamily;			// "Quick"
+// [ThemingScope "Quick"]
+@sapUiFontFamily: Arial, Helvetica, sans-serif;
 
 // [ThemingScope "Quick"]
 @sapUiFontSize: 12px;
@@ -3775,7 +3726,7 @@ li.sapUiInPlaceMessage div.sapUiNotifierMessageText:active {
 	padding: 10px 12px;
 }
 
-.sapUiUx3TP-search > .sapUiUx3TPContent > .sapUiSearchField {
+.sapUiUx3TP-search > .sapUiSearchField {
 	margin: 0 6px;
 }
 
@@ -3783,18 +3734,18 @@ li.sapUiInPlaceMessage div.sapUiNotifierMessageText:active {
 	padding: 0;
 }
 
-.sapUiUx3TP-feeder > .sapUiUx3TPContent > .sapUiFeeder {
+.sapUiUx3TP-feeder > .sapUiFeeder {
 	width: 400px;
 	color: @sapUiText;
 	background-color: transparent;
 	border: none;
 }
 
-.sapUiUx3TP-feeder > .sapUiUx3TPContent > .sapUiFeeder > img {
+.sapUiUx3TP-feeder > .sapUiFeeder > img {
 	display: none;
 }
 
-.sapUiUx3TP-feeder > .sapUiUx3TPContent > .sapUiFeeder > .sapUiFeederInput {
+.sapUiUx3TP-feeder > .sapUiFeeder > .sapUiFeederInput {
 	margin-left: 0;
 }
 

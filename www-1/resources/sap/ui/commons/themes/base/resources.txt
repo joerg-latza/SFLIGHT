@@ -2,7 +2,6 @@ AbsoluteLayout.css
 Accordion.css
 AccordionSection.css
 ApplicationHeader.css
-AutoComplete.css
 BorderLayout.css
 Button.css
 Callout.css
@@ -15,6 +14,7 @@ DatePicker.css
 Dialog.css
 FileUploader.css
 Form.css
+FormColumnLayout.css
 FormLayout.css
 FormattedTextView.css
 GridLayout.css
@@ -40,7 +40,6 @@ RadioButton.css
 RadioButtonGroup.css
 RatingIndicator.css
 ResponsiveFlowLayout.css
-ResponsiveLayout.css
 RichTooltip.css
 RoadMap.css
 RowRepeater.css

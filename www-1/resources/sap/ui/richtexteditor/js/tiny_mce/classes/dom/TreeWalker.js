@@ -7,58 +7,6 @@
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
  */
-
-tinymce.dom.TreeWalker = function(start_node, root_node) {
-	var node = start_node;
-
-	function findSibling(node, start_name, sibling_name, shallow) {
-		var sibling, parent;
-
-		if (node) {
-			// Walk into nodes if it has a start
-			if (!shallow && node[start_name])
-				return node[start_name];
-
-			// Return the sibling if it has one
-			if (node != root_node) {
-				sibling = node[sibling_name];
-				if (sibling)
-					return sibling;
-
-				// Walk up the parents to look for siblings
-				for (parent = node.parentNode; parent && parent != root_node; parent = parent.parentNode) {
-					sibling = parent[sibling_name];
-					if (sibling)
-						return sibling;
-				}
-			}
-		}
-	};
-
-	/**
-	 * Returns the current node.
-	 *
-	 * @return {Node} Current node where the walker is.
-	 */
-	this.current = function() {
-		return node;
-	};
-
-	/**
-	 * Walks to the next node in tree.
-	 *
-	 * @return {Node} Current node where the walker is after moving to the next node.
-	 */
-	this.next = function(shallow) {
-		return (node = findSibling(node, 'firstChild', 'nextSibling', shallow));
-	};
-
-	/**
-	 * Walks to the previous node in tree.
-	 *
-	 * @return {Node} Current node where the walker is after moving to the previous node.
-	 */
-	this.prev = function(shallow) {
-		return (node = findSibling(node, 'lastChild', 'previousSibling', shallow));
-	};
-};
+tinymce.dom.TreeWalker=
+function(s,r){var n=s;function f(n,a,b,c){var d,p;if(n){if(!c&&n[a])return n[a];if(n!=r){d=n[b];if(d)return d;for(p=n.parentNode;p&&p!=r;p=p.parentNode){d=p[b];if(d)return d}}}};this.current=function(){return n};this.next=function(a){return(n=f(n,'firstChild','nextSibling',a))};this.prev=function(a){return(n=f(n,'lastChild','previousSibling',a))}}
+;

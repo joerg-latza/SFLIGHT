@@ -501,12 +501,6 @@
 	beforeOpen: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],
-	opened: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this], // since 1.11.0
-	closed: [function (oEvent) {
-		var ${control} = oEvent.getSource();
-	}, this], // since 1.11.0
 	actionSelected: [function (oEvent) {
 		var ${control} = oEvent.getSource();
 	}, this],

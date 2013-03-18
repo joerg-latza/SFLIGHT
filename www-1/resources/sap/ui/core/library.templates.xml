@@ -101,17 +101,6 @@
 })
 ]]></jsTemplate>
 </Template>
-<Template name="sap.ui.core.LocalBusyIndicator" alias="LocalBusyIndicator,Indicator">
-	<jsTemplate><![CDATA[new sap.ui.core.LocalBusyIndicator({
-	id: "${id}", // sap.ui.core.ID
-	width: "100px", // sap.ui.core.CSSSize
-	height: "100px", // sap.ui.core.CSSSize
-	tooltip: undefined, // sap.ui.core.TooltipBase
-	customData: [], // sap.ui.core.CustomData
-	layoutData: undefined // sap.ui.core.LayoutData
-})
-]]></jsTemplate>
-</Template>
 <Template name="sap.ui.core.Message" alias="Message">
 	<jsTemplate><![CDATA[new sap.ui.core.Message({
 	id: "${id}", // sap.ui.core.ID

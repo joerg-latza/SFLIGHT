@@ -3,7 +3,7 @@
     {
       "name" : "sap.service.visualization.ChartOption",
       "description" : "Provides control sap.service.visualization.ChartOption.",
-      "size" : 9300,
+      "size" : 9299,
       "compressedSize" : 3135,
       "required" : ["jquery.sap.global", "sap.service.visualization.library", "sap.ui.core.Element"],
       "includes" : []
@@ -11,7 +11,7 @@
     {
       "name" : "sap.service.visualization.Themings",
       "description" : "Provides control sap.service.visualization.Themings.",
-      "size" : 12012,
+      "size" : 12011,
       "compressedSize" : 5018,
       "required" : ["jquery.sap.global", "sap.service.visualization.library", "sap.ui.core.Element"],
       "includes" : []
@@ -141,16 +141,16 @@
     {
       "name" : "sap.service.visualization.dataset.SimpleDMDataset",
       "description" : "Provides control sap.service.visualization.dataset.SimpleDMDataset.",
-      "size" : 15767,
+      "size" : 15766,
       "compressedSize" : 2953,
       "required" : ["jquery.sap.global", "sap.service.visualization.library", "sap.ui.core.Element", "sap.service.visualization.chart.ChartSourceCode.libs.json2", "sap.service.visualization.chart.ChartSourceCode.libs.saprivbase", "sap.service.visualization.chart.ChartSourceCode.libs.sapcommonglobalization", "sap.service.visualization.chart.ChartSourceCode.libs.saprivmodules"],
       "includes" : []
     },
     {
       "name" : "sap.service.visualization.library",
-      "description" : "Initialization Code and shared classes of library sap.service.visualization (1.11.0)",
-      "size" : 1457,
-      "compressedSize" : 714,
+      "description" : "Initialization Code and shared classes of library sap.service.visualization (1.9.2)",
+      "size" : 1455,
+      "compressedSize" : 713,
       "required" : ["jquery.sap.global", "sap.ui.core.Core", "sap.ui.core.library"],
       "includes" : []
     }
