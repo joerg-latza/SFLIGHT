@@ -1,3 +1,4 @@
+jQuery.sap.require("untitledproject.util.Types");
 jQuery.sap.require("jquery.sap.history");
 
 /**
@@ -11,22 +12,32 @@ sap.ui.controller("untitledproject.Main", {
 	*/
 	onInit: function() {
 		var bus = sap.ui.getCore().getEventBus();
-		var that = this;
-		sap.ui.getCore().getModel("timecard").createBindingContext("/0",function(oContext){
-			that.getView().setBindingContext(oContext,"timecard");
-		});
 
 		// TODO: MOVE THIS TO A BETTER PLACE
+		var oDateType = untitledproject.util.Types.DATE;
+
 		bus.subscribe("nav", "to", function(chan, evt, inf){
 			var _id = this.byId(inf.id) ? this.byId(inf.id).getId() : inf.id;
-			this.navTo(_id, true, jQuery.sap.history.NavType.Forward);
-
-			if(inf.data) {
+			
+			if (inf.id === "createPage") {
+				var oCreateModel = sap.ui.getCore().getModel("create");
+				oCreateModel.setData({
+					"type": "Vacation",
+					"from": oDateType.formatValue(new Date(), "string"),
+					"to": oDateType.formatValue(new Date(), "string"),
+					"length": "1 day",
+					"state": "Pending",
+					"description": ""
+				});
+			}
+			if (inf.data) {
 				this.getView().setBindingContext(inf.data.context);
 			}
+
+			this.navTo(_id, true, jQuery.sap.history.NavType.Forward);
 		}, this);
 		bus.subscribe("nav", "back", function(chan, evt, inf){
-			var _id = null;
+			var _id;
 			if(inf.id) {
 				_id = this.byId(inf.id) ? this.byId(inf.id).getId() : inf.id;
 			}
@@ -58,6 +69,14 @@ sap.ui.controller("untitledproject.Main", {
 		} else {
 			app.to(id);
 		}
+
+		// this is the lazy loading of views (based on identical ids for view and view-instance)
+	/*	if (sap.ui.getCore().byId(id) === undefined) {
+			jQuery.sap.log.info("now loading view '" + id + "'");
+			var view = sap.ui.jsview(id, id);
+			app.addPage(view);
+		} 		*/
+		// tell app control to navigate forward
 
 		// write browser history
 		if (writeHistory === undefined || writeHistory) {

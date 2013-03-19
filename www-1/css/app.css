@@ -1,61 +1,159 @@
-.BarMargin {
-  margin-top: 14px !important;
-  margin-right: 14px !important;
-  margin-left: 14px !important;
+/* //////////////////////////////////////////////////////////////////////////////////////
+iPhone Application
+////////////////////////////////////////////////////////////////////////////////////// */
+
+.sap-ios .sapMListInset .sapMDLILabel,
+.sap-ios .sapMListInset .sapMILILabel {
+	color: #396BA5;
+	font-size: 13px;
+	text-align: right;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: end;
+	line-height: 1.4;
+	max-width: 80px;
+	min-width: 80px;
+	white-space: normal;
+	font-weight: normal;
+	margin-left: 0;
 }
 
-.Title {
-	margin-left: 7px !important;
+.sapMDLIValue {
+	color: #444 !important;
+	font-size: 15px;
+	text-align: left !important;
+	width: 40%;
+	line-height: 2.1em;
+	padding-left: 2px;
+	padding-top: 0.05em;
+	font-weight: bold;
 }
 
-.SAPLogo {
-	margin: 5px !important;
-	height:36px !important;
+.sapMCb > .sapMRbBLabel {
+	vertical-align: top !important;
+	padding-left: 10px !important;
+	font-size: 15px;
+	color: #444;
+	font-weight: bold;
+	padding-top: 0.1em;
 }
 
-.dateContainer {
-	margin: 24px !important;
+.sap-ios .sapMCbMark {
+	display: block;
+	height: 1.125em;
+	width: 1.125em;
+	border: solid 2px #CCC;
+	border-radius: 0.5625em;
+	margin: 0.125em;
 }
 
-.dayContainer {
-	background: #f5f5f5; /* Old browsers */
-  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkN2Q3ZDciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(top,  #f5f5f5 0%, #d7d7d7 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#d7d7d7)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #f5f5f5 0%,#d7d7d7 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #f5f5f5 0%,#d7d7d7 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #f5f5f5 0%,#d7d7d7 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #f5f5f5 0%,#d7d7d7 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#d7d7d7',GradientType=0 ); /* IE6-8 */
+.sap-ios .sapMDialog.sapMCommonDialog,
+.sap-ios .sapMBusyDialog.sapMCommonDialog {
+  width: 18em;
+  border-radius: 0.625em;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-clip: padding-box;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  padding: 0.4375em;
+  box-shadow: 0 0.0625em 0 rgba(0, 0, 0, 0.1), 0.0625em 0 0 rgba(0, 0, 0, 0.1), 0 -0.0625em 0 rgba(0, 0, 0, 0.1), -0.0625em 0 0 rgba(0, 0, 0, 0.1), 0 0.1865em 0.375em rgba(0, 0, 0, 0.5);
+  text-shadow: 0;
+  -webkit-animation-duration: 300ms;
+  -webkit-animation-iteration-count: 1;
 }
 
-.dayName {
-	text-shadow: 1px 1px rgba(255,255,255,0.8);
-	color: #666;
-	text-align: center;
+.sap-ios .sapMDialogOpening{
+		-webkit-animation-name: sapMDialogZoomIn;
+		animation-name: sapMDialogZoomIn;
+	}
+
+	.sapMDialogClosing {
+		-webkit-animation-name: sapMDialogZoomOut;
+		animation-name: sapMDialogZoomOut;
+	}
+	
+	.sapMMessageDialog.sapMDialogOpening{
+		-webkit-animation-name: sapMDialogBounce;
+		animation-name: sapMDialogBounce;
+	}
+
+.sap-ios .sapMDialogBLyInit {
+  /*opacity: 0;*/
+
+  opacity: 1;
+  background-color: transparent;
+  background-image: -webkit-radial-gradient(center, circle, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.6) 100%);
+  /*-webkit-transition: opacity 300ms linear;*/
+
+}
+.sap-ios .sapMDialogTitle {
+  font-size: 1.2em;
+  line-height: 1em;
+  color: #2E618D;
+  margin-top: .5em;
+  font-weight: bold;
+}
+.sap-ios .sapMCommonDialog button.sapMDialogBtn {
+  width: 100%;
+  height: 44px;
+  font-size: 1em;
+  line-height: 1em;
+  border-radius: 0.3125em;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -0.0625em 0 #000000;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+  box-shadow: inset 0 0.0625em 0 #000000, inset 0 -0.0625em 0 #262626, inset 0 -0.125em 0 #000000;
+  border: none;
+-webkit-box-shadow: none !important;
+-webkit-border-image: url(images/button.png) 8 8 8 7 stretch;
+padding: 0;
+}
+.sap-ios .sapMCommonDialog button.sapMDialogBtn:active {
+  background-image: -webkit-linear-gradient(top, rgba(153, 153, 153, 0.55) 0%, rgba(48, 48, 48, 0.1) 50%, rgba(48, 48, 48, 0.1) 50%, rgba(64, 64, 64, 0.5) 100%);
+}
+@-webkit-keyframes sapMDialogBounce {
+  0% {
+    -webkit-transform: scale3d(0.8, 0.8, 1);
+    transform: scale3d(0.8, 0.8, 1);
+  }
+  55% {
+    -webkit-transform: scale3d(1.08, 1.08, 1);
+    transform: scale3d(1.08, 1.08, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+    transform: scale3d(0.9, 0.9, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.sapMPageBgStandard, .sapMPageBgList {
+	background-color: #dedede;
 }
 
-.underDayContainer {
-	background-color: white;
+.sapMCb {
+	white-space: nowrap;
 }
 
-.MonthName {
-	font-size: large;
-	color: #A8A8A8;
-}
-.DayNumber {
-	font-size: x-large;
-	font-weight: bolder;
-}
-
-.Padding {
-	padding: 14px !important;
+.sapMCb > .sapMRbBLabel {
+	vertical-align: top !important;
+	padding-left: 10px !important;
+	font-size: 15px;
+	color: #444;
+	font-weight: bold;
+	padding-top: 0.1em;
 }
 
-.LargerText {
-	font-size: larger;
-}
-.SmallText {
-	font-size: small;
+.sapMFlexBoxTextArea  {
+	width: 280px;
+	margin-left: 20px ;
+	margin-top: 10px;
 }
