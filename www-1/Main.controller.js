@@ -1,6 +1,5 @@
 jQuery.sap.require("jquery.sap.history");
 
-
 /**
  * Main Controller. Handles all events of the Main views. 
  */
@@ -11,10 +10,28 @@ sap.ui.controller("untitledproject.Main", {
 	* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 	*/
 	onInit: function() {
-		var oBus = sap.ui.getCore().getEventBus();
-		oBus.subscribe("nav", "to", this.navHandler.bind(this));
-		oBus.subscribe("nav", "back", this.navHandler.bind(this));		
+		var bus = sap.ui.getCore().getEventBus();
+		var that = this;
+		sap.ui.getCore().getModel("employee").createBindingContext("/0",function(oContext){
+			that.getView().setBindingContext(oContext,"employee");
+		});
+		
 
+		// TODO: MOVE THIS TO A BETTER PLACE
+		bus.subscribe("nav", "to", function(chan, evt, inf){
+			var _id = this.byId(inf.id) ? this.byId(inf.id).getId() : inf.id;
+			this.navTo(_id, true, jQuery.sap.history.NavType.Forward);
+			if(inf.data) {
+				this.getView().setBindingContext(inf.data.context,"employee");
+			}
+		}, this);
+		bus.subscribe("nav", "back", function(chan, evt, inf){
+			var _id = null;
+			if(inf.id) {
+				_id = this.byId(inf.id) ? this.byId(inf.id).getId() : inf.id;
+			}
+			this.navTo(_id, false, jQuery.sap.history.NavType.Back);
+		}, this);
 	},
 
 	/**
@@ -26,21 +43,30 @@ sap.ui.controller("untitledproject.Main", {
 	 */
 	navTo : function(id, writeHistory, navType) {
 		var app = this.byId("app");
-		app.to(id);
-	},
-	
-	
-	navHandler : function(chan, evt, inf){
-		var _id = this.byId(inf.id) ? this.byId(inf.id).getId() : inf.id;
-		if (inf.data) {
-//			this.getView().setBindingContext(inf.data.context);
-// see internal message 1045613/2013 			
-			sap.ui.getCore().byId(_id).setBindingContext(inf.data.context);
-			if(inf.data._context){
-				sap.ui.getCore().byId(_id).setBindingContext(inf.data._context.context, inf.data._context.name);
+		// check param
+		if (navType === jQuery.sap.history.NavType.Back) {
+			if(id) {
+				app.backToPage(id);
+			}else {
+				if(!app.backDetail) {
+					app.back();
+				} else {
+					app.backDetail();
+				}
 			}
+			return;
+		} else {
+			app.to(id);
 		}
-		this.navTo(_id, true, jQuery.sap.history.NavType.Forward);
 
-	},
+		// write browser history
+		if (writeHistory === undefined || writeHistory) {
+			var bookmarkable = false;
+			var stateData = { id : id };
+			jQuery.sap.history.addHistory("page", stateData, bookmarkable);
+		}
+
+		// log
+		jQuery.sap.log.info("navTo '" + id + "' (" + writeHistory + "," + navType + ")");
+	}
 });

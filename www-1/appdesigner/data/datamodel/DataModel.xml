@@ -4,44 +4,28 @@
 
    <Schema xmlns="http://schemas.microsoft.com/ado/2007/05/edm" Namespace="AppDesignerDataModel"> 
 
- 	<EntityType Name="LeaveRequestType"> 
+ 	<EntityType Name="Employee"> 
  		<Key> 
  			<PropertyRef Name="id"/>
  		</Key> 
- 		<Property Name="id" 				Type="Edm.String"/> 
- 		<Property Name="name" 				Type="Edm.String"/>
- 		<Property Name="entitlement" 		Type="Edm.String"/> 		
- 		<Property Name="availableBalance"	Type="Edm.String"/> 
- 		<Property Name="pendingItems" 		Type="Edm.String"/> 		
+ 		<Property Name="id" 						Type="Edm.String"/> 
+ 		<Property Name="first_name" 				Type="Edm.String"/>
+ 		<Property Name="last_name" 					Type="Edm.String"/> 		
+ 		<Property Name="address_street"				Type="Edm.String"/> 
+ 		<Property Name="address_street_nr" 			Type="Edm.String"/> 		
+ 		<Property Name="address_city"	 			Type="Edm.String"/> 		
+ 		<Property Name="address_zip"	 			Type="Edm.String"/>
+	
+ 		<Property Name="comm_nr_mobile_business"	Type="Edm.String"/>
+ 		<Property Name="comm_nr_mobile_privat"		Type="Edm.String"/> 		
+ 		 		
+ 		<Property Name="comm_nr_phone_business"		Type="Edm.String"/> 		
+ 		<Property Name="comm_nr_phone_privat"		Type="Edm.String"/> 
+
+ 		<Property Name="comm_email_business"		Type="Edm.String"/>
+ 		<Property Name="comm_email_private"			Type="Edm.String"/> 	 		
+ 				
  		
 	</EntityType>
-	
- 	<EntityType Name="LeaveRequest"> 
- 		<Key> 
- 			<PropertyRef Name="id"/>
- 			<PropertyRef Name="type"/>
- 		</Key> 
- 		<Property Name="id" 	Type="Edm.String"/> 
- 		<Property Name="type" 	Type="Edm.String"/> 		
- 		<Property Name="from" 	Type="Edm.String"/>
- 		<Property Name="to"	 	Type="Edm.String"/> 
- 		<Property Name="length"	Type="Edm.String"/> 
- 		<Property Name="state"	Type="Edm.String"/>  				
-	</EntityType>	
- 
-	
-	<Association Name="AS_LeaveRequestType_2_LeaveRequest">
-  		<End Type="AppDesignerDataModel.LeaveRequestType" 	Multiplicity="1" />
-		<End Type="AppDesignerDataModel.LeaveRequest"		Multiplicity="*" />
-  		
-  		<ReferentialConstraint>
-    		<Principal Role="AppDesignerDataModel.LeaveRequestType">
-      			<PropertyRef Name="id" />
-    		</Principal>
-    		<Dependent Role="AppDesignerDataModel.LeaveRequest">
-      			<PropertyRef Name="type" />
-    		</Dependent>
-  		</ReferentialConstraint>		
-	</Association>	
 	
 </Schema> 

@@ -1,15 +1,11 @@
 <template data-controller-name="untitledproject.Main">
 
 	<div data-sap-ui-type="sap.m.SplitApp" id="app">
-	 	<div data-sap-ui-aggregation="masterPages">		
-	 		<div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="ApprovalItemsPage" data-view-name="untitledproject.view.ApprovalItems"></div>	
-            <div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="HistoryPage" data-view-name="untitledproject.view.History"></div>		
+		<div data-sap-ui-aggregation="masterPages">
+			<div data-sap-ui-type="sap.ui.core.mvc.HTMLView" data-view-name="untitledproject.view.Master"></div>
 		</div>
 		<div data-sap-ui-aggregation="detailPages">
-          <div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="DetailPage" data-view-name="untitledproject.view.Detail"></div>
-          <div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="RejectPage" data-view-name="untitledproject.view.Reject"></div>
-          <div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="ForwardPage" data-view-name="untitledproject.view.Forward"></div>
-          <div data-sap-ui-type="sap.ui.core.mvc.HTMLView" id="SearchPage" data-view-name="untitledproject.view.Search"></div>                    		
+			<div id="detailsPage" data-sap-ui-type="sap.ui.core.mvc.HTMLView" data-view-name="untitledproject.view.Detail"></div>
 		</div>
 	</div>
 
