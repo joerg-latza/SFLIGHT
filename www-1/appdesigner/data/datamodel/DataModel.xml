@@ -1,31 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--  <?xml version="1.0" encoding="UTF-8" standalone="true"?>  -->
-
-
-   <Schema xmlns="http://schemas.microsoft.com/ado/2007/05/edm" Namespace="AppDesignerDataModel"> 
-
- 	<EntityType Name="Employee"> 
- 		<Key> 
- 			<PropertyRef Name="id"/>
- 		</Key> 
- 		<Property Name="id" 						Type="Edm.String"/> 
- 		<Property Name="first_name" 				Type="Edm.String"/>
- 		<Property Name="last_name" 					Type="Edm.String"/> 		
- 		<Property Name="address_street"				Type="Edm.String"/> 
- 		<Property Name="address_street_nr" 			Type="Edm.String"/> 		
- 		<Property Name="address_city"	 			Type="Edm.String"/> 		
- 		<Property Name="address_zip"	 			Type="Edm.String"/>
-	
- 		<Property Name="comm_nr_mobile_business"	Type="Edm.String"/>
- 		<Property Name="comm_nr_mobile_privat"		Type="Edm.String"/> 		
- 		 		
- 		<Property Name="comm_nr_phone_business"		Type="Edm.String"/> 		
- 		<Property Name="comm_nr_phone_privat"		Type="Edm.String"/> 
-
- 		<Property Name="comm_email_business"		Type="Edm.String"/>
- 		<Property Name="comm_email_private"			Type="Edm.String"/> 	 		
- 				
- 		
-	</EntityType>
-	
-</Schema> 
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema Namespace="AppDesignerDataModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2007/05/edm"> 
+		 	<EntityType Name="Timecard"> 
+		 		<Key> 
+		 			<PropertyRef Name="id"/>
+		 		</Key> 
+		 		<Property Name="id" 					Type="Edm.String"/> 
+		 		<Property Name="timeRecordedThisMonth" 	Type="Edm.String"/> 		
+			</EntityType>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

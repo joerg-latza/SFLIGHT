@@ -1,7 +1,80 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.m.BusyIndicatorRenderer");sap.m.BusyIndicatorRenderer={};
-sap.m.BusyIndicatorRenderer.render=function(r,c){if(!c.getVisible()){return}var s=(jQuery.os.ios)?13:4;r.write("<div");r.writeControlData(c);r.writeAttribute("class","sapMBusyIndicator");r.write(">");if(c.getCustomIcon()){if(!c._iconImage){var w=c.getCustomIconWidth()||'44px';var h=c.getCustomIconHeight()||'44px';c._iconImage=new sap.m.Image(c.getId()+"-icon",{src:c.getCustomIcon(),width:w,height:h,densityAware:c.getCustomIconDensityAware()}).addStyleClass('sapMBsyIndIcon')}r.renderControl(c._iconImage)}else{r.write("<div");r.writeAttribute("class","sapMSpinner");r.addStyle('width',c.getSize());r.addStyle('height',c.getSize());r.writeStyles();r.write(">");for(var i=1;i<s;i++){var b='sapMSpinBar'+i;if(!jQuery.os.ios){if(i===3){var B='sapMSpinBar'+4;r.write('<div class="'+b+'"><div class="'+B+'"></div></div>');break}}r.write('<div class="'+b+'"></div>')}r.write("</div>")}if(c.getText()){if(!c._oLabel){c._oLabel=new sap.m.Label(c.getId()+"-label",{text:c.getText()}).addStyleClass("sapMBsyIndLabel");if(c.getTextDirection()){c._oLabel.setTextDirection(c.getTextDirection())}}r.renderControl(c._oLabel)}r.write("</div>")};
+jQuery.sap.declare("sap.m.BusyIndicatorRenderer");
+
+/**
+ * @class BusyIndicator renderer. 
+ * @static
+ */
+sap.m.BusyIndicatorRenderer = {
+};
+
+
+/**
+ * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
+ * 
+ * @param {sap.ui.core.RenderManager} oRenderManager the RenderManager that can be used for writing to the Render-Output-Buffer
+ * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ */
+sap.m.BusyIndicatorRenderer.render = function(oRm, oControl){ 
+	// return immediately if control is invisible
+	if(!oControl.getVisible()) {
+		return;
+	}
+
+	// write the HTML into the render manager
+	var iSpinBar = (jQuery.os.ios) ? 13 :4;
+	var iDesignClass = "";
+	if(oControl.getDesign() == "auto") {
+		iDesignClass = "sapMBusyIndicator";
+	} else {
+		iDesignClass = oControl.getDesign() == "dark" ? "sapMBusyIndicatorDark" : "sapMBusyIndicatorLight";
+	}
+	
+	oRm.write("<div");
+	oRm.writeControlData(oControl);
+	oRm.writeAttribute("class",iDesignClass); 
+	oRm.write(">");
+	if(oControl.getCustomIcon()){
+		if(!oControl._iconImage) {
+			var sWidth = oControl.getCustomIconWidth() || '44px';
+			var sHeight = oControl.getCustomIconHeight() || '44px';
+			oControl._iconImage = new sap.m.Image(oControl.getId() + "-icon", {src: oControl.getCustomIcon(), width: sWidth, height: sHeight, densityAware: oControl.getCustomIconDensityAware()}).addStyleClass('sapMBsyIndIcon');
+		}
+		oRm.renderControl(oControl._iconImage);
+	}else {
+		oRm.write("<div");
+		oRm.writeAttribute("class","sapMSpinner"); 
+		oRm.addStyle('width', oControl.getSize());
+		oRm.addStyle('height', oControl.getSize());
+		oRm.writeStyles();
+		oRm.write(">");
+
+		for (var i=1; i<iSpinBar; i++) {
+			var sBarClass = 'sapMSpinBar' + i;
+			if(!jQuery.os.ios) {
+				if(i === 3) {
+					var sBarClass1 = 'sapMSpinBar' + 4;
+					oRm.write('<div class="'+ sBarClass + '"><div class="'+ sBarClass1 + '"></div></div>');
+					break;
+				}
+			}
+			oRm.write('<div class="'+ sBarClass + '"></div>');
+		}
+		oRm.write("</div>");
+	}
+	if (oControl.getText()) {
+		if (!oControl._oLabel) {
+			oControl._oLabel = new sap.m.Label(oControl.getId() + "-label", {text: oControl.getText()}).addStyleClass("sapMBsyIndLabel");
+			if (oControl.getTextDirection()){
+				oControl._oLabel.setTextDirection(oControl.getTextDirection());
+			}
+		}
+		oRm.renderControl(oControl._oLabel);
+	}
+	
+	oRm.write("</div>");
+};

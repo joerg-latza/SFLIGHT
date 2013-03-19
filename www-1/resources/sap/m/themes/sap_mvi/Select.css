@@ -1,0 +1,165 @@
+/* ********************************************** */
+/* CSS for control sap.m/Select.control MVI Theme */
+/* ********************************************** */
+
+/*
+ * [iOS] Select
+ */
+
+.sap-ios .sapMSlt {
+	border: 0.0625em solid @sapUiMediumBG; /* #999 */
+	-webkit-border-radius: 0.3125em;
+	border-radius: 0.3125em;
+	-webkit-box-shadow: 0 -0.07143em 0 desaturate(spin(@sapUiHighlight, 14), 87), inset 0 0.1429em 0.1429em darken(@sapUiBaseBG, 17); /* #55606F #CCC */
+	box-shadow: 0 -0.07143em 0 desaturate(spin(@sapUiHighlight, 14), 87), inset 0 0.1429em 0.1429em darken(@sapUiBaseBG, 17);
+	margin: 0.4375em 0 0.4375em 0;
+	height: 1.875em;
+}
+
+.sap-ios .sapMSlt > select {
+	top: -0.571em;
+	height: 3.143em;
+}
+
+/* label */
+
+.sap-ios .sapMSlt > .sapMSltLabel {
+	font-size: 0.875em;
+	padding: 0 0.5em 0 0.5em;
+	line-height: 2em;
+	color: lighten(@sapUiText, 20);
+}
+
+/* pressed */
+
+.sap-ios .sapMSltPressed:not(.sapMSltDisabled) {
+
+}
+
+/* list context */
+
+.sap-ios .sapMILI-CTX .sapMSlt {
+	height: 2.75em;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	right: -0.375em;
+	margin: 0;
+}
+
+.sap-ios .sapMILI-CTX .sapMSlt select {
+	top: 0;
+	height: 3.1428em;
+}
+
+.sap-ios .sapMILI-CTX .sapMSlt > .sapMSltLabel {
+	padding-left: 0.5em;
+	line-height: 3.143em;
+	text-align: right;
+	color: darken(spin(@sapUiHighlight, 4), 5);	/* #0060a7 */
+}
+
+/* action bar footer context */
+
+.sap-ios .sapMFooter-CTX .sapMSlt {
+	border: none;
+	margin-right: 0.625em;
+	box-shadow: inset 0 0.0625em 0.0625em darken(@sapUiBarButton, 1), inset 0 0.0625em 0.0625em lighten(@sapUiBarButton, 29);	/* #474747, #949494 */
+	-webkit-box-shadow: inset 0 0.0625em 0.0625em darken(@sapUiBarButton, 1), inset 0 0.0625em 0.0625em lighten(@sapUiBarButton, 29);	/* #474747, #949494 */
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton, 42) 0%, lighten(@sapUiBarButton, 20) 50%, lighten(@sapUiBarButton, 10) 50%);	/*  #b5b5b5, #7d7d7d, #636363 */
+	background-image: linear-gradient(top, lighten(@sapUiBarButton, 42) 0%, lighten(@sapUiBarButton, 20) 50%, lighten(@sapUiBarButton, 10) 50%);	/*  #b5b5b5, #7d7d7d, #636363 */
+}
+
+.sap-ios .sapMFooter-CTX .sapMSlt > select  {
+	top: -0.583em;
+	height: 3.667em;
+}
+
+.sap-ios .sapMFooter-CTX .sapMSlt > .sapMSltLabel {
+	text-shadow: 0 -0.0833em 0 darken(@sapUiBarButton, 24);
+	color: @sapUiBarText;
+	font-weight: bold;
+	font-size: 0.75em;
+	line-height: 2.5em;
+}
+
+/*
+ * [ANDROID] Select
+ */
+
+.sap-android .sapMSlt,
+.sap-bb .sapMSlt {
+	padding: 0 0.250em 0.3125em 0.125em;
+	margin: 0.5em 0 0.5em 0;
+}
+
+.sap-android .sapMSlt,
+.sap-android .sapMSlt > select,
+.sap-bb .sapMSlt,
+.sap-bb .sapMSlt > select {
+	background-color: transparent;
+}
+
+.sap-android .sapMSlt > select,
+.sap-bb .sapMSlt > select {
+	text-indent: 0.625em;
+	height: 3em;
+	top: -0.5em;
+}
+
+/* list context */
+
+.sap-android .sapMILI-CTX .sapMSlt,
+.sap-bb .sapMILI-CTX .sapMSlt {
+	right: -0.25em;
+}
+
+/* text */
+
+.sap-android .sapMSlt > .sapMSltLabel,
+.sap-bb .sapMSlt > .sapMSltLabel {
+	height: 1.625em;
+	padding: 0 1.5em 0 0.625em;
+	border-bottom: 0.0625em solid @sapUiBaseBorder; /* #999 */
+	line-height: 1.8125em;
+}
+
+/* icon */
+
+.sap-android .sapMSlt > .sapMSltIcon,
+.sap-bb .sapMSlt > .sapMSltIcon {
+	display: block;
+	border-right: 0.75em solid hsl(hue(@sapUiText),saturation(@sapUiText),60%);  /* #666 */
+	border-top: 0.75em solid transparent;
+	position: absolute;
+	width: 0;
+	bottom: 0.37em;
+	height: 0;
+	right: 0.25em;
+}
+
+/* pressed */
+
+.sap-android .sapMSltPressed:not(.sapMSltDisabled),
+.sap-bb .sapMSltPressed:not(.sapMSltDisabled) {
+	background-color: lighten(spin(@sapUiActive, 354), 4);  /* #00A3D7 */
+}
+
+.sap-android .sapMSltPressed:not(.sapMSltDisabled) > .sapMSltLabel,
+.sap-bb .sapMSltPressed:not(.sapMSltDisabled) > .sapMSltLabel {
+	border: none;
+	color: @sapUiTextInverted;  /* #FFF */
+}
+
+.sap-android .sapMSltPressed:not(.sapMSltDisabled) > .sapMSltIcon,
+.sap-bb .sapMSltPressed:not(.sapMSltDisabled) > .sapMSltIcon {
+	border-right: 0.75em solid @sapUiTextInverted;  /* #FFF */
+	border-top: 0.75em solid transparent;
+}
+
+/* mobiscroll */
+
+.sap-android .sapMSltInput,
+.sap-bb .sapMSltInput {
+	display: none;
+}

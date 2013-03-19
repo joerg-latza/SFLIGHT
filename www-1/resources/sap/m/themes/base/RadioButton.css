@@ -1,0 +1,59 @@
+/* ============================================= */
+/* CSS for controlsap.m/RadioButton.control */
+/* ============================================= */
+
+.sapMRb {
+	display: inline-block;
+	outline: none;
+}
+
+.sapMRbB {
+	display: -webkit-inline-box;
+	vertical-align: middle;
+	-webkit-box-orient:horizontal;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+}
+
+.sap-android, .sap-bb {
+	.sapMRbB {
+		height: 3em;
+		width: 3em;
+	}
+	.sapMRbB .sapMRbBInn {
+		height: .53em;
+		width: .53em;	
+		border-radius: 1em;
+	}
+	.sapMRbB .sapMRbBOut {
+		height: 1.03em;
+		width: 1.03em;	
+		border-radius: 1em;
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-orient:horizontal;
+		-webkit-box-pack:center;
+		-webkit-box-align:center;
+	}
+	.sapMRbBLabel {
+		vertical-align: top;
+		height: 3em;
+		line-height: 3em;
+	}
+}
+.sap-ios{ 
+	.sapMRbB {
+		width: 2.4em;
+		height: 2.4em;	
+	}
+	.sapMRbBLabel {
+		vertical-align: middle;
+		height: 2.75em;
+		line-height: 2.75em;
+	}
+}
+
+.sap-android .sapMRbB input, .sap-bb .sapMRbB input, .sap-ios .sapMRbB input {
+	-webkit-appearance: none;
+}

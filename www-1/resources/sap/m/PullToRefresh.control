@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>PullToRefresh</name>
+	<author>SAP AG</author>
+
+	<documentation>PullToRefresh control. Put it as the first control in contents of a scroll container or a scrollable page. Do not place it into a page with disabled scrolling.</documentation>
+	<since>1.9.2</since>
+
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Misc" name="description" type="sap.ui.core/string">
+			<documentation>Optional description. May be used to inform a user, for example, when the list has been updated last time.</documentation>
+		</property>
+		<property group="Appearance" name="showIcon" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Set to false if you do not want to display an icon/logo.</documentation>
+		</property>
+		<property name="customIcon" type="sap.ui.core/URI" group="Appearance">
+			<documentation>Provide a URI to a custom icon image to replace the SAP logo. Large  images are scaled down to max 50px height.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="refresh">
+			<documentation>Event indicates that the user has requested new data</documentation>
+		</event>
+	</events>
+	<methods>
+		<method name="hide" type="sap.ui.core/void">
+			<documentation>Hides the control and resets it to the normal state</documentation>
+		</method>
+	</methods>
+</control>

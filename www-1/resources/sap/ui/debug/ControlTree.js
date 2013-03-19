@@ -1,22 +1,397 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.ui.debug.ControlTree");jQuery.sap.require("sap.ui.base.EventProvider");
-sap.ui.debug.ControlTree=function(c,w,p,r){sap.ui.base.EventProvider.apply(this,arguments);this.oWindow=w;this.oDocument=w.document;this.oCore=c;this.oSelectedNode=null;this.oParentDomRef=p;this.oSelectionHighlighter=new sap.ui.debug.Highlighter("sap-ui-testsuite-SelectionHighlighter");this.oHoverHighlighter=new sap.ui.debug.Highlighter("sap-ui-testsuite-HoverHighlighter",true,'#c8f',1);var t=this;jQuery(p).bind("click",function(e){t.onclick(e)}).bind("mouseover",function(e){t.onmouseover(e)}).bind("mouseout",function(e){t.onmouseout(e)});this.enableInplaceControlSelection();this.oCore.attachUIUpdated(this.renderDelayed,this);this.sSelectedNodeId="";this.sResourcePath=r?jQuery.sap.getModulePath("","/"):(window.top.testfwk.sResourceRoot||"../");this.sTestResourcePath=this.sResourcePath+"../test-resources/";this.sSpaceUrl=this.sResourcePath+"testsuite/images/space.gif";this.sMinusUrl=this.sResourcePath+"testsuite/images/minus.gif";this.sPlusUrl=this.sResourcePath+"testsuite/images/plus.gif";this.sLinkUrl=this.sResourcePath+"testsuite/images/link.gif"};
-sap.ui.debug.ControlTree.prototype=jQuery.sap.newObject(sap.ui.base.EventProvider.prototype);sap.ui.base.Object.defineClass("sap.ui.debug.ControlTree",{baseType:"sap.ui.base.EventProvider",publicMethods:[]});sap.ui.debug.ControlTree.M_EVENTS={SELECT:"SELECT"};
-sap.ui.debug.ControlTree.prototype.exit=function(){jQuery(document).unbind();jQuery(this.oParentDomRef).unbind()};
-sap.ui.debug.ControlTree.prototype.renderDelayed=function(){if(this.oTimer){this.oWindow.jQuery.sap.clearDelayedCall(this.oTimer)}this.oTimer=this.oWindow.jQuery.sap.delayedCall(0,this,"render")};
-sap.ui.debug.ControlTree.prototype.render=function(){var d=this.oParentDomRef;var u=null,U=this.oCore.mUIAreas;d.innerHTML="";for(var i in U){var u=U[i],D=this.createTreeNodeDomRef(u.getId(),0,"UIArea",this.sTestResourcePath+"sap/ui/core/images/controls/sap.ui.core.UIArea.gif");d.appendChild(D);var r=u.getContent();for(var i=0,l=r.length;i<l;i++){this.renderNode(d,r[i],1)}}};
-sap.ui.debug.ControlTree.prototype.createTreeNodeDomRef=function(i,l,t,I){var d=this.oParentDomRef.ownerDocument.createElement("DIV");d.setAttribute("id","sap-debug-controltree-"+i);var s=t.substring(t.lastIndexOf(".")>-1?t.lastIndexOf(".")+1:0);d.innerHTML="<img style='height:12px;width:12px;display:none' src='"+this.sSpaceUrl+"' align='absmiddle'/><img style='height:16px;width:16px' src='"+I+"' align='absmiddle'/>&nbsp;<span>"+s+" - "+i+"</span>";d.style.overflow="hidden";d.style.whiteSpace="nowrap";d.style.textOverflow="ellipsis";d.style.paddingLeft=(l*16)+"px";d.style.height="20px";d.style.cursor="default";d.setAttribute("sap-type",t);d.setAttribute("sap-id",i);d.setAttribute("sap-expanded","true");d.setAttribute("sap-level",""+l);d.title=t+" - "+i;return d};
-sap.ui.debug.ControlTree.prototype.createLinkNode=function(p,i,l,t){var d=this.oParentDomRef.ownerDocument.createElement("DIV");d.setAttribute("id","sap-debug-controltreelink-"+i);var s=t?t.substring(t.lastIndexOf(".")>-1?t.lastIndexOf(".")+1:0):"";d.innerHTML="<img style='height:12px;width:12px;display:none' src='"+this.sSpaceUrl+"' align='absmiddle'/><img style='height:12px;width:12px' src='"+this.sLinkUrl+"' align='absmiddle'/>&nbsp;<span style='color:#888;border-bottom:1px dotted #888;'>"+(s?s+" - ":"")+i+"</span>";d.style.overflow="hidden";d.style.whiteSpace="nowrap";d.style.textOverflow="ellipsis";d.style.paddingLeft=(l*16)+"px";d.style.height="20px";d.style.cursor="default";d.setAttribute("sap-type","Link");d.setAttribute("sap-id",i);d.setAttribute("sap-expanded","true");d.setAttribute("sap-level",""+l);d.title="Association to '"+i+"'";p.appendChild(d);return d};
-sap.ui.debug.ControlTree.prototype.renderNode=function(d,c,l){if(!c){return}var m=c.getMetadata();var I=this.sTestResourcePath+m.getLibraryName().replace(/\./g,"/")+"/images/controls/"+m.getName()+".gif";var D=this.createTreeNodeDomRef(c.getId(),l,m.getName(),I);d.appendChild(D);var r=false;if(c.mAggregations){for(var n in c.mAggregations){r=true;var a=c.mAggregations[n];if(a&&a.length){for(var i=0;i<a.length;i++){var o=a[i];if(o instanceof sap.ui.core.Element){this.renderNode(d,a[i],l+1)}}}else if(a instanceof sap.ui.core.Element){this.renderNode(d,a,l+1)}}}if(c.mAssociations){for(var n in c.mAssociations){r=true;var A=c.mAssociations[n];if(jQuery.isArray(A)){for(var i=0;i<A.length;i++){var o=A[i];if(typeof o==="string"){this.createLinkNode(d,o,l+1)}}}else if(typeof A==="string"){this.createLinkNode(d,A,l+1)}}}if(r){var e=D.getElementsByTagName("IMG")[0];e.src=this.sMinusUrl;e.style.display=""}};
-sap.ui.debug.ControlTree.prototype.onclick=function(e){var s=e.srcElement||e.target;if(s.tagName=="IMG"){var p=s.parentNode,l=parseInt(p.getAttribute("sap-level"),10),n=p.nextSibling,E=p.getAttribute("sap-expanded")=="true";s=p.firstChild;if(n){var N=parseInt(n.getAttribute("sap-level"),10);while(n&&N>l){var o=n.getElementsByTagName("IMG")[0];if(E){n.style.display="none";n.setAttribute("sap-expanded","false");if(o&&o.src!==this.sSpaceUrl){o.src=this.sPlusUrl}}else{n.style.display="block";n.setAttribute("sap-expanded","true");if(o&&o.src!==this.sSpaceUrl){o.src=this.sMinusUrl}}n=n.nextSibling;if(n){N=parseInt(n.getAttribute("sap-level"),10)}}}if(E){s.src=this.sPlusUrl;p.setAttribute("sap-expanded","false")}else{s.src=this.sMinusUrl;p.setAttribute("sap-expanded","true")}}else if(s.getAttribute("sap-type")=="UIArea"){}else{if(s.tagName!="SPAN"){s=s.getElementsByTagName("SPAN")[0]}var p=s.parentNode,i=p.getAttribute("sap-id"),a=this.oCore.getElementById(i),b=p.getAttribute("sap-type")==="Link"?"sap-debug-controltree-"+i:p.id;this.oSelectionHighlighter.hide();if(a&&a instanceof sap.ui.core.Element){this.oSelectionHighlighter.highlight(a.getDomRef());this.oHoverHighlighter.hide()}this.deselectNode(this.sSelectedNodeId);this.selectNode(b)}};
-sap.ui.debug.ControlTree.prototype.onmouseover=function(e){var s=e.srcElement||e.target;if(s.tagName=="SPAN"){this.oHoverHighlighter.highlight(this.getTargetDomRef(s.parentNode))}};
-sap.ui.debug.ControlTree.prototype.onmouseout=function(e){var s=e.srcElement||e.target;if(s.tagName=="SPAN"){if(this.getTargetDomRef(s.parentNode)){this.oHoverHighlighter.hide()}}};
-sap.ui.debug.ControlTree.prototype.selectNode=function(i){if(!i){return}var d=jQuery.sap.domById(i,jQuery.sap.ownerWindow(this.oParentDomRef));if(!d){jQuery.sap.log.warning("Control with Id '"+i.substring(22)+"' not found in tree");return}var c=d.getAttribute("sap-id");var s=d.getElementsByTagName("SPAN")[0];s.style.backgroundColor="#000066";s.style.color="#FFFFFF";this.sSelectedNodeId=i;this.fireEvent(sap.ui.debug.ControlTree.M_EVENTS.SELECT,{id:i,controlId:c})};
-sap.ui.debug.ControlTree.prototype.deselectNode=function(i){if(!i){return}var d=jQuery.sap.domById(i,jQuery.sap.ownerWindow(this.oParentDomRef));var s=d.getElementsByTagName("SPAN")[0];s.style.backgroundColor="transparent";s.style.color="#000000";this.sSelectedNodeId=i};
-sap.ui.debug.ControlTree.prototype.getTargetDomRef=function(t){var T=t.getAttribute("sap-type"),i=t.getAttribute("sap-id"),s=T==="UIArea"?this.oCore.getUIArea(i):this.oCore.getElementById(i);while(s&&s instanceof sap.ui.core.Element){var d=s.getDomRef();if(d){return d}s=s.getParent()}if(s instanceof sap.ui.core.UIArea){return s.getRootNode()}};
-sap.ui.debug.ControlTree.prototype.enableInplaceControlSelection=function(){var t=this;jQuery(document).bind("mouseover",function(e){t.selectControlInTree(e)})};
-sap.ui.debug.ControlTree.prototype.selectControlInTree=function(e){if(e){if(e.ctrlKey&&e.shiftKey&&!e.altKey){var c=e.srcElement||e.target;while(c&&(!c.id||!this.oCore.getControl(c.id))){c=c.parentNode}if(c&&c.id&&this.oCore.getControl(c.id)){this.oHoverHighlighter.highlight(c)}else{this.oHoverHighlighter.hide()}}else{this.oHoverHighlighter.hide()}}};
+
+// Provides a tree of controls for the testsuite
+jQuery.sap.declare("sap.ui.debug.ControlTree");
+
+jQuery.sap.require("sap.ui.base.EventProvider");
+
+/**
+ * Constructs the class <code>sap.ui.debug.ControlTree</code> and registers
+ * to the <code>sap.ui.core.Core</code> for UI change events.
+ *
+ * @param {sap.ui.core.Core}
+ *            oCore the core instance to use for analysis
+ * @param {window}
+ *            oWindow reference to the window object
+ * @param {DOMNode}
+ *            oParentDomRef reference to the parent DOM element
+ *
+ * @constructor
+ *
+ * @class Control Tree used for the Debug Environment
+ * @extends sap.ui.base.EventProvider
+ * @author Martin Schaus, Frank Weigel
+ * @version 1.11.0
+ * @private
+ */
+sap.ui.debug.ControlTree = function(oCore, oWindow, oParentDomRef, bRunsEmbedded) {
+	sap.ui.base.EventProvider.apply(this,arguments);
+	this.oWindow = oWindow;
+	this.oDocument = oWindow.document;
+	this.oCore = oCore;
+	this.oSelectedNode = null;
+	this.oParentDomRef = oParentDomRef;
+	this.oSelectionHighlighter = new sap.ui.debug.Highlighter("sap-ui-testsuite-SelectionHighlighter");
+	this.oHoverHighlighter = new sap.ui.debug.Highlighter("sap-ui-testsuite-HoverHighlighter", true, '#c8f', 1);
+	var that = this;
+	jQuery(oParentDomRef).bind("click",function(evt) {
+		that.onclick(evt);
+	})
+	.bind("mouseover",function(evt) {
+		that.onmouseover(evt);
+	})
+	.bind("mouseout",function(evt) {
+		that.onmouseout(evt);
+	});
+	this.enableInplaceControlSelection();// see below...
+	this.oCore.attachUIUpdated(this.renderDelayed, this);
+	this.sSelectedNodeId = "";
+	this.sResourcePath = bRunsEmbedded ? jQuery.sap.getModulePath("", "/") : (window.top.testfwk.sResourceRoot || "../");
+	this.sTestResourcePath = this.sResourcePath + "../test-resources/";
+	this.sSpaceUrl = this.sResourcePath + "testsuite/images/space.gif";
+	this.sMinusUrl = this.sResourcePath + "testsuite/images/minus.gif";
+	this.sPlusUrl = this.sResourcePath + "testsuite/images/plus.gif";
+	this.sLinkUrl = this.sResourcePath + "testsuite/images/link.gif";
+};
+sap.ui.debug.ControlTree.prototype = jQuery.sap.newObject(sap.ui.base.EventProvider.prototype);
+
+sap.ui.base.Object.defineClass("sap.ui.debug.ControlTree", {
+		// ---- object ----
+		baseType : "sap.ui.base.EventProvider",
+		publicMethods : []
+	});
+
+/** events of the ControlTree */
+sap.ui.debug.ControlTree.M_EVENTS = {
+	SELECT : "SELECT"
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.exit = function() {
+	jQuery(document).unbind();
+	jQuery(this.oParentDomRef).unbind();
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.renderDelayed = function() {
+	if (this.oTimer) {
+		this.oWindow.jQuery.sap.clearDelayedCall(this.oTimer);
+	}
+	this.oTimer = this.oWindow.jQuery.sap.delayedCall(0,this,"render");
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.render = function() {
+	var oDomRef = this.oParentDomRef;
+	var oUIArea = null,
+		oUIAreas = this.oCore.mUIAreas;
+	oDomRef.innerHTML = "";
+	for (var i in oUIAreas) {
+		var oUIArea = oUIAreas[i],
+			oDomNode = this.createTreeNodeDomRef(oUIArea.getId(),0,"UIArea", this.sTestResourcePath + "sap/ui/core/images/controls/sap.ui.core.UIArea.gif");
+		oDomRef.appendChild(oDomNode);
+
+		var aRootControls = oUIArea.getContent();
+		for(var i = 0, l = aRootControls.length; i < l; i++){
+			this.renderNode(oDomRef,aRootControls[i],1);
+		}
+	}
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.createTreeNodeDomRef = function(sId,iLevel,sType,sIcon) {
+	var oDomNode = this.oParentDomRef.ownerDocument.createElement("DIV");
+	oDomNode.setAttribute("id","sap-debug-controltree-" + sId);
+	var sShortType = sType.substring(sType.lastIndexOf(".")>-1?sType.lastIndexOf(".")+1:0);
+	oDomNode.innerHTML = "<img style='height:12px;width:12px;display:none' src='" + this.sSpaceUrl + "' align='absmiddle'/><img style='height:16px;width:16px' src='" + sIcon + "' align='absmiddle'/>&nbsp;<span>" + sShortType + " - " + sId+"</span>";
+	oDomNode.style.overflow = "hidden";
+	oDomNode.style.whiteSpace = "nowrap";
+	oDomNode.style.textOverflow = "ellipsis";
+	oDomNode.style.paddingLeft = (iLevel * 16) + "px";
+	oDomNode.style.height = "20px";
+	oDomNode.style.cursor = "default";
+	oDomNode.setAttribute("sap-type",sType);
+	oDomNode.setAttribute("sap-id",sId);
+	oDomNode.setAttribute("sap-expanded","true");
+	oDomNode.setAttribute("sap-level","" + iLevel);
+	oDomNode.title = sType + " - " + sId;
+	return oDomNode;
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.createLinkNode = function(oParentRef, sId, iLevel, sType) {
+	var oDomNode = this.oParentDomRef.ownerDocument.createElement("DIV");
+	oDomNode.setAttribute("id","sap-debug-controltreelink-" + sId);
+	var sShortType = sType ? sType.substring(sType.lastIndexOf(".")>-1?sType.lastIndexOf(".")+1:0) : "";
+	oDomNode.innerHTML = "<img style='height:12px;width:12px;display:none' src='" + this.sSpaceUrl + "' align='absmiddle'/><img style='height:12px;width:12px' src='" + this.sLinkUrl + "' align='absmiddle'/>&nbsp;<span style='color:#888;border-bottom:1px dotted #888;'>" + (sShortType ? sShortType + " - " : "") + sId+"</span>";
+	oDomNode.style.overflow = "hidden";
+	oDomNode.style.whiteSpace = "nowrap";
+	oDomNode.style.textOverflow = "ellipsis";
+	oDomNode.style.paddingLeft = (iLevel * 16) + "px";
+	oDomNode.style.height = "20px";
+	oDomNode.style.cursor = "default";
+	oDomNode.setAttribute("sap-type","Link");
+	oDomNode.setAttribute("sap-id",sId);
+	oDomNode.setAttribute("sap-expanded","true");
+	oDomNode.setAttribute("sap-level","" + iLevel);
+	oDomNode.title = "Association to '" + sId + "'";
+	oParentRef.appendChild(oDomNode);
+	return oDomNode;
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.renderNode = function(oDomRef,oControl,iLevel) {
+	if (!oControl) {
+		return;
+	}
+
+	var oMetadata = oControl.getMetadata();
+	var sIcon = this.sTestResourcePath + oMetadata.getLibraryName().replace(/\./g, "/") + "/images/controls/"+oMetadata.getName()+".gif";
+	var oDomNode = this.createTreeNodeDomRef(oControl.getId(),iLevel,oMetadata.getName(),sIcon);
+	oDomRef.appendChild(oDomNode);
+	var bRequiresExpanding = false;
+	if (oControl.mAggregations) {
+		for (var n in oControl.mAggregations) {
+			bRequiresExpanding = true;
+			var oAggregation = oControl.mAggregations[n];
+			if (oAggregation && oAggregation.length) {
+				for (var i=0;i<oAggregation.length;i++) {
+					var o = oAggregation[i];
+					if (o  instanceof sap.ui.core.Element) {
+						this.renderNode(oDomRef,oAggregation[i],iLevel+1);
+					}
+				}
+			} else if (oAggregation instanceof sap.ui.core.Element) {
+				this.renderNode(oDomRef,oAggregation,iLevel+1);
+			}
+		}
+	}
+	if (oControl.mAssociations) {
+		for (var n in oControl.mAssociations) {
+			bRequiresExpanding = true;
+			var oAssociation = oControl.mAssociations[n];
+			if (jQuery.isArray(oAssociation)) {
+				for (var i=0;i<oAssociation.length;i++) {
+					var o = oAssociation[i];
+					if (typeof o === "string") {
+						this.createLinkNode(oDomRef, o, iLevel+1);
+					}
+				}
+			} else if (typeof oAssociation === "string") {
+				this.createLinkNode(oDomRef, oAssociation, iLevel+1);
+			}
+		}
+	}
+	if ( bRequiresExpanding ) {
+		var oExpandImage = oDomNode.getElementsByTagName("IMG")[0];
+		oExpandImage.src=this.sMinusUrl;
+		oExpandImage.style.display="";
+	}
+
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.onclick = function(oEvent) {
+	var oSource = oEvent.srcElement || oEvent.target;
+	if (oSource.tagName == "IMG") {
+		var oParent = oSource.parentNode,
+			iLevel = parseInt(oParent.getAttribute("sap-level"), 10),
+			oNextNode = oParent.nextSibling,
+			bExpanded = oParent.getAttribute("sap-expanded") == "true";
+		// propagate expanded state to all children
+		oSource = oParent.firstChild;
+		if (oNextNode) {
+			var iNextLevel = parseInt(oNextNode.getAttribute("sap-level"), 10);
+			while (oNextNode && iNextLevel > iLevel) {
+				var oExpandImage = oNextNode.getElementsByTagName("IMG")[0];
+				if (bExpanded) {
+					oNextNode.style.display = "none";
+					oNextNode.setAttribute("sap-expanded","false");
+					if ( oExpandImage && oExpandImage.src !== this.sSpaceUrl ) {
+						oExpandImage.src = this.sPlusUrl;
+					}
+				} else {
+					oNextNode.style.display = "block";
+					oNextNode.setAttribute("sap-expanded","true");
+					if ( oExpandImage && oExpandImage.src !== this.sSpaceUrl ) {
+						oExpandImage.src = this.sMinusUrl;
+					}
+				}
+				oNextNode = oNextNode.nextSibling;
+				if (oNextNode) {
+					iNextLevel = parseInt(oNextNode.getAttribute("sap-level"), 10);
+				}
+			}
+		}
+		if (bExpanded) {
+			oSource.src = this.sPlusUrl;
+			oParent.setAttribute("sap-expanded","false");
+		} else {
+			oSource.src = this.sMinusUrl;
+			oParent.setAttribute("sap-expanded","true");
+		}
+
+	} else if (oSource.getAttribute("sap-type") == "UIArea") {
+
+	} else {
+		if (oSource.tagName != "SPAN") {
+			oSource = oSource.getElementsByTagName("SPAN")[0];
+		}
+		var oParent = oSource.parentNode,
+			sId = oParent.getAttribute("sap-id"),
+			oElement = this.oCore.getElementById(sId),
+			sNodeId = oParent.getAttribute("sap-type") === "Link" ? "sap-debug-controltree-" + sId : oParent.id;
+		this.oSelectionHighlighter.hide();
+		if (oElement && oElement instanceof sap.ui.core.Element) {
+			this.oSelectionHighlighter.highlight(oElement.getDomRef());
+			this.oHoverHighlighter.hide();
+		}
+		this.deselectNode(this.sSelectedNodeId);
+		this.selectNode(sNodeId);
+	}
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.onmouseover = function(oEvent) {
+	var oSource = oEvent.srcElement || oEvent.target;
+	if (oSource.tagName=="SPAN") {
+		this.oHoverHighlighter.highlight(this.getTargetDomRef(oSource.parentNode));
+	}
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.onmouseout = function(oEvent) {
+	var oSource = oEvent.srcElement || oEvent.target;
+	if (oSource.tagName=="SPAN") {
+		if ( this.getTargetDomRef(oSource.parentNode) ) {
+			this.oHoverHighlighter.hide();
+		}
+	}
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.selectNode = function(sId) {
+	if (!sId) {
+		return;
+	}
+	var oDomRef = jQuery.sap.domById(sId, jQuery.sap.ownerWindow(this.oParentDomRef));
+	if ( !oDomRef ) {
+		jQuery.sap.log.warning("Control with Id '" + sId.substring(22) + "' not found in tree");
+		return;
+	}
+	var	sControlId = oDomRef.getAttribute("sap-id");
+	var oSpan = oDomRef.getElementsByTagName("SPAN")[0];
+	oSpan.style.backgroundColor = "#000066";
+	oSpan.style.color = "#FFFFFF";
+	this.sSelectedNodeId = sId;
+
+	this.fireEvent(sap.ui.debug.ControlTree.M_EVENTS.SELECT,{id:sId, controlId: sControlId});
+};
+
+/**
+ * TODO: missing internal JSDoc... @author please update
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.deselectNode = function(sId) {
+	if (!sId) {
+		return;
+	}
+	var oDomRef = jQuery.sap.domById(sId, jQuery.sap.ownerWindow(this.oParentDomRef));
+	var oSpan = oDomRef.getElementsByTagName("SPAN")[0];
+	oSpan.style.backgroundColor = "transparent";
+	oSpan.style.color = "#000000";
+	this.sSelectedNodeId = sId;
+};
+
+/**
+ * Tries to find the innermost DOM node in the source window that contains the
+ * SAPUI5 element/UIArea identified by the given tree node.
+ *
+ * If elements in the hierarchy don't return a value for {@link sap.ui.core.Element#getDomRef}
+ * (e.g. because they don't render a DOM node with their own id), enclosing parents
+ * are checked until the UIArea is reached.
+ *
+ * @param oTreeNodeDomRef the tree node to start the search for
+ * @return {DOMNode} best matching source DOM node
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.getTargetDomRef = function(oTreeNodeDomRef) {
+	var sType = oTreeNodeDomRef.getAttribute("sap-type"),
+		sId = oTreeNodeDomRef.getAttribute("sap-id"),
+		oSomething = sType === "UIArea" ? this.oCore.getUIArea(sId) : this.oCore.getElementById(sId);
+
+	while (oSomething && oSomething instanceof sap.ui.core.Element) {
+		var oDomRef = oSomething.getDomRef();
+		if ( oDomRef ) {
+			return oDomRef;
+		}
+		oSomething = oSomething.getParent();
+	}
+
+	if ( oSomething instanceof sap.ui.core.UIArea ) {
+		return oSomething.getRootNode();
+	}
+};
+
+/**
+ * Enables an 'onhover' handler in the content window that allows to see control borders.
+ * @private
+ */
+sap.ui.debug.ControlTree.prototype.enableInplaceControlSelection = function() {
+	var that = this;
+	jQuery(document).bind("mouseover" , function (oEvt) { that.selectControlInTree(oEvt); });
+};
+
+sap.ui.debug.ControlTree.prototype.selectControlInTree = function( oEvt ) {
+	if ( oEvt ) {
+	  if ( oEvt.ctrlKey && oEvt.shiftKey && !oEvt.altKey ) {
+		  var oControl = oEvt.srcElement || oEvt.target;
+		  while (oControl && (!oControl.id || !this.oCore.getControl(oControl.id )) ) {
+			oControl = oControl.parentNode;
+		}
+		 if ( oControl && oControl.id && this.oCore.getControl(oControl.id ) ) {
+			this.oHoverHighlighter.highlight(oControl);
+		 } else {
+		// this.selectControlInTreeByCtrlId(sId);
+			  this.oHoverHighlighter.hide();
+		 }
+
+	  } else {
+		  this.oHoverHighlighter.hide();
+	  }
+	}
+};

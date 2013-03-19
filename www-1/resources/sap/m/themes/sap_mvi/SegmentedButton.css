@@ -1,0 +1,252 @@
+
+/* ============================================= */
+/* CSS for control sap.m/SegmentedButton.control */
+/* ============================================= */
+
+
+/**************************** 
+
+iOS specific styling 
+
+*****************************/
+
+/****************** 
+style: plain 
+*******************/
+.sap-ios {
+	.sapMSegBBtn {
+		background-image: -webkit-linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 100%);
+		background-image: linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 100%);
+		padding: 0.5em;
+		height: 1.2em;
+		font-size: 15pt;
+		color: lighten(@sapUiText,20);
+		font-weight: bold;
+		text-shadow: 0 .058em 0 lighten(@sapUiButton,20);
+		box-shadow : .05em -.05em 0 0 fade(@sapUiShadowTint,20%) inset,
+			-.05em .05em 0px 0 fade(@sapUiShadowTint,20%) inset;
+	}
+	
+	.sapMSegBBtn:first-child {
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	
+	.sapMSegBBtn:nth-child(n+2) {
+		box-shadow : 0 -.05em 0 0 fade(@sapUiShadowTint,20%) inset,
+			0 .05em 0px 0 fade(@sapUiShadowTint,20%) inset;
+	}
+	
+	.sapMSegBBtn:last-child {
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+		box-shadow : .05em -.05em 0 0 fade(@sapUiShadowTint,20%) inset,
+			-.05em .05em 0px 0 fade(@sapUiShadowTint,20%) inset;
+	}
+	
+	.sapMSegBBtn.sapMSegBBtnSel {
+		background-image: -webkit-linear-gradient(top, darken(spin(@sapUiSelected,4),7) 0%, darken(spin(@sapUiSelected,4),5) 50%, lighten(@sapUiSelected,2) 100%);
+		background-image: linear-gradient(top, darken(spin(@sapUiSelected,4),7) 0%, darken(spin(@sapUiSelected,4),5) 50%, lighten(@sapUiSelected,2) 100%);
+		color: @sapUiTextInverted;
+		text-shadow: 0 0.0625em 0 darken(spin(@sapUiSelected,4),16);
+		box-shadow :-1px -1px 0px fade(@sapUiShadowTint,20%) inset,
+	        0 2px 1px fade(@sapUiShadowTint,90%) inset, inset 0 1.3em 1px darken(spin(@sapUiSelected,4),6);
+	}
+}
+/****************** 
+style: bar 
+*******************/
+.sap-ios {
+	.sapMBar-CTX {
+		.sapMSegB {
+			padding-top: 0.44em
+		}
+		
+		.sapMSegBBtn {
+			padding: 0.5em;
+			height: 1.5em;
+			font-size: .75em;
+			border: solid .2px darken(@sapUiBaseBorder, 20);
+			border-left: none;
+			background-image:  -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+			background-image: linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,4) 50%);
+			box-shadow: inset 0 0.1em 1px darken(@sapUiBarButton,30), inset 0 -0.1em 0 darken(@sapUiBarButton,15);
+			color: @sapUiBarText;
+			text-shadow: 0 -0.0833em 0 darken(@sapUiBarButton,24);
+			line-height: 1.5em;
+		}
+		
+		.sapMSegBBtn:first-child {
+			border-top-left-radius: .4em;
+			border-bottom-left-radius: .4em;
+		}
+		
+		.sapMSegBBtn:last-child {
+			border-top-right-radius: .4em;
+			border-bottom-right-radius: .4em;	
+		}
+		
+	
+		
+		.sapMSegBBtn.sapMSegBBtnSel + li {
+			box-shadow: inset 0 0.1em 1px darken(@sapUiBarButton,29), inset 0 -0.1em 0 darken(@sapUiBarButton,15), inset .1em 0 .05em darken(@sapUiBarButton,30);
+		}
+		
+		.sapMSegBBtn.sapMSegBBtnSel {
+			color: @sapUiBarText;
+						background-image: -webkit-linear-gradient(top, @sapUiBarButton 0%, darken(@sapUiBarButton,20) 50%, darken(@sapUiBarButton,30) 50%);
+			background-image: linear-gradient(top, @sapUiBarButton 0%, darken(@sapUiBarButton,20) 50%, darken(@sapUiBarButton,30) 50%);
+			box-shadow: inset 0 0.15em 1px darken(@sapUiBarButton,29), inset 0 -0.1em 0 darken(@sapUiBarButton,15), inset .075em 0 .05em darken(@sapUiBarButton,30);
+		}
+	}
+	.sapMHeader-CTX {
+		.sapMSegBBtn {
+			box-shadow: inset 0 0.1em 1px darken(@sapUiBarButton,30), inset 0 -0.1em 0 @sapUiBarButton, inset 0 -0.2em 0 darken(@sapUiBarButton,30);
+			background-image: -webkit-linear-gradient(top, @sapUiBarButton 0%, darken(@sapUiBarButton,20) 50%, darken(@sapUiBarButton,30) 50%);
+			background-image: linear-gradient(top, @sapUiBarButton 0%, darken(@sapUiBarButton,20) 50%, darken(@sapUiBarButton,30) 50%);
+		}
+		.sapMSegBBtn.sapMSegBBtnSel {
+			background-image:  -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+			background-image: linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,4) 50%);
+		}
+		.sapMSegBBtn:nth-child(n+2) {
+			box-shadow: inset 0 0.1em 1px darken(@sapUiBarButton,30), inset 0 -0.1em 0 @sapUiBarButton, inset .12em 0 .05em lighten(@sapUiBarButton,4);
+		}
+		
+		.sapMSegBBtn.sapMSegBBtnSel + li {
+			box-shadow: inset 0 0.1em 1px darken(@sapUiBarButton,29), inset 0 -0.1em 0 @sapUiBarButton, inset .1em 0 .05em darken(@sapUiBarButton,30);
+		}
+		
+		.sapMSegBBtn.sapMSegBBtnSel {
+			color: @sapUiBarText;
+			background-image:  -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+			background-image: linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,4) 50%);
+			box-shadow: inset 0 0.15em 1px darken(@sapUiBarButton,29), inset 0 -0.1em 0 lighten(@sapUiBarButton,2), inset .075em 0 .05em darken(@sapUiBarButton,30);
+		}
+	}
+}
+/**************************** 
+
+Android specific styling 
+
+*****************************/
+
+/****************** 
+style: plain 
+*******************/
+.sap-android, .sap-bb {
+	.sapMSegBBtn {
+		padding: 0.5em;
+		height: 1.3em;
+		font-size: 15pt;
+		font-weight: bold;
+		background-color: lighten(@sapUiButton,10);
+		border: 1px solid darken(@sapUiButton,9);
+		border-right:none;
+		color: lighten(@sapUiText,20);
+		text-decoration: none;
+	}
+	
+	.sapMSegBBtn:nth-child(n+2) {
+		border-radius: 0px;
+	}
+	
+	.sapMSegBBtn:last-child {	
+		border-right: 1px solid darken(@sapUiButton,9);
+		border-top-right-radius: 1px;
+		border-bottom-right-radius: 1px;
+	}
+	
+	.sapMSegBBtn:first-child {	
+		border-top-left-radius: 1px;
+		border-bottom-left-radius: 1px;
+	}
+	
+	.sapMSegBBtn.sapMSegBBtnSel {
+		background-color: darken(@sapUiButton,9);
+		box-shadow:  0 0 .04em .05em darken(@sapUiButton,25) inset;
+	}
+	
+	.sapMSegBBtn.sapMSegBBtnTouched {
+		background-color: lighten(@sapUiActive,4);
+		color: @sapUiTextInverted;
+	}
+}
+
+/****************** 
+style: bar 
+*******************/
+.sap-android, .sap-bb {
+	.sapMBar-CTX {
+		.sapMSegBBtn {
+			padding: 1.2em 0.5em 0.1em;
+			height: 2.08em;
+			font-size: 14px;
+			font-weight: bold;
+			margin-left:1px;
+			margin-right:1px;
+			@red: red;
+			color: darken(@sapUiBarText,50);
+			background-color: transparent;
+			border-radius: 0;
+			border: none;
+			text-decoration: none;
+			-webkit-box-shadow: 10.2px 0px 2px -10px lighten(@sapUiBarButton,24);
+			box-shadow: 10.2px 0px 2px -10px lighten(@sapUiBarButton,24);
+		}
+		.sapMSegBBtn:last-child {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+		
+		.sapMSegBBtn.sapMSegBBtnTouched {
+			background-color: fade(@sapUiActive, 10%);
+			box-shadow: none;
+		}
+		.sapMSegBBtn.sapMSegBBtnSel {
+			-webkit-box-shadow: 10.2px 0px 2px -10px lighten(@sapUiBarButton,24), inset 0 -.6em 1px -.4em @sapUiActive;
+			box-shadow: 10.2px 0px 2px -10px lighten(@sapUiBarButton,24), inset 0 -.25em 0 @sapUiActive;
+			color:@sapUiBaseText;
+		}
+		
+		.sapMSegBBtn:last-child.sapMSegBBtnSel {
+			color:@sapUiBaseText;
+			-webkit-box-shadow: inset 0 -.37em 1px -.1em @sapUiActive;
+			box-shadow: inset 0 -.25em 0 0 @sapUiActive;
+		}
+		
+		.sapMSegBBtn.sapMSegBBtnDis {
+			color: fade(@sapUiBarText,50%);
+			background-color: lighten(@sapUiBarButton,24);
+		}
+	}
+	.sapMHeader-CTX,  .sapMFooter-CTX{
+			.sapMSegBBtn {
+			color: fade(@sapUiBarText,50%);
+			border-bottom: 2px solid @sapUiBrand;
+		}
+		.sapMSegBBtn.sapMSegBBtnTouched {
+			background-color: fade(@sapUiBrand, 60%);
+		}
+		.sapMSegBBtn.sapMSegBBtnSel {
+			color:@sapUiTextInverted;
+			border-bottom: 0;
+			height: 2.22em;
+			-webkit-box-shadow: 10.2px 0px 2px -10px lighten(@sapUiBarButton,24), inset 0 -.6em 1px -.2em @sapUiBrand;
+			box-shadow: 10.2px 0px 2px -10px lighten(@sapUiBarButton,24), inset 0 -.3em 0 @sapUiBrand;
+		}
+		.sapMSegBBtn:last-child.sapMSegBBtnSel {
+			color:@sapUiTextInverted;
+			-webkit-box-shadow:  inset 0 -.575em 1px -.2em @sapUiBrand;
+			box-shadow: inset 0 -.3em 0 0 @sapUiBrand;
+		}
+		
+	}
+
+}
+/****************** 
+style: Disabled 
+*******************/
+.sapMSegBBtn.sapMSegBBtnDis {
+	color: fade(@sapUiText,30%);
+}

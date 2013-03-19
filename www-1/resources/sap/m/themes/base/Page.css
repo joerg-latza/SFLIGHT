@@ -1,0 +1,46 @@
+
+/* ============================================= */
+/* CSS for control sap.m/Page.control            */
+/* ============================================= */
+
+.sapMPage {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sapMPage > section {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 3em; /* Android version */
+	top: 3em; /* Android version */
+	width: 100%;
+}
+
+.sap-ios .sapMPage > section {
+	top: 2.75em;
+	bottom: 2.75em;
+}
+
+.sapMPage > section:first-child { /* when the page has no header, the content area should cover the whole height */
+	top: 0;
+}
+
+.sapMPage > section:nth-child(3) { /* when the page has header & subHeader */
+	top: 6em;
+}
+
+.sap-ios .sapMPage > section:nth-child(3) { /* when the page has header & subHeader */
+	top: 5.5em;
+}
+
+.sapMPage > section:last-child { /* when the page has no footer, the content area should cover the whole height */
+	bottom: 0;
+}
+
+.sapMPageScroll {
+	min-height: 100%;
+	overflow: hidden;
+	width: 100%;
+}

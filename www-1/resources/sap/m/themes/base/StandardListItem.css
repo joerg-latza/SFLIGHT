@@ -1,0 +1,195 @@
+/* ============================================= */
+/* CSS for controlsap.m/StandardListItem.control */
+/* ============================================= */
+.sapMSLI {
+	-webkit-box-orient: horizontal;
+	display: -webkit-box;
+}
+
+.sap-ios .sapMSLI {
+	height: 2.75em;
+}
+
+.sap-android .sapMSLI,
+.sap-bb .sapMSLI {
+	height: 3em;
+}
+
+.sap-ios .sapMSLIImg {
+	margin: 0.5em 0 0.5em 0em;
+}
+
+.sap-ios .sapMSLIImg {
+	height: 1.75em;
+	width: 1.75em;
+	border-radius: 0.3125em;
+}
+
+.sap-android .sapMSLIImg,
+.sap-bb .sapMSLIImg {
+	height: 2rem;
+	width: 2rem;
+}
+
+.sapMSLIImgFirst {
+	margin: 0.5em 0em 0.5em 0.5em;
+}
+
+.sap-ios .sapMSLIImgFirst {
+	height: 1.75em;
+	width: 1.75em;
+	border-radius: 0.3125em;
+}
+
+.sap-android .sapMSLIImgFirst,
+.sap-bb .sapMSLIImgFirst {
+	height: 2rem;
+	width: 2rem;
+}
+
+.sap-ios .sapMSLIImgThumb {
+	height: 2.75rem;
+	width: 2.75rem;
+}
+
+.sap-android .sapMSLIImgThumb,
+.sap-bb .sapMSLIImgThumb {
+	height: 3rem;
+	width: 3rem;
+}
+
+.sapMSLIDiv {
+	-webkit-box-flex: 1;
+	-webkit-box-orient: vertical;
+}
+
+.sap-ios .sapMSLIDiv {
+	height: 2.75rem;
+}
+
+.sap-android .sapMSLIDiv,
+.sap-bb .sapMSLIDiv {
+	height: 3rem;
+}
+
+.sapMSLITitle {
+	
+	font-size: 1.0625em;
+	text-shadow: 0 0.0588em 0 @sapUiListBG;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-flex: 99999999;
+}
+
+.sap-ios .sapMSLITitle{
+	line-height: 1.41em;
+	margin: 0 0 0 0.625rem;
+}
+
+.sap-android .sapMSLITitle,
+.sap-bb .sapMSLITitle {
+	line-height: 1.66em;
+	font-weight: normal;
+	margin: 0 0 0 0.5rem;
+}
+
+.sapMSLIDescription {
+	font-size: 0.875em;
+	font-weight: regular;
+	text-shadow: 0 0.0714em 0 @sapUiListBG;
+	color: lighten(@sapUiText,60);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.sap-ios .sapMSLIDescription {
+	margin: 0 0 0 0.625rem;
+}
+
+.sap-android .sapMSLIDescription,
+.sap-bb .sapMSLIDescription {
+	margin: 0 0 0 0.5rem;
+}
+
+.sapMSLITitleOnly {
+	font-size: 1.0625em;
+	text-shadow: 0 0.0588em 0 @sapUiListBG;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-flex: 99999999;
+}
+
+.sap-ios .sapMSLITitleOnly {
+	line-height: 2.75rem;
+	margin: 0 0 0 0.625rem;
+}
+
+.sap-android .sapMSLITitleOnly,
+.sap-bb .sapMSLITitleOnly{
+	line-height: 3rem;
+	font-weight: normal;
+	margin: 0 0 0 0.5rem;
+}
+
+.sapMSLITitleDiv{
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: center;
+}
+
+.sapMSLIInfo{
+	line-height: 1.41em;
+	margin: 0 0.625rem;
+	font-size: 0.875em;
+	font-weight: regular;
+	text-shadow: 0 0.0714em 0 @sapUiListBG;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-flex: 1;
+}
+
+.sapMSLIInfoNone{
+	color: @sapUiBlue;
+}
+
+.sapMSLIInfoError{
+	color: @sapUiRed;
+}
+
+.sapMSLIInfoWarning{
+	color: @sapUiOrange;
+}
+
+.sapMSLIInfoSuccess{
+	color: @sapUiGreen;
+}
+
+.sapMSLI .sapMLIBContent{
+	display: -webkit-box;
+	-webkit-box-flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.sap-ios .sapMSLI .sapMLIBContent{
+	height: 2.75em;
+}
+
+.sap-android .sapMSLI .sapMLIBContent,
+.sap-bb .sapMSLI .sapMLIBContent{
+	height: 3em;
+}
+
+.sap-ios .sapMSLI .sapMLIBContentMarginLeft{
+	margin-left: 0.625em;
+}
+
+.sap-android .sapMSLI .sapMLIBContentMarginLeft,
+.sap-bb .sapMSLI .sapMLIBContentMarginLeft{
+	margin-left: 0.5em;
+}

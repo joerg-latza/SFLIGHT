@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+	<name>Input</name>
+	<developmentState state="experimental" since="1.2">API is not yet finished and might change completely</developmentState>
+	<author>SAP AG</author>
+	<documentation>Enables users to input data. </documentation>
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Data" name="value" type="sap.ui.core/string" bindable="bindable">
+			<documentation>Input Value</documentation>
+		</property>
+		<property group="Data" name="type" type="sap.m/InputType" defaultValue="Text">
+			<documentation>Type of input (e.g. Text, Number, Email, Phone)</documentation>
+		</property>
+		<property group="Appearance" name="width" type="sap.ui.core/CSSSize">
+			<documentation>Defines the width of the input.</documentation>
+		</property>
+		<property group="Behavior" name="enabled" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Boolean property to enable the control (default is true). </documentation>
+		</property>
+		<property group="Appearance" name="visible" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Invisible inputs are not rendered</documentation>
+		</property>
+		<property name="maxLength" type="sap.ui.core/int" defaultValue="0" group="Behavior">
+			<documentation>Maximum number of characters. Value '0' means the feature is switched off.</documentation>
+		</property>
+		<property name="valueState" type="sap.ui.core/ValueState" defaultValue="None" group="Data">
+			<documentation>Visualizes warnings or errors related to the text field. Possible values: Warning, Error, Success.</documentation>
+		</property>
+		<property group="Misc" name="name" type="sap.ui.core/string">
+			<documentation>The 'name' property to be used in the HTML code (e.g. for HTML forms that send data to the server via 'submit').</documentation>
+		</property>
+		<property group="Misc" name="placeholder" type="sap.ui.core/string">
+			<documentation>text shown when no value available</documentation>
+		</property>
+		<property group="Misc" name="dateFormat" type="sap.ui.core/string" defaultValue="YYYY-MM-dd">
+			<documentation>Only used if type=date and no datepicker is available.
+The data is displayed and the user input is parsed according to this format.
+NOTE: The value property is always of the form RFC 3339 (YYYY-MM-dd).</documentation>
+			<deprecation since="1.9.1">sap.m.DateTimeInput should be used for date/time inputs and formating.</deprecation>
+		</property>
+	</properties>
+	<events>
+		<event name="change">
+			<documentation>This event gets fired when the input operation has finished and the value has changed.</documentation>
+			<parameters>
+				<parameter name="newValue" type="sap.ui.core/string">
+					<documentation>the new value of the input</documentation>
+				</parameter>
+			</parameters>
+		</event>
+		<event name="liveChange">
+			<documentation>This event is fired when the value of the input is changed - e.g. at each keypress</documentation>
+			<parameters>
+				<parameter name="newValue" type="sap.ui.core/string">
+					<documentation>the new value of the input</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+</control>

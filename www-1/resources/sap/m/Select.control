@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>Select</name>
+	<author>SAP AG</author>
+	<documentation>The select control is built on a native html select element; it provides a list of predefined items that allows end users to choose options.</documentation>
+
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Misc" name="name" type="sap.ui.core/string" defaultValue='""'>
+			<documentation>The name to be used in the HTML code (e.g. for HTML forms that send data to the server via submit).</documentation>
+		</property>
+		<property group="Appearance" name="visible" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Determines whether the control is visible or not.</documentation>
+		</property>
+		<property group="Behavior" name="enabled" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Determines whether the user can change the selected value.</documentation>
+		</property>
+		<property group="Dimension" name="width" type="sap.ui.core/CSSSize" defaultValue='"auto"'>
+			<documentation>Defines the width of the select control. This value can be provided in %, em, px… and all possible CSS measures.</documentation>
+		</property>
+		<property group="Dimension" name="maxWidth" type="sap.ui.core/CSSSize" defaultValue='"100%"'>
+			<documentation>Defines the maximum width of the select control. This value can be provided in %, em, px… and all possible CSS measures.</documentation>
+		</property>
+		<property group="Misc" name="title" type="sap.ui.core/string" defaultValue='""'>
+			<documentation>Represents advisory information for the element, such as would be appropriate for a tooltip.</documentation>
+		</property>
+		<property group="Data" name="selectedKey" type="sap.ui.core/string" since="1.11">
+			<documentation>Key of the selected item.
+
+If the key has no corresponding aggregated item, no changes will take place.
+If duplicate keys exists the first item matching the key is used.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="change">
+			<documentation>This event will be triggered when the user changes the selected item.</documentation>
+			<parameters>
+				<parameter name="selectedItem" type="sap.ui.core/Item">
+					<documentation>The selected item.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+	<aggregations default="items">
+		<aggregation cardinality="0..n" name="items" type="sap.ui.core/Item">
+			<documentation>Items of the  Item control.</documentation>
+		</aggregation>
+	</aggregations>
+	<associations>
+		<association cardinality="0..1" name="selectedItem" type="sap.ui.core/Item">
+			<documentation>The selected item.</documentation>
+		</association>
+	</associations>
+</control>

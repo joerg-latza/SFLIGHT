@@ -69,7 +69,7 @@
 "sapUiTextSelection":"#ffffff",
 "sapUiTextfieldBackground":"#ffffff",
 "sapUiLineHeight":"21px",
-"sapUiFontFamily":"'Helvetica Neue',Roboto,'Droid Sans','BBGlobal Sans',Helvetica,Arial,sans-serif",
+"sapUiFontFamily":"'Helvetica Neue',Roboto,'Droid Sans','BBGlobal Sans','Segoe WP',Helvetica,Arial,sans-serif",
 "sapUiFontMonospaceFamily":"Lucida Console",
 "sapUiFontSize":"16px",
 "sapUiFontLargeSize":"large",

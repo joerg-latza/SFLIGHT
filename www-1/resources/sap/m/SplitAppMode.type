@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>SplitAppMode</name>
+	<author></author>
+
+	<documentation>[Beschreibung für SplitAppMode eingeben]</documentation>
+	<baseType>sap.ui.core/string</baseType>
+	<enumeration>
+		<value name="ShowHideMode">
+			<documentation>Master will automatically be hidden in portrait mode.</documentation>
+		</value>
+		<value name="StretchCompressMode">
+			<documentation>Master will always be shown but in a compressed version when in portrait mode.</documentation>
+		</value>
+		<value name="PopoverMode">
+			<documentation>Master will be shown inside a Popover when in portrait mode</documentation>
+		</value>
+	</enumeration>
+</simple-type>

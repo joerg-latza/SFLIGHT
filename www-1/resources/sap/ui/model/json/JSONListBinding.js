@@ -1,19 +1,394 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.ui.model.json.JSONListBinding");jQuery.sap.require("sap.ui.model.ListBinding");sap.ui.model.ListBinding.extend("sap.ui.model.json.JSONListBinding",{constructor:function(m,p,c,s,f,P){sap.ui.model.ListBinding.apply(this,arguments);this.update()},metadata:{publicMethods:["getLength"]}});
-sap.ui.model.json.JSONListBinding.prototype.getContexts=function(s,l){if(!s){s=0}if(!l){l=Math.min(this.iLength,this.oModel.iSizeLimit)}var e=Math.min(s+l,this.aIndices.length),c,C=[],p=this.oModel.resolve(this.sPath,this.oContext)+"/";for(var i=s;i<e;i++){c=this.oModel.getContext(p+this.aIndices[i]);C.push(c)}return C};
-sap.ui.model.json.JSONListBinding.prototype.setContext=function(c){if(this.oContext!=c){this.oContext=c;this.update();this._fireChange()}};
-sap.ui.model.json.JSONListBinding.prototype.getLength=function(){return this.iLength};
-sap.ui.model.json.JSONListBinding.prototype._getLength=function(){return this.aIndices.length};
-sap.ui.model.json.JSONListBinding.prototype.update=function(){var l=this.oModel._getObject(this.sPath,this.oContext);if(l&&jQuery.isArray(l)){this.oList=l.slice(0);this.updateIndices();this.applyFilter();this.applySort();this.iLength=this._getLength()}else{this.oList=null;this.aIndices=[];this.iLength=0}};
-sap.ui.model.json.JSONListBinding.prototype.checkUpdate=function(f){var l=this.oModel._getObject(this.sPath,this.oContext);if(!jQuery.sap.equal(this.oList,l)||f){this.update();this._fireChange()}};
-sap.ui.model.json.JSONListBinding.prototype.updateIndices=function(){this.aIndices=[];for(var i=0;i<this.oList.length;i++){this.aIndices.push(i)}};
-sap.ui.model.json.JSONListBinding.prototype.sort=function(s){if(!s){this.oSorter=null;this.updateIndices();this.applyFilter()}else{this.oSorter=s;this.applySort()}this._fireChange();this._fireSort({sorter:s})};
-sap.ui.model.json.JSONListBinding.prototype.applySort=function(){if(!this.oSorter){return}var t=this,s=[],v,c=this.oSorter.fnCompare;if(!c){c=function(a,b){if(b==null){return-1}if(a==null){return 1}if(typeof a=="string"&&typeof b=="string"){return a.localeCompare(b)}if(a<b){return-1}if(a>b){return 1}return 0}}jQuery.each(this.aIndices,function(i,I){v=t.oModel._getObject(t.oSorter.sPath,t.oList[I]);if(typeof v=="string"){v=v.toLocaleUpperCase()}s[I]=v});this.aIndices.sort(function(a,b){var d=s[a],e=s[b],r=c(d,e);if(t.oSorter.bDescending){r=-r}return r})};
-sap.ui.model.json.JSONListBinding.prototype.filter=function(f){this.updateIndices();if(!f||!jQuery.isArray(f)||f.length==0){this.aFilters=null;this.iLength=this._getLength()}else{this.aFilters=f;this.applyFilter()}this.applySort();this._fireChange();this._fireFilter({filters:f})};
-sap.ui.model.json.JSONListBinding.prototype.applyFilter=function(){if(!this.aFilters){return}var t=this,f={},F,a=[],g=false,b=true;jQuery.each(this.aIndices,function(i,I){b=true;jQuery.each(t.aFilters,function(j,o){F=f[o.sPath];if(!F){F=f[o.sPath]=[]}F.push(o)});jQuery.each(f,function(p,F){var v=t.oModel._getObject(p,t.oList[I]);if(typeof v=="string"){v=v.toUpperCase()}g=false;jQuery.each(F,function(j,o){var T=t.getFilterFunction(o);if(v!=undefined&&T(v)){g=true;return false}});if(!g){b=false;return false}});if(b){a.push(I)}});this.aIndices=a;this.iLength=a.length};
-sap.ui.model.json.JSONListBinding.prototype.getFilterFunction=function(f){if(f.fnTest){return f.fnTest}var v=f.oValue1,V=f.oValue2;if(typeof v=="string"){v=v.toUpperCase()}if(typeof V=="string"){V=V.toUpperCase()}switch(f.sOperator){case"EQ":f.fnTest=function(a){return a==v};break;case"NE":f.fnTest=function(a){return a!=v};break;case"LT":f.fnTest=function(a){return a<v};break;case"LE":f.fnTest=function(a){return a<=v};break;case"GT":f.fnTest=function(a){return a>v};break;case"GE":f.fnTest=function(a){return a>=v};break;case"BT":f.fnTest=function(a){return(a>v)&&(a<V)};break;case"Contains":f.fnTest=function(a){if(typeof a!="string"){throw new Error("Only \"String\" values are supported for the FilterOperator: \"Contains\".")}return a.indexOf(v)!=-1};break;case"StartsWith":f.fnTest=function(a){if(typeof a!="string"){throw new Error("Only \"String\" values are supported for the FilterOperator: \"StartsWith\".")}return a.indexOf(v)==0};break;case"EndsWith":f.fnTest=function(a){if(typeof a!="string"){throw new Error("Only \"String\" values are supported for the FilterOperator: \"EndsWith\".")}var p=a.indexOf(v);if(p==-1){return false}return p==a.length-new String(f.oValue1).length};break;default:f.fnTest=function(a){return true}}return f.fnTest};
-sap.ui.model.json.JSONListBinding.prototype.getDistinctValues=function(p){var r=[],m={},v,t=this;jQuery.each(this.oList,function(i,c){v=t.oModel.getProperty(p,c);if(!m[v]){m[v]=true;r.push(v)}});return r};
+
+// Provides the JSON model implementation of a list binding
+jQuery.sap.declare("sap.ui.model.json.JSONListBinding");
+jQuery.sap.require("sap.ui.model.ListBinding");
+
+
+/**
+ *
+ * @class
+ * List binding implementation for JSON format
+ *
+ * @param sPath
+ * @param [oModel]
+ * @name sap.ui.model.json.JSONListBinding
+ * @extends sap.ui.model.ListBinding
+ */
+sap.ui.model.ListBinding.extend("sap.ui.model.json.JSONListBinding", /** @lends sap.ui.model.json.JSONListBinding */ {
+	
+	constructor : function(oModel, sPath, oContext, oSorter, aFilters, mParameters){
+		sap.ui.model.ListBinding.apply(this, arguments);
+		this.update();
+	},
+
+	metadata : {
+	  publicMethods : [
+			"getLength"
+	  ]
+	}
+	
+});
+
+/**
+ * Creates a new subclass of class sap.ui.model.json.JSONListBinding with name <code>sClassName</code> 
+ * and enriches it with the information contained in <code>oClassInfo</code>.
+ * 
+ * For a detailed description of <code>oClassInfo</code> or <code>FNMetaImpl</code> 
+ * see {@link sap.ui.base.Object.extend Object.extend}.
+ *   
+ * @param {string} sClassName name of the class to be created
+ * @param {object} [oClassInfo] object literal with informations about the class  
+ * @param {function} [FNMetaImpl] alternative constructor for a metadata object
+ * @return {function} the created class / constructor function
+ * @public
+ * @static
+ * @name sap.ui.model.json.JSONListBinding.extend
+ * @function
+ */
+
+
+/**
+ * Return contexts for the list or a specified subset of contexts
+ * @param {int} [iStartIndex=0] the startIndex where to start the retrieval of contexts
+ * @param {int} [iLength=length of the list] determines how many contexts to retrieve beginning from the start index.
+ * Default is the whole list length.
+ *
+ * @return {Array} the contexts array
+ * @protected
+ */
+sap.ui.model.json.JSONListBinding.prototype.getContexts = function(iStartIndex, iLength) {
+	if (!iStartIndex) {
+		iStartIndex = 0;
+	}
+	if (!iLength) {
+		iLength = Math.min(this.iLength, this.oModel.iSizeLimit);
+	}
+
+	var iEndIndex = Math.min(iStartIndex + iLength, this.aIndices.length),
+		oContext,
+		aContexts = [],
+		sPrefix = this.oModel.resolve(this.sPath, this.oContext) + "/";
+	
+	for (var i = iStartIndex; i < iEndIndex; i++) {
+		oContext = this.oModel.getContext(sPrefix + this.aIndices[i]);
+		aContexts.push(oContext);
+	}
+	return aContexts;
+};
+
+/**
+ * Setter for context
+ * @param {Object} oContext the new context object
+ */
+sap.ui.model.json.JSONListBinding.prototype.setContext = function(oContext) {
+	if (this.oContext != oContext) {
+		this.oContext = oContext;
+		this.update();
+		this._fireChange();
+	}
+};
+
+/**
+ * Return the length of the list
+ *
+ * @return {int} the length
+ * @protected
+ */
+sap.ui.model.json.JSONListBinding.prototype.getLength = function() {
+	return this.iLength;
+};
+
+/**
+ * Return the length of the list
+ *
+ * @return {int} the length
+ */
+sap.ui.model.json.JSONListBinding.prototype._getLength = function() {
+	return this.aIndices.length;
+};
+
+
+/**
+ * Update the list, indices array and apply sorting and filtering
+ * @private
+ */
+sap.ui.model.json.JSONListBinding.prototype.update = function(){
+	var oList = this.oModel._getObject(this.sPath, this.oContext);
+	if (oList && jQuery.isArray(oList)) {
+		this.oList = oList.slice(0);
+		this.updateIndices();
+		this.applyFilter();
+		this.applySort();
+		this.iLength = this._getLength();
+	}
+	else {
+		this.oList = null;
+		this.aIndices = [];
+		this.iLength = 0;
+	}
+};
+
+/**
+ * Check whether this Binding would provide new values and in case it changed,
+ * inform interested parties about this.
+ * 
+ * @param {boolean} bForceupdate
+ * 
+ */
+sap.ui.model.json.JSONListBinding.prototype.checkUpdate = function(bForceupdate){
+	var oList = this.oModel._getObject(this.sPath, this.oContext);
+	if (!jQuery.sap.equal(this.oList, oList) || bForceupdate) {
+		this.update();
+		this._fireChange();
+	}
+};
+
+/**
+ * Get indices of the list
+ */
+sap.ui.model.json.JSONListBinding.prototype.updateIndices = function(){
+	this.aIndices = [];
+	for (var i = 0; i < this.oList.length; i++) {
+		this.aIndices.push(i);
+	}
+
+};
+
+/**
+ * @see sap.ui.model.ListBinding.prototype.sort
+ *
+ */
+sap.ui.model.json.JSONListBinding.prototype.sort = function(oSorter){
+	if (!oSorter) {
+		this.oSorter = null;
+		this.updateIndices();
+		this.applyFilter();
+	} else {
+		this.oSorter = oSorter;
+		this.applySort();
+	}
+	this._fireChange();
+	this._fireSort({sorter: oSorter});
+};
+
+/**
+ * Sorts the list
+ * @private
+ */
+sap.ui.model.json.JSONListBinding.prototype.applySort = function(){
+	if (!this.oSorter) {
+		return;
+	}
+	var that = this,
+		aSortValues = [],
+		oValue,
+		fnCompare = this.oSorter.fnCompare;
+	if (!fnCompare) {
+		fnCompare = function(a, b) {
+			if (b == null) {
+				return -1;
+			}
+			if (a == null) {
+				return 1;
+			}
+			if (typeof a == "string" && typeof b == "string") {
+				return a.localeCompare(b);
+			}
+			if (a < b) {
+				return -1;
+			}
+			if (a > b) {
+				return 1;
+			}
+			return 0;
+		}
+	}
+	jQuery.each(this.aIndices, function(i, iIndex) {
+		oValue = that.oModel._getObject(that.oSorter.sPath, that.oList[iIndex]);
+		if (typeof oValue == "string") {
+			oValue = oValue.toLocaleUpperCase();
+		}
+		aSortValues[iIndex] = oValue;
+	});
+	this.aIndices.sort(function(a, b) {
+		var valueA = aSortValues[a],
+			valueB = aSortValues[b],
+			returnValue = fnCompare(valueA, valueB);
+		if (that.oSorter.bDescending) {
+			returnValue = -returnValue;
+		}
+		return returnValue;
+	});
+};
+
+/**
+ * 
+ * Filters the list.
+ * Filters are first grouped according to their binding path.
+ * All filters belonging to a group are ORed and after that the
+ * results of all groups are ANDed.
+ * Usually this means, all filters applied to a single table column
+ * are ORed, while filters on different table columns are ANDed.
+ * @param {Array} aFilters Array of sap.ui.model.Filter objects
+ * 
+ * @public
+ */
+sap.ui.model.json.JSONListBinding.prototype.filter = function(aFilters){
+	this.updateIndices();
+	if (!aFilters || !jQuery.isArray(aFilters) || aFilters.length == 0) {
+		this.aFilters = null;
+		this.iLength = this._getLength();
+	} else {
+		this.aFilters = aFilters;
+		this.applyFilter();
+	}
+	this.applySort();
+	this._fireChange();
+	this._fireFilter({filters: aFilters});
+};
+
+/**
+ * Filters the list
+ * Filters are first grouped according to their binding path.
+ * All filters belonging to a group are ORed and after that the
+ * results of all groups are ANDed.
+ * Usually this means, all filters applied to a single table column
+ * are ORed, while filters on different table columns are ANDed.
+ *
+ * @private
+ */
+sap.ui.model.json.JSONListBinding.prototype.applyFilter = function(){
+	if (!this.aFilters) {
+		return;
+	}
+	var that = this,
+		oFilterGroups = {},
+		aFilterGroup,
+		aFiltered = [],
+		bGroupFiltered = false,
+		bFiltered = true;
+	jQuery.each(this.aIndices, function(i, iIndex) {
+		bFiltered = true;
+		jQuery.each(that.aFilters, function(j, oFilter) {
+			aFilterGroup = oFilterGroups[oFilter.sPath];
+			if (!aFilterGroup) {
+				aFilterGroup = oFilterGroups[oFilter.sPath] = [];
+			}
+			aFilterGroup.push(oFilter);
+		});
+		jQuery.each(oFilterGroups, function(sPath, aFilterGroup) {
+			var oValue = that.oModel._getObject(sPath, that.oList[iIndex]);
+			if (typeof oValue == "string") {
+				oValue = oValue.toUpperCase();
+			}
+			bGroupFiltered = false;
+			jQuery.each(aFilterGroup, function(j, oFilter) {
+				var fnTest = that.getFilterFunction(oFilter);
+				if (oValue != undefined && fnTest(oValue)) {
+					bGroupFiltered = true;
+					return false;
+				}
+			});
+			if (!bGroupFiltered) {
+				bFiltered = false;
+				return false;
+			}
+		});
+		if (bFiltered) {
+			aFiltered.push(iIndex);
+		}
+	});
+	this.aIndices = aFiltered;
+	this.iLength = aFiltered.length;
+};
+
+/**
+ * Provides a JS filter function for the given filter
+ */
+sap.ui.model.json.JSONListBinding.prototype.getFilterFunction = function(oFilter){
+	if (oFilter.fnTest) {
+		return oFilter.fnTest;
+	}
+	var oValue1 = oFilter.oValue1,
+		oValue2 = oFilter.oValue2;
+	if (typeof oValue1 == "string") {
+		oValue1 = oValue1.toUpperCase();
+	}
+	if (typeof oValue2 == "string") {
+		oValue2 = oValue2.toUpperCase();
+	}
+	switch (oFilter.sOperator) {
+		case "EQ":
+			oFilter.fnTest = function(value) { return value == oValue1; }; break;
+		case "NE":
+			oFilter.fnTest = function(value) { return value != oValue1; }; break;
+		case "LT":
+			oFilter.fnTest = function(value) { return value < oValue1; }; break;
+		case "LE":
+			oFilter.fnTest = function(value) { return value <= oValue1; }; break;
+		case "GT":
+			oFilter.fnTest = function(value) { return value > oValue1; }; break;
+		case "GE":
+			oFilter.fnTest = function(value) { return value >= oValue1; }; break;
+		case "BT":
+			oFilter.fnTest = function(value) { return (value > oValue1) && (value < oValue2); }; break;
+		case "Contains":
+			oFilter.fnTest = function(value) {
+				if (typeof value != "string") {
+					throw new Error("Only \"String\" values are supported for the FilterOperator: \"Contains\".");
+				}
+				return value.indexOf(oValue1) != -1; 
+			}; 
+			break;
+		case "StartsWith":
+			oFilter.fnTest = function(value) { 
+				if (typeof value != "string") {
+					throw new Error("Only \"String\" values are supported for the FilterOperator: \"StartsWith\".");
+				}
+				return value.indexOf(oValue1) == 0; 
+			}; 
+			break;
+		case "EndsWith":
+			oFilter.fnTest = function(value) { 
+				if (typeof value != "string") {
+					throw new Error("Only \"String\" values are supported for the FilterOperator: \"EndsWith\".");
+				}
+				var iPos = value.indexOf(oValue1);
+				if (iPos == -1){
+					return false;					
+				}
+				return iPos == value.length - new String(oFilter.oValue1).length; 
+			}; 
+			break;
+		default:
+			oFilter.fnTest = function(value) { return true; };
+	}
+	return oFilter.fnTest;
+};
+
+/**
+ * Get distinct values
+ *
+ * @param {String} sPath
+ *
+ * @protected
+ */
+sap.ui.model.json.JSONListBinding.prototype.getDistinctValues = function(sPath){
+	var aResult = [],
+		oMap = {},
+		sValue,
+		that = this;
+	jQuery.each(this.oList, function(i, oContext) {
+		sValue = that.oModel.getProperty(sPath, oContext);
+		if (!oMap[sValue]) {
+			oMap[sValue] = true;
+			aResult.push(sValue);
+		}
+	});
+	return aResult;
+};

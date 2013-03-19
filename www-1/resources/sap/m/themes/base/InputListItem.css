@@ -1,0 +1,62 @@
+/* ============================================= */
+/* CSS for control sap.m/InputListItem.control   */
+/* ============================================= */
+.sapMILI {
+	height: 2.75em;
+	-webkit-box-orient: horizontal;
+	display: -webkit-box;
+}
+
+.sap-ios .sapMILI {
+	height: 2.75em;
+}
+
+.sap-android .sapMILI,
+.sap-bb .sapMILI {
+	height: 3em;
+}
+
+.sapMILILabel {
+	font-size: 1.0625em;
+	font-weight: bold;
+	text-shadow: 0 0.05em 0 lighten(@sapUiListBG,15);
+	-webkit-box-flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+	max-width: 60%;	/*we can have very long title so lets give a limit */
+}
+
+.sap-ios .sapMILILabel{
+	-webkit-box-align: center;
+	margin: 0 0.625em 0 0.625em;
+}
+
+.sap-android .sapMILILabel,
+.sap-bb .sapMILILabel{
+	-webkit-box-align: center;
+	font-weight: normal;
+	margin: 0 0.5em 0 0.5em;
+}
+
+.sapMILIDiv {
+}
+
+.sap-ios .sapMILIDiv{
+	margin: 0 0 0 0.625em;
+}
+
+.sap-android .sapMILIDiv,
+.sap-bb .sapMILIDiv{
+	margin: 0 0 0 0.5em;
+}
+
+.sapMILI .sapMLIBContent{
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-flex: 1;
+}
+
+.sapMILI-CTX {
+}

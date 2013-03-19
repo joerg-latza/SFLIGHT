@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+	<name>Dialog</name>
+	<author>SAP AG</author>
+	<documentation>The Dialog control is used to interrupt the current processing of an application to prompt the user for information or a response.</documentation>
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Appearance" name="icon" type="sap.ui.core/URI">
+			<documentation>Icon that is displayed in the dialog header. This icon is invisible in iOS platform and it's density aware that you can use the density convention (@2, @1.5, etc.) to provide higher resolution image for higher density screen.</documentation>
+		</property>
+		<property group="Appearance" name="title" type="sap.ui.core/string">
+			<documentation>Title text appears in the dialog header.</documentation>
+		</property>
+		<property group="Appearance" name="type" type="sap.m/DialogType" defaultValue="Standard">
+			<documentation>The type of the dialog. It only affects the look and feel in iOS platform, type message is with button at the bottom inside of in the header.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="beforeOpen">
+			<documentation>This event will be fired before the dialog is opened.</documentation>
+		</event>
+		<event name="afterOpen">
+			<documentation>This event will be fired after the dialog is opened.</documentation>
+		</event>
+		<event name="beforeClose">
+			<documentation>This event will be fired before the dialog is closed.</documentation>
+			<parameters>
+				<parameter name="origin" type="sap.m/Button" since="1.9.2">
+					<documentation>This indicates the trigger of closing the dialog. If dialog is closed by either leftButton or rightButton, the button that closes the dialog is set to this parameter. Otherwise this parameter is set to null.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+		<event name="afterClose">
+			<documentation>This event will be fired after the dialog is closed.</documentation>
+			<parameters>
+				<parameter name="origin" type="sap.m/Button" since="1.9.2">
+					<documentation>This indicates the trigger of closing the dialog. If dialog is closed by either leftButton or rightButton, the button that closes the dialog is set to this parameter. Otherwise this parameter is set to null.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+	<aggregations default="content">
+		<aggregation cardinality="0..n" name="content" type="sap.ui.core/Control">
+			<documentation>The content inside the dialog.</documentation>
+		</aggregation>
+	</aggregations>
+	<associations>
+		<association cardinality="0..1" name="leftButton" type="sap.m/Button">
+			<documentation>LeftButton is shown at the left edge of the bar in iOS, and at the right side of the bar for the other platforms. Please set this to null if you want to remove the left button from the bar. And the button is only removed from the bar, not destroyed. When showHeader is set to false, this property will be ignored.</documentation>
+		</association>
+		<association cardinality="0..1" name="rightButton" type="sap.m/Button">
+			<documentation>RightButton is always shown at the right edge of the bar. Please set this to null if you want to remove the right button from the bar. And the button is only removed from the bar, not destroyed. When showHeader is set to false, this property will be ignored.</documentation>
+		</association>
+	</associations>
+	<methods>
+		<method name="open" type="sap.ui.core/void">
+			<documentation>Open the dialog.</documentation>
+		</method>
+		<method name="close" type="sap.ui.core/void">
+			<documentation>Close the dialog.</documentation>
+		</method>
+		<method name="isOpen" type="sap.ui.core/boolean" since="1.9.1">
+			<documentation>The method checks if the Dialog is open. It returns true when the Dialog is currently open (this includes opening and closing animations), otherwise it returns false.</documentation>
+		</method>
+	</methods>
+</control>

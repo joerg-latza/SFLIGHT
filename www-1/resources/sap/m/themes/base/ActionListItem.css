@@ -1,0 +1,68 @@
+/* ============================================= */
+/* CSS for controlsap.m/ActionListItem.control  */
+/* ============================================= */
+.sapMALI {
+	display: -webkit-box;
+}
+
+.sap-ios .sapMALI {
+	height: 2.75em;
+}
+
+.sap-android .sapMALI,.sap-bb .sapMALI {
+	height: 3em;
+}
+
+.sap-android .sapMALI .sapMLIBContent,
+.sap-bb .sapMALI .sapMLIBContent {
+	line-height: 3em;
+}
+
+.sap-ios .sapMALI .sapMLIBContent {
+	line-height: 2.75em;
+}
+
+.sapMALIText {
+	-webkit-box-flex: 1;
+	text-shadow: 0 0.05em 0 lighten(@sapUiListBG, 15);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 3em;
+	display: block;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	text-align: center;
+}
+
+.sap-ios .sapMALIText {
+	font-weight: bold;
+	font-size: 1.0625em;
+	margin: 0 0 0 0.625rem;
+	-webkit-box-align: center;
+}
+
+.sap-android .sapMALIText,.sap-bb .sapMALIText {
+	font-weight: normal;
+	line-height: 1.14286em;
+	font-size: 1.125em;
+	margin: 0 0 0 0.5rem;
+}
+
+.sapMALI .sapMLIBContent{
+	display: -webkit-box;
+	-webkit-box-flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.sapMALI .sapMLIBUnread{
+	display: none;
+}
+
+.sapMALI .sapMLIBSelectS,
+.sapMALI .sapMLIBSelectM,
+.sapMALI .sapMLIBSelectD{
+	display: none;
+}

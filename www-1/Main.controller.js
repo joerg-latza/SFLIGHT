@@ -12,17 +12,17 @@ sap.ui.controller("untitledproject.Main", {
 	onInit: function() {
 		var bus = sap.ui.getCore().getEventBus();
 		var that = this;
-		sap.ui.getCore().getModel("employee").createBindingContext("/0",function(oContext){
-			that.getView().setBindingContext(oContext,"employee");
+		sap.ui.getCore().getModel("timecard").createBindingContext("/0",function(oContext){
+			that.getView().setBindingContext(oContext,"timecard");
 		});
-		
 
 		// TODO: MOVE THIS TO A BETTER PLACE
 		bus.subscribe("nav", "to", function(chan, evt, inf){
 			var _id = this.byId(inf.id) ? this.byId(inf.id).getId() : inf.id;
 			this.navTo(_id, true, jQuery.sap.history.NavType.Forward);
+
 			if(inf.data) {
-				this.getView().setBindingContext(inf.data.context,"employee");
+				this.getView().setBindingContext(inf.data.context);
 			}
 		}, this);
 		bus.subscribe("nav", "back", function(chan, evt, inf){

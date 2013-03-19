@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>ListItemBase</name>
+	<author>SAP AG</author>
+
+	<documentation>ListItemBase contains the core features of all specific list items.</documentation>
+
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Misc" name="type" type="ListType" defaultValue="Inactive">
+			<documentation>Type of the list item, defines the behaviour</documentation>
+		</property>
+		<property group="Appearance" name="visible" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Invisible list items are not rendered</documentation>
+		</property>
+		<property group="Misc" name="unread" type="sap.ui.core/boolean" defaultValue="false">
+			<documentation>If the unread indicator is set on the list, this boolean defines if it will be shown on this list item. Default is false.</documentation>
+		</property>
+		<property name="selected" type="sap.ui.core/boolean" defaultValue="false">
+			<documentation>This property defines the select state of the list item when using single/Multi-Selection</documentation>
+		</property>
+		<property group="Misc" name="counter" type="sap.ui.core/int">
+			<documentation>Property sets a counter bubble with the integer given.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="tap">
+			<documentation>tap event</documentation>
+		</event>
+		<event name="detailTap">
+			<documentation>detail tap event</documentation>
+		</event>
+	</events>
+	<methods>
+		<method name="setSelected" type="sap.m/ListItemBase">
+			<documentation>sets the selction control to the given value </documentation>
+			<parameters>
+				<parameter name="select" type="sap.ui.core/boolean">
+					<documentation>set the select control to true/false</documentation>
+				</parameter>
+			</parameters>
+		</method>
+		<method name="isSelected" type="sap.ui.core/boolean">
+			<documentation>returns the state of the item selection as a boolean</documentation>
+		</method>
+	</methods>
+</control>

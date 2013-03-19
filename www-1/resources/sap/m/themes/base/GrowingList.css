@@ -1,0 +1,32 @@
+
+/* ============================================= */
+/* CSS for control sap.m/GrowingList.control */
+/* ============================================= */
+
+.sapMGrowingListTrigger,
+.sapMGrowingListLoading {
+	display: block;
+	text-align: center;	
+	overflow: hidden;
+}
+
+.sapMGrowingListBusyIndicator {
+	float: left;
+	overflow: hidden;
+	visibility: hidden;
+	width: 2.0em;
+	height: 2.0em;
+}
+
+.sapMGrowingListBusyIndicatorVisible {
+	visibility: visible;
+}
+
+.sapMGrowingListTitel {
+	margin-right: 3.0em;
+}
+
+.sapMGrowingListLoading > .sapMGrowingListBusyIndicator {
+	float: none;
+	visibility: visible;
+}

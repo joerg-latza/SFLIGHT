@@ -1,6 +1,143 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("jquery.sap.xml",false);(function(){jQuery.sap.parseXML=function parseXML(x){var X;if(window.DOMParser){var p=new DOMParser();try{X=p.parseFromString(x,"text/xml")}catch(e){var P=jQuery.sap.getParseError(X);X={};P.reason=e.message;X.parseError=P;return X}}else{X=new ActiveXObject("Microsoft.XMLDOM");X.async=false;X.loadXML(x)}var P=jQuery.sap.getParseError(X);if(P){if(!X.parseError){X.parseError=P}}return X};jQuery.sap.serializeXML=function serializeXML(x){var X="";if(window.ActiveXObject){X=x.xml}if(window.XMLSerializer){var s=new XMLSerializer();X=s.serializeToString(x)}return X};jQuery.sap.getParseError=function getParseError(d){var p={errorCode:-1,url:"",reason:"unknown error",srcText:"",line:-1,linepos:-1,filepos:-1};if(jQuery.browser.msie&&d&&d.parseError&&d.parseError.errorCode!=0){return d.parseError}if(jQuery.browser.mozilla&&d&&d.documentElement&&d.documentElement.tagName=="parsererror"){var e=d.documentElement.firstChild.nodeValue,r=/XML Parsing Error: (.*)\nLocation: (.*)\nLine Number (\d+), Column (\d+):(.*)/;if(r.test(e)){p.reason=RegExp.$1;p.url=RegExp.$2;p.line=parseInt(RegExp.$3,10);p.linepos=parseInt(RegExp.$4,10);p.srcText=RegExp.$5}return p}if(jQuery.browser.webkit&&d&&d.documentElement&&d.documentElement.tagName=="html"&&d.getElementsByTagName("parsererror").length>0){var e=jQuery.sap.serializeXML(d),r=/error on line (\d+) at column (\d+): ([^<]*)/;if(r.test(e)){p.reason=RegExp.$3;p.url="";p.line=parseInt(RegExp.$1,10);p.linepos=parseInt(RegExp.$2,10);p.srcText=""}return p}if(!d||!d.documentElement){return p}return{errorCode:0}}}());
+
+// Provides xml parsing and error checking functionality.
+jQuery.sap.declare("jquery.sap.xml", false);
+
+(function() {
+
+	/**
+	 * Parses the specified XML formatted string text using native parsing
+	 * function of the browser and returns a valid XML document. If an error
+	 * occurred during parsing a parse error object is returned as property (parseError) of the
+	 * returned XML document object. The parse error object has the following error
+	 * information parameters: errorCode, url, reason, srcText, line, linepos, filepos
+	 *
+	 * @param {string}
+	 *            sXMLText the XML data as string
+	 * @return {object} the parsed XML document with a parseError property as described in
+	 *         getParseError. An error occurred if the errorCode property of the parseError is != 0.
+	 * @public
+	 */
+	jQuery.sap.parseXML = function parseXML(sXMLText) {
+		var oXMLDocument;
+		if (window.DOMParser) {
+			var oParser = new DOMParser();
+			try {
+				oXMLDocument = oParser.parseFromString(sXMLText, "text/xml");
+			} catch (e) {
+				var oParseError = jQuery.sap.getParseError(oXMLDocument);
+				oXMLDocument = {};
+				oParseError.reason = e.message;
+				oXMLDocument.parseError = oParseError;
+				return oXMLDocument;
+			}
+		} else {
+			oXMLDocument = new ActiveXObject("Microsoft.XMLDOM");
+			oXMLDocument.async = false;
+			oXMLDocument.loadXML(sXMLText);
+		}
+		var oParseError = jQuery.sap.getParseError(oXMLDocument);
+		if (oParseError){
+			if (!oXMLDocument.parseError) {
+				oXMLDocument.parseError = oParseError;
+			}
+		}
+		return oXMLDocument;
+	};
+
+	/**
+	 * Serializes the specified XML document into a string representation.
+	 *
+	 * @param {string}
+	 *            oXMLDocument the XML document object to be serialized as string
+	 * @return {object} the serialized XML string
+	 * @public
+	 */
+	jQuery.sap.serializeXML = function serializeXML(oXMLDocument) {
+        var sXMLString = "";
+        if (window.ActiveXObject) {
+			sXMLString = oXMLDocument.xml;
+        }
+        if (window.XMLSerializer) {
+			var serializer = new XMLSerializer();
+			sXMLString = serializer.serializeToString(oXMLDocument);
+        }
+        return sXMLString;
+	};
+
+
+	/**
+	 * Extracts parse error information from the specified document (if any). If
+	 * an error was found the returned object has the following error
+	 * information parameters: errorCode, url, reason, srcText, line, linepos,
+	 * filepos
+	 *
+	 * @return oParseError if errors were found, or an object with an errorCode of 0 only
+	 * @private
+	 */
+	jQuery.sap.getParseError = function getParseError(oDocument) {
+		var oParseError = {
+			errorCode : -1,
+			url : "",
+			reason : "unknown error",
+			srcText : "",
+			line : -1,
+			linepos : -1,
+			filepos : -1
+		};
+
+		// IE
+		if (jQuery.browser.msie && oDocument && oDocument.parseError
+				&& oDocument.parseError.errorCode != 0) {
+			return oDocument.parseError;
+		}
+
+		// Firefox
+		if (jQuery.browser.mozilla && oDocument && oDocument.documentElement
+				&& oDocument.documentElement.tagName == "parsererror") {
+
+			var sErrorText = oDocument.documentElement.firstChild.nodeValue, rParserError = /XML Parsing Error: (.*)\nLocation: (.*)\nLine Number (\d+), Column (\d+):(.*)/;
+
+			if (rParserError.test(sErrorText)) {
+				oParseError.reason = RegExp.$1;
+				oParseError.url = RegExp.$2;
+				oParseError.line = parseInt(RegExp.$3, 10);
+				oParseError.linepos = parseInt(RegExp.$4, 10);
+				oParseError.srcText = RegExp.$5;
+
+			}
+			return oParseError;
+		}
+
+		// Safari
+		if (jQuery.browser.webkit && oDocument && oDocument.documentElement
+				&& oDocument.documentElement.tagName == "html"
+				&& oDocument.getElementsByTagName("parsererror").length > 0) {
+
+			var sErrorText = jQuery.sap.serializeXML(oDocument), rParserError = /error on line (\d+) at column (\d+): ([^<]*)/;
+
+			if (rParserError.test(sErrorText)) {
+				oParseError.reason = RegExp.$3;
+				oParseError.url = "";
+				oParseError.line = parseInt(RegExp.$1, 10);
+				oParseError.linepos = parseInt(RegExp.$2, 10);
+				oParseError.srcText = "";
+
+			}
+			return oParseError;
+		}
+
+		if (!oDocument || !oDocument.documentElement) {
+			return oParseError;
+		}
+
+		return	{
+				errorCode : 0
+			};
+	};
+
+}());

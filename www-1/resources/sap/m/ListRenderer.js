@@ -1,7 +1,135 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.m.ListRenderer");sap.m.ListRenderer={};
-sap.m.ListRenderer.render=function(r,c){if(!c.getVisible()){return}var I=c.getInset();r.write("<div");r.addClass("sapMList");if(I){r.addClass("sapMListInsetBG")}r.writeClasses();r.writeControlData(c);if(c.getWidth()){r.addStyle("width",c.getWidth());r.writeStyles()}r.write(">");if(c.getHeaderText()){r.write("<header");r.writeAttribute("id",c.getId()+"-listHeader");if(I)r.addClass("sapMListHdrInset");else r.addClass("sapMListHdr");r.writeClasses();r.write(">");r.writeEscaped(c.getHeaderText());r.write("</header>")}r.write("<ul");r.writeAttribute("id",c.getId()+"-listUl");r.addClass("sapMListUl");if(I){r.addClass("sapMListInset");if(c.getHeaderText()){r.addClass("sapMListInsetHdr")}if(c.getFooterText()){r.addClass("sapMListInsetFtr")}}r.writeClasses();r.write(">");if(c._mode!=sap.m.ListMode.None&&c._mode!=c.getMode()){c._removeCurrentSelection()}c._mode=c.getMode();if(c._mode==sap.m.ListMode.SingleSelectMaster){c.setIncludeItemInSelection(true)}var a=c.getItems();for(var i=0;i<a.length;i++){a[i]._mode=c.getMode();a[i]._includeItemInSelection=c.getIncludeItemInSelection();a[i]._select=c._select;a[i]._delete=c._delete;a[i]._listId=c.getId();a[i]._showUnread=c.getShowUnread();r.renderControl(a[i])}if(a.length<=0&&c.getShowNoData()){var R=sap.ui.getCore().getLibraryResourceBundle("sap.m");if(!c.getNoDataText()){c.setNoDataText(R.getText("LIST_NO_DATA"))}r.write("<li class='sapMListNoData'>");r.writeEscaped(c.getNoDataText());r.write("</li>")}r.write("</ul>");if(this.renderGrowingListContent){this.renderGrowingListContent(r,c)}if(c.getFooterText()){r.write("<footer");r.writeAttribute("id",c.getId()+"-listFooter");if(I)r.addClass("sapMListFtrInset");else r.addClass("sapMListFtr");r.writeClasses();r.write(">");r.writeEscaped(c.getFooterText());r.write("</footer>")}r.write("</div>")};
+
+jQuery.sap.declare("sap.m.ListRenderer");
+
+/**
+ * @class List renderer.
+ * @static
+ */
+sap.m.ListRenderer = {};
+
+/**
+ * Renders the HTML for the given control, using the provided
+ * {@link sap.ui.core.RenderManager}.
+ * 
+ * @param {sap.ui.core.RenderManager}
+ *          oRenderManager the RenderManager that can be used for writing to the
+ *          Render-Output-Buffer
+ * @param {sap.ui.core.Control}
+ *          oControl an object representation of the control that should be
+ *          rendered
+ */
+sap.m.ListRenderer.render = function(rm, oControl) {
+	// return immediately if control is invisible
+	if (!oControl.getVisible()) {
+		return;
+	}
+
+	var bInset = oControl.getInset();
+	
+	rm.write("<div");
+	rm.addClass("sapMList");
+	if(bInset){
+		rm.addClass("sapMListInsetBG");
+	}
+	rm.writeClasses();
+	rm.writeControlData(oControl);
+	if (oControl.getWidth()) {
+		rm.addStyle("width", oControl.getWidth());
+		rm.writeStyles();
+	}
+	rm.write(">");
+
+	// header
+	if (oControl.getHeaderText()) {
+		rm.write("<header");
+		rm.writeAttribute("id", oControl.getId() + "-listHeader");
+		if (bInset)
+			rm.addClass("sapMListHdrInset");
+		else
+			rm.addClass("sapMListHdr");
+		rm.writeClasses();
+		rm.write(">");
+		rm.writeEscaped(oControl.getHeaderText());
+		rm.write("</header>");
+	}
+
+	rm.write("<ul");
+	rm.writeAttribute("id", oControl.getId() + "-listUl");
+	// no header or footer no div
+	rm.addClass("sapMListUl");
+
+	if (bInset) {
+		rm.addClass("sapMListInset");
+		if (oControl.getHeaderText()) {
+			rm.addClass("sapMListInsetHdr");
+		}
+		if (oControl.getFooterText()) {
+			rm.addClass("sapMListInsetFtr");
+		}
+	}
+	rm.writeClasses();
+	rm.write(">");
+
+	// check if selection mode has changed - remove current selection
+	if (oControl._mode != sap.m.ListMode.None && oControl._mode != oControl.getMode()) {
+		oControl._removeCurrentSelection();
+	}
+	
+	// set new current selection mode
+	oControl._mode = oControl.getMode();
+
+	if(oControl._mode == sap.m.ListMode.SingleSelectMaster){
+		oControl.setIncludeItemInSelection(true);
+	}
+
+	// render child controls
+	var aItems = oControl.getItems();
+	for ( var i = 0; i < aItems.length; i++) {
+		aItems[i]._mode = oControl.getMode();
+		aItems[i]._includeItemInSelection = oControl.getIncludeItemInSelection();
+		aItems[i]._select = oControl._select;
+		aItems[i]._delete = oControl._delete;
+		aItems[i]._listId = oControl.getId();
+		aItems[i]._showUnread = oControl.getShowUnread();
+		rm.renderControl(aItems[i]);
+	}
+	
+	if(aItems.length <= 0 && oControl.getShowNoData())
+	{
+		var oRB = sap.ui.getCore().getLibraryResourceBundle("sap.m");
+		if(!oControl.getNoDataText()){
+			oControl.setNoDataText(oRB.getText("LIST_NO_DATA"));
+		}
+		rm.write("<li id="+ oControl.getId() + "-listNoData" +" class='sapMListNoData'>");
+		rm.writeEscaped(oControl.getNoDataText());
+		rm.write("</li>");
+	}
+	
+	rm.write("</ul>");
+
+	// growing list render hook
+	if (this.renderGrowingListContent) {
+		this.renderGrowingListContent(rm, oControl);
+	}
+	
+	// footer
+	if (oControl.getFooterText()) {
+		rm.write("<footer");
+		rm.writeAttribute("id", oControl.getId() + "-listFooter");
+		if (bInset)
+			rm.addClass("sapMListFtrInset");
+		else
+			rm.addClass("sapMListFtr");
+		rm.writeClasses();
+		rm.write(">");
+		rm.writeEscaped(oControl.getFooterText());
+		rm.write("</footer>");
+	}
+
+	rm.write("</div>");
+};

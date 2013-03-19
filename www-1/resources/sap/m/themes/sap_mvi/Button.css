@@ -1,0 +1,480 @@
+/* ********* */
+/* MVI Theme */
+/* ********* */
+
+
+@sapMButtonText: lighten(@sapUiText,20);
+@sapMButtonTextDisabled: lighten(@sapUiText,50);
+
+.sapMButton-box-shadow (@color1:#000, @color2:#000) {
+	box-shadow: inset 0 .0625em 1px @color1, inset 0 .0625em 1px @color2;
+	-webkit-box-shadow:inset 0 .0625em 1px @color1, inset 0 .0625em 1px @color2;
+}
+
+.sapMButton-border-radius(@radius:.625em) {
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+/*
+ * ----------------------------------------
+ * Button
+ * ----------------------------------------
+*/
+.sapMBtn {
+	border: none;
+	border-radius: .1em;	
+	-webkit-border-radius: .1em;
+	color: @sapMButtonText;
+	font-size: 1.0em;
+	height: 3.0em;
+	line-height: 3.0em;
+	font-family: @sapUiFontFamily;
+}
+
+.sapMBtn:focus {
+	outline: none;
+}
+
+.sapMBtnCustomIcon {
+	height: 2.0em;
+}
+
+.sapMBtn:active, .sapMBtn.sapMBtnActive {
+	background-color: lighten(@sapUiActive,4);
+	color: @sapUiTextInverted;
+	.sapMButton-box-shadow(lighten(desaturate(@sapUiActive,34),16), darken(spin(@sapUiActive,354),8));
+}
+
+.sapMBtnDisabled,
+.sapMBtnDisabled:active,
+.sapMBtnBackDisabled, 
+.sapMBtnBackDisabled:active,
+.sapMBtnUpDisabled, 
+.sapMBtnUpDisabled:active {
+	background-color: lighten(@sapUiButton,9.3);
+	color: @sapMButtonText; /* color: lighten(@sapUiText,20); */
+	cursor: default;
+	.sapMButton-box-shadow(lighten(@sapUiButton,5.3), darken(@sapUiButton,27));
+}
+
+.sapMBtnDefault,
+.sapMBtnAccept,
+.sapMBtnReject,
+.sapMBtnBack,
+.sapMBtnUp {
+	background-color: @sapUiButton; /* #ddd */
+	.sapMButton-box-shadow(lighten(@sapUiButton,20), darken(@sapUiButton,27));
+}
+
+.sapMBtnUp {
+	min-width: 1.25em;
+}
+
+.sapMBtnTransparent {
+	background: transparent;
+	color: @sapMButtonText;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+/*
+ * ----------------------------------------
+ * Button [iOS]
+ * ----------------------------------------
+*/
+.sap-ios .sapMBtn {
+	border: solid .2px darken(@sapUiButton,27); /* #999   TODO: maybe need border colors for here? */
+	.sapMButton-border-radius(.625em);
+	font-weight: bold;
+	height: 2.75em;
+	line-height: 2.75em;	
+	text-shadow: 0 .0625em 0 lighten(@sapUiButton,20);
+}
+
+.sap-ios .sapMBtn:active, .sap-ios .sapMBtn.sapMBtnActive {
+	background-image: -webkit-linear-gradient(top, darken(spin(@sapUiActive,4),8) 0%, darken(spin(@sapUiActive,4),5) 65%, darken(@sapUiActive,3) 100%);
+	color: @sapUiTextInverted;
+	text-shadow: 0 .0625em 0 darken(@sapUiButton,39);
+	.sapMButton-box-shadow(darken(spin(@sapUiActive,4),8), darken(spin(@sapUiActive,4),23));
+}
+
+.sap-ios .sapMBtnDisabled,
+.sap-ios .sapMBtnDisabled:active {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 65%, @sapUiButton 100%);
+	color: @sapMButtonTextDisabled;
+	text-shadow: 0 .0625em 0 darken(@sapUiButton,9);
+	.sapMButton-box-shadow(darken(@sapUiButton,3), darken(@sapUiButton,3));
+}
+
+.sap-ios .sapMBtnDefault {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 100%);
+	.sapMButton-box-shadow(darken(@sapUiButton,3), lighten(@sapUiButton,7));
+}
+
+.sap-ios .sapMBtnAccept {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButtonAccept,8) 0%, lighten(@sapUiButtonAccept,2) 65%, spin(@sapUiButtonAccept,4) 100%); // TODO: really spin??
+	color: @sapUiTextInverted;
+	text-shadow: 0 .0625em 0 darken(@sapUiButton,39);
+	.sapMButton-box-shadow(lighten(@sapUiButtonAccept,29), darken(@sapUiButtonAccept,12));
+}
+
+.sap-ios .sapMBtnReject {
+	background-image: -webkit-linear-gradient(top, @sapUiButtonReject 0%, darken(@sapUiButtonReject,11) 65%, darken(@sapUiButtonReject,11) 100%);
+	color: @sapUiTextInverted;
+	text-shadow: 0 .0625em 0 darken(@sapUiButton,39);
+	.sapMButton-box-shadow(lighten(@sapUiButtonReject,15), darken(@sapUiButtonReject,5));
+}
+
+.sap-ios .sapMBtnBack {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 100%);
+  -webkit-border-top-left-radius: 0.625em 0.9375em;
+  -webkit-border-bottom-left-radius: 0.625em 0.9375em;	
+	margin-left: 1.0em;
+	.sapMButton-box-shadow(darken(@sapUiButton,3), lighten(@sapUiButton,7));
+}
+
+.sap-ios .sapMBtnBack:before {
+	background-image: -webkit-linear-gradient(top right, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 100%);
+	border: solid .2px darken(@sapUiButton,27);
+  -webkit-border-top-right-radius: 6.25em 2.5em;
+  -webkit-border-top-left-radius: 1.875em 0.125em;
+  -webkit-border-bottom-right-radius: 0.125em 1.875em;
+  -webkit-border-bottom-left-radius: 2.5em 6.25em;
+	float: left;
+	content: "";
+	display: block;
+	height: 2.125em;
+	margin-left: -2.375em;
+	padding: 0;
+	width: 2.375em;
+	.sapMButton-box-shadow(darken(@sapUiButton,3), lighten(@sapUiButton,7));
+	-webkit-transform: translate(1.0em, 0.3em) rotate(-45deg) skew(-10deg, -10deg);
+	-webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.5, #000000), color-stop(0.5, transparent), to(transparent) );
+}
+
+.sap-ios .sapMBtnBack:active:before {
+	background-image: -webkit-linear-gradient(top right, darken(spin(@sapUiActive,4),8) 0%, darken(spin(@sapUiActive,4),5) 65%, darken(@sapUiActive,3) 100%);
+	.sapMButton-box-shadow(darken(spin(@sapUiActive,4),8), darken(spin(@sapUiActive,4),23));
+}
+
+.sap-ios .sapMBtnBackDisabled,
+.sap-ios .sapMBtnBackDisabled:active {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 65%, @sapUiButton 100%);
+	color: @sapMButtonTextDisabled;
+  -webkit-border-top-left-radius: 0.625em 0.9375em;
+  -webkit-border-bottom-left-radius: 0.625em 0.9375em;		
+	cursor: default;
+	margin-left: 1.0em;
+	text-shadow: 0 .0625em 0 darken(@sapUiButton,9);
+	.sapMButton-box-shadow(darken(@sapUiButton,3), darken(@sapUiButton,3));
+}
+
+.sap-ios .sapMBtnBackDisabled:before {
+	background-image: -webkit-linear-gradient(top right, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 65%, @sapUiButton 100%);
+	border: solid .2px darken(@sapUiButton,47);
+  -webkit-border-top-right-radius: 6.25em 2.5em;
+  -webkit-border-top-left-radius: 1.875em 0.125em;
+  -webkit-border-bottom-right-radius: 0.125em 1.875em;
+  -webkit-border-bottom-left-radius: 2.5em 6.25em;
+	float: left;
+	content: "";
+	display: block;
+	height: 2.125em;
+	margin-left: -2.385em;
+	padding: 0;
+	width: 2.375em;
+	.sapMButton-box-shadow(darken(@sapUiButton,3), darken(@sapUiButton,3));
+	-webkit-transform: translate(1.0em, 0.3em) rotate(-45deg) skew(-10deg, -10deg);
+	-webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.5, #000000), color-stop(0.5, transparent), to(transparent) );
+}
+
+.sap-ios .sapMBtnUp {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButton,20) 0%, lighten(@sapUiButton,7) 100%);
+	border: solid .2px darken(@sapUiButton,47);
+	.sapMButton-border-radius(.625em);	
+	font-weight: bold;
+	.sapMButton-box-shadow(darken(@sapUiButton,3), lighten(@sapUiButton,7));
+}
+
+/*
+ * ----------------------------------------
+ * Button BAR-control styles
+ * ----------------------------------------
+*/
+.sapMBar-CTX .sapMBtnContent > img {
+	margin: 0.5em 0.125em;
+}
+
+.sapMBar-CTX .sapMBtnContentSpan {
+	margin-left: 0.313em;
+}
+
+.sapMBar-CTX .sapMBtn {
+	.sapMButton-border-radius(.1em);	
+	margin: 0;
+	margin-right: 0.5em;
+	height: 3.0em;
+	line-height: 3.0em;	
+	padding: 0 .5em;
+	min-width: 2.0em;
+	font-size: 1.0em;
+}
+
+.sapMBar-CTX .sapMBtn:active,
+.sapMBar.sapMHeader-CTX .sapMBtn:active,
+.sapMBar.sapMFooter-CTX .sapMBtn:active,
+.sapMBar-CTX .sapMBtn.sapMBtnActive,
+.sapMBar.sapMHeader-CTX .sapMBtn.sapMBtnActive,
+.sapMBar.sapMFooter-CTX .sapMBtn.sapMBtnActive {
+	background-color: @sapUiBarHeading;
+	color: @sapUiBarText;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.sapMBar-CTX .sapMBtnDisabled,
+.sapMBar-CTX .sapMBtnDisabled:active,
+.sapMBar-CTX .sapMBtnDisabled.sapMBtnActive,
+.sapMBar-CTX .sapMBtnBackDisabled,
+.sapMBar-CTX .sapMBtnBackDisabled:active,
+.sapMBar-CTX .sapMBtnBackDisabled.sapMBtnActive,
+.sapMBar-CTX .sapMBtnUpDisabled,
+.sapMBar-CTX .sapMBtnUpDisabled:active,
+.sapMBar-CTX .sapMBtnUpDisabled.sapMBtnActive,
+.sapMBar.sapMHeader-CTX .sapMBtnDisabled,
+.sapMBar.sapMHeader-CTX .sapMBtnDisabled:active,
+.sapMBar.sapMHeader-CTX .sapMBtnDisabled.sapMBtnActive,
+.sapMBar.sapMHeader-CTX .sapMBtnBackDisabled,
+.sapMBar.sapMHeader-CTX .sapMBtnBackDisabled:active,
+.sapMBar.sapMHeader-CTX .sapMBtnBackDisabled.sapMBtnActive,
+.sapMBar.sapMHeader-CTX .sapMBtnUpDisabled,
+.sapMBar.sapMHeader-CTX .sapMBtnUpDisabled:active,
+.sapMBar.sapMHeader-CTX .sapMBtnUpDisabled.sapMBtnActive,
+.sapMBar.sapMFooter-CTX .sapMBtnDisabled,
+.sapMBar.sapMFooter-CTX .sapMBtnDisabled:active,
+.sapMBar.sapMFooter-CTX .sapMBtnDisabled.sapMBtnActive,
+.sapMBar.sapMFooter-CTX .sapMBtnBackDisabled,
+.sapMBar.sapMFooter-CTX .sapMBtnBackDisabled:active,
+.sapMBar.sapMFooter-CTX .sapMBtnBackDisabled.sapMBtnActive,
+.sapMBar.sapMFooter-CTX .sapMBtnUpDisabled,
+.sapMBar.sapMFooter-CTX .sapMBtnUpDisabled:active,
+.sapMBar.sapMFooter-CTX .sapMBtnUpDisabled.sapMBtnActive {
+	background: transparent;
+	color: darken(@sapUiBarText,40);
+	cursor: default;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	opacity: 0.5;	
+}
+
+.sapMBar-CTX .sapMBtnDefault,
+.sapMBar-CTX .sapMBtnAccept,
+.sapMBar-CTX .sapMBtnReject,
+.sapMBar-CTX .sapMBtnTransparent,
+.sapMBar-CTX .sapMBtnBack,
+.sapMBar-CTX .sapMBtnUp {
+	background: transparent;
+	color: darken(@sapUiBarText,80);
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.sapMBar.sapMHeader-CTX .sapMBtnDefault,
+.sapMBar.sapMHeader-CTX .sapMBtnAccept,
+.sapMBar.sapMHeader-CTX .sapMBtnReject,
+.sapMBar.sapMHeader-CTX .sapMBtnTransparent,
+.sapMBar.sapMHeader-CTX .sapMBtnBack,
+.sapMBar.sapMHeader-CTX .sapMBtnUp,
+.sapMBar.sapMFooter-CTX .sapMBtnDefault,
+.sapMBar.sapMFooter-CTX .sapMBtnAccept,
+.sapMBar.sapMFooter-CTX .sapMBtnReject,
+.sapMBar.sapMFooter-CTX .sapMBtnTransparent,
+.sapMBar.sapMFooter-CTX .sapMBtnBack,
+.sapMBar.sapMFooter-CTX .sapMBtnUp {
+	background: transparent;
+	color: @sapUiBarText;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.sapMBar-CTX .sapMBtnUp {
+	min-width: 1.25em;
+}
+
+
+/*
+ * ----------------------------------------
+ * Button BAR-control styles [iOS]
+ * ----------------------------------------
+ */
+ .sap-ios .sapMBar-CTX .sapMBtnContent {
+	font-size: .75em;
+}
+
+ .sap-ios .sapMBar-CTX .sapMBtnContent > img {
+	margin: 0.25em 0.125em 0.25em 0.125em;
+	vertical-align: top;
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnContentSpan {
+	margin-left: 0.313em;
+}
+
+.sap-ios .sapMBar-CTX .sapMBtn {
+	border: solid .2px darken(@sapUiBarButton,9);
+	.sapMButton-border-radius(.3125em);	
+	font-weight: bold;
+	margin-top: .4375em;
+	margin-right: .625em;	
+	height: 1.875em;
+	line-height: 1.875em;	
+	padding: 0 .625em;	
+	text-shadow: 0 -.0625em 0 darken(@sapUiBarButton,24);
+	color: @sapUiBarText;
+}
+
+.sap-ios .sapMBar-CTX .sapMBtn:active,
+.sap-ios .sapMBar-CTX .sapMBtn.sapMBtnActive,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtn:active,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtn.sapMBtnActive {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,2) 0%, darken(@sapUiBarButton,8) 50%, darken(@sapUiBarButton,23) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnDisabled,
+.sap-ios .sapMBar-CTX .sapMBtnDisabled:active {
+	opacity: 0.5;
+}
+
+.sap-ios .sapMBar-CTX .sapMBtn,
+.sap-ios .sapMBar-CTX .sapMBtnDisabled,
+.sap-ios .sapMBar-CTX .sapMBtnDisabled:active,
+.sap-ios .sapMBar-CTX .sapMBtnBackDisabled,
+.sap-ios .sapMBar-CTX .sapMBtnBackDisabled:active {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));
+	color: @sapUiBarText;
+}
+
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnDefault,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnDisabled,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnDisabled:active,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnUpDisabled,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnUpDisabled:active,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnBackDisabled,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnBackDisabled:active {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,42) 0%, lighten(@sapUiBarButton,20) 50%, lighten(@sapUiBarButton,10) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,1), lighten(@sapUiBarButton,29));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnAccept {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiButtonAccept,8) 0%, lighten(@sapUiButtonAccept,2) 65%, spin(@sapUiButtonAccept,4) 100%); // TODO: really spin??
+	.sapMButton-box-shadow(lighten(@sapUiButtonAccept,29), darken(@sapUiButtonAccept,12));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnReject {
+	background-image: -webkit-linear-gradient(top, @sapUiButtonReject 0%, darken(@sapUiButtonReject,11) 50%, darken(@sapUiButtonReject,17) 50%);
+	.sapMButton-box-shadow(darken(@sapUiButtonReject,23), lighten(desaturate(@sapUiButtonReject,26),9));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnBack {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+  -webkit-border-top-left-radius: 0.625em 0.9375em;
+  -webkit-border-bottom-left-radius: 0.625em 0.9375em;
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));
+	margin-left: .875em;
+	padding-left: .3125em;
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnBack > .sapMBtnContent,
+.sap-ios .sapMBar-CTX .sapMBtnBackDisabled > .sapMBtnContent {
+	margin-left: 0.5em;
+}
+
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnBack {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,42) 0%, lighten(@sapUiBarButton,20) 50%, lighten(@sapUiBarButton,10) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,1), lighten(@sapUiBarButton,29));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnBack:before,
+.sap-ios .sapMBar-CTX .sapMBtnBackDisabled:before {
+	background-image: -webkit-linear-gradient(top right, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+	border: none;
+  -webkit-border-top-right-radius: 6.25em 2.5em;
+  -webkit-border-top-left-radius: 1.875em 0.125em;
+  -webkit-border-bottom-right-radius: 0.125em 1.875em;
+  -webkit-border-bottom-left-radius: 2.5em 6.25em;
+	float: left;
+	content: "";
+	display: block;
+	height: 1.375em;
+	margin-left: -1.825em;
+	padding: 0;
+	width: 1.375em;
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));
+	-webkit-transform: translate(1.1875em, 0.25em) rotate(-45deg) skew(-10deg, -10deg);
+}
+
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnBack:before,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnBackDisabled:before {
+	background-image: -webkit-linear-gradient(top right, lighten(@sapUiBarButton,42) 0%, lighten(@sapUiBarButton,20) 50%, lighten(@sapUiBarButton,10) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,1), lighten(@sapUiBarButton,29));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnBack:active:before,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnBack:active:before {
+	background-image: -webkit-linear-gradient(top right, lighten(@sapUiBarButton,2) 0%, darken(@sapUiBarButton,8) 50%, darken(@sapUiBarButton,23) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));	
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnBackDisabled,
+.sap-ios .sapMBar-CTX .sapMBtnBackDisabled:active {
+	opacity: 0.5;
+	margin-left: .875em;
+	padding-left: .3125em;
+  -webkit-border-top-left-radius: 0.625em 0.9375em;
+  -webkit-border-bottom-left-radius: 0.625em 0.9375em;	
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnUp {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));
+	margin-left: 0.5em;	
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnUpDisabled,
+.sap-ios .sapMBar-CTX .sapMBtnUpDisabled:active {
+	opacity: 0.5;
+	color: @sapUiBarText;	
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,22) 0%, @sapUiBarButton 50%, darken(@sapUiBarButton,9) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,29), lighten(@sapUiBarButton,2));
+	margin-left: 0.5em;	
+}
+
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnUp {
+	background-image: -webkit-linear-gradient(top, lighten(@sapUiBarButton,42) 0%, lighten(@sapUiBarButton,20) 50%, lighten(@sapUiBarButton,10) 50%);
+	.sapMButton-box-shadow(darken(@sapUiBarButton,1), lighten(@sapUiBarButton,29));
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnTransparent,
+.sap-ios .sapMBar-CTX .sapMBtnIcon,
+.sap-ios .sapMBar-CTX .sapMBtnIconDisabled,
+.sap-ios .sapMBar-CTX .sapMBtnIconDisabled:active,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnTransparent,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnIcon,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnIconDisabled,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnIconDisabled:active {
+	background: transparent;
+	border: none;
+	text-shadow: 0 -.0625em 0 darken(@sapUiBarButton,24);	
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.sap-ios .sapMBar-CTX .sapMBtnIcon:active,
+.sap-ios .sapMBar-CTX:not(.sapMHeader-CTX) .sapMBtnIcon:active {
+	background: -webkit-radial-gradient(center, circle contain, fade(@sapUiBarText,60%) 30%, fade(@sapUiBarText,5%) 99%, transparent 100%);
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}

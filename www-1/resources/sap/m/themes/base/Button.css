@@ -1,0 +1,40 @@
+/* ============================================= */
+/* CSS for control sap.m/Button.control */
+/* ============================================= */
+.sapMBtn {
+	-webkit-appearance: none;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	cursor: pointer;
+	height: 2.75em;
+	line-height: 2.75em;
+	margin: .125em 0 .125em 0;
+	min-width: 2.75em;
+	padding: 0 .625em 0 .625em;
+	text-align: center;
+	-webkit-user-select: none;
+}
+
+.sapMBtnContent {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.sapMBtnContent > img {
+	margin: 0.35em 0.125em;
+	vertical-align: top;
+}
+
+.sapMBtnContentSpan {
+	margin-left: 0.313em;
+	margin-right: 0.313em;
+}
+
+.sapMBtnDisabled {
+	cursor: default;
+}

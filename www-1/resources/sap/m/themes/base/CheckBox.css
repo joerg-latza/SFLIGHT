@@ -1,0 +1,35 @@
+
+/* ============================================= */
+/* CSS for control sap.m/CheckBox.control */
+/* ============================================= */
+
+.sapMCb {
+	display: inline-block;
+	position: relative;
+}
+
+.sapMCbBg {
+	height: 2em;
+	width: 2em;
+	position: relative;
+	display: inline-block;
+	top: 0.7em;
+}
+
+.sapMCbBg > .sapMCbMark {
+	font-size: inherit;
+}
+
+.sapMCbMark.sapMCbMarkChecked:before {
+	content:"\2714";
+}
+
+.sapMLIB-CTX .sapMCb {
+	height: 3em;
+	width: 3em;
+}
+
+.sapMLIB-CTX .sapMCbBg {
+	top: 0.5em;
+	left: 0.5em;
+}

@@ -1,7 +1,98 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.m.SwitchRenderer");sap.m.SwitchRenderer={};
-sap.m.SwitchRenderer.render=function(r,s){var S=s.getState(),a=S?s._sOn:s._sOff,e=s.getEnabled();if(!s.getVisible()){return}r.write('<div');r.addClass("sapMSwtCont");if(!e){r.addClass("sapMSwtContDisabled")}r.writeClasses();r.writeControlData(s);r.write(">");r.write("<div");r.addClass("sapMSwt");S?r.addClass("sapMSwtOn"):r.addClass("sapMSwtOff");if(!e){r.addClass("sapMSwtDisabled")}r.writeClasses();r.write('>');if(jQuery.os.ios){r.write('<div class="sapMSwtTextOn">');r.write("<span>");r.writeEscaped(s._sOn);r.write("</span>");r.write("</div>");r.write('<div class="sapMSwtTextOff">');r.write("<span>");r.writeEscaped(s._sOff);r.write("</span>");r.write("</div>")}r.write('<input type="checkbox"');if(s.getName()!==""){r.writeAttributeEscaped("name",s.getName())}r.writeAttribute("id",s.getId()+"-input");if(S){r.writeAttribute("checked","checked")}if(!e){r.writeAttribute("disabled","disabled")}r.writeAttribute("value",a);r.write("/>");r.write('<div class="sapMSwtBtn"');if(sap.m.Switch._bAndroidStyle){r.writeAttribute("data-sap-ui-swt",a)}r.write("></div>");r.write("</div>");r.write("</div>")};
+
+jQuery.sap.declare("sap.m.SwitchRenderer");
+
+/**
+ * @class Switch renderer.
+ * @static
+ */
+sap.m.SwitchRenderer = {};
+
+/**
+ * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
+ *
+ * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the Render-Output-Buffer
+ * @param {sap.ui.core.Control} oSwt an object representation of the control that should be rendered
+ */
+sap.m.SwitchRenderer.render = function(oRm, oSwt) {
+	var bState = oSwt.getState(),
+		sState = bState ? oSwt._sOn : oSwt._sOff,
+		bEnabled = oSwt.getEnabled();
+
+	// avoid render when not visible
+	if (!oSwt.getVisible()) {
+		return;
+	}
+
+	oRm.write('<div');
+	oRm.addClass("sapMSwtCont");
+
+	if (!bEnabled) {
+		oRm.addClass("sapMSwtContDisabled");
+	}
+
+	oRm.writeClasses();
+	oRm.writeControlData(oSwt);
+	oRm.write(">");
+
+		oRm.write("<div");
+		oRm.addClass("sapMSwt");
+
+		bState ? oRm.addClass("sapMSwtOn") : oRm.addClass("sapMSwtOff");
+
+		if (!bEnabled) {
+			oRm.addClass("sapMSwtDisabled");
+		}
+
+		oRm.writeClasses();
+		oRm.write('>');
+
+			// start: render some extra HTML for iOS
+			if (jQuery.os.ios) {
+				oRm.write('<div class="sapMSwtTextOn">');
+					oRm.write("<span>");
+						oRm.writeEscaped(oSwt._sOn);
+					oRm.write("</span>");
+				oRm.write("</div>");
+
+				oRm.write('<div class="sapMSwtTextOff">');
+					oRm.write("<span>");
+						oRm.writeEscaped(oSwt._sOff);
+					oRm.write("</span>");
+				oRm.write("</div>");
+			}
+			// end: render some extra HTML for iOS
+
+			oRm.write('<input type="checkbox"');
+
+			if (oSwt.getName() !== "") {
+				oRm.writeAttributeEscaped("name", oSwt.getName());
+			}
+
+			oRm.writeAttribute("id", oSwt.getId() + "-input");
+
+			if (bState) {
+				oRm.writeAttribute("checked", "checked");
+			}
+
+			if (!bEnabled) {
+				oRm.writeAttribute("disabled", "disabled");
+			}
+
+			oRm.writeAttribute("value", sState);
+			oRm.write("/>");
+			oRm.write('<div class="sapMSwtBtn"');
+
+			if (sap.m.Switch._bAndroidStyle) {
+				oRm.writeAttribute("data-sap-ui-swt", sState);
+			}
+
+			oRm.write("></div>");
+
+		oRm.write("</div>");
+	oRm.write("</div>");
+};

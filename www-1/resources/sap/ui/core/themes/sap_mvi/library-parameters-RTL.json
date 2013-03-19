@@ -69,7 +69,7 @@
 "sapUiTextSelection":"#ffffff",
 "sapUiTextfieldBackground":"#ffffff",
 "sapUiLineHeight":"21px",
-"sapUiFontFamily":"'Helvetica Neue',Roboto,'Droid Sans','BBGlobal Sans',Helvetica,Arial,sans-serif",
+"sapUiFontFamily":"'Helvetica Neue',Roboto,'Droid Sans','BBGlobal Sans','Segoe WP',Helvetica,Arial,sans-serif",
 "sapUiFontMonospaceFamily":"Lucida Console",
 "sapUiFontSize":"16px",
 "sapUiFontLargeSize":"large",
@@ -129,5 +129,11 @@
 "sapUiBarBG":"#000000",
 "sapUiBarText":"#ffffff",
 "sapUiBarHeading":"#f0ab00",
-"sapUiListDarkBG":"#dedede"
-}
+"sapUiListDarkBG":"#dedede",
+"sapUiLocalBusyIndicatorBG":"rgba(247, 247, 247, 0.72)",
+"sapUiLocalBusyIndicatorBG_IE":"#f7f7f7",
+"sapUiLocalBusyIndicatorBoxSize":"8px",
+"sapUiLocalBusyIndicatorBoxColor":"#999999",
+"sapUiLocalBusyIndicatorBoxColorActive":"#000000",
+"sapUiLocalBusyIndicatorBoxTransitionDuration":"380ms"
+,"sap.ui.core.LocalBusyIndicator:sapUiLocalBusyIndicatorBG":"rgba(247, 247, 247, 0.72)","sap.ui.core.LocalBusyIndicator:sapUiLocalBusyIndicatorBG_IE":"#f7f7f7","sap.ui.core.LocalBusyIndicator:sapUiLocalBusyIndicatorBoxSize":"8px","sap.ui.core.LocalBusyIndicator:sapUiLocalBusyIndicatorBoxColor":"#999999","sap.ui.core.LocalBusyIndicator:sapUiLocalBusyIndicatorBoxColorActive":"#000000","sap.ui.core.LocalBusyIndicator:sapUiLocalBusyIndicatorBoxTransitionDuration":"380ms"}

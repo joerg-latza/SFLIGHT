@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>SearchField</name>
+	<author>SAP AG</author>
+	<documentation>Enables users to input a search string.</documentation>
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Data" name="value" type="sap.ui.core/string" bindable="bindable">
+			<documentation>Input Value.</documentation>
+		</property>
+		<property group="Appearance" name="width" type="sap.ui.core/CSSSize">
+			<documentation>Defines the width of the input.</documentation>
+		</property>
+		<property group="Behavior" name="enabled" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Boolean property to enable the control (default is true). </documentation>
+		</property>
+		<property group="Appearance" name="visible" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Invisible inputs are not rendered.</documentation>
+		</property>
+		<property name="maxLength" type="sap.ui.core/int" defaultValue="0" group="Behavior">
+			<documentation>Maximum number of characters. Value '0' means the feature is switched off.</documentation>
+		</property>
+		<property group="Misc" name="placeholder" type="sap.ui.core/string">
+			<documentation>Text shown when no value available.</documentation>
+		</property>
+		<property group="Misc" name="showMagnifier" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Set to false to hide the magnifier icon.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="search">
+			<documentation>Event which is fired when the user triggers a search.</documentation>
+			<parameters>
+				<parameter name="query" type="sap.ui.core/string">
+					<documentation>The search query string.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+		<event name="liveChange" since="1.9.1">
+			<documentation>This event is fired when the value of the search field is changed by a user - e.g. at each key press.</documentation>
+			<parameters>
+				<parameter name="newValue" type="sap.ui.core/string">
+					<documentation>Current search string.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+</control>

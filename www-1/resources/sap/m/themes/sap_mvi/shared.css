@@ -1,0 +1,4 @@
+html[data-sap-ui-os^="Android2"] body>.sapUiView,
+html[data-sap-ui-os^="Android3"] body>.sapUiView {
+	display: block;
+}

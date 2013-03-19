@@ -1,0 +1,78 @@
+/* Global CSS for 'sap_hcb' theme */
+// central colors
+// Brand Colors
+@sapUiHighlight: #7A5100;
+
+// Base Colors
+@sapUiBase: #FFFFFF;
+@sapUiBaseBG: #000000;
+
+// Background Colors
+// Grayscale Backgrounds
+@sapUiWhite: #000000;
+@sapUiExtraLightBG: @sapUiBaseBG;
+@sapUiLightBG: @sapUiHighlight;
+@sapUiMediumBG: @sapUiLightBG;
+@sapUiDarkBG: @sapUiLightBG;
+@sapUiDeepBG: #FFFFFF;
+@sapUiBlackBG: #FFFFFF;
+
+// Button Background Colors
+@sapUiButtonStandardBG: @sapUiBaseBG;
+@sapUiButtonEmphasizedBG: @sapUiButtonStandardBG;
+@sapUiButtonNegativeBG: @sapUiButtonStandardBG;
+@sapUiButtonPositiveBG: @sapUiButtonStandardBG;
+
+// Semantic Background Colors
+@sapUiErrorBG: #AA0000;
+@sapUiWarningBG: #CCAA00;
+@sapUiReadOnlyBG: #585858;
+
+// Link
+@sapUiLink: @sapUiText;
+
+// Semantic Text Colors
+@sapUiPositiveText: #00AA00;
+
+// Grayscale Borders
+@sapUiExtraLightBorder: @sapUiBaseBorder;
+@sapUiLightBorder: @sapUiBaseBorder;
+
+// Semantic Border Colors
+@sapUiWarningBorder: @sapUiBaseBorder;
+
+// Table Colors
+@sapUiTableRowBG: #000000;
+@sapUiTableRowAlternatingBG: #444444;
+
+/* ---------------------------------------------------------------------------------------- */
+
+   
+  
+@sapUiTextDisabled: #666666;
+@sapUiTextSelection: @sapUiText;
+
+@sapUiFontFamily: Arial,Helvetica,sans-serif;
+@sapUiFontSize: 11px;
+@sapUiFontLargeSize: 16px;
+@sapUiFontSmallSize: 10px;	
+@sapUiFontHeader1Size: @sapUiFontLargeSize;
+@sapUiFontHeader2Size: 13px;
+@sapUiFontHeader3Size: @sapUiFontSize;
+@sapUiFontHeader4Size: @sapUiFontSmallSize;
+@sapUiFontHeader5Size: @sapUiFontSmallSize;
+@sapUiFontHeader6Size: @sapUiFontSmallSize;
+
+@sapUiLineHeight: 18px;
+  
+// SOME important control-specific parameters... 
+@sapUiLinkVisited: @sapUiLink;
+@sapUiLinkActive: @sapUiLink;
+@sapUiLinkHover: @sapUiLink;
+
+@sapUiButtonDisabledBorderColor: @sapUiTextDisabled; 
+@sapUiButtonEmphasizedDisabledBorderColor: @sapUiButtonDisabledBorderColor; 
+@sapUiButtonAcceptDisabledBorderColor: @sapUiButtonDisabledBorderColor; 
+@sapUiButtonRejectDisabledBorderColor: @sapUiButtonDisabledBorderColor;
+@sapUiToggleButtonPressedBackgroundColor: @sapUiMediumBG;
+@sapUiToggleButtonPressedDisabledBackgroundColor: @sapUiExtraLightBG;

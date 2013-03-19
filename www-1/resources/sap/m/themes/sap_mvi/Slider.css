@@ -1,0 +1,158 @@
+/*
+ * [iOS] Slider
+ */
+
+.sap-ios .sapMSliCont {
+	height: 2.75em;
+	padding: 0 0.75em 0 0.75em;
+}
+
+.sap-ios .sapMSli {
+	height: 0.4375em;
+	-webkit-border-radius: 0.25em;
+	border-radius: 0.25em;
+	background-image: -webkit-linear-gradient(top, darken(@sapUiElement, 30), lighten(@sapUiElement, 7) 50%, lighten(@sapUiElement, 15) 50%, lighten(@sapUiElement, 15) 95%, darken(@sapUiElement, 30));
+	background-image: linear-gradient(top, darken(@sapUiElement, 30), lighten(@sapUiElement, 7) 50%, lighten(@sapUiElement, 15) 50%, lighten(@sapUiElement, 15) 95%, darken(@sapUiElement, 30));
+}
+
+/* slider progress */
+
+.sap-ios .sapMSliProgress {
+	background-image: -webkit-linear-gradient(top, darken(spin(@sapUiSelected, 16), 10), lighten(desaturate(spin(@sapUiSelected, 14), 24), 22) 50%, lighten(desaturate(spin(@sapUiSelected, 11), 13), 31) 95%, darken(spin(@sapUiSelected, 16), 10)),
+						-webkit-linear-gradient(top, darken(@sapUiElement, 30), lighten(@sapUiElement, 7) 50%, lighten(@sapUiElement, 15) 50%, lighten(@sapUiElement, 15) 95%, darken(@sapUiElement, 30));
+	background-image: linear-gradient(top, darken(spin(@sapUiSelected, 16), 10), lighten(desaturate(spin(@sapUiSelected, 14), 24), 22) 50%, lighten(desaturate(spin(@sapUiSelected, 11), 13), 31) 95%, darken(spin(@sapUiSelected, 16), 10)),
+						linear-gradient(top, darken(@sapUiElement, 30), lighten(@sapUiElement, 7) 50%, lighten(@sapUiElement, 15) 50%, lighten(@sapUiElement, 15) 95%, darken(@sapUiElement, 30));
+}
+
+/* slider handle */
+
+.sap-ios .sapMSliHandle {
+	width: 1.5em;
+	height: 1.5em;
+	margin-left: -0.75em;
+	top: -0.5625em;
+	background-image: -webkit-linear-gradient(top, darken(@sapUiElement, 20), @sapUiElement 50%, darken(@sapUiElement, 7));
+	background-image: linear-gradient(top, darken(@sapUiElement, 20), @sapUiElement 50%, darken(@sapUiElement, 7));
+	-webkit-border-radius: 0.75em;
+	border-radius: 0.75em;
+	box-shadow: 0px 0.1em 0.15em darken(@sapUiElement, 34);
+	border: none;
+}
+
+/* slider disabled */
+
+.sap-ios .sapMSliDisabled {
+	opacity: 0.3;
+}
+
+/* list context */
+
+.sap-ios .sapMILI-CTX > .sapMSliCont {
+	right: -0.6875em;
+}
+
+/*
+ * [ANDROID] Slider
+ */
+
+.sap-android .sapMSliCont,
+.sap-bb .sapMSliCont {
+	height: 3em;
+	padding: 0 1.09375em 0 1.09375em;
+}
+
+.sap-android .sapMSli,
+.sap-bb .sapMSli {
+	height: 0.1875em;
+	background: @sapUiElement no-repeat;  /* #DEDEDE */
+}
+
+/* slider progress */
+
+.sap-android .sapMSliProgress,
+.sap-bb .sapMSliProgress {
+	background-image: -webkit-gradient(linear, left top, right bottom, from(lighten(spin(@sapUiSelected, 354), 4)), to(lighten(spin(@sapUiSelected, 354), 4)));
+	background-image: -webkit-linear-gradient(lighten(spin(@sapUiSelected, 354), 4), lighten(spin(@sapUiSelected, 354), 4));
+	background-image: linear-gradient(lighten(spin(@sapUiSelected, 354), 4), lighten(spin(@sapUiSelected, 354), 4));
+}
+
+/* slider handle */
+
+.sap-android .sapMSliHandle,
+.sap-bb .sapMSliHandle {
+	margin-left: -0.9375em;
+	top: -0.785em;
+	height: 1.75em;
+	width: 1.75em;
+	-webkit-border-radius: 0.875em;
+	border-radius: 0.875em;
+	background-color: fade(lighten(desaturate(spin(@sapUiSelected, 355), 23), 17), 60%);
+	background-repeat: no-repeat;
+}
+
+/* slider handle inner */
+
+.sap-android .sapMSliHandleInner,
+.sap-bb .sapMSliHandleInner {
+	display: block;
+	position: absolute;
+	background: lighten(@sapUiSelected, 4) no-repeat;
+}
+
+.sap-android .sapMSliHandleInner,
+.sap-bb .sapMSliHandleInner {
+	top: 0.625em;
+	left: 0.625em;
+	width: 0.5em;
+	height: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+}
+
+/* slider pressed */
+
+.sap-android .sapMSliPressed:not(.sapMSliDisabled) > .sapMSliHandle,
+.sap-bb .sapMSliPressed:not(.sapMSliDisabled) > .sapMSliHandle {
+	top: -0.91em;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	border: 0.125em solid lighten(spin(@sapUiActive, 354), 4);
+	background-color: fade(lighten(desaturate(spin(@sapUiActive, 355), 23), 17), 60%);
+}
+
+/* thumb center dot pressed */
+
+.sap-android .sapMSliPressed:not(.sapMSliDisabled) .sapMSliHandleInner,
+.sap-bb .sapMSliPressed:not(.sapMSliDisabled) .sapMSliHandleInner {
+	top: 0.6875em;
+	left: 0.6875em;
+	width: 0.375em;
+	height: 0.375em;
+	-webkit-border-radius: 0.375em;
+	border-radius: 0.375em;
+}
+
+/* slider disabled */
+
+.sap-android .sapMSliDisabled,
+.sap-bb .sapMSliDisabled {
+	background: fade(@sapUiElement, 30%) no-repeat;
+}
+
+.sap-android .sapMSliDisabled > .sapMSliHandle,
+.sap-bb .sapMSliDisabled > .sapMSliHandle {
+	background-color: fade(darken(@sapUiElement, 37), 30%);
+}
+
+/* slider handle inner disabled */
+
+.sap-android .sapMSliDisabled .sapMSliHandleInner,
+.sap-bb .sapMSliDisabled .sapMSliHandleInner {
+	background-color: lighten(desaturate(spin(@sapUiSelected, 355), 23), 17);
+	top: 0.78125em;
+	left: 0.78125em;
+	width: 0.20625em;
+	height: 0.20625em;
+	-webkit-border-radius: 0.20625em;
+	border-radius: 0.20625em;
+}

@@ -1,0 +1,11 @@
+/* ====================================== */
+/* CSS for control sap.m/Textarea.control */
+/* sapMInput styles are using for control */
+/* ====================================== */
+
+.sapMTextArea {
+}
+
+.sapMTextAreaInner {
+	line-height: 1.6em;
+}

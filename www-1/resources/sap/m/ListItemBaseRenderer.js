@@ -1,7 +1,240 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.m.ListItemBaseRenderer");sap.m.ListItemBaseRenderer={};
-sap.m.ListItemBaseRenderer.render=function(r,l){if(!l.getVisible()){return}r.write("<li");r.writeControlData(l);r.addClass("sapMLIB");r.addClass("sapMLIB-CTX");if(this.renderLIAttributes){this.renderLIAttributes(r,l)}if(this.renderLIContent){var s=null;switch(l._mode){case sap.m.ListMode.SingleSelectLeft:s=l._getRadioButton((l.getId()+"-selectSingle"),l._listId+"_selectGroup");if(s.getSelected())r.addClass("sapMLIBSelected");r.writeClasses();r.write(">");r.write("<div");r.addClass("sapMLIBSelectS");if(l._oldMode===sap.m.ListMode.None){r.addClass("sapMLIBSelectAnimation")}r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");r.renderControl(s);r.write("</div>");l._oldMode=l._mode;break;case sap.m.ListMode.SingleSelect:s=l._getRadioButton((l.getId()+"-selectSingle"),l._listId+"_selectGroup");if(s.getSelected())r.addClass("sapMLIBSelected");r.writeClasses();r.write(">");break;case sap.m.ListMode.SingleSelectMaster:s=l._getRadioButton((l.getId()+"-selectSingleMaster"),l._listId+"_selectMasterGroup");if(s.getSelected())r.addClass("sapMLIBSelectedMaster");r.writeClasses();r.write(">");r.write("<div");r.addClass("sapMLIBSelectSM");r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");r.renderControl(s);r.write("</div>");l._oldMode=l._mode;break;case sap.m.ListMode.MultiSelect:s=l._getCheckBox((l.getId()+"-selectMulti"));if(s.getSelected())r.addClass("sapMLIBSelected");r.writeClasses();r.write(">");r.write("<div");r.addClass("sapMLIBSelectM");if(l._oldMode===sap.m.ListMode.None){r.addClass("sapMLIBSelectAnimation")}r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");r.renderControl(s);r.write("</div>");l._oldMode=l._mode;break;case sap.m.ListMode.Delete:r.writeClasses();r.write(">");r.write("<div");r.addClass("sapMLIBSelectD");if(l._oldMode===sap.m.ListMode.None){r.addClass("sapMLIBSelectAnimation")}r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");var d=l._getDelImage((l.getId()+"-imgDel"),"sapMLIBImgDel","delete_icon.png");if(d){r.renderControl(d)}r.write("</div>");l._oldMode=l._mode;break;case sap.m.ListMode.None:r.writeClasses();r.write(">");if(l._oldMode&&l._oldMode!==sap.m.ListMode.None&&l._oldMode!==sap.m.ListMode.SingleSelect){r.write("<div");r.addClass("sapMLIBUnselectAnimation");r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");r.write("</div>")}break}if(l._showUnread){r.write("<div");r.writeAttribute("id",l.getId()+"-unread");r.addClass("sapMLIBUnread");if(l.getUnread()){r.addClass("sapMLIBUnreadBG")}r.writeClasses();r.write(">");r.write("</div>")}r.write("<div");r.addClass("sapMLIBContent");var t=l.getType();var n;switch(t){case sap.m.ListType.Navigation:n=l._getNavImage((l.getId()+"-imgNav"),"sapMLIBImgNav","disclosure_indicator.png");break;case sap.m.ListType.Detail:case sap.m.ListType.DetailAndActive:n=l._getNavImage((l.getId()+"-imgDet"),"sapMLIBImgDet","detail_disclosure.png","detail_disclosure_pressed.png");break;case sap.m.ListType.Inactive:case sap.m.ListType.Active:if(!l.getCounter()){r.addClass("sapMLIBContentMargin")}default:}r.writeClasses();r.write(">");this.renderLIContent(r,l);r.write("</div>");if(l.getCounter()){r.write("<div");r.writeAttribute("id",l.getId()+"-counter");r.addClass("sapMLIBCounter");if(!n){r.addClass("sapMLIBContentMargin")}r.writeClasses();r.write(">");r.write(l.getCounter());r.write("</div>")}if(n){r.renderControl(n)}switch(l._mode){case sap.m.ListMode.SingleSelect:r.write("<div");r.addClass("sapMLIBSelectS");if(l._oldMode===sap.m.ListMode.None){r.addClass("sapMLIBSelectAnimation")}r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");r.renderControl(s);r.write("</div>");l._oldMode=l._mode;break;case sap.m.ListMode.None:if(l._oldMode&&l._oldMode!==sap.m.ListMode.None&&l._oldMode===sap.m.ListMode.SingleSelect){r.write("<div");r.addClass("sapMLIBUnselectAnimation");r.writeAttribute("id",l.getId()+"-mode");r.writeClasses();r.write(">");r.write("</div>")}l._oldMode=l._mode;break}}else{r.writeClasses();r.write(">")}r.write("</li>")};
+
+jQuery.sap.declare("sap.m.ListItemBaseRenderer");
+
+/**
+ * @class ListitemBase renderer.
+ * @static
+ */
+sap.m.ListItemBaseRenderer = {};
+
+/**
+ * Renders the HTML for the given control, using the provided
+ * {@link sap.ui.core.RenderManager}.
+ * 
+ * @param {sap.ui.core.RenderManager}
+ *          oRenderManager the RenderManager that can be used for writing to the
+ *          Render-Output-Buffer
+ * @param {sap.ui.core.Control}
+ *          oControl an object representation of the control that should be
+ *          rendered
+ */
+sap.m.ListItemBaseRenderer.render = function(rm, oLI) {
+	// return immediately if control is invisible
+	if (!oLI.getVisible()) {
+		return;
+	}
+
+	rm.write("<li");
+	rm.writeControlData(oLI);
+	rm.addClass("sapMLIB");
+	rm.addClass("sapMLIB-CTX");
+
+	// LI attributes hook
+	if (this.renderLIAttributes) {
+		this.renderLIAttributes(rm, oLI);
+	}
+	
+
+	// LI content hook
+	if (this.renderLIContent) {
+
+		// depending on the mode of the list a checkbox or radiobutton will be
+		// rendered. If a switch between list modes happens, an animation will be
+		// added for the selection area
+		var oSelectControl = null;
+		
+		switch (oLI._mode) {
+		case sap.m.ListMode.SingleSelectLeft:
+			oSelectControl = oLI._getRadioButton((oLI.getId() + "-selectSingle"), oLI._listId + "_selectGroup");
+			if(oSelectControl.getSelected())
+				rm.addClass("sapMLIBSelected");
+			rm.writeClasses();
+			rm.write(">");
+		
+			rm.write("<div");
+			rm.addClass("sapMLIBSelectS");
+			if (oLI._oldMode === sap.m.ListMode.None) {
+				rm.addClass("sapMLIBSelectAnimation");
+			}
+			rm.writeAttribute("id", oLI.getId() + "-mode");
+			rm.writeClasses();
+			rm.write(">");
+			
+			rm.renderControl(oSelectControl);
+			rm.write("</div>");
+			oLI._oldMode = oLI._mode;
+			break;
+		case sap.m.ListMode.SingleSelect:
+			oSelectControl = oLI._getRadioButton((oLI.getId() + "-selectSingle"), oLI._listId + "_selectGroup");
+			if(oSelectControl.getSelected())
+				rm.addClass("sapMLIBSelected");
+			rm.writeClasses();
+			rm.write(">");
+			break;
+		case sap.m.ListMode.SingleSelectMaster:
+			oSelectControl = oLI._getRadioButton((oLI.getId() + "-selectSingleMaster"), oLI._listId + "_selectMasterGroup");
+			if(oSelectControl.getSelected())
+				rm.addClass("sapMLIBSelectedMaster");
+			rm.writeClasses();
+			rm.write(">");
+			rm.write("<div");
+			rm.addClass("sapMLIBSelectSM");
+			rm.writeAttribute("id", oLI.getId() + "-mode");
+			rm.writeClasses();
+			rm.write(">");
+			
+			rm.renderControl(oSelectControl);
+			rm.write("</div>");
+			oLI._oldMode = oLI._mode;
+			break;
+		case sap.m.ListMode.MultiSelect:
+			oSelectControl = oLI._getCheckBox((oLI.getId() + "-selectMulti"));
+			if(oSelectControl.getSelected())
+				rm.addClass("sapMLIBSelected");
+			
+			rm.writeClasses();
+			rm.write(">");
+			rm.write("<div");
+			rm.addClass("sapMLIBSelectM");
+			if (oLI._oldMode === sap.m.ListMode.None) {
+				rm.addClass("sapMLIBSelectAnimation");
+			}
+			rm.writeAttribute("id", oLI.getId() + "-mode");
+			rm.writeClasses();
+			rm.write(">");
+			rm.renderControl(oSelectControl);
+			rm.write("</div>");
+			oLI._oldMode = oLI._mode;
+			break;
+		case sap.m.ListMode.Delete:
+			rm.writeClasses();
+			rm.write(">");
+			rm.write("<div");
+			rm.addClass("sapMLIBSelectD");
+			if (oLI._oldMode === sap.m.ListMode.None ) {
+				rm.addClass("sapMLIBSelectAnimation");
+			}
+			rm.writeAttribute("id", oLI.getId() + "-mode");
+			rm.writeClasses();
+			rm.write(">");
+			var delIcon = oLI._getDelImage((oLI.getId() + "-imgDel"), "sapMLIBImgDel", "delete_icon.png");
+			if (delIcon) {
+				rm.renderControl(delIcon);
+			}
+			rm.write("</div>");
+			oLI._oldMode = oLI._mode;		
+			break;
+		case sap.m.ListMode.None:
+			rm.writeClasses();
+			rm.write(">");
+			if (oLI._oldMode && oLI._oldMode !== sap.m.ListMode.None && oLI._oldMode !== sap.m.ListMode.SingleSelect) {
+				rm.write("<div");
+				rm.addClass("sapMLIBUnselectAnimation");
+				rm.writeAttribute("id", oLI.getId() + "-mode");
+				rm.writeClasses();
+				rm.write(">");
+				rm.write("</div>");
+			}
+			break;
+		}
+		
+		if(oLI._showUnread){
+			rm.write("<div");
+			rm.writeAttribute("id", oLI.getId() + "-unread");
+			rm.addClass("sapMLIBUnread");
+			if(oLI.getUnread()){
+				rm.addClass("sapMLIBUnreadBG");
+			}
+			rm.writeClasses();
+			rm.write(">");
+			rm.write("</div>");
+		}
+
+		rm.write("<div");
+		rm.addClass("sapMLIBContent");
+
+		var type = oLI.getType();
+		var navIcon;
+		switch (type) {
+			case sap.m.ListType.Navigation:
+				navIcon = "NAV"; 
+				break;
+			case sap.m.ListType.Detail:
+			case sap.m.ListType.DetailAndActive:
+				navIcon = "DET";
+				break;
+			case sap.m.ListType.Inactive:
+			case sap.m.ListType.Active:
+				// there will be a margin on the right, if no navigation icon or counter is shown
+				if(!oLI.getCounter()){
+					rm.addClass("sapMLIBContentMargin");
+				}
+			default:
+		}
+		rm.writeClasses();
+		rm.write(">");
+		this.renderLIContent(rm, oLI);
+		rm.write("</div>");
+		
+		//if counter different than 0 bubble will be shown
+		if(oLI.getCounter()){
+			rm.write("<div");
+			rm.writeAttribute("id", oLI.getId() + "-counter");
+			rm.addClass("sapMLIBCounter");
+			if(!navIcon){
+					rm.addClass("sapMLIBContentMargin");
+				}
+			rm.writeClasses();
+			rm.write(">");
+			rm.write(oLI.getCounter());
+			rm.write("</div>");
+		}
+		
+		if (navIcon == "NAV" && jQuery.os.ios && oLI.getType() == sap.m.ListType.Navigation){
+			rm.write("<div id=" + oLI.getId() + "-imgNav class='sapMLIBImgNav'></div>");
+		}
+		
+		if (navIcon == "DET"){
+			rm.renderControl(oLI._getNavImage((oLI.getId() + "-imgDet"), "sapMLIBImgDet", "detail_disclosure.png", "detail_disclosure_pressed.png"));
+		}
+		
+		switch (oLI._mode) {
+		case sap.m.ListMode.SingleSelect:
+			rm.write("<div");
+			rm.addClass("sapMLIBSelectS");
+			if (oLI._oldMode === sap.m.ListMode.None) {
+				rm.addClass("sapMLIBSelectAnimation");
+			}
+			rm.writeAttribute("id", oLI.getId() + "-mode");
+			rm.writeClasses();
+			rm.write(">");
+			
+			rm.renderControl(oSelectControl);
+			rm.write("</div>");
+			oLI._oldMode = oLI._mode;
+			break;
+		case sap.m.ListMode.None:
+			if (oLI._oldMode && oLI._oldMode !== sap.m.ListMode.None && oLI._oldMode === sap.m.ListMode.SingleSelect) {
+				rm.write("<div");
+				rm.addClass("sapMLIBUnselectAnimation");
+				rm.writeAttribute("id", oLI.getId() + "-mode");
+				rm.writeClasses();
+				rm.write(">");
+				rm.write("</div>");
+			}
+			oLI._oldMode = oLI._mode;
+			break;
+		}
+		
+	}
+	else{
+		rm.writeClasses();
+		rm.write(">");
+	}
+	rm.write("</li>");
+};

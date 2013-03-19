@@ -1,0 +1,31 @@
+/* ************************************* */
+/* CSS for control sap.m/Switch.control  */
+/* ************************************* */
+
+.sapMSwtCont {
+	display: inline-block;
+	visibility: hidden;
+}
+
+.sapMSwtContDisabled {
+	pointer-events: none;
+}
+
+.sapMSwt {
+	position: relative;
+	-webkit-appearance: none;
+}
+
+.sapMSwt > input[type=checkbox] {
+	display: none;
+}
+
+.sapMSwtBtn {
+	content: "";
+	position: absolute;
+	display: block;
+}
+
+.sapMSwtVisible {
+	visibility: inherit;
+}

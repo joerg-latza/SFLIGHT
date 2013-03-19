@@ -1,0 +1,184 @@
+/************************* 
+Android / BlackBerry specific styling 
+**************************/
+
+.sap-bb,
+.sap-android {
+	@-webkit-keyframes sapMBsyIndRotateRight {
+		from {-webkit-transform: rotate(0deg);}
+		to {-webkit-transform: rotate(360deg);}
+	}
+	@-webkit-keyframes sapMBsyIndRotateLeft {
+		from {-webkit-transform: rotate(360deg);}
+		to {-webkit-transform: rotate(0deg);}
+	}
+	.sapMSpinner {
+		width: 48px;
+		height: 48px;
+	}
+	.sapMBsyIndLabel{
+		height: 3em;
+		line-height: 3em;
+	}
+	div.sapMSpinner div {
+		position: relative;
+	}
+	.sapMSpinner div.sapMSpinBar1 {
+		position: absolute;
+		width: 100%;
+		height: 50%;
+		background: -webkit-gradient(linear, right top, left bottom, color-stop(0.15, fade(lighten(@sapUiText,10),20%)), color-stop(1, rgba(0, 0, 0, 0)));
+		background: -webkit-linear-gradient(right, fade(lighten(@sapUiText,45), 20%) 15%, rgba(0, 0, 0, 0) 100%);
+		background: linear-gradient(right, fade(lighten(@sapUiText,45), 20%) 15%, rgba(0, 0, 0, 0) 100%);
+		border-radius: 9999px 9999px 0 0;
+		-webkit-transform-origin: 50% 100%;
+		-webkit-animation-name: sapMBsyIndRotateRight; 
+		-webkit-animation-duration: 1.3s; 
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+	}
+	.sapMSpinner div.sapMSpinBar2 {
+		position: absolute;
+		width: 100%;
+		height:50%;
+		background: -webkit-gradient(linear, right top, left bottom, color-stop(0.2, rgba(0,0,0,0)), color-stop(.95, fade(lighten(@sapUiText,10),40%)));
+		background:-webkit-linear-gradient(right, rgba(0, 0, 0, 0) 10%, fade(lighten(@sapUiText,10),40%) 95%);
+		background: linear-gradient(right, rgba(0, 0, 0, 0) 10%, fade(lighten(@sapUiText,10),40%) 95%);
+		border-radius: 9999px 9999px 0 0; //percentage is not working
+		-webkit-transform-origin: 50% 100%;
+		-webkit-animation-name: sapMBsyIndRotateLeft; 
+		-webkit-animation-duration: 1.7s; 
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+	}
+	.sapMSpinner div.sapMSpinBar3 {
+		position:absolute;
+		width: 87%;
+		height:87%;
+		left:50%;top:50%;
+		visibility:hidden;
+	}
+	.sapMSpinner div.sapMSpinBar4 {
+		position:relative;
+		width: 100%;height:100%;
+		left:-50%;top:-50%;
+		visibility:visible;
+		border-radius: 9999px;
+	}
+	.sapMBar-CTX .sapMSpinner div.sapMSpinBar4 {
+		background-color: @sapUiBarBG;
+	}
+	.sapMBar-CTX, .sapMBusyIndicatorLight{
+		.sapMSpinner {
+			background-color: white;
+			border-radius: 9999px;
+		}
+		.sapMSpinner div.sapMSpinBar1 {
+			background: -webkit-gradient(linear, right top, right bottom, from( fade(@sapUiBarHeading, 60%)), to(fade(@sapUiBarHeading, 10%)));
+			background: -webkit-linear-gradient(right, fade(@sapUiBarHeading, 60%) 60%, fade(@sapUiBarHeading, 10%) 100%);
+			background: linear-gradient(right, fade(@sapUiBarHeading, 60%) 60%, fade(@sapUiBarHeading, 10%) 100%);
+		}
+		
+		.sapMSpinner div.sapMSpinBar2 {
+			background: -webkit-gradient(linear, left top, left bottom, from( fade(@sapUiBarHeading, 60%)), to(fade(@sapUiBarHeading, 10%)));
+			background: -webkit-linear-gradient(left, fade(@sapUiBarHeading, 60%) 60%, fade(@sapUiBarHeading, 10%) 100%);
+			background: linear-gradient(left, fade(@sapUiBarHeading, 60%) 60%, fade(@sapUiBarHeading, 10%) 100%);
+		}
+	}
+	
+	.sapMBusyIndicatorDark {
+		.sapMSpinner div.sapMSpinBar1 {
+			background: -webkit-gradient(linear, right top, left bottom, color-stop(0.15, fade(lighten(@sapUiText,10),20%)), color-stop(1, rgba(0, 0, 0, 0)));
+			background: -webkit-linear-gradient(right, fade(lighten(@sapUiText,45), 20%) 15%, rgba(0, 0, 0, 0) 100%);
+			background: linear-gradient(right, fade(lighten(@sapUiText,45), 20%) 15%, rgba(0, 0, 0, 0) 100%);
+		}
+		
+		.sapMSpinner div.sapMSpinBar2 {
+			background: -webkit-gradient(linear, right top, left bottom, color-stop(0.2, rgba(0,0,0,0)), color-stop(.95, fade(lighten(@sapUiText,10),40%)));
+			background:-webkit-linear-gradient(right, rgba(0, 0, 0, 0) 10%, fade(lighten(@sapUiText,10),40%) 95%);
+			background: linear-gradient(right, rgba(0, 0, 0, 0) 10%, fade(lighten(@sapUiText,10),40%) 95%);
+		}
+	}
+}	
+
+/*************************
+*	iOS specific styling 
+**************************/
+.sap-ios {
+	.sapMBusyDelayAnim (@delay: 0s, @rotate:0deg) {
+		-webkit-transform-origin: 0% 50%;
+		-webkit-transform:rotate(@rotate) translate(83%, 0%);
+		-webkit-animation-delay: @delay;
+	}
+	
+	@-webkit-keyframes sapMSpinBarFade {
+		from {opacity: 1;}
+		to {opacity: 0.2;}
+	}	
+	.sapMSpinner {
+		width: 30px;
+		height: 30px;
+	}
+	.sapMBsyIndLabel{
+		height: 2.75em;
+		line-height: 2.75em;
+	}
+	div.sapMSpinner div {
+		position: absolute;
+		width: 24%;
+		height: 7%;
+		top: 50%;
+		left:50%;
+		background-color: @sapUiText;
+		-webkit-transform: translate3d(0, 0, 0);
+		-webkit-animation: opacity 0s linear infinite;
+		-webkit-animation: sapMSpinBarFade 1s linear infinite;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+	}
+	.sapMBar-CTX div.sapMSpinner div{
+		background-color: @sapUiBarText;
+	}
+	.sapMBusyIndicatorDark div.sapMSpinner div{
+		background-color: @sapUiText;
+	}
+	.sapMBusyIndicatorLight div.sapMSpinner div{
+		background-color: @sapUiBarText;
+	}
+	.sapMSpinner div.sapMSpinBar1 {
+		.sapMBusyDelayAnim(-0.999s, 0deg)
+	}
+	.sapMSpinner div.sapMSpinBar2 {
+		.sapMBusyDelayAnim(-0.9167s, 30deg)
+	}
+	.sapMSpinner div.sapMSpinBar3 {
+		.sapMBusyDelayAnim(-0.833s, 60deg)
+	}
+	.sapMSpinner div.sapMSpinBar4 {
+		.sapMBusyDelayAnim(-0.75s, 90deg)
+	}
+	.sapMSpinner div.sapMSpinBar5 {
+		.sapMBusyDelayAnim(-0.667s, 120deg)
+	}
+	.sapMSpinner div.sapMSpinBar6 {
+		.sapMBusyDelayAnim(-0.5833s, 150deg)
+	}
+	.sapMSpinner div.sapMSpinBar7 {
+		.sapMBusyDelayAnim(-0.5s, 180deg)
+	}
+	.sapMSpinner div.sapMSpinBar8 {
+		.sapMBusyDelayAnim(-0.41667s, 210deg)
+	}
+	.sapMSpinner div.sapMSpinBar9 {
+		.sapMBusyDelayAnim(-0.333s, 240deg)
+	}
+	.sapMSpinner div.sapMSpinBar10 {
+		.sapMBusyDelayAnim(-0.25s, 270deg)
+	}
+	.sapMSpinner div.sapMSpinBar11 {
+		.sapMBusyDelayAnim(-0.1667s, 300deg)
+	}
+	.sapMSpinner div.sapMSpinBar12 {
+		.sapMBusyDelayAnim(-0.0833s, 330deg)
+	}
+}

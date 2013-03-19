@@ -1,0 +1,37 @@
+/* ============================================= */
+/* CSS for control sap.m/SplitApp.control */
+/* ============================================= */
+.sapMSplitApp {
+	background: darken(@sapUiDarkBG, 20); //#333
+}
+/**************************** 
+iOS specific styling 
+*****************************/
+.sap-ios {
+	 .sapMSplitAppPortrait.sapMSplitAppShowHide .sapMSplitAppMaster {
+		box-shadow: 0.0625em 0 0.625em fade(@sapUiShadowTint, 70);
+	}
+}
+/**************************** 
+Android specific styling 
+*****************************/
+.sap-android, .sap-bb {
+	.sapMSplitAppMaster {
+	 	background-color:  lighten(@sapUiBarBG,97);
+	}
+	
+	.sapMPopover .sapMSplitAppMaster {
+		background-color: transparent;
+	}
+	
+	.sapMSplitAppDetail {
+		box-shadow: -0.18em 0 0 darken(fade(@sapUiShadowTint, 10),20), -0.5em 0 1.2em darken(fade(@sapUiShadowTint, 8),20);
+		-webkit-box-shadow: -0.18em 0 0 darken(fade(@sapUiShadowTint, 10),20), -0.5em 0 1.2em darken(fade(@sapUiShadowTint, 8),20);
+	}
+	
+	.sapMSplitAppMaster  {
+		.sapMPageBgStandard, .sapMPageBgList {
+			background-color:  lighten(@sapUiBarBG,97);
+		}
+	}
+}

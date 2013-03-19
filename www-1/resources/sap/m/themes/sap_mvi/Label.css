@@ -1,0 +1,49 @@
+
+/* ============================================= */
+/* CSS for control sap.m/Label.control */
+/* ============================================= */
+
+.sap-android .sapMLabel,
+.sap-bb .sapMLabel {
+	color: lighten(@sapUiText,20);
+}
+
+.sapMBar-CTX .sapMLabel {
+	color: @sapUiBarText;
+	font-size: 1.125em;
+	font-weight: normal;
+	-webkit-user-select: none;
+	line-height: 2.67em;
+ 	height: 2.67em;
+}
+
+.sap-android .sapMBar-CTX .sapMLabel,
+.sap-bb .sapMBar-CTX .sapMLabel {
+	color: darken(@sapUiBarText,80);
+}
+
+.sapMBar-CTX.sapMHeader-CTX .sapMLabel,
+.sap-android .sapMBar-CTX.sapMFooter-CTX .sapMLabel, 
+.sap-bb .sapMBar-CTX.sapMFooter-CTX .sapMLabel {
+	color: @sapUiBarHeading;
+}
+
+.sap-ios .sapMBar-CTX .sapMLabel {
+	padding: 0.5em 0;
+	font-size: 1.25em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: bold;
+	line-height: 2.2em;
+	height: 2.2em;
+	text-shadow: 0 -.0625em 0 lighten(@sapUiBarBG,16);
+}
+
+.sap-ios .sapMBar.sapMHeader-CTX .sapMLabel {
+	text-shadow: 0 -.0625em 0 darken(@sapUiBarBG,24);
+}
+
+.sap-winphone .sapMLabel {
+	font-size: 0.9375em;
+}

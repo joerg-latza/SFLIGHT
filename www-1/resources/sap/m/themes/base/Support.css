@@ -1,0 +1,18 @@
+/* ============================================= */
+/* CSS for control sap.m/Support.control    */
+/* ============================================= */
+
+.sapMSupport *{
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+	
+	
+.sapMSupport .sapUiSupportLabel{
+	font-weight: bold;
+}
+
+.sapMSupport .sapUiSupportTechInfoBorder {
+	border: 1px solid #E2E2E2;
+}

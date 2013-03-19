@@ -1,0 +1,16 @@
+
+/* ============================================ */
+/* CSS for control sap.m/Bar.control			*/
+/* ============================================ */
+
+.sapMBar {
+	display: block;
+	width: 100%;
+	position: relative;
+}
+
+footer.sapMBar {
+	position: absolute;
+	bottom: 0em;
+	left: 0em;
+}

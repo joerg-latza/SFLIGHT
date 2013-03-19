@@ -1,0 +1,181 @@
+.sapMBar-CTX {
+	
+}
+
+.sapMBar {
+	background-color: lighten(@sapUiBarBG,97);
+	color: @sapUiBarText;
+	height: 3em;
+}
+
+.sap-android .sapMBar,
+.sap-bb .sapMBar {
+	color: darken(@sapUiBarText,80);
+}
+
+.sapMBar.sapMHeader-CTX{
+	background-color: @sapUiBarBG;
+	color: @sapUiBarHeading;
+}
+
+.sap-android .sapMBar-CTX.sapMFooter-CTX, 
+.sap-bb .sapMBar-CTX.sapMFooter-CTX {
+	color: @sapUiBarHeading;
+}
+
+.sapMBar .sapMBarLeft {
+	position: absolute;
+	left: 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 100%;
+}
+
+.sapMBar-CTX .sapMBarLeft >*,
+.sapMBar-CTX .sapMBarPH >*,
+.sapMBar-CTX .sapMBarRight >* {
+	margin-right: 0.5em;
+	vertical-align: middle;	
+}
+
+.sapMBar-CTX .sapMBarLeft >*:first-child,
+.sapMBar-CTX .sapMBarPH > *:first-child,
+.sapMBar-CTX .sapMBarRight > *:first-child {
+	margin-left: 0.5em;
+}
+
+.sapMBar .sapMBarMiddle {
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	display: inline-block;
+} 
+
+.sapMBar .sapMBarRight {
+	position: absolute;
+	right: 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 100%;
+}
+
+.sapMBar .sapMBarPH {
+	display: inline-block;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.sapMBar-CTX .sapMBarLeft > .sapMBtnUp,
+.sapMBar-CTX .sapMBarLeft > .sapMBtnUpDisabled,
+.sapMBar-CTX .sapMBarLeft > .sapMBtnUpDisabled:active {
+	margin-left: 0em;
+}
+
+.sapMBar-CTX .sapMBarLeft > .sapMImg {
+	margin-left: 1em;	
+}
+
+.sapMBar-CTX .sapMBarLeft > .sapMImg,
+.sapMBar-CTX .sapMBarPH > .sapMImg, 
+.sapMBar-CTX .sapMBarRight > .sapMImg  {
+	height: 100%;
+}
+
+.sapMBar-CTX .sapMLabel {
+	max-width: 100%;
+	display: inline;
+}
+
+/**************************** 
+
+iOS specific styling 
+
+*****************************/
+.sapMBarGradient(Default,  @color){
+	background-color:@color;
+	background-image: linear-gradient( top, lighten(@color, 15) 0%, darken(@color, 15) 100%);
+	background-image: -webkit-linear-gradient(top, lighten(@color, 15) 0%, darken(@color, 15) 100%);
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0, lighten(@color, 15)), color-stop(1, darken(@color, 15)));
+}
+
+.sapMBarGradient(Opaque, @color){
+	background-color:@color;
+	background-image: linear-gradient(top,lighten(@color, 31) 0%,lighten(@color, 9) 50%, darken(@color, 5) 50%);
+	background-image: -webkit-linear-gradient(top, lighten(@color, 31) 0%, lighten(@color, 9) 50%, darken(@color, 5) 50%);
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0, lighten(@color, 31)), color-stop(0.50, lighten(@color, 9)), color-stop(0.50, darken(@color, 5)));
+}
+
+.sapMBarGradient(Translucent, @color){
+	background-color:transparent;
+	background-image: linear-gradient(top, fade(lighten(@color, 31), 85) 0%, fade(lighten(@color, 9), 90) 50%, fade(darken(@color, 5), 95) 50%);
+	background-image: -webkit-linear-gradient(top, fade(lighten(@color, 31), 85) 0%, fade(lighten(@color, 9), 90) 50%, fade(darken(@color, 5), 95) 50%);
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0, fade(lighten(@color, 31), 85)), color-stop(0.50, fade(lighten(@color, 9), 90)), color-stop(0.50, fade(darken(@color, 5), 95)));
+}
+
+.sap-ios .sapMBar.sapMHeader-CTX {
+	height: 2.75em;
+	.sapMBarGradient(Opaque, @sapUiBarBG);
+	-webkit-box-shadow: inset 0 0.0625em 0 lighten(@sapUiBarBG,45), inset 0 -0.0625em 0 @sapUiBarBG, inset 0 -2px 0 lighten(@sapUiBarBG,15);
+	-webkit-border-radius: 0.3125em 0.3125em 0 0;
+	border-radius:  0.3125em 0.3125em 0 0;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.sap-ios footer.sapMBar,
+.sap-ios .sapMBar {
+	height: 2.75em;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	.sapMBarGradient(Default, lighten(@sapUiBarBG,40));
+	-webkit-box-shadow: inset 0 0.0625em 0 lighten(@sapUiBarBG,85), inset 0 -0.0625em 0 @sapUiBarBG, 0 -0.0625em 0 @sapUiBarBG;
+}
+
+.sap-ios footer.sapMBar {
+	-webkit-border-radius: 0 0 0.3125em 0.3125em;
+	border-radius:  0 0 0.3125em 0.3125em;
+}
+
+.sap-ios .sapMBar-CTX .sapMSwt {
+	margin-top: 0.5938em;
+}
+
+/**************************** 
+
+Android specific styling 
+
+*****************************/
+
+.sap-android .sapMBar,
+.sap-bb .sapMBar {
+	height: 3em;
+	box-shadow: inset 0 -0.125em 1px lighten(@sapUiBarBG,87);
+	-webkit-box-shadow: inset 0 -0.125em 1px lighten(@sapUiBarBG,87);
+}
+
+.sap-android .sapMBar.sapMHeader-CTX,
+.sap-bb .sapMBar.sapMHeader-CTX,
+.sap-android .sapMBar.sapMFooter-CTX,
+.sap-bb .sapMBar.sapMFooter-CTX {
+	box-shadow: inset 0 -0.125em 1px lighten(@sapUiBarBG,20);
+	-webkit-box-shadow: inset 0 -0.125em 1px lighten(@sapUiBarBG,20);
+}
+
+.sap-android .sapMBar .sapMBarPH,
+.sap-bb .sapMBar .sapMBarPH {
+	height: 3em;
+}
+.sap-android footer.sapMBar,
+.sap-bb footer.sapMBar {
+	background-color: @sapUiBarBG;
+	height: 3em;
+	box-shadow: inset 0 0.125em 1px lighten(@sapUiBarBG,20);
+	-webkit-box-shadow: inset 0 0.125em 1px lighten(@sapUiBarBG,20);
+	border-bottom: 0;
+}

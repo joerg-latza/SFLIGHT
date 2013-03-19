@@ -1,0 +1,72 @@
+
+/* ============================================= */
+/* CSS for control sap.m/ActionSheet.control */
+/* ============================================= */
+
+.sapMActionSheet{
+  width: 100%;
+}
+
+.sap-ios {
+	.sapMActionSheetDialog.sapMDialogIPhone .sapMDialogScrollCont {
+		padding: 0.4375em;
+	}
+	
+	/*button style for ipad*/
+	.sapMActionSheetPopover {
+		.sapMActionSheet button.sapMActionSheetButton {
+			display: block;
+			width: 15em;
+			margin: 0.4em 0;
+		}
+		
+		.sapMActionSheet{
+			padding: 0.125em 0.375em;
+		}
+	} 
+	
+	
+	.sapMActionSheetDialog.sapMDialogIPhone .sapMActionSheet button.sapMActionSheetButton {
+ 		width: 96%;
+ 		margin: 0.375em 2% 0.375em 2%;
+	}
+	
+	.sapMActionSheetDialog.sapMDialogIPhone .sapMActionSheet button.sapMActionSheetCancelButton {
+		margin: 0.75em 2% 0.75em 2%;	
+	}
+}
+
+.sap-android, 
+.sap-bb{
+	.sapMActionSheetDialog > section{
+		padding: 0;
+	}
+	
+	.sapMActionSheetDialog .sapMActionSheet button.sapMActionSheetButton{
+		margin: 0;
+		width: 100%;
+		background-color: @sapUiBaseBG;
+	}
+	
+	.sapMActionSheetDialog .sapMDialogScrollCont{
+		padding: 0;
+	}
+	
+	.sapMActionSheet > button.sapMActionSheetButton:not(.sapMActionSheetCancelButton) {
+		text-align: left;
+	}
+	
+	.sapMActionSheet > button.sapMActionSheetButton:not(.sapMActionSheetCancelButton) img{
+		display: none;
+	}
+	
+	.sapMActionSheetDialog .sapMActionSheet button.sapMActionSheetButton{
+		box-shadow: inset 0 .0625em 1px darken(@sapUiListBG,10);
+		-webkit-box-shadow: inset 0 .0625em 1px darken(@sapUiListBG,10);
+	}
+	
+	.sapMActionSheetDialog .sapMActionSheet button.sapMActionSheetButton:first-child{
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+}

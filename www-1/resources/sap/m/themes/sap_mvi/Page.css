@@ -1,0 +1,16 @@
+.sapMPage {
+	background-color: lighten(@sapUiBlackBG,20); /* the dark background behind the scrollable area */
+}
+
+.sapMPageBgStandard,
+.sapMPageBgList {
+	background-color: @sapUiPageBG;
+}
+
+.sap-ios .sapMPageBgList {
+	background-color: @sapUiListDarkBG;
+}
+
+.sapMBar-CTX .sapMBarLeft > .sapMImg.sapMPageAppIcon {
+	height: 2em;	
+}

@@ -1,0 +1,40 @@
+
+/* ============================================= */
+/* CSS for controlsap.m/BusyIndicator.control */
+/* ============================================= */
+
+.sapMBusyIndicator, .sapMBusyIndicatorLight, .sapMBusyIndicatorDark{
+	display: inline-block;
+}
+
+.sapMBsyIndLabel{
+	vertical-align: middle;
+	padding-left: .5em;
+}
+
+.sapMBsyIndIcon{
+	vertical-align: middle;
+	-webkit-transform:rotate(0deg) translateZ(0);
+	-webkit-transition-duration:0ms;
+	-webkit-animation-name:sapMBsyIndRotate;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes sapMBsyIndRotate {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+.sapMSpinner {
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+}
+
+.sapMSpin {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}

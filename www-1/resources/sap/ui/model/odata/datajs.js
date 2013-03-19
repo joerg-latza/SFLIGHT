@@ -1,1 +1,13 @@
-(function(q){var N="sap.ui.thirdparty.datajs";var M="The file datajs.js has been moved from sap.ui.model.odata to sap.ui.thirdparty! Please update the dependencies accordingly.";if(q&&q.sap&&q.sap.require){q.sap.require(N);q.sap.log.warning(M)}else{throw new Error(M)}})(window.jQuery);
+(function(jQuery){
+	
+	var NEW_RESSOURCE = "sap.ui.thirdparty.datajs";
+	var MESSAGE = "The file datajs.js has been moved from sap.ui.model.odata to sap.ui.thirdparty! Please update the dependencies accordingly.";
+	
+	if(jQuery && jQuery.sap && jQuery.sap.require){
+		jQuery.sap.require(NEW_RESSOURCE);
+		jQuery.sap.log.warning(MESSAGE);
+	}else{
+		throw new Error(MESSAGE);
+	}
+
+})(window.jQuery);

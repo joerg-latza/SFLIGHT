@@ -1,0 +1,22 @@
+/* ****************************************** */
+/* CSS for sap.m/MessageToast.class MVI Theme */
+/* ****************************************** */
+
+.sapMMT {
+	box-shadow: 0 0.125em 2.750em 0.125em fade(@sapUiShadowTint, 50%), 0 0.250em 0.250em 0 fade(@sapUiShadowTint, 15%);	/* rgba(0, 0, 0, 0.5) and rgba(0, 0, 0, 0.15) */
+}
+
+/*
+ * [ANDROID]
+ */
+
+.sap-android .sapMMT,
+.sap-bb .sapMMT {
+	border-radius: 0;
+}
+
+html[data-sap-ui-os^='Android2'] .sapMMT,
+html[data-sap-ui-os^='Android3'] .sapMMT {
+	background: -webkit-gradient(linear, left top, left bottom, from(fade(lighten(@sapUiBlackBG, 20), 90)), to(lighten(@sapUiBlackBG, 20))); /* from rgba(51, 51, 51, 0.9) to #333333 */
+	-webkit-box-shadow: 0 0.125em 2.750em 0.125em fade(@sapUiShadowTint, 50%), 0 0.250em 0.250em 0 fade(@sapUiShadowTint, 15%); /* rgba(0, 0, 0, 0.5) and rgba(0, 0, 0, 0.15) */
+}

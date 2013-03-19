@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>PageBackgroundDesign</name>
+
+	<author>SAP AG</author>
+	<documentation>Available Page Background Design.</documentation>
+	<baseType>sap.ui.core/string</baseType>
+	<enumeration>
+		<value name="Standard">
+		<documentation>Standard Page background color.</documentation>
+		</value>
+		<value name="List">
+		<documentation>Page background color when a List is set as the Page content.</documentation>
+		</value>
+	</enumeration>
+
+</simple-type>

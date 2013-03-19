@@ -1,0 +1,222 @@
+/* ********* */
+/* MVI Theme */
+/* ********* */
+
+
+/* ********* */
+/*  Common   */
+/* ********* */
+
+/* until we fix the flexbox problem of InputListItem we shrink the width */
+@media all and (max-width: 400px) {
+	.sapMILI-CTX > .sapMInput {
+		max-width: 160px;
+	}
+}
+
+@media all and (max-width: 300px) {
+	.sapMILI-CTX > .sapMInput {
+		max-width: 120px;
+	}
+}
+
+.sapMInputPlaceholder,
+.sapMILI-CTX .sapMInputPlaceholder {
+	white-space: nowrap;	/* place holder can be very long but should not extend to second line */
+}
+
+.sapMInput > *,
+.sapMILI-CTX > .sapMInput > * {
+	width: 100%;	/* fit the parents(sapMInput) width */
+}
+
+/* ********* */
+/*   i O S   */
+/* ********* */
+.sap-ios .sapMInput {
+	border:                0.07143em solid @sapUiMediumBG;
+	-webkit-border-radius: 0.3571em;
+	border-radius:         0.3571em;
+	-webkit-box-shadow:    0 -0.07143em 0 desaturate(spin(@sapUiHighlight,14),87), inset 0 0.1429em 0.1429em darken(@sapUiBaseBG,17); // #55606F #CCC
+	box-shadow:            0 -0.07143em 0 desaturate(spin(@sapUiHighlight,14),87), inset 0 0.1429em 0.1429em darken(@sapUiBaseBG,17);
+	padding:               0;
+	min-width:             2.75em;
+	background-color:      @sapUiInputBG;
+	-webkit-box-sizing:    border-box;
+	box-sizing:            border-box;
+	position:              relative;
+	display: inline-block;
+}
+
+.sap-ios .sapMInputInner {
+	border:                none;
+	padding:               0.43em 0.86em 0.43em 0.86em;
+	-webkit-appearance:    none;
+	background-color:      transparent;
+	-webkit-box-sizing:    border-box;
+	box-sizing:            border-box;
+	font-size:             0.875rem;
+	position:              relative;
+}
+
+.sap-ios .sapMInputInner:focus {
+	outline:               none;
+	outline-width:         0;
+}
+
+.sap-ios .sapMInputPlaceholder {
+	color:                 darken(@sapUiElement,20);
+	position:              absolute;
+	top:                   0;
+	left:                  0;
+	padding:               0.43em 0.86em 0.43em 1.1em;
+	-webkit-box-sizing:    border-box;
+	box-sizing:            border-box;
+	font-size:             0.875rem;
+	vertical-align:        middle;
+	text-overflow:         ellipsis;
+	overflow:              hidden;
+	top:                   0;
+	left:                  0;
+}
+
+.sap-ios .sapMInputWarning {
+	background-color:      @sapUiWarningBG;
+}
+
+.sap-ios .sapMInputError {
+	border-color:          @sapUiError;
+	background:            url(img/alert.png) no-repeat @sapUiInputBG right center;
+	background-size:       1.875em 1.875em;
+}
+
+.sap-ios .sapMInputError .sapMInputInner {
+	padding-right:         2em;
+}
+
+.sap-ios .sapMILI-CTX > .sapMInput {
+	background-color:      transparent;
+	text-align:            right;
+	border:                none;
+	-webkit-box-shadow:    none;
+	box-shadown:           none;
+}
+
+.sap-ios .sapMILI-CTX > .sapMInput:not(.sapMInputError) {
+	right:                 -0.7em;
+}
+
+
+.sap-ios .sapMILI-CTX .sapMInputInner {
+	color:                 darken(spin(@sapUiHighlight,4),5); // #0060a7
+	text-align:			   right;
+	background-color:      transparent;
+	-webkit-box-shadow:    none;
+	box-shadow:    		   none;
+	-webkit-appearance:    none;
+	height:                3.14em;
+}
+
+.sap-ios .sapMILI-CTX .sapMInputPlaceholder{
+	text-align: right;
+	padding: 0.93em 1.1em 0.43em 0.86em;
+}
+
+.sap-ios .sapMILI-CTX > .sapMInputError .sapMInputPlaceholder{
+	padding-right: 2.3em;
+}
+
+/* ********************** */
+/*   a n d r o i d & bb   */
+/* ********************** */
+.sap-android .sapMInput,
+.sap-bb      .sapMInput {
+	position:              relative;
+	display:			   inline-block;
+	border:		           none;
+	font-size: 			   0.875rem;
+	min-width:             2.75em;
+}
+
+.sap-android .sapMInputInner,
+.sap-bb      .sapMInputInner {
+	background-color:	   transparent;
+	color:                 lighten(@sapUiText,20);
+	border:                none;
+	padding:               0.5em 0.571em 0.143em 0.571em;
+	-webkit-box-sizing:    border-box;
+	box-sizing:            border-box;
+	font-size: 			   0.875rem;
+	height:                2.143em;	/* Date has somehow different height so lets set all same */
+}
+
+ .sap-android .sapMInput::before,
+ .sap-bb      .sapMInput::before {
+	position:              absolute;
+	content:               "";
+	bottom:				   0;
+	left:				   0;
+	width:                 100%;
+	height:                0.284em;
+	border:		           0.072em solid @sapUiBaseBorder;
+	border-top:            0;
+	-webkit-box-sizing:    border-box;
+	box-sizing:            border-box;
+}
+
+.sap-android .sapMInputError::before,
+.sap-bb      .sapMInputError::before {
+	border-color:          @sapUiError;
+}
+
+
+.sap-android .sapMInputInner:focus,
+.sap-bb      .sapMInputInner:focus {
+	outline:				  none;
+}
+
+.sap-android .sapMInputPlaceholder,
+.sap-bb      .sapMInputPlaceholder {
+	color:				   darken(@sapUiElement,20);
+	position:			   absolute;
+	top:				   0px;
+	left:				   0px;
+	padding:               0.5em 0.571em 0.143em 0.72em;
+	-webkit-box-sizing:    border-box;
+	box-sizing:            border-box;
+	font-size: 			   0.875rem;
+	text-overflow:		   ellipsis;
+	overflow:			   hidden;
+}
+
+.sap-android .sapMInputWarning,
+.sap-bb      .sapMInputWarning {
+	background-color:	   @sapUiWarningBG;
+}
+
+.sap-android .sapMILI-CTX > .sapMInput,
+.sap-bb      .sapMILI-CTX > .sapMInput {
+	display:			   block;
+	background-color:      transparent;
+	-webkit-box-shadow:    none;
+	-webkit-appearance:    none;
+}
+
+
+.sap-android .sapMILI-CTX .sapMInputInner,
+.sap-bb      .sapMILI-CTX .sapMInputInner {
+	color:                 darken(spin(@sapUiHighlight,4),5); // #0060a7
+	text-align:			   right;
+	background-color:      transparent;
+	-webkit-box-shadow:    none;
+	-webkit-appearance:    none;
+	height:                2.571em;
+	padding:               0.2em 0.571em 0.143em 0.571em;
+}
+
+.sap-android .sapMILI-CTX .sapMInputPlaceholder,
+.sap-bb .sapMILI-CTX .sapMInputPlaceholder {
+	text-align:            right;
+	padding:               0.6em 0.76em 0.143em 0.571em;
+	height:                2.571em;
+}

@@ -1,0 +1,42 @@
+/* ========== */
+/* iOS Styles */
+/* ========== */
+.sap-ios .sapMGrowingListTrigger,
+.sap-ios .sapMGrowingListLoading{
+	height: 2.75em;
+}
+
+.sap-ios .sapMGrowingListLoading > .sapMGrowingListBusyIndicator {
+	margin: 0.375em auto;
+}
+
+.sap-ios .sapMGrowingListBusyIndicator {
+	margin: 0.375em 1.0rem 0.375em 1.0rem;
+}
+
+.sap-ios .sapMGrowingListDescription {
+	margin-right: 2.375em;
+	text-align: center;
+}
+
+/* ============== */
+/* Android Styles */
+/* ============== */
+.sap-android .sapMGrowingListTrigger,
+.sap-android .sapMGrowingListLoading {
+	border-top: 0.0625em solid darken(@sapUiListBG,10)	;
+	height: 3em;
+}
+
+.sap-android .sapMGrowingListBusyIndicator {
+	margin: 0.5em 1.0rem 0.5em 1.0rem;
+}
+
+.sap-android .sapMGrowingListLoading > .sapMGrowingListBusyIndicator {
+	margin: 0.5em auto;
+}
+
+.sap-android .sapMGrowingListDescription {
+	margin-right: 2.5em;
+	text-align: center;
+}

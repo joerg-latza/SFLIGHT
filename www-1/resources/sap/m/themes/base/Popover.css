@@ -1,0 +1,58 @@
+
+/* ============================================= */
+/* CSS for controlsap.m/Popover.control */
+/* ============================================= */
+
+.sapMPopover{
+	color: @sapUiText;
+	background-color: @sapUiBlackBG;
+	min-width: 100px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.sapMPopoverCont{
+	overflow: hidden;
+	position: relative;
+	/* set margin to every side */
+	margin: 0.4375em;
+	background-color: @sapUiLightBG;
+}
+
+.sapMPopoverScroll{
+/* 	width: 100%;  when set width to 100%, the horizontal scrolling will be disabled and this is done in the end of setArrowPosition method*/
+	display: inline-block;
+	overflow: hidden; 
+}
+
+/* disable scrolling automatically for sap.m.Page sap.m.NavContainer sap.m.ScrollingContainer inside Popover */
+.sapMPopoverScrollDisabled{
+	height: 100%;
+}
+
+.sapMPopoverArr{
+	display: none;
+}
+
+.sapMPopoverBLayer{
+	opacity: 0.3;
+	/* position fixed doesn't work inside the mobile browser */
+	position: absolute;
+}
+
+.sapMPopoverCont:focus{
+	outline: none;
+}
+
+.sapMPopover.sapMPopoverTransparent {
+	opacity: 0;
+}
+
+.sapMPopover.sapMPopoverOpaque {
+	opacity: 1;
+}
+
+.sapMPopoverAnimation {
+ 	-webkit-transition: opacity 0.2s linear; 
+ 	transition: opacity 0.2s linear;
+}

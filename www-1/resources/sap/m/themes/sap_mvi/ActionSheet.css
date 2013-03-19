@@ -1,0 +1,56 @@
+/* ============================================= */
+/* CSS for control sap.m/ActionSheet.control */
+/* MVI theme                                        */
+/* ============================================= */
+
+.sap-ios {
+	.sapMActionSheetDialog.sapMDialogIPhone{
+		background-color: transparent;
+		border-radius: 0;
+		background-image: -webkit-linear-gradient(top, fade(lighten(@sapUiDarkBG, 5), 80), fade(lighten(@sapUiDarkBG, 9), 80) 6%, fade(lighten(@sapUiDarkBG, 3), 80) 12%, fade(lighten(@sapUiDarkBG, 12), 80));
+  		background-image: linear-gradient(to bottom, fade(lighten(@sapUiDarkBG, 5), 80), fade(lighten(@sapUiDarkBG, 9), 80) 6%, fade(lighten(@sapUiDarkBG, 3), 80) 12%, fade(lighten(@sapUiDarkBG, 12), 80));
+	}
+	
+	
+	.sapMActionSheetDialog.sapMDialogIPhone.sapMDialogNoHeader > section{
+		box-shadow: inset 0 0.0625em fade(lighten(@sapUiDarkBG, 60), 80), 0 -0.125em 0.0625em fade(darken(@sapUiDarkBG, 40), 30);
+	}
+	
+	.sapMActionSheetDialog.sapMDialogIPhone > section {
+		border-radius: 0;
+	}
+	
+	.sapMActionSheetDialog.sapMDialogIPhone button.sapMActionSheetButton {
+		box-shadow: inset 0 0.0625em 0 fade(lighten(@sapUiDarkBG, 60), 20), 0 0.0625em 0 fade(darken(@sapUiDarkBG, 40), 50), 0 0 0 0.125em darken(@sapUiDarkBG, 10), 0 0.0625em 0 0.125em fade(lighten(@sapUiDarkBG, 60), 30);
+	}
+	
+	.sapMActionSheetDialog.sapMDialogIPhone > .sapMBar {
+		-webkit-box-shadow: none;
+		border-radius: 0;
+		background-color: transparent;
+		box-shadow: inset 0 0.0625em fade(lighten(@sapUiDarkBG, 60), 80), 0 -0.125em 0.0625em fade(darken(@sapUiDarkBG, 40), 30);
+		background-image: none;
+		height: 2.5em;
+	}
+	
+	.sapMActionSheetDialog.sapMDialogIPhone > .sapMBar .sapMBarPH {
+		padding: 0.875em 0 0 0;
+	}
+	
+	.sapMActionSheetDialog.sapMDialogIPhone > .sapMBar > .sapMBarMiddle Label.sapMLabel{
+		color: @sapUiTextInverted;
+		font-size: 0.875em;
+		font-weight: normal;
+		line-height: 1.875em;
+		height: 1.875em;
+		text-shadow: 0 -0.0825em -0.0825em rgba(0, 0, 0, 0.5);
+	}
+}
+
+.sap-android, 
+.sap-bb{
+	.sapMActionSheetDialog .sapMActionSheet button.sapMActionSheetButton.sapMBtnActive{
+		background-image: -webkit-linear-gradient(bottom, darken(spin(@sapUiActive,4),5) 0%, lighten(@sapUiActive,4) 100%);
+		background: -webkit-gradient( linear, left bottom, left bottom,  color-stop(0, darken(spin(@sapUiActive,4),5)), color-stop(1, lighten(@sapUiActive,4)));
+	}
+}

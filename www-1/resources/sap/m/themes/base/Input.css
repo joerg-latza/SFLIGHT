@@ -1,0 +1,17 @@
+/* ********** */
+/* BASE Theme */
+/* ********** */
+/* ============================================= */
+/* CSS for control sap.m/Input.control */
+/* ============================================= */
+
+.sapMInput, .sapMInputInner {
+	-webkit-box-sizing:   border-box;
+	box-sizing:           border-box;
+	font:	              inherit;
+}
+
+.sapMInputDisabled {
+	opacity:               0.3;
+	pointer-events:		   none; /* disable touch events */
+}

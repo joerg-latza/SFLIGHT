@@ -1,0 +1,50 @@
+/* ======================================= */
+/* CSS for control sap.m/Select.control    */
+/* ======================================= */
+
+/*
+ * [ANDROID|iOS] Select commons
+ */
+
+.sapMSlt {
+	position: relative;
+	display: inline-block;
+}
+
+.sapMSlt,
+.sapMSlt > select {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.sapMSltDisabled {
+	opacity: 0.3;
+	pointer-events: none;
+}
+
+.sapMSlt > .sapMSltLabel {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-decoration: none;
+	text-indent: 0;
+	text-align: left;
+	-webkit-user-select: none;
+}
+
+.sapMSlt > select {
+	-webkit-appearance: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	border: none;
+	margin: 0;
+	width: auto;
+}
+
+.sapMSlt > select,
+.sapMSlt > select > option {
+	font: inherit;
+}

@@ -1,0 +1,81 @@
+/* ============================================= */
+/* CSS for controlsap.m/DisplayListItem.control  */
+/* ============================================= */
+.sapMDLI {
+	display: -webkit-box;
+}
+
+.sap-ios .sapMDLI {
+	height: 2.75em;
+}
+
+.sap-android .sapMDLI,.sap-bb .sapMDLI {
+	height: 3em;
+}
+
+.sap-android .sapMDLI .sapMLIBContent,
+.sap-bb .sapMDLI .sapMLIBContent{
+	-webkit-box-orient: vertical;
+}
+
+.sap-ios .sapMDLI .sapMLIBContent {
+	line-height: 2.75em;
+}
+
+.sapMDLILabel {
+	-webkit-box-flex: 1;
+	text-shadow: 0 0.05em 0 lighten(@sapUiListBG, 15);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 3em;
+	display: block;
+}
+
+.sap-ios .sapMDLILabel {
+	font-weight: bold;
+	font-size: 1.0625em;
+	margin: 0 0 0 0.625rem;
+	-webkit-box-align: center;
+}
+
+.sap-android .sapMDLILabel,.sap-bb .sapMDLILabel {
+	font-weight: normal;
+	line-height: 1.14286em;
+	font-size: 1.125em;
+	margin: 0 0 0 0.5rem;
+}
+
+.sapMDLIValue {
+	-webkit-box-flex: 1;
+	font-size: 0.875em;
+	color: darken(spin(@sapUiHighlight, 4), 5 );
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 3em;
+}
+
+.sap-ios .sapMDLIValue {
+	margin: 0 0 0 0.625rem;
+	text-align: right;
+	color: darken(spin(@sapUiHighlight, 4), 5 );
+}
+
+.sap-android .sapMDLIValue,.sap-bb .sapMDLIValue {
+	line-height: 1.14286em;
+	margin: 0 0 0 0.5rem;
+	color: lighten(@sapUiText, 60);
+}
+
+.sapMLIBActive .sapMDLIValue{
+	color: @sapUiTextInverted;
+}
+
+.sapMDLI .sapMLIBContent{
+	display: -webkit-box;
+	-webkit-box-flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

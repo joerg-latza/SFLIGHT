@@ -1,0 +1,243 @@
+/* ********************************************** */
+/* CSS for control sap.m/Switch.control MVI Theme */
+/* ********************************************** */
+
+/*
+ * [ANDROID]
+ */
+
+.sap-android .sapMSwtCont,
+.sap-bb .sapMSwtCont {
+	padding: 0.656em 0 0.656em 0;
+}
+
+.sap-android .sapMSwt,
+.sap-bb .sapMSwt {
+	margin: 0.125em 0.125em 0em 0.125em;
+	background-color: fade(@sapUiMediumBG,33);	/* hsla(0, 0%, 60%, 0.33) */
+	width: 5.5em;
+	overflow-x: hidden;
+	padding-bottom: 0.125em;
+	-webkit-background-clip: content-box;
+	background-clip: content-box;
+}
+
+.sap-android .sapMSwt,
+.sap-android .sapMSwtBtn,
+.sap-bb .sapMSwt,
+.sap-bb .sapMSwtBtn {
+	height: 1.4375em;
+}
+
+.sap-android .sapMSwtBtn,
+.sap-bb .sapMSwtBtn {
+	width: 3.4375em;
+	margin: 0 0.125em;
+	color: @sapUiTextInverted;
+	-webkit-transform: skewX(-23.5deg);
+	transform: skewX(-23.5deg);
+}
+
+/* pressed */
+
+.sap-android .sapMSwtPressed:not(.sapMSwtDisabled) > .sapMSwtBtn,
+.sap-bb .sapMSwtPressed:not(.sapMSwtDisabled) > .sapMSwtBtn {
+	background-color: lighten(spin(@sapUiActive, 354), 4);	/* #00A3D7 */
+}
+
+/* btn text */
+
+.sap-android .sapMSwtBtn::before,
+.sap-bb .sapMSwtBtn::before {
+	content: attr(data-sap-ui-swt);
+	position: absolute;
+	display: block;
+	left: 0.42em;
+	width: 3.75em;
+	color: @sapUiTextInverted;
+	font: 0.75em/1.93em bold;
+	text-align: center;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-transform: uppercase;
+	white-space: nowrap;
+	-webkit-transform: skewX(23.5deg);
+	transform: skewX(23.5deg);
+}
+
+/* underscroll under btn */
+
+.sap-android .sapMSwtOn > .sapMSwtBtn::after,
+.sap-android .sapMSwtOff > .sapMSwtBtn::after,
+.sap-bb .sapMSwtOn > .sapMSwtBtn::after,
+.sap-bb .sapMSwtOff > .sapMSwtBtn::after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	bottom: -0.125em;
+	border-top: 0.0625em solid transparent;
+	border-bottom: 0.0625em solid fade(@sapUiMediumBG, 33);
+}
+
+/* on */
+
+.sap-android .sapMSwtOn > .sapMSwtBtn,
+.sap-bb .sapMSwtOn > .sapMSwtBtn {
+	background-color: darken(spin(@sapUiSelected, 4), 5);	/* #0062A9 */
+	left: 2.3125em;
+}
+
+/* off */
+
+.sap-android .sapMSwtOff > .sapMSwtBtn,
+.sap-bb .sapMSwtOff > .sapMSwtBtn {
+	background-color: darken(@sapUiMediumBG, 10);
+	left: -0.4375em;
+}
+
+/* disabled */
+
+.sap-android .sapMSwtDisabled,
+.sap-bb .sapMSwtDisabled {
+	background-color: transparent;
+}
+
+.sap-android .sapMSwtDisabled::before,
+.sap-bb .sapMSwtDisabled::before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 5.375em;
+	height: 1.3125em;
+	border: 0.0625em solid fade(darken(@sapUiMediumBG, 10), 10);
+}
+
+.sap-android .sapMSwtDisabled > .sapMSwtBtn,
+.sap-bb .sapMSwtDisabled > .sapMSwtBtn {
+	background-color: fade(darken(@sapUiMediumBG, 10), 10);
+}
+
+.sap-android .sapMSwtDisable > .sapMSwtBtn::after,
+.sap-bb .sapMSwtDisable > .sapMSwtBtn::after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	bottom: -0.125em;
+	border-top: 0.0625em solid transparent;
+	border-bottom: 0.0625em solid lighten(lighten(@sapUiMediumBG,27), 30);  /* TODO: Android element color could be MediumBackground?? Or use element color here */
+}
+
+/*
+ * [iOS] Switch
+ */
+
+.sap-ios .sapMSwtCont {
+	padding: 0.531em 0 0.531em 0;
+}
+
+.sap-ios .sapMSwt {
+	width: 4.74em;
+	height: 1.5625em;
+	-webkit-border-radius: 0.8125em;
+	border-radius: 0.8125em;
+	border: solid 0.0625em fade(darken(@sapUiBaseBorder, 60), 50);
+	overflow: hidden;
+}
+
+.sap-ios .sapMSwtBtn,
+.sap-ios .sapMSwtTextOn,
+.sap-ios .sapMSwtTextOff {
+	-webkit-border-radius: 0.8125em;
+	border-radius: 0.8125em;
+}
+
+.sap-ios .sapMSwtBtn {
+	width: 1.5625em;
+	min-height: 100%;
+	border: solid 0.0625em fade(darken(@sapUiBaseBorder, 60), 50);
+	top: -0.0625em;
+	-webkit-box-shadow: inset 0 0.0625em 0 lighten(@sapUiElement, 15);
+	box-shadow: inset 0 0.0625em 0 lighten(@sapUiElement, 15);
+	background: -webkit-linear-gradient(top, darken(@sapUiElement, 10) 0%, lighten(@sapUiElement, 15) 100% );
+	background: linear-gradient(top, darken(@sapUiElement, 10) 0%, lighten(@sapUiElement, 15) 100% );
+}
+
+/* pressed */
+
+.sap-ios .sapMSwtPressed:not(.sapMSwtDisabled) .sapMSwtBtn {
+	background: -webkit-linear-gradient(top, darken(@sapUiElement,10) 0%, lighten(@sapUiElement, 2) 100% );
+	background: linear-gradient(top, darken(@sapUiElement, 10) 0%, lighten(@sapUiElement, 2) 100% );
+}
+
+/* on */
+
+.sap-ios .sapMSwtOn > .sapMSwtBtn {
+	left: 3.115em;
+}
+
+/* off */
+
+.sap-ios .sapMSwtOff > .sapMSwtBtn {
+	left: -0.0625em;
+}
+
+/* btn text */
+
+.sap-ios .sapMSwtTextOn,
+.sap-ios .sapMSwtTextOff {
+	overflow: hidden;
+	height: 1.5625em;
+	width: 4.74em;
+	text-align: left;
+	line-height: 1.7em;
+	position: absolute;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-shadow: inset 0 0.125em 0.0625em fade(black, 30), inset 0 0.78125em 0 fade(black, 10);
+	box-shadow: inset 0 0.125em 0.0625em fade(black, 30), inset 0 0.78125em 0 fade(black, 10);
+}
+
+.sap-ios .sapMSwtTextOn > span,
+.sap-ios .sapMSwtTextOff > span {
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
+	font-weight: bold;
+}
+
+.sap-ios .sapMSwtTextOn {
+	text-shadow: 0 -0.0625em 0 darken(@sapUiTextInverted, 50);
+	color: @sapUiTextInverted;
+	background: lighten(spin(@sapUiSelected, 6), 8);  /* #007FEA */
+	left: 0;
+}
+
+.sap-ios .sapMSwtTextOff {
+	text-shadow: 0 0.0625em 0 lighten(@sapUiText, 100);
+	color: lighten(@sapUiText, 50);
+	background: lighten(@sapUiLightBG, 10);
+	right: 0;
+}
+
+.sap-ios .sapMSwtOn > .sapMSwtTextOff,
+.sap-ios .sapMSwtOff > .sapMSwtTextOn {
+	width: 1.5625em;
+}
+
+/* css transitions */
+
+.sap-ios .sapMSwtTrans > .sapMSwtBtn,
+.sap-ios .sapMSwtTrans > .sapMSwtTextOn,
+.sap-ios .sapMSwtTrans > .sapMSwtTextOff {
+	-webkit-transition: all 0.125s ease-in-out;
+	transition: all 0.125s ease-in-out;
+}
+
+/* disabled */
+
+.sap-ios .sapMSwtDisabled {
+	opacity: 0.3;
+}

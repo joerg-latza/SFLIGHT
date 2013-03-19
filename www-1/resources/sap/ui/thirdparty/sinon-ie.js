@@ -32,6 +32,8 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+/*global sinon, setTimeout, setInterval, clearTimeout, clearInterval, Date*/
 /**
  * Helps IE run the fake timers. By defining global functions, IE allows
  * them to be overwritten at a later point. If these are not defined like
@@ -45,13 +47,21 @@
  *
  * Copyright (c) 2010-2011 Christian Johansen
  */
+function setTimeout() {}
+function clearTimeout() {}
+function setInterval() {}
+function clearInterval() {}
+function Date() {}
 
-function setTimeout(){}
-function clearTimeout(){}
-function setInterval(){}
-function clearInterval(){}
-function Date(){}
-setTimeout=sinon.timers.setTimeout;clearTimeout=sinon.timers.clearTimeout;setInterval=sinon.timers.setInterval;clearInterval=sinon.timers.clearInterval;Date=sinon.timers.Date;
+// Reassign the original functions. Now their writable attribute
+// should be true. Hackish, I know, but it works.
+setTimeout = sinon.timers.setTimeout;
+clearTimeout = sinon.timers.clearTimeout;
+setInterval = sinon.timers.setInterval;
+clearInterval = sinon.timers.clearInterval;
+Date = sinon.timers.Date;
+
+/*global sinon*/
 /**
  * Helps IE run the fake XMLHttpRequest. By defining global functions, IE allows
  * them to be overwritten at a later point. If these are not defined like
@@ -65,6 +75,8 @@ setTimeout=sinon.timers.setTimeout;clearTimeout=sinon.timers.clearTimeout;setInt
  *
  * Copyright (c) 2010-2011 Christian Johansen
  */
+function XMLHttpRequest() {}
 
-function XMLHttpRequest(){}
-XMLHttpRequest=sinon.xhr.XMLHttpRequest||undefined;
+// Reassign the original function. Now its writable attribute
+// should be true. Hackish, I know, but it works.
+XMLHttpRequest = sinon.xhr.XMLHttpRequest || undefined;

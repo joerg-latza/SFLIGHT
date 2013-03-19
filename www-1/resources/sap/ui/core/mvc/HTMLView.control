@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>mvc/HTMLView</name>
+	<author>Stefan Hipfel, Tino Butz</author>
+	<documentation>A view defined/constructed by declarative HTML.</documentation>
+	<since>1.9.2</since>
+	<developmentState state="experimental" since="1.9.2">The HTML view concept is still under discussion so this will be changed in future.</developmentState>
+
+	<baseType>sap.ui.core/mvc/View</baseType>
+</control>

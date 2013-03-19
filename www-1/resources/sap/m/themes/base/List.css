@@ -1,0 +1,73 @@
+/* ============================================= */
+/* CSS for controlsap.m/List.control */
+/* ============================================= */
+.sapMList {
+	min-width: 150px;
+	position: relative;	/* This should not break the list but help swipe list content position calculation */
+}
+
+.sapMListUl {
+	
+}
+
+.sapMListInset {
+	overflow: hidden;
+}
+
+.sapMListHdr {
+	
+}
+
+.sapMListFtr {
+	
+}
+
+.sapMListNoData {
+	
+}
+
+
+#sapMListPullUp.loading {
+	
+}
+
+.sapMListSwp {
+	overflow: hidden;
+	position: absolute;
+	right: 0.5em;
+	z-index: 2;
+	pointer-events: auto;
+	display: -webkit-box;
+	opacity: 0;
+	-webkit-box-align: center;
+	-webkit-animation-fill-mode: forwards;
+}
+
+/* swipe animations */
+@-webkit-keyframes sapMListSwpInAnim {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes sapMListSwpOutAnim {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.sapMListSwpInAnim {
+	-webkit-animation-duration: 0.2s;
+	-webkit-animation-name: sapMListSwpInAnim;
+}
+
+.sapMListSwpOutAnim {
+	-webkit-animation-duration: 0.2s;
+	-webkit-animation-name: sapMListSwpOutAnim;
+}

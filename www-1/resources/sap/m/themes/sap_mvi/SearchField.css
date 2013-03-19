@@ -1,0 +1,257 @@
+/* ============================================= */
+/* CSS for control     sap.m/SearchField.control */
+/* Styling is in general reused from sap.m.Input */
+/* Override the searchField specific values only */
+/* ============================================= */
+
+.sapMSF{
+	position: relative;
+	min-width: 5em;
+	-webkit-user-modify: read-only;
+	-webkit-user-select: none;
+}
+
+.sapMSFI[type="search"] {
+	font-size: 0.88em;
+	-webkit-appearance:none;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.sapMSFI[type="search"]::-webkit-input-placeholder {
+	color: lighten(@sapUiBaseText,55);
+}
+
+.sapMSFI[type="search"]::-webkit-search-decoration,
+.sapMSFI[type="search"]::-webkit-search-results-decoration,
+.sapMSFI[type="search"]::-webkit-search-results-button,
+.sapMSFI[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+.sapMSFI[type="search"]:focus {
+	-webkit-appearance: none;
+}
+
+/* iOS */
+.sap-ios .sapMSF{
+	box-sizing: border-box;
+}
+
+.sap-ios .sapMSFR {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 1.8em;
+	height: 100%;
+	background: transparent;
+	-webkit-user-select: none;
+}
+
+/* magnifier icon */
+.sap-ios .sapMSFMG{
+	position: absolute;
+	left: 0.5em;
+	top: 0.25em;
+	width: 1.5em;
+	height: 1.5em;
+
+	// magnifier icon has the same color tone as the border in ios
+	background-color: lighten(@sapUiBaseBorder, 10); 
+	-webkit-mask-box-image: url(img/search.png);
+
+	-webkit-user-modify: read-only;
+	-webkit-user-select: none;
+}
+
+.sap-ios .sapMSFI[type="search"]::-webkit-search-cancel-button{
+	position: absolute;
+	right: 0.4em;
+	top: 0.4em;
+	margin: 0;
+	height: 1.45em;
+	width: 1.45em;
+
+	// "x" icon has the same color tone as the border in ios
+	-webkit-mask-box-image: url(img/search_x_ios.png);
+	background-color: lighten(@sapUiBaseBorder, 10);
+}
+
+/* add padding when inside of the bar */
+.sap-ios .sapMBar .sapMSF{
+	padding: 0.44em 0em 0.44em 0em;
+}
+
+.sap-ios .sapMBar .sapMSFMG{
+	margin: 0.44em 0em 0.44em 0em;
+}
+
+.sap-ios .sapMBar input.sapMSFI[type="search"]::-webkit-search-cancel-button{
+	margin: 0.5em 0em 0.3em 0.22em;
+}
+
+.sap-ios .sapMSFI[type="search"]:focus {
+	outline: none;
+}
+
+/* do not show "x" if it cannot be pressed */
+.sap-ios .sapMSFI.sapMSFIDisabled[type="search"]::-webkit-search-cancel-button,
+.sap-ios .sapMBar .sapMSFI.sapMSFIDisabled[type="search"]::-webkit-search-cancel-button{
+	background: transparent;
+}
+
+.sap-ios .sapMSFI[type="search"] {
+	border-radius: 1.07em;
+	height: 2.14em;
+	border: 0.1em solid @sapUiBaseBorder;
+	-webkit-box-shadow: 0 -0.071em 0 darken(@sapUiBaseBorder, 20), inset 0 0.14em 0.14em lighten(@sapUiBaseBorder, 17);
+	padding: 0em 0.5em 0em 1em;
+}
+
+.sap-ios .sapMSFI[type="search"][results] {
+	padding-left:2.6em;
+}
+
+/* IOS6 - add some space to right padding for the reset button */
+.sap-ios .sapMSFI.sapMSFIIos6[type="search"] {
+	padding-right:1.6em;
+}
+
+/* Android */
+
+.sap-bb .sapMSF,
+.sap-android .sapMSF {
+	margin: 0.4em 0.0625em 0 0.0625em;
+	border: none;
+	border-bottom: 0.0625em solid @sapUiBaseBorder;
+	padding: 0em;
+	padding-left: 0.6em;
+}
+
+.sap-bb .sapMSF.sapMSFM,
+.sap-android .sapMSF.sapMSFM {
+	padding-left: 1.5em; /* place for the magnifying glass */
+}
+
+.sap-android .sapMSF.sapMSFA2 {
+	padding-right: 1em; /* specific Android 2.* adjustment */
+}
+
+.sap-android .sapMSF.sapMSFA4 {
+	padding-right: 1.5em; /* specific Android 4.* adjustment */
+}
+
+
+/* left dash */
+.sap-bb .sapMSF::before,
+.sap-android .sapMSF::before {
+	position: absolute;
+	content: "";
+	width: 0.0625em;
+	height: 0.3125em;
+	border-right: 0.0625em solid @sapUiBaseBorder;
+	bottom: -0.0625em;
+	left: -0.125em;
+}
+
+/* right dash */
+.sap-bb .sapMSF::after,
+.sap-android .sapMSF::after {
+	position: absolute;
+	content: "";
+	width: 0.0625em;
+	height: 0.3125em;
+	border-right: 0.0625em solid  @sapUiBaseBorder;
+	bottom: -0.0625em;
+	right: -0.0625em;
+}
+
+/* magnifier icon */
+.sap-bb .sapMSFMG,
+.sap-android .sapMSFMG{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 1.5em;
+	height: 1.5em;
+	-webkit-mask-box-image: url(img/search.png);
+	background-color: lighten(@sapUiText,40); // #666
+	-webkit-user-select: none;
+}
+
+.sap-bb .sapMSFI[type="search"],
+.sap-android .sapMSFI[type="search"] {
+	-webkit-appearance: none;
+	border-width: 0;
+	background: transparent;
+	margin: 0em;
+	padding: 0em;
+}
+
+.sap-bb input.sapMSFI[type="search"]:focus,
+.sap-android input.sapMSFI[type="search"]:focus {
+	outline-width: 0;
+}
+
+.sap-bb .sapMBar .sapMSFI[type="search"],
+.sap-android .sapMBar .sapMSFI[type="search"] {
+	color: darken(@sapUiBarText,56);
+}
+
+.sap-bb .sapMBar.sapMHeader-CTX .sapMSFI[type="search"],
+.sap-bb .sapMBar.sapMFooter-CTX .sapMSFI[type="search"],
+.sap-android .sapMBar.sapMHeader-CTX .sapMSFI[type="search"],
+.sap-android .sapMBar.sapMFooter-CTX .sapMSFI[type="search"] {
+	color: @sapUiBarText;
+}
+
+/* Transparent tap area for the search cancel button */
+.sap-bb .sapMSFR,
+.sap-android .sapMSFR {
+	position: absolute;
+	right: 0em;
+	top: 0em;
+	width: 1.6em;
+	height: 1.5em;
+}
+
+/* Search cancel button */
+.sap-bb .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-android .sapMSFI[type="search"]::-webkit-search-cancel-button{
+	position: absolute;
+	height: 1.8em;
+	width: 1.8em;
+	margin:0;
+	padding:0;
+	right: 0em;
+	top: 0em;
+	-webkit-mask-box-image: url(img/search_x.png);
+	-webkit-user-select: none;
+	background-color: lighten(@sapUiText,40); // #666
+}
+
+.sap-bb .sapMBar .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-android .sapMBar .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-bb .sapMBar .sapMSFMG,
+.sap-android .sapMBar .sapMSFMG{
+	background-color: darken(@sapUiBarText,56);
+}
+
+.sap-bb .sapMBar.sapMHeader-CTX .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-bb .sapMBar.sapMFooter-CTX .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-android .sapMBar.sapMHeader-CTX .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-android .sapMBar.sapMFooter-CTX .sapMSFI[type="search"]::-webkit-search-cancel-button,
+.sap-bb .sapMBar.sapMHeader-CTX .sapMSFMG,
+.sap-bb .sapMBar.sapMFooter-CTX .sapMSFMG,
+.sap-android .sapMBar.sapMHeader-CTX .sapMSFMG,
+.sap-android .sapMBar.sapMFooter-CTX .sapMSFMG{
+	background-color: @sapUiBarText; // color of  the "x" and the magnifier icon
+}
+
+/* do not show "x" if it cannot be pressed */
+.sap-bb .sapMSFI.sapMSFIDisabled[type="search"]::-webkit-search-cancel-button,
+.sap-bb .sapMBar .sapMSFI.sapMSFIDisabled[type="search"]::-webkit-search-cancel-button,
+.sap-android .sapMSFI.sapMSFIDisabled[type="search"]::-webkit-search-cancel-button,
+.sap-android .sapMBar .sapMSFI.sapMSFIDisabled[type="search"]::-webkit-search-cancel-button{
+	background-color: transparent;
+}

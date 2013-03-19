@@ -1,9 +1,385 @@
+/*jslint eqeq: true, plusplus: true, undef: true, sloppy: true, vars: true, forin: true */
 /*!
- * jQuery MobiScroll v2.2
+ * jQuery MobiScroll v2.3
  * http://mobiscroll.com
  *
  * Copyright 2010-2011, Acid Media
  * Licensed under the MIT license.
  *
  */
-(function($){var d={invalid:[],showInput:true,inputClass:''};$.mobiscroll.presets.list=function(b){var s=$.extend({},d,b.settings),f=$(this),g,h,k=this.id+'_dummy',m=0,p=0,q=s.wheelArray||I(f),r=B(m),u=[],x=G(q),w=C(x,m);function y(a,n,c,e){var i=0;while(i<n){var j=$('.dwwl'+i,a),l=z(e,i,c);$.each(l,function(i,v){$('li[data-val="'+v+'"]',j).removeClass('dw-v')});i++}}function z(a,c,e){var i=0,j=e,l=[];while(i<c){var o=a[i];for(var n in j){if(j[n].key==o){j=j[n].children;break}}i++}i=0;while(i<j.length){if(j[i].invalid){l.push(j[i].key)}i++}return l}function A(n,i){var a=[];while(n){a[--n]=true}a[i]=false;return a}function B(l){var a=[],i;for(i=0;i<l;i++){a[i]=s.labels&&s.labels[i]?s.labels[i]:i}return a}function C(a,l,c){var i=0,j,o,e,w=[{}],n=q;if(l){for(j=0;j<l;j++){w[j]={};w[j][r[j]]={}}}while(i<a.length){w[i]={};w[i][r[i]]=E(n);j=0;e=undefined;while(j<n.length&&e===undefined){if(n[j].key==a[i]&&((c!==undefined&&i<=c)||c===undefined)){e=j}j++}if(e!==undefined&&n[e].children){i++;n=n[e].children}else if((o=D(n))&&o.children){i++;n=o.children}else{return w}}return w}function D(a,c){if(!a){return false}var i=0,o;while(i<a.length){if(!(o=a[i++]).invalid){return c?i-1:o}}return false}function E(o){var a={},j=0;while(j<o.length){a[o[j].key]=o[j++].value}return a}function F(a,i){$('.dwc',a).css('display','').slice(i).hide()}function G(q){var t=[],n=q,o,a=true,i=0;while(a){o=D(n);t[i++]=o.key;if(a=o.children){n=o.children}}return t}function H(a,c){var t=[],n=q,m=0,e=false,i,j,l;if(a[m]!==undefined&&m<=c){i=0;j=a[m];l=undefined;while(i<n.length&&l===undefined){if(n[i].key==a[m]&&!n[i].invalid){l=i}i++}}else{l=D(n,true);j=n[l].key}e=l!==undefined?n[l].children:false;t[m]=j;while(e){n=n[l].children;m++;e=false;l=undefined;if(a[m]!==undefined&&m<=c){i=0;j=a[m];l=undefined;while(i<n.length&&l===undefined){if(n[i].key==a[m]&&!n[i].invalid){l=i}i++}}else{l=D(n,true);l=l===false?undefined:l;j=n[l].key}e=l!==undefined&&D(n[l].children)?n[l].children:false;t[m]=j}return{lvl:m+1,nVector:t}}function I(a){var e=[];m=m>p++?m:p;a.children('li').each(function(i){var t=$(this),c=t.clone();c.children('ul,ol').remove();var v=c.html().replace(/^\s\s*/,'').replace(/\s\s*$/,''),j=t.data('invalid')?true:false,l={key:t.data('val')||i,value:v,invalid:j,children:null},n=t.children('ul,ol');if(n.length){l.children=I(n)}e.push(l)});p--;return e}$('#'+k).remove();if(s.showInput){h=$('<input type="text" id="'+k+'" value="" class="'+s.inputClass+'" readonly />').insertBefore(f);b.settings.anchor=h;if(s.showOnFocus){h.focus(function(){b.show()})}}if(!s.wheelArray){f.hide().closest('.ui-field-contain').trigger('create')}return{width:50,wheels:w,headerText:false,onBeforeShow:function(a){var t=b.temp;u=b.temp.slice(0);b.settings.wheels=C(t,m,m)},onSelect:function(v,b){if(h){h.val(v)}},onChange:function(v,b){if(h&&s.display=='inline'){h.val(v)}},onClose:function(){if(h){h.blur()}},validate:function(a,c,j){var t=b.temp;if(c!==undefined&&u[c]!=t[c]){b.settings.readonly=A(m,c);$('.dwwl'+c,a).bind('mousedown touchstart',function(e){clearTimeout(g);b.settings.readonly=false;$(this).unbind('mousedown touchstart')});g=setTimeout(function(){b.settings.wheels=C(t,null,c);var e=[],i=c,o=H(t,c);b.temp=o.nVector.slice(0);while(i<o.lvl){e.push(i++)}F(a,o.lvl);$('.dwwl'+c,a).unbind('mousedown touchstart');b.changeWheel.apply(null,Array.prototype.slice.call(e,0));b.settings.readonly=false;u=b.temp.slice(0);y(a,o.lvl,q,b.temp)},j*1000)}else{var o=H(t,t.length);y(a,o.lvl,q,t);F(a,o.lvl)}}}}})(jQuery);
+(function ($) {
+    var ms = $.mobiscroll,
+        defaults = {
+            invalid: [],
+            showInput: true,
+            inputClass: ''
+        },
+        preset =  function (inst) {
+            var s = $.extend({}, defaults, inst.settings),
+                elm = $(this),
+                input,
+                id = this.id + '_dummy',
+                lvl = 0,
+                ilvl = 0,
+                wa = s.wheelArray || createWheelArray(elm),
+                labels = generateLabels(lvl),
+                currWheelVector = [],
+                fwv = firstWheelVector(wa),
+                w = generateWheelsFromVector(fwv, lvl);
+
+            /**
+             * Disables the invalid items on the wheels
+             * @param {Object} dw - the jQuery mobiscroll object
+             * @param {Number} nrWheels - the number of the current wheels
+             * @param {Array} whArray - The wheel array objects containing the wheel tree
+             * @param {Array} whVector - the wheel vector containing the current keys
+             */
+            function setDisabled(dw, nrWheels, whArray, whVector) {
+                var i = 0;
+                while (i < nrWheels) {
+                    var currWh = $('.dwwl' + i, dw),
+                        inv = getInvalidKeys(whVector, i, whArray);
+                    $.each(inv, function (i, v) {
+                        $('li[data-val="' + v + '"]', currWh).removeClass('dw-v');
+                    });
+                    i++;
+                }
+            }
+
+            /**
+             * Returns the invalid keys of one wheel as an array
+             * @param {Array} whVector - the wheel vector used to search for the wheel in the wheel array
+             * @param {Number} index - index of the wheel in the wheel vector, that we are interested in
+             * @param {Array} whArray - the wheel array we are searching in
+             * @return {Array} - list of invalid keys
+             */
+            function getInvalidKeys(whVector, index, whArray) {
+                var i = 0,
+                    whObjA = whArray,
+                    invalids = [];
+
+                while (i < index) {
+                    var ii = whVector[i];
+                    //whObjA = whObjA[ii].children;
+                    for (var n in whObjA) {
+                        if (whObjA[n].key == ii) {
+                            whObjA = whObjA[n].children;
+                            break;
+                        }
+                    }
+                    i++;
+                }
+                i = 0;
+                while (i < whObjA.length) {
+                    if (whObjA[i].invalid) {
+                        invalids.push(whObjA[i].key);
+                    }
+                    i++;
+                }
+                return invalids;
+            }
+
+            /**
+             * Creates a Boolean vector with true values (except one) that can be used as the readonly vector
+             * n - the length of the vector
+             * i - the index of the value that's going to be false
+             */
+            function createROVector(n, i) {
+                var a = [];
+                while (n) {
+                    a[--n] = true;
+                }
+                a[i] = false;
+                return a;
+            }
+
+            /**
+             * Creates a labels vector, from values if they are defined, otherwise from numbers
+             * l - the length of the vector
+             */
+            function generateLabels(l) {
+                var a = [],
+                    i;
+                for (i = 0; i < l; i++) {
+                    a[i] = s.labels && s.labels[i] ? s.labels[i] : i;
+                }
+                return a;
+            }
+
+            /**
+             * Creates the wheel array from the vector provided
+             * wv - wheel vector containing the values that should be selected on the wheels
+             * l - the length of the wheel array
+             */
+            function generateWheelsFromVector(wv, l, index) {
+                var i = 0, j, obj, chInd,
+                    w = [{}],
+                    wtObjA = wa;
+
+                if (l) { // if length is defined we need to generate that many wheels (even if they are empty)
+                    for (j = 0; j < l; j++) {
+                        w[j] = {};
+                        w[j][labels[j]] = {}; // each wheel will have a label generated by the generateLabels method
+                    }
+                }
+                while (i < wv.length) { // we generate the wheels until the length of the wheel vector
+                    w[i] = {};
+                    w[i][labels[i]] = getWheelFromObjA(wtObjA);
+
+                    j = 0;
+                    chInd = undefined;
+
+                    while (j < wtObjA.length && chInd === undefined) {
+                        if (wtObjA[j].key == wv[i] && ((index !== undefined && i <= index) || index === undefined)) {
+                            chInd = j;
+                        }
+                        j++;
+                    }
+
+                    if (chInd !== undefined && wtObjA[chInd].children) {
+                        i++;
+                        wtObjA = wtObjA[chInd].children;
+                    } else if ((obj = getFirstValidItemObjOrInd(wtObjA)) && obj.children) {
+                        i++;
+                        wtObjA = obj.children;
+                    } else {
+                        return w;
+                    }
+                }
+                return w;
+            }
+
+            /**
+             * Returns the first valid Wheel Node Object or its index from a Wheel Node Object Array
+             * getInd - if it is true then the return value is going to be the index, otherwise the object itself
+             */
+            function getFirstValidItemObjOrInd(wtObjA, getInd) {
+                if (!wtObjA) {
+                    return false;
+                }
+
+                var i = 0,
+                    obj;
+
+                while (i < wtObjA.length) {
+                    if (!(obj = wtObjA[i++]).invalid) {
+                        return getInd ? i - 1 : obj;
+                    }
+                }
+                return false;
+            }
+
+            function getWheelFromObjA(objA) {
+                var wheel = {},
+                    j = 0;
+
+                while (j < objA.length) {
+                    wheel[objA[j].key] = objA[j++].value;
+                }
+                return wheel;
+            }
+
+            /**
+             * Hides the last i number of wheels
+             * i - the last number of wheels that has to be hidden
+             */
+            function hideWheels(dw, i) {
+                $('.dwc', dw).css('display', '').slice(i).hide();
+            }
+
+            /**
+             * Generates the first wheel vector from the wheeltree
+             * wt - the wheel tree object
+             * uses the lvl global variable to determine the length of the vector
+             */
+            function firstWheelVector(wa) {
+                var t = [],
+                    ndObjA = wa,
+                    obj,
+                    ok = true,
+                    i = 0;
+
+                while (ok) {
+                    obj = getFirstValidItemObjOrInd(ndObjA);
+                    t[i++] = obj.key;
+                    if (ok = obj.children) {
+                        ndObjA = obj.children;
+                    }
+                }
+                return t;
+            }
+
+            /**
+             * Calculates the level of a wheel vector and the new wheel vector, depending on current wheel vector and the index of the changed wheel
+             * wv - current wheel vector
+             * index - index of the changed wheel
+             */
+            function calcLevelOfVector2(wv, index) {
+                var t = [],
+                    ndObjA = wa,
+                    lvl = 0,
+                    next = false,
+                    i,
+                    childName,
+                    chInd;
+
+                if (wv[lvl] !== undefined && lvl <= index) {
+                    i = 0;
+
+                    childName = wv[lvl];
+                    chInd = undefined;
+
+                    while (i < ndObjA.length && chInd === undefined) {
+                        if (ndObjA[i].key == wv[lvl] && !ndObjA[i].invalid) {
+                            chInd = i;
+                        }
+                        i++;
+                    }
+                } else {
+                    chInd = getFirstValidItemObjOrInd(ndObjA, true);
+                    childName = ndObjA[chInd].key;
+                }
+
+                next = chInd !== undefined ? ndObjA[chInd].children : false;
+
+                t[lvl] = childName;
+
+                while (next) {
+                    ndObjA = ndObjA[chInd].children;
+                    lvl++;
+                    next = false;
+                    chInd = undefined;
+
+                    if (wv[lvl] !== undefined && lvl <= index) {
+                        i = 0;
+
+                        childName = wv[lvl];
+                        chInd = undefined;
+
+                        while (i < ndObjA.length && chInd === undefined) {
+                            if (ndObjA[i].key == wv[lvl] && !ndObjA[i].invalid) {
+                                chInd = i;
+                            }
+                            i++;
+                        }
+                    } else {
+                        chInd = getFirstValidItemObjOrInd(ndObjA, true);
+                        chInd = chInd === false ? undefined : chInd;
+                        childName = ndObjA[chInd].key;
+                    }
+                    next = chInd !== undefined && getFirstValidItemObjOrInd(ndObjA[chInd].children) ? ndObjA[chInd].children : false;
+                    t[lvl] = childName;
+                }
+                return {
+                    lvl: lvl + 1,
+                    nVector: t
+                }; // return the calculated level and the wheel vector as an object
+            }
+
+            function createWheelArray(ul) {
+                var wheelArray = [];
+
+                lvl = lvl > ilvl++ ? lvl : ilvl;
+
+                ul.children('li').each(function (index) {
+                    var that = $(this),
+                        c = that.clone();
+
+                    c.children('ul,ol').remove();
+
+                    var v = c.html().replace(/^\s\s*/, '').replace(/\s\s*$/, ''),
+                        inv = that.data('invalid') ? true : false,
+                        wheelObj = {
+                            key: that.data('val') || index,
+                            value: v,
+                            invalid: inv,
+                            children: null
+                        },
+                        nest = that.children('ul,ol');
+
+                    if (nest.length) {
+                        wheelObj.children = createWheelArray(nest);
+                    }
+
+                    wheelArray.push(wheelObj);
+                });
+
+                ilvl--;
+                return wheelArray;
+            }
+
+            $('#' + id).remove(); // Remove input if exists
+
+            if (s.showInput) {
+                input = $('<input type="text" id="' + id + '" value="" class="' + s.inputClass + '" readonly />').insertBefore(elm);
+                inst.settings.anchor = input; // give the core the input element for the bubble positioning
+
+                if (s.showOnFocus) {
+                    input.focus(function () {
+                        inst.show();
+                    });
+                }
+            }
+
+            if (!s.wheelArray) {
+                elm.hide().closest('.ui-field-contain').trigger('create');
+            }
+
+            return {
+                width: 50,
+                wheels: w,
+                headerText: false,
+                onBeforeShow: function (dw) {
+                    var t = inst.temp;
+                    currWheelVector = inst.temp.slice(0);
+                    inst.settings.wheels = generateWheelsFromVector(t, lvl, lvl);
+                },
+                onSelect: function (v, inst) {
+                    if (input) {
+                        input.val(v);
+                    }
+                },
+                onChange: function (v, inst) {
+                    if (input && s.display == 'inline') {
+                        input.val(v);
+                    }
+                },
+                onClose: function () {
+                    if (input) {
+                        input.blur();
+                    }
+                },
+                onAnimStart: function(index) {
+                    inst.settings.readonly = createROVector(lvl, index);
+                },
+                validate: function (dw, index) {
+                    var t = inst.temp;
+                    if (index !== undefined && currWheelVector[index] != t[index]) {
+                        inst.settings.wheels = generateWheelsFromVector(t, null, index);
+                        var args = [],
+                            i = index,
+                            o = calcLevelOfVector2(t, index);
+                        inst.temp = o.nVector.slice(0);
+                        while (i < o.lvl) {
+                            args.push(i++);
+                        }
+                        hideWheels(dw, o.lvl);
+                        inst.changeWheel(args);
+                        currWheelVector = inst.temp.slice(0);
+                        setDisabled(dw, o.lvl, wa, inst.temp);
+                    } else {
+                        var o = calcLevelOfVector2(t, t.length);
+                        setDisabled(dw, o.lvl, wa, t);
+                        hideWheels(dw, o.lvl);
+                    }
+                    inst.settings.readonly = false;
+                }
+            };
+        };
+
+    $.each(['list', 'image', 'treelist'], function(i, v) {
+        ms.presets[v] = preset;
+        ms.presetShort(v);
+    });
+
+})(jQuery);

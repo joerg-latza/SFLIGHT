@@ -289,7 +289,7 @@
 // NON-Color Parameters
 
 // [ThemingScope "Advanced"]
-@sapUiFontFamily: 'Helvetica Neue',Roboto,'Droid Sans','BBGlobal Sans',Helvetica,Arial,sans-serif; // the right font for each platform...
+@sapUiFontFamily: 'Helvetica Neue',Roboto,'Droid Sans', 'BBGlobal Sans', 'Segoe WP' ,Helvetica,Arial,sans-serif; // the right font for each platform...
 // [ThemingScope "Advanced"]
 @sapUiFontSize: 16px;
 
@@ -371,13 +371,17 @@
 * {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-webkit-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 	-webkit-touch-callout: none;
 	-webkit-user-drag: none;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
 }
 
 input, textarea {
 	-webkit-user-select: text;
+	-ms-user-select: text;
 	user-select: text;
 }
 
@@ -392,33 +396,21 @@ input, textarea {
 	background-color: @sapUiDarkBG;
 	opacity: 0.5;
 	filter: alpha(opacity=5);
+/* 	this overwrites the default position: fixed which extends the window when something rendered outside */
+	position: absolute;
 }
 
 .sap-android > .sapUiBody,
 .sap-bb > .sapUiBody {
-	font-family: Roboto,'Droid Sans',Helvetica,Arial;
 	color: lighten(@sapUiText,20);
 }
 
-html[data-sap-ui-os^='Android2'] .sap-android > .sapUiBody,
-html[data-sap-ui-os^='Android3'] .sap-android > .sapUiBody{
-	font-family: 'Droid Sans',Helvetica,Arial;
-}
-
-.sap-ios > .sapUiBody {
+.sapUiBody {
 	font-family: @sapUiFontFamily;
 }
 
-.sap-bb > .sapUiBody {
-	font-family: 'BBGlobal Sans',Helvetica,Arial;
-}
-
-.sap-winphone > .sapUiBody {
-	font-family: Tahoma,Arial; 
-}
-
 /*
-	CSS classes shared by BusyDialog and Dialg with type "Message" 
+	CSS classes shared by BusyDialog and Dialog with type "Message" 
 */
 .sap-ios {
 	.sapMDialog.sapMCommonDialog, .sapMBusyDialog.sapMCommonDialog{
@@ -571,6 +563,53 @@ html[data-sap-ui-os^='Android3'] .sap-android > .sapUiBody{
 
 .sapUiBlyBusy {
 	cursor: wait;
+}
+@sapUiLocalBusyIndicatorBG: fade(@sapUiExtraLightBG, 72%); 
+@sapUiLocalBusyIndicatorBG_IE: @sapUiExtraLightBG;
+@sapUiLocalBusyIndicatorBoxSize: ~"8px";
+
+@sapUiLocalBusyIndicatorBoxColor: @sapUiMediumBG;
+@sapUiLocalBusyIndicatorBoxColorActive: @sapUiBlackBG;
+@sapUiLocalBusyIndicatorBoxTransitionDuration: ~"380ms";
+
+.sapUiLocalBusyIndicator {
+	background-color: @sapUiLocalBusyIndicatorBG;
+}
+HTML[data-sap-ui-browser='ie8'] .sapUiLocalBusyIndicator {
+	background-color: @sapUiLocalBusyIndicatorBG_IE;
+}
+
+.sapUiLocalBusyIndicatorAnimation {
+	position: relative;
+}
+
+.sapUiLocalBusyIndicatorBox {
+	width: @sapUiLocalBusyIndicatorBoxSize;
+	height : @sapUiLocalBusyIndicatorBoxSize;
+	background-color: @sapUiLocalBusyIndicatorBoxColor;
+	float: left;
+	display: block;
+	margin-left: @sapUiLocalBusyIndicatorBoxSize;
+	
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	
+	-moz-transition-property: background-color;
+	-moz-transition-duration: @sapUiLocalBusyIndicatorBoxTransitionDuration;
+	-moz-transition-timing-function: ease-in;
+	
+	-webkit-transition-property: background-color;
+	-webkit-transition-duration: @sapUiLocalBusyIndicatorBoxTransitionDuration;
+	-webkit-transition-timing-function: ease-in;
+	
+	transition-property: background-color;
+	transition-duration: @sapUiLocalBusyIndicatorBoxTransitionDuration;
+	transition-timing-function: ease-in;
+}
+
+.sapUiLocalBusyIndicatorBox:first-child {
+	margin-left: 0; 
 }
 
 /* ============================================= */

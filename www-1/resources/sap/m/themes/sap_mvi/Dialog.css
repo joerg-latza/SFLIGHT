@@ -1,0 +1,78 @@
+/* ============================================= */
+/* CSS for control sap.m/Dialog.control */
+/* MVI theme                                        */
+/* ============================================= */
+
+.sapMDialogBlockLayerAnimation {
+	position: absolute;
+	-webkit-transition: opacity 0.2s linear;
+	transition: opacity 0.2s linear;
+}
+
+
+
+@-webkit-keyframes sapMDialogZoomIn {
+  0% {
+	-webkit-transform: scale3d(0.9,0.9,1);
+	transform: scale3d(0.9,0.9,1);
+	opacity: 0;
+  }
+  100% {
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+	opacity: 1;
+  }
+}
+
+@-webkit-keyframes sapMDialogZoomOut {
+  0% {
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+	opacity: 1;
+  }
+  100% {
+	-webkit-transform: scale3d(0.9,0.9,1);
+	transform: scale3d(0.9,0.9,1);
+	opacity: 0;
+  }
+}
+
+.sap-ios{
+	.sapMDialog > .sapMBar {
+		height: 2.75em;
+ 		.sapMBarGradient(Opaque, @sapUiBarBG); 
+		-webkit-box-shadow: inset 0 0.0625em 0 lighten(@sapUiBarBG,45), inset 0 -0.0625em 0 @sapUiBarBG, inset 0 -2px 0 lighten(@sapUiBarBG,15);
+		-webkit-border-radius: 0.3125em 0.3125em 0 0;
+		border-radius:  0.3125em 0.3125em 0 0;
+		-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+	}
+	
+	
+	.sapMDialogOpening{
+		-webkit-animation-name: sapMDialogZoomIn;
+		animation-name: sapMDialogZoomIn;
+	}
+
+	.sapMDialogClosing {
+		-webkit-animation-name: sapMDialogZoomOut;
+		animation-name: sapMDialogZoomOut;
+	}
+	
+	.sapMMessageDialog.sapMDialogOpening{
+		-webkit-animation-name: sapMDialogBounce;
+		animation-name: sapMDialogBounce;
+	}
+}
+
+.sap-android, .sap-bb{
+	.sapMDialogOpening{
+		-webkit-animation-name: sapMDialogZoomIn;
+		animation-name: sapMDialogZoomIn;
+	}
+	
+	.sapMDialogClosing {
+		-webkit-animation-name: sapMDialogZoomOut;
+		animation-name: sapMDialogZoomOut;
+	}
+}

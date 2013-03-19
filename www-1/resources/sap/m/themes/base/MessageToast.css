@@ -1,0 +1,24 @@
+/* ============================================= */
+/* CSS for control sap.m/MessageToast.control    */
+/* ============================================= */
+
+.sapMMT {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	position: absolute;
+	border-radius: 0.3125em;
+	background: -webkit-linear-gradient(fade(lighten(@sapUiBlackBG, 20), 90), lighten(@sapUiBlackBG, 20)); /* from rgba(51, 51, 51, 0.9) to #333333 */
+	background: linear-gradient(fade(lighten(@sapUiBlackBG, 20), 90), lighten(@sapUiBlackBG, 20));	/* from rgba(51, 51, 51, 0.9) to #333333 */
+	text-shadow: 0 0.0625em @sapUiBlackBG; /* #000000 */
+	color: @sapUiTextInverted;	/* #FFFFFF */
+	font-family: inherit;
+	font-weight: normal;
+	word-wrap: break-word;
+	padding: 0.625em;
+	text-align: center;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin: 0 auto 0 auto;
+	pointer-events: none;
+}

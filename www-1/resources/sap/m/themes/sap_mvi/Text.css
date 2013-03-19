@@ -1,0 +1,11 @@
+.sapMText {
+	color: @sapUiText; 
+	font-family: @sapUiFontFamily;
+	font-size: @sapUiFontSize;
+	line-height: 1.5em;
+}
+
+.sap-android .sapMText,
+.sap-bb .sapMText {
+	color: lighten(@sapUiText,20);
+}

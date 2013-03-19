@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>Component</name>
+
+	<documentation>Base class for Components.</documentation>
+	<developmentState state="experimental" since="1.9.2">The Component concept is still under construction, so some implementation details can be changed in future.</developmentState>
+	<abstract/>
+
+	<targetConfigurations>
+		<targetConfiguration name="JavaScriptAPI">
+			<property name="sap.ui.generate">false</property>
+		</targetConfiguration>
+		<targetConfiguration name="JavaAPI">
+			<property name="sap.ui.generate">false</property>
+		</targetConfiguration>
+	</targetConfigurations>
+
+</control>

@@ -1,13 +1,191 @@
 /*
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.ui.core.Component");jQuery.sap.require("sap.ui.base.ManagedObject");jQuery.sap.require("sap.ui.core.ComponentMetadata");sap.ui.base.ManagedObject.extend("sap.ui.core.Component",{constructor:function(i,s){sap.ui.base.ManagedObject.apply(this,arguments)},metadata:{version:"1.0",dependencies:{css:[],js:[],libs:[],components:[],ui5version:"1.8",modules:[]},"abstract":true,publicMethods:["wire","setUIArea"],library:"sap.ui.core",autoDestroy:false,initOnBeforeRender:true}},sap.ui.core.ComponentMetadata);jQuery.sap.require("sap.ui.core.Core");
-sap.ui.core.Component.prototype.init=function(){this.loadDependencies();var t=this;sap.ui.base.ManagedObject.runWithPreprocessors(function(){t.oRootControl=t.getControl()},{id:function(i){return t.getId()+"--"+i},settings:function(s){if(s.component){s.component=t.getId()+"--"+s.component}return s}})};
-sap.ui.core.Component.prototype.loadDependencies=function(){var d=this.getMetadata().getDependencies();if(d){this.loadLibs(d);this.loadCss(d);this.loadComponents(d)}};
-sap.ui.core.Component.prototype.loadLibs=function(d){var l=d.libs;if(l&&l.length>0){jQuery.each(l,function(i,L){jQuery.sap.log.info("Loading Library: "+L);sap.ui.getCore().loadLibrary(L)})}};
-sap.ui.core.Component.prototype.loadCss=function(d){var u=d.css;if(u&&u.length>0){var l=this.getMetadata().getLibraryName();jQuery.each(u,function(i,U){var c=sap.ui.resource(l,U);jQuery.sap.log.info("Loading CSS from: "+c);jQuery.sap.includeStyleSheet(c)})}};
-sap.ui.core.Component.prototype.loadComponents=function(d){var c=d.components;if(c){jQuery.each(c,function(i,C){jQuery.sap.log.info(C);jQuery.sap.require(C)})}};
-sap.ui.core.Component.prototype.exit=function(){};
-sap.ui.core.Component.prototype.setUIArea=function(u){u.setRootControl(this.oRootControl)};
+
+// Provides base class sap.ui.core.Component for all components
+jQuery.sap.declare("sap.ui.core.Component");
+jQuery.sap.require("sap.ui.base.ManagedObject");
+jQuery.sap.require("sap.ui.core.ComponentMetadata");
+
+/**
+ * Creates and initializes a new component with the given <code>sId</code> and
+ * settings.
+ * 
+ * The set of allowed entries in the <code>mSettings</code> object depends on
+ * the concrete subclass and is described there. See {@link sap.ui.core.Component}
+ * for a general description of this argument.
+ * 
+ * @param {string}
+ *            [sId] optional id for the new control; generated automatically if
+ *            no non-empty id is given Note: this can be omitted, no matter
+ *            whether <code>mSettings</code> will be given or not!
+ * @param {object}
+ *            [mSettings] optional map/JSON-object with initial settings for the
+ *            new component instance
+ * @public
+ * 
+ * @class Base Class for Component.
+ * @extends sap.ui.base.ManagedObject
+ * @abstract
+ * @author SAP
+ * @version 1.11.0
+ * @name sap.ui.core.Component
+ * @experimental Since 1.9.2. The Component concept is still under construction, so some implementation details can be changed in future.
+ */
+sap.ui.base.ManagedObject.extend("sap.ui.core.Component", /** @lends sap.ui.core.Component */
+
+{
+	constructor : function(sId, mSettings) {
+
+		sap.ui.base.ManagedObject.apply(this, arguments);
+
+	},
+
+	metadata : {
+		version : "1.0",
+		dependencies : {
+			css : [],
+			js : [],
+			libs : [], //data-sap-ui-libs
+			components : [], // to load in order to be able to use them. not over url, but name /relative to my comp
+			ui5version : "1.8",
+			modules : []
+		},
+
+		"abstract" : true,
+		publicMethods : [ "wire", "setUIArea" ],
+		library : "sap.ui.core",
+		autoDestroy : false, // destroy component when view
+		// should be destroyed
+		initOnBeforeRender : true
+	}
+
+}, /* Metadata constructor */ sap.ui.core.ComponentMetadata);
+
+jQuery.sap.require("sap.ui.core.Core");
+
+/**
+ * Initializes the Component instance after creation.
+ *
+ * Applications must not call this hook method directly, it is called by the
+ * framework while the constructor of an Component is executed.
+ *
+ * Subclasses of Component should override this hook to implement any necessary
+ * initialization.
+ *
+ * @function
+ * @name sap.ui.core.Component.prototype.init
+ * @protected
+ */
+sap.ui.core.Component.prototype.init = function() {
+	this.loadDependencies();
+	var that = this;
+	sap.ui.base.ManagedObject.runWithPreprocessors(
+		function() {
+			that.oRootControl = that.getControl();
+		},
+		{
+			id: function(sId) {
+				return that.createId(sId);
+			},
+			settings: function(oSettings) {
+				if (oSettings.component) {
+					oSettings.component = that.createId(oSettings.component);
+				}
+				return oSettings;
+			}
+		}
+	);
+};
+
+
+/**
+ * returns an Element by its id in the context of the View
+ *
+ * @return Element by its id
+ * @public
+ */
+sap.ui.core.Component.prototype.byId = function(sId) {
+	return sap.ui.getCore().byId(this.createId(sId));
+};
+
+/**
+ * creates an id for an Element prefixed with the view id
+ *
+ * @return prefixed id
+ * @public
+ */
+sap.ui.core.Component.prototype.createId = function(sId) {
+	return this.getId() + "--" + sId;
+};
+
+
+sap.ui.core.Component.prototype.loadDependencies = function() {
+
+	var oDep = this.getMetadata().getDependencies();
+	if (oDep){
+		this.loadLibs(oDep);
+		this.loadCss(oDep);
+		this.loadComponents(oDep);
+	}
+};
+
+
+sap.ui.core.Component.prototype.loadLibs = function (oDependencies) {
+	var aLibs = oDependencies.libs;
+	if (aLibs && aLibs.length > 0) {
+		jQuery.each(aLibs, function(i, sLib) {
+			jQuery.sap.log.info("Loading Library: " + sLib);
+			sap.ui.getCore().loadLibrary(sLib);
+		});
+	}
+};
+
+sap.ui.core.Component.prototype.loadCss = function (oDependencies) {
+	var aUrls = oDependencies.css;
+	if (aUrls && aUrls.length > 0) {
+		var sLibName = this.getMetadata().getLibraryName();
+		jQuery.each(aUrls, function(i, sUrl) {
+			var sCssUrl = sap.ui.resource(sLibName, sUrl);
+			jQuery.sap.log.info("Loading CSS from: " + sCssUrl);
+			jQuery.sap.includeStyleSheet(sCssUrl);
+		});
+	}
+};
+
+// Load child Components
+sap.ui.core.Component.prototype.loadComponents = function (oDependencies) {
+		var aComps = oDependencies.components;
+		if (aComps){
+			jQuery.each(aComps, function(i, sClassName){
+				jQuery.sap.log.info(sClassName);
+				jQuery.sap.require(sClassName);
+		});
+	}
+};
+/**
+ * Cleans up the component instance before destruction.
+ *
+ * Applications must not call this hook method directly, it is called by the
+ * framework when the element is {@link #destroy destroyed}.
+ * 
+ * Subclasses of Component should override this hook to implement any necessary
+ * cleanup.
+ *
+ * @function
+ * @name sap.ui.core.Component.prototype.exit
+ * @protected
+ */
+sap.ui.core.Component.prototype.exit = function() {
+};
+
+
+/**
+ * Set UI area
+ */
+sap.ui.core.Component.prototype.setUIArea = function(oUIArea) {
+	oUIArea.setRootControl(this.oRootControl);
+};
+

@@ -1,7 +1,138 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.require("sap.m.FlexBoxStylingHelper");jQuery.sap.declare("sap.m.FlexBoxRenderer");sap.m.FlexBoxRenderer={};
-sap.m.FlexBoxRenderer.render=function(r,c){if(!c.getVisible()){return}if(!jQuery.support.flexBoxLayout){throw new Error("This browser does not support Flexible Box Layouts.")}var h="";if(c.getDirection()==="Row"||c.getDirection()==="RowReverse"){if(c instanceof sap.m.VBox){throw new Error("Flex direction cannot be set to Row or RowReverse on VBox controls.")}else{h="sapMHBox"}}else if(c.getDirection()==="Column"||c.getDirection()==="ColumnReverse"){if(c instanceof sap.m.HBox){throw new Error("Flex direction cannot be set to Column or ColumnReverse on HBox controls.")}else{h="sapMVBox"}}var p=c.getParent();if(c.getParent()instanceof sap.m.FlexBox){r.addClass("sapMFlexItem");var l=c.getLayoutData();if(l instanceof sap.m.FlexItemData){sap.m.FlexBoxStylingHelper.setFlexItemStyles(r,l)}if(p.getRenderType()==='List'){r.write('<li');r.writeClasses();r.writeStyles()}}if(c.getRenderType()==='List'){r.write('<ul')}else{r.write('<div')}r.writeControlData(c);r.addClass("sapMFlexBox");r.addClass(h);r.writeClasses();r.addStyle("width",c.getWidth());r.addStyle("height",c.getHeight());sap.m.FlexBoxStylingHelper.setFlexBoxStyles(r,c);r.writeStyles();r.write(">");var C=c.getItems();for(var i=0;i<C.length;i++){if(C[i].getVisible===undefined||C[i].getVisible()){if(!(C[i]instanceof sap.m.FlexBox)){if(c.getRenderType()==='List'){r.write('<li')}else{r.write('<div')}var l=C[i].getLayoutData();if(l instanceof sap.m.FlexItemData){if(l.getId()){r.write(" id='"+l.getId()+"'")}if(l.getStyleClass()){r.addClass(l.getStyleClass())}sap.m.FlexBoxStylingHelper.setFlexItemStyles(r,l);if(C[i]instanceof sap.m.ScrollContainer){r.addStyle("height","100%")}r.writeStyles()}r.addClass("sapMFlexItem");r.writeClasses();r.write(">");r.renderControl(C[i]);if(c.getRenderType()==='List'){r.write('</li>')}else{r.write('</div>')}}else{r.renderControl(C[i])}}}if(c.getRenderType()==="List"){r.write("</ul>")}else{r.write("</div>")}};
+jQuery.sap.require("sap.m.FlexBoxStylingHelper");
+jQuery.sap.declare("sap.m.FlexBoxRenderer");
+
+/**
+ * @class FlexBox renderer
+ * @static
+ */
+sap.m.FlexBoxRenderer = {};
+
+
+/**
+ * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
+ *
+ * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
+ * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ */
+sap.m.FlexBoxRenderer.render = function(oRm, oControl) {
+	// Return immediately if control is invisible
+	if (!oControl.getVisible()) {
+		return;
+	}
+
+	if (!jQuery.support.flexBoxLayout && !jQuery.support.newFlexBoxLayout) {
+		throw new Error("This browser does not support Flexible Box Layouts.");
+	}
+
+	// Make sure HBox and VBox don't get the wrong direction and get the appropriate class
+	var hvClass = "";
+	if(oControl.getDirection() === "Row" || oControl.getDirection() === "RowReverse") {
+		if(oControl instanceof sap.m.VBox) {
+			throw new Error("Flex direction cannot be set to Row or RowReverse on VBox controls.");
+		} else {
+			hvClass = "sapMHBox";
+		}
+	} else if(oControl.getDirection() === "Column" || oControl.getDirection() === "ColumnReverse"){
+		if(oControl instanceof sap.m.HBox) {
+			throw new Error("Flex direction cannot be set to Column or ColumnReverse on HBox controls.");
+		} else {
+			hvClass = "sapMVBox";
+		}
+	}
+
+	// Special treatment if FlexBox is itself an item of a parent FlexBox
+	var oParent = oControl.getParent();
+	if(oControl.getParent() instanceof sap.m.FlexBox) {
+		oRm.addClass("sapMFlexItem");
+
+
+		// Set layout properties
+		var oLayoutData = oControl.getLayoutData();
+		if(oLayoutData instanceof sap.m.FlexItemData) {
+			sap.m.FlexBoxStylingHelper.setFlexItemStyles(oRm, oLayoutData);
+		}
+		if(oParent.getRenderType() === 'List') {
+			oRm.write('<li');
+			oRm.writeClasses();
+			oRm.writeStyles();
+		}
+	}
+
+	if(oControl.getRenderType() === 'List') {
+		oRm.write('<ul');
+	} else {
+		oRm.write('<div');
+	}
+
+	oRm.writeControlData(oControl);
+	oRm.addClass("sapMFlexBox");
+	oRm.addClass(hvClass);
+	oRm.writeClasses();
+	oRm.addStyle("width", oControl.getWidth());
+	oRm.addStyle("height", oControl.getHeight());
+	sap.m.FlexBoxStylingHelper.setFlexBoxStyles(oRm, oControl);
+	oRm.writeStyles();
+	oRm.write(">");
+
+	// Now render the flex items
+	var aChildren = oControl.getItems();
+	for (var i = 0; i < aChildren.length; i++) {
+		if(aChildren[i].getVisible === undefined || aChildren[i].getVisible()) {
+			// Create wrapper
+			if(!(aChildren[i] instanceof sap.m.FlexBox)) {
+				if(oControl.getRenderType() === 'List') {
+					oRm.write('<li');
+				} else {
+					oRm.write('<div');
+				}
+
+				// Set layout properties
+				var oLayoutData = aChildren[i].getLayoutData();
+				if(oLayoutData instanceof sap.m.FlexItemData) {
+					if(oLayoutData.getId()) {
+						oRm.write(" id='" + oLayoutData.getId() + "'");
+					}
+					if(oLayoutData.getStyleClass()) {
+						oRm.addClass(oLayoutData.getStyleClass());
+					}
+					sap.m.FlexBoxStylingHelper.setFlexItemStyles(oRm, oLayoutData);
+
+					// ScrollContainer needs height:100% on the flex item
+					if(aChildren[i] instanceof sap.m.ScrollContainer) {
+						oRm.addStyle("height", "100%");
+					}
+					oRm.writeStyles();
+				}
+
+				oRm.addClass("sapMFlexItem");
+				oRm.writeClasses();
+				oRm.write(">");
+
+				// Render control
+				oRm.renderControl(aChildren[i]);
+
+				// Close wrapper
+				if(oControl.getRenderType() === 'List') {
+					oRm.write('</li>');
+				} else {
+					oRm.write('</div>');
+				}
+			} else {
+				// Render control
+				oRm.renderControl(aChildren[i]);
+			}
+		}
+	}
+
+	// Close the flexbox
+	if(oControl.getRenderType() === "List") {
+		oRm.write("</ul>");
+	} else {
+		oRm.write("</div>");
+	}
+};

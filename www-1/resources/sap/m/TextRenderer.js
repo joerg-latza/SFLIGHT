@@ -1,8 +1,74 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.m.TextRenderer");jQuery.sap.require("sap.ui.core.Renderer");sap.m.TextRenderer={};
-sap.m.TextRenderer.render=function(r,t){if(!t.getVisible()){return}var a=r;if(!t.getWrapping()){a.addStyle("white-space","nowrap");a.addStyle("overflow","hidden");a.addStyle("text-overflow","ellipsis")}if(t.getWidth()&&t.getWidth()!=''){a.addStyle("width",t.getWidth())}a.write("<span");a.writeControlData(t);a.addClass("sapMText");var T=t.getTextDirection();if(T){a.writeAttribute("dir",T)}var o=t.getTextAlign();if(o){a.addStyle("text-align",sap.m.TextRenderer.getTextAlign(o,T))}a.writeClasses();a.writeStyles();a.write(">");a.writeEscaped(t.getText(),true);a.write("</span>")};
-sap.m.TextRenderer.getTextAlign=sap.ui.core.Renderer.getTextAlign;
+
+// Provides default renderer for control sap.m.Text
+jQuery.sap.declare("sap.m.TextRenderer");
+jQuery.sap.require("sap.ui.core.Renderer");
+
+/**
+ * @class Text renderer
+ * @author SAP AG
+ * @static
+ */
+sap.m.TextRenderer = {
+};
+
+/**
+ * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
+ * @param {sap.ui.core.RenderManager} oRenderManager The RenderManager that can be used for writing to the render output buffer.
+ * @param {sap.ui.core.Control} oText An object representation of the control that should be rendered.
+ */
+sap.m.TextRenderer.render = function(oRenderManager, oText) {
+	// return immediately if control is invisible
+	if (!oText.getVisible()) {
+		return;
+	}
+
+	var rm = oRenderManager;
+
+	// add styles for non-wrapping
+	if(!oText.getWrapping()){
+		rm.addStyle("white-space", "nowrap");
+		rm.addStyle("overflow", "hidden");
+		rm.addStyle("text-overflow", "ellipsis");
+	}
+
+	// add styles for width
+	if (oText.getWidth() && oText.getWidth() != '') {
+		rm.addStyle("width", oText.getWidth());
+	}
+
+	// start writing html
+	rm.write("<span");
+	rm.writeControlData(oText);
+	rm.addClass("sapMText");
+
+	// write direction
+	var oTextDir = oText.getTextDirection();
+	if (oTextDir) {
+		rm.writeAttribute("dir", oTextDir);
+	}
+
+	// write alignment
+	var oTextAlign = oText.getTextAlign();
+	if (oTextAlign) {
+		rm.addStyle("text-align", sap.m.TextRenderer.getTextAlign(oTextAlign, oTextDir));
+	}
+
+	// finish writing html
+	rm.writeClasses();
+	rm.writeStyles();
+	rm.write(">");
+	rm.writeEscaped(oText.getText(), true);
+	rm.write("</span>");
+};
+
+/**
+ * Dummy inheritance of static methods/functions.
+ * @see sap.ui.core.Renderer.getTextAlign
+ * @private
+ */
+sap.m.TextRenderer.getTextAlign = sap.ui.core.Renderer.getTextAlign;

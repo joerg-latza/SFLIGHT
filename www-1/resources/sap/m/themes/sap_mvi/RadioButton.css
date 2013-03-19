@@ -1,0 +1,129 @@
+/* ==================================================== */
+/* CSS for controlsap.m/RadioButton.control - MVI Theme */
+/* ==================================================== */
+.sapMRbDis .sapMRbBLabel {
+	color: lighten(@sapUiText,75);
+}
+
+/********************************************************
+Android / BlackBerry specific styling
+*********************************************************/
+.sap-android, .sap-bb {
+	.sapMRbBOut {
+		border: .12em solid @sapUiBaseBorder;
+		background-color: transparent;
+	}
+	
+	.sapMRbBInn {
+		border: none;
+		background-color: transparent;
+		-webkit-user-select: none;
+	}
+	.sapMRbSel .sapMRbBOut {
+		border: .12em solid @sapUiBaseBorder;
+		background-color: transparent;
+		
+	}
+	.sapMRbSel .sapMRbBInn {
+		border: .14em solid lighten(spin(@sapUiSelected,4),52); // #cae9ff
+		background-color: darken(@sapUiSelected,5);             // #006ca7
+		-webkit-box-shadow: inset 0 .10em 1px 0 lighten(spin(@sapUiSelected,354),4);  /* Need at least 1px blur to make box-shadows work on Android 2.3. */
+		box-shadow: inset 0 .10em 0 0 lighten(spin(@sapUiSelected,354),4);  // #009ed4
+	}
+	
+	.sapMRbSel.sapMRbBTouched .sapMRbBInn {
+		border: .12em solid lighten(desaturate(spin(@sapUiActive,8),78),22);  // #8199af
+		background-color: @sapUiText;
+		-webkit-box-shadow: 0 0 0 0 lighten(desaturate(@sapUiActive,34),47);
+		box-shadow: 0 0 0 0 lighten(desaturate(@sapUiActive,34),47);
+	}
+	
+	.sapMRbBTouched .sapMRbBOut {
+		border: .12em solid lighten(desaturate(spin(@sapUiSelected,353),72),16);  // #6a9cab
+		background-color: lighten(desaturate(@sapUiActive,34),47);
+		-webkit-box-shadow: 0 0 1px 2.5px lighten(desaturate(@sapUiActive,34),47);
+		box-shadow: 0 0 0 .4em lighten(desaturate(@sapUiActive,34),47);
+	}
+	
+	.sapMRbBTouched .sapMRbBInn {
+		background-color: lighten(desaturate(@sapUiActive,34),47);
+	}
+	
+	.sapMRbDis.sapMRbBTouched .sapMRbBInn {
+		background-color: transparent;
+		-webkit-box-shadow: 0 0 0 0 lighten(desaturate(@sapUiActive,34),47);
+		box-shadow: 0 0 0 0 lighten(desaturate(@sapUiActive,34),47);
+	}
+	
+	.sapMRbDis .sapMRbBOut {
+		background-color: none;
+		border: .12em solid lighten(@sapUiBaseBorder,17);  // #C5C3C2
+	}
+	
+	.sapMRbDis.sapMRbSel .sapMRbBInn {
+		background-color: @sapUiBaseBorder;
+		border: none;
+		-webkit-box-shadow: 0 0 0 0 lighten(desaturate(@sapUiSelected,34),47);
+		box-shadow: 0 0 0 0 lighten(desaturate(@sapUiSelected,34),47);
+	}
+
+}
+/********************************************************
+iOS specific styling
+*********************************************************/
+.sap-ios {
+	.sapMRbB {
+		height: 2.75em;
+		width:2.75em;
+	}
+	.sapMRbB input[type="radio"] {
+		box-sizing: border-box;
+		visibility: visible;
+		padding: 0;
+		background-color:lighten(@sapUiLightBG, 10);
+		border-radius:999px;
+		border: none;
+		width: 2.75em;
+		height: 2.75em;
+		float: right;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+	.sapMRbB input[type="radio"]:checked {
+		background-color: transparent;
+	}
+	.sapMRbDis .sapMRbB input[type="radio"] {
+		background-color: transparent;
+	}
+	.sapMLIB-CTX .sapMRbSel.sapMRbBTouched input[type="radio"]:checked::before{
+		 color: lighten(@sapUiListBG,15);
+	}
+	.sapMLIB-CTX .sapMRbB input[type="radio"] {
+		visibility: hidden;
+	}
+	
+	.sapMLIB-CTX .sapMRbB input[type="radio"]:checked {
+		visibility: visible;
+	}
+	.sapMRbB input[type="radio"]::before {
+		content: "\2713";
+		font-family: "ios-icons";
+		font-size: .8em;
+		display: block;
+		text-align: center;
+		color: transparent;
+	}
+		
+	.sapMRbB input[type="radio"]:checked::before {
+		color: darken(@sapUiSelected,5);  // #006ca7
+		background-color: transparent;
+		border-bottom: none;
+	}
+	
+	.sapMRbDis .sapMRbB input[type="radio"]::before {
+		color: fade(lighten(desaturate(@sapUiSelected,100),24), 27%);  // rgba(158, 158, 158, 0.27)  not using the text color because it would need to be lightened by 62% which could easily lead to "white" when the color is adapted
+		background-color: transparent;
+		border-bottom: none;
+	}
+}

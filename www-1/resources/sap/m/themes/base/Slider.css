@@ -1,0 +1,45 @@
+/* ======================================= */
+/* CSS for control sap.m/Slider.control */
+/* ======================================= */
+
+/*
+ * [ANDROID|iOS] Slider commons
+ */
+
+.sapMSliCont {
+	display: -webkit-inline-box;
+	display: inline-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-align: center;
+	box-align: center;
+	position: relative;
+	visibility: hidden;
+}
+
+.sapMSliContDisabled {
+	pointer-events: none;
+}
+
+.sapMSliVisible {
+	visibility: inherit;
+}
+
+.sapMSli {
+	width: 100%;
+	position: relative;
+	background-repeat: no-repeat;
+}
+
+.sapMSliHandle,
+.sapMSliHandleInner {
+	position: absolute;
+}
+
+.sapMSliHandle {
+	display: block;
+}
+
+.sapMSliCont > input[type="range"].sapMSliInput {
+	display: none;
+}

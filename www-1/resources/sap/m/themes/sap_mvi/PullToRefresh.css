@@ -1,0 +1,110 @@
+/* ============================================= */
+/* CSS for control sap.m/PullToRefresh.control */
+/* ============================================= */
+.sapMPullDown {
+	position: relative;
+	padding: 0.438em;
+	padding-top: 0.8em;
+	background: darken(@sapUiDarkBG, 20); //#333
+	color: darken(@sapUiTextInverted,13); //#ddd
+	font-weight: bold;
+	font-size: 0.875em;
+	box-shadow: inset 0 -0.25em 0.313em fade(@sapUiShadowTint,20%); // hsla(0, 0%, 0%, 0.2);
+	overflow: auto;
+}
+
+.sapMPullDown.sapMPullDownLogo {
+	padding-top: 4.125em;
+	height: 3.25em;
+	line-height: 3.75em;
+	background-image: url(img/sap_inset.png);
+	background-repeat: no-repeat;
+	background-position: center 1em;
+	background-size: 5.5em 2.75em;
+}
+
+.sapMPullDownCI {
+	display: block;
+	width: 100%;
+	height: 3.125em;
+	overflow: hidden;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.sapMPullDownCIImg {
+	max-height: 3.125em;
+}
+
+
+.sapMPullDownText {
+	width: 100%;
+	display: block;
+	text-align: center;
+	line-height: 1.5em;
+	padding-right: 2.5em;
+	box-sizing: border-box;
+	text-shadow: 0 1px 0 @sapUiShadowTint;
+}
+
+.sapMPullDownInfo {
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-weight: normal;
+	font-size: 0.75em;
+	line-height: 1.5em;
+	padding-right: 2.5em;
+	box-sizing: border-box;
+	text-shadow: 0 1px 0 @sapUiShadowTint;
+}
+
+html[data-sap-ui-os^="Android2"] .sapMPullDownText,
+html[data-sap-ui-os^="Android2"] .sapMPullDownInfo {
+	margin-left: -2.75em;
+}
+
+.sapMPullDown .sapMPullDownIcon {
+	display: block;
+	float: left;
+	width: 2.75em;
+	height: 2.75em;
+	background: url(img/pull_down.png) 0 0 no-repeat;
+	background-size: 2.75em 5.5em;
+	-webkit-transform-origin: center center;
+	-webkit-transition-duration: 250ms;
+	-webkit-transition-property: -webkit-transform;
+	-webkit-background-size: 2.75em 5.5em;
+}
+
+.sapMPullDown .sapMPullDownIcon {
+	-webkit-transform: rotate(0deg);
+}
+
+.sapMPullDown.sapMFlip .sapMPullDownIcon {
+	-webkit-transform: rotate(-180deg);
+}
+
+.sapMPullDown.sapMLoading .sapMPullDownIcon {
+	background-image: none;
+}
+
+.sapMPullDown .sapMPullDownBusy {
+	display: none;
+	position: absolute;
+	left: 0.75em;
+	bottom: 0.75em;
+	width: 2.75em;
+	height: 2.75em;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.sapMPullDown.sapMLoading .sapMPullDownBusy {
+	display: block;
+}
+
+.sapMPullDownBusy .sapMSpinner {
+	vertical-align: baseline;
+}

@@ -1,0 +1,199 @@
+
+/* ============================================= */
+/* CSS for controlsap.m/BusyDialog.control */
+/* ============================================= */
+
+.sapMBsyDSmall.sapMBusyDialog {
+	.sapMLabel.sapMBusyDialogLabel{
+		text-overflow:ellipsis;
+		overflow:hidden;
+		white-space: nowrap;
+	}
+}
+
+
+/**************************** 
+
+iOS specific styling 
+
+*****************************/
+.sap-ios {
+	
+	/* moved to share.css in mvi
+	.sapMBusyDialog{
+		width: 18em;
+		border-radius: 10px;
+		background-image: -webkit-linear-gradient(
+			top,
+			fade(lighten(@sapUiBarBG, 31%), 65%) 0,
+			fade(lighten(@sapUiBarBG, 9%), 80%)  22px,
+			fade(darken(@sapUiBarBG, 5%), 85%) 22px);
+		border: 2px solid hsla(0,100%,100%,0.5);
+		background-clip: padding-box;
+		box-sizing: border-box;
+		text-align:center;
+		color: @sapUiBarText;
+		padding:0.4375em;
+		box-shadow: 0 0.0625em 0 hsla(0,0,0,0.1), 0.0625em 0 .0 hsla(0,0,0,0.1), 
+		0 -0.0625em.0 hsla(0,0,0,0.1), -0.0625em 0 .0 hsla(0,0,0,0.1),
+		0 0.1865em 0.375em hsla(0,0,0,0.5);
+		text-shadow: 0 -0.0625em @sapUiBarBG;	
+		-webkit-animation-duration: 300ms;
+		-webkit-animation-iteration-count: 1;
+	}
+	.sapMBusyBLy {
+		opacity: 0;
+		background-color: transparent;
+		background-image:-webkit-radial-gradient(
+			center,
+			circle,
+			hsla(0,0,0,0) 0,
+			hsla(0,0,0,0.3) 30%,
+			hsla(0,0,0,0.5) 60%,
+			hsla(0,0,0,0.6) 100%,);
+		-webkit-transition: opacity 300ms linear;
+	}
+	.sapUiBLyShow {
+		opacity: 1;
+	}
+	*/
+	.sapMLabel.sapMBusyDialogLabel{
+		color:@sapUiTextInverted;
+		margin-top: 1em;
+	}
+	.sapMBsyDSmall.sapMBusyDialog {
+		.sapMSpinner {
+			width: 38px;
+			height: 38px;
+			margin: .2em;
+		}
+	}
+	/* moved to share.css in mvi
+	.sapMBusyDialogTitle {
+		font-size: 1.4em;
+		line-height: 0.625em;
+		color: @sapUiBarHeading;
+		margin-top: .5em;
+	}
+	.sapMBusyDialogCnlBtn {
+		width:100%;
+		height: 44px;
+		font-size: 1em;
+		border-radius: 5*0.0625em;
+		text-align:center;
+		text-decoration:none;
+		text-shadow:0 0.0625em*-1em 0 darken(@sapUiBarBG, 50%);
+		color: @sapUiBarText;
+		font-weight:bold;
+		padding: 0;
+		box-shadow:inset 0 0.0625em 0 darken(@sapUiBarBG, 30%), inset 0 -0.0625em 0 lighten(@sapUiBarBG, 15%), 
+		inset 0 0.0625em*-2em 0 darken(@sapUiBarBG, 15%);
+		border:none;
+		background-color:transparent;
+		background-image: -webkit-linear-gradient(
+			top,
+			fade(lighten(@sapUiBarBG, 60%), 55%) 0%,
+			fade(lighten(@sapUiBarBG, 19%), 60%)  50%,
+			fade(lighten(@sapUiBarBG, 19%), 60%)  50%,
+			fade(lighten(@sapUiBarBG, 25%), 60%) 100%,
+		);
+	}
+	.sapMBusyDialogCnlBtn:active {
+		background-image: -webkit-linear-gradient(
+			top,
+			fade(lighten(@sapUiBarBG, 60%), 55%) 0%,
+			fade(lighten(@sapUiBarBG, 19%), 10%)  50%,
+			fade(lighten(@sapUiBarBG, 19%), 10%)  50%,
+			fade(lighten(@sapUiBarBG, 25%), 50%) 100%,
+		);
+	}*/
+	.sapMBusyDialog div.sapMSpinner div {
+		background-color: @sapUiTextInverted;
+	}
+	.sapMBusyDialog .sapMSpinner {
+		width: 55px;
+		height: 55px;
+		margin: 1em;
+	}
+}
+/* moved to share.css in mvi
+@-webkit-keyframes sapMBusyBounce {
+	0% {
+		-webkit-transform:scale3d(0.8,0.8,1);
+		transform:scale3d(0.8,0.8,1);
+	}
+	55% {
+		-webkit-transform: scale3d(1.08,1.08,1);
+		transform: scale3d(1.08,1.08,1);
+	}
+	75% {
+		-webkit-transform: scale3d(0.9,0.9,1);
+		transform: scale3d(0.9,0.9,1);
+	}
+	100% {
+		-webkit-transform: scale3d(1,1,1);
+		transform: scale3d(1,1,1);
+	}
+}
+*/
+
+/**************************** 
+
+Android / BlackBerry specific styling 
+
+*****************************/
+.sap-android, .sap-bb {
+	.sapMDialogBLyInit {
+		/*opacity: 0;*/
+		opacity: 1;
+		background-color:lighten(@sapUiLightBG,7);
+		-webkit-transition: opacity 150ms linear;
+	}
+	.sapUiBLyBar {
+		height:50px;
+		opacity: 0;
+	}
+	.sapMBusyDialog{
+		background-color: lighten(@sapUiLightBG,7);
+		border-radius: 5px;
+	}
+/* 	.sapMDialogBLyShown { */
+/* 		opacity: 1; */
+/* 	} */
+	.sapMLabel.sapMBusyDialogLabel{
+		margin-top: 1em;
+	}
+	.sapMBusyDialog .sapMDialogTitle {
+		font-size: 1.4em;
+		line-height: 0.625em;
+		color: @sapUiBarHeading;
+		margin-top: .5em;
+	}
+	.sapMBusyDialog .sapMSpinner {
+		width: 60px;
+		height: 60px;
+	}
+	.sapMBsyDSmall.sapMBusyDialog {
+		.sapMSpinner {
+			width: 38px;
+			height: 38px;
+		}
+		.sapMLabel.sapMBusyDialogLabel{
+		margin-top: .5em;
+	}
+	}
+	.sapMBusyDialog .sapMSpinner div.sapMSpinBar4 {
+		background-color: lighten(@sapUiLightBG,7);
+	}
+	.sapMBusyDialog .sapMDialogBtn {
+		width: 50%;
+		height: 2.5em;
+		color: lighten(@sapUiBaseText, 20);
+		font-size: 1em;
+		font-weight: normal;
+		outline: none;
+		margin:0;
+		margin-top: 1em;
+		line-height: 1em;
+	}
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+	<name>DateTimeInput</name>
+	<author>SAP AG</author>
+	<documentation>Allows end users to interact with date and/or time and select from a date and/or time pad.</documentation>
+	<baseType>sap.ui.core/Control</baseType>
+	<since>1.9.1</since>
+	<properties>
+		<property group="Data" name="value" type="sap.ui.core/string" bindable="bindable">
+			<documentation>This property can be used as string to assign new value and this is relevant with valueFormat property(see valueFormat) but independent from what is going to display on the field(see displayFormat). 
+Another way to assign new value is using dateValue property(see dateVaue). 
+If you use both at the same time, latter wins.</documentation>
+		</property>
+		<property group="Data" name="type" type="sap.m/DateTimeInputType" defaultValue="Date">
+			<documentation>Type of DateTimeInput (e.g. Date, Time, DateTime)</documentation>
+		</property>
+		<property group="Appearance" name="width" type="sap.ui.core/CSSSize">
+			<documentation>Defines the width of the input.</documentation>
+		</property>
+		<property group="Behavior" name="enabled" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Boolean property to enable the control.</documentation>
+		</property>
+		<property group="Appearance" name="visible" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Invisible controls are not rendered.</documentation>
+		</property>
+		<property name="valueState" type="sap.ui.core/ValueState" defaultValue="None" group="Data">
+			<documentation>Visualizes warnings or errors related to the field. Possible values: Warning, Error, Success.</documentation>
+		</property>
+		<property group="Misc" name="placeholder" type="sap.ui.core/string">
+			<documentation>Text shown when no value is available</documentation>
+		</property>
+		<property group="Appearance" name="displayFormat" type="sap.ui.core/string">
+			<documentation>Displays date value in this given format in text field. Default value is taken from locale settings.
+If you use data-binding on value property with type sap.ui.model.type.Date then you can ignore this property  or latter wins.
+If user browser supports native picker then this property is overwritten by browser with locale settings.</documentation>
+		</property>
+		<property group="Data" name="valueFormat" type="sap.ui.core/string">
+			<documentation>Given value property should match with valueFormat to parse date. Default value is taken from locale settings. 
+You can set and get value in this format.
+If you use data-binding on value property with type sap.ui.model.type.Date you can ignore this property or latter wins.</documentation>
+		</property>
+		<property group="Data" name="dateValue" type="object">
+			<documentation>This property as JavaScript Date Object can be used to assign a new value which is independent from valueFormat.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="change">
+			<documentation>This event gets fired when the selection has finished and the value has changed.</documentation>
+			<parameters>
+				<parameter name="newValue" type="sap.ui.core/string">
+					<documentation>The new string value of the control in given valueFormat(or locale format).</documentation>
+				</parameter>
+				<parameter name="newDateValue" type="object">
+					<documentation>The new value of control as JavaScript Date Object or null if value is empty.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+</control>

@@ -1,0 +1,222 @@
+.sapMList {
+	margin: 0px;
+	padding: 0px;
+}
+
+.sap-android .sapMList li:last-child,
+.sap-bb .sapMList li:last-child {
+	border-bottom: 0px;
+}
+
+.sapMListInsetBG {
+
+}
+
+.sap-ios .sapMListInsetBG {
+	padding: 0.5em 0;
+	background-color: @sapUiListDarkBG;
+}
+
+.sapMListUl {
+	padding: 0px;
+	margin: 0px;
+}
+
+
+/* ListSwp: somehow there is a 1px calculation problem in android */
+.sap-android .sapMListSwp {
+	margin-top: -1px; 
+}
+
+/* ListSwp: fixes sapMBar-CTX margin problems to make the button content middle for ios */
+.sap-ios .sapMListSwp .sapMBtn {
+	margin-top : 0;
+	margin-bottom : 0;
+}
+
+/* iOS */
+/*list inset without header and footer*/
+.sap-ios .sapMListInset {
+	border-radius: 10px;
+	border: solid 1px lighten(@sapUiBaseBorder,20);
+	margin: 0.75em 0.5625em 0.75em 0.5625em;
+	box-shadow: 0 1px 0 lighten(@sapUiListBG,15);
+}
+
+/*right margin for swipe content for inset list*/
+.sap-ios .sapMListInsetBG > .sapMListSwp {
+	margin-right: 0.5625em;
+}
+
+/*List inset with header*/
+.sap-ios .sapMListInsetHdr {
+	margin-top: 0.4375em;
+}
+
+/*List inset with footer*/
+.sap-ios .sapMListInsetFtr {
+	margin-bottom: 0.4375em;
+}
+
+.sap-ios .sapMListInset li:first-child {
+	border-radius: 10px 10px 0px 0px;
+}
+
+.sap-ios .sapMListInset li:last-child {
+	border-radius: 0px 0px 10px 10px;
+}
+
+.sap-ios .sapMListHdr {
+	font-size: 0.75em;
+	-webkit-text-size-adjust: none;	/* To improve readability Mobile Safari automatically increase the size of small text so let's disable this */
+	line-height: 1.833em;
+	font-weight: bold;
+	background-color: darken(@sapUiListBG,57); // #666666
+	color: @sapUiTextInverted;
+	text-shadow: 0 0.0833em 1px 0 darken(@sapUiTextInverted,75);
+	padding: 0 0.625rem;
+	background-image: -webkit-linear-gradient(top, darken(@sapUiListBG,47) 0%, darken(@sapUiListBG,57) 20%, darken(@sapUiListBG,42) 100%);
+	-webkit-box-shadow: inset 0 0.0833em 0 darken(@sapUiListBG,57), inset 0 -0.0833em 0 darken(@sapUiListBG,62);
+}
+
+.sap-ios .sapMListHdrInset {
+	color: lighten(@sapUiText,24);
+	text-shadow: 0 0.0588em 1px 0 lighten(@sapUiListBG,15);
+	margin: 1em 0.5625em 0em 0.5625em;
+	box-shadow: none;
+	-webkit-text-size-adjust: none;
+	font-size: 1.0625em;
+	font-weight: bold;
+	-webkit-box-sizing: border-box;
+	line-height: 1em;
+	padding: 0 0.625rem;
+}
+
+.sap-ios .sapMListFtr {
+	font-size: 0.75em;	
+	-webkit-text-size-adjust: none; /* To improve readability Mobile Safari automatically increase the size of small text so let's disable this */
+	line-height: 1.833em;
+	font-weight: bold;
+	background-color: darken(@sapUiListBG,57);
+	color: @sapUiTextInverted;
+	text-shadow: 0 0.0833em 1px 0 darken(@sapUiTextInverted,75);
+	background-image: -webkit-linear-gradient(top, darken(@sapUiListBG,47) 0%, darken(@sapUiListBG,57) 20%, darken(@sapUiListBG,42) 100%);
+	-webkit-box-shadow: inset 0 0.0833em 0 darken(@sapUiListBG,57), inset 0 -0.0833em 0 darken(@sapUiListBG,62);
+	text-align: center;
+	padding: 0 0.625rem;
+}
+
+.sap-ios .sapMListFtrInset {
+	color: lighten(@sapUiText,24);
+	text-shadow: 0 0.0714em 1px 0 lighten(@sapUiListBG,15);
+	margin: 0em 0.5625em 0em 0.5625em;
+	box-shadow: none;
+	-webkit-text-size-adjust: none;
+	font-size: 0.875em;
+	-webkit-box-sizing: border-box;
+	line-height: 1em;
+	text-align: center;
+	padding: 0 0.625rem;
+}
+
+
+/* Android */
+.sap-android .sapMListInset,
+.sap-bb .sapMListInset {
+	margin: 0 1em 0 1em;
+}
+
+.sap-android .sapMListInsetBG > .sapMListSwp,
+.sap-bb .sapMListInsetBG > .sapMListSwp {
+	margin-right: 1em;
+}
+
+.sap-android .sapMListInsetHdr,
+.sap-bb .sapMListInsetHdr {
+}
+
+.sap-android .sapMListInsetFtr,
+.sap-bb .sapMListInsetFtr {
+}
+
+.sap-android .sapMListHdr,
+.sap-bb .sapMListHdr {
+	padding-left: 0.6875em;
+	line-height: 2.2857em;
+	font-size: 0.875em;
+	text-transform: uppercase;
+	color: darken(spin(@sapUiHighlight,4),5);
+	background-color: fade(@sapUiHighlight, 10%);
+	padding: 0 0.5rem;
+}
+
+.sap-android .sapMListHdrInset,
+.sap-bb .sapMListHdrInset {
+	line-height: 2.2857em;
+	font-size: 0.875em;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: darken(spin(@sapUiHighlight,4),5);
+	-webkit-box-shadow: inset 0 -3px 1px -1px darken(spin(@sapUiHighlight,4),5);
+	margin: 0 16px 0 16px;
+	padding: 0 0.5rem;
+}
+.sap-android .sapMListFtr,
+.sap-bb .sapMListFtr {
+	font-size: 0.75em;
+	line-height: 1.833em;
+	text-transform: uppercase;
+	color: fade(@sapUiBaseText, 50%);
+	margin: 0 0 1em 0;
+	text-align: left;
+	padding: 0 0.5rem;
+}
+
+.sap-android .sapMListFtrInset,
+.sap-bb .sapMListFtrInset {
+	font-size: 0.75em;
+	line-height: 1.833em;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: darken(spin(@sapUiHighlight,4),5);
+	text-align: left;
+	margin: 0 16px 1em 16px;
+	padding: 0 0.5rem;
+}
+
+.sapMListNoData {
+	-webkit-user-select: none;
+	list-style-type: none;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	display: -webkit-box;
+	color: @sapUiTextDisabled;
+}
+
+.sap-ios .sapMListNoData{
+	background-color: @sapUiListBG;
+	border-top: 1px solid lighten(@sapUiListBG,15);
+	border-bottom: 1px solid darken(@sapUiListBG,10);
+	height:2.75em;
+}
+
+.sap-android .sapMListNoData,
+.sap-bb .sapMListNoData{
+	border-top: 1px solid lighten(@sapUiListBG,15);
+	border-bottom: 1px solid darken(@sapUiListBG,10);
+	height:3em;
+}
+
+/* UX: Swipe content button must be small */
+.sap-android .sapMListSwp .sapMBtn,
+.sap-bb  .sapMListSwp .sapMBtn {
+	height: 2.5em;
+	line-height: 2.5em;
+}
+
+/* UX: Align the swipe content button image */
+.sap-android .sapMListSwp .sapMBtn > .sapMBtnContent > .sapMImg,
+.sap-bb .sapMListSwp .sapMBtn > .sapMBtnContent > .sapMImg {
+	margin: 0.2em 0.125em;
+}
+ 

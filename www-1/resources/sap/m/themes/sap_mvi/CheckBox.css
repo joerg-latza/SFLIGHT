@@ -1,0 +1,160 @@
+.sapMCbBg:focus, 
+.sapMCbBg:focus > .sapMCbMark,
+.sapMCbBg:active > .sapMCbMark:active,
+.sapMCbMark:focus {
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	outline: none;
+}
+
+@font-face {
+			font-family: 'ios-icons';
+			src: url('fonts/ios-icons.otf');
+			font-weight: normal;
+			font-style: normal;
+}
+
+@font-face {
+			font-family: 'android-icons';
+			src: url('fonts/android-icons.otf');
+			font-weight: normal;
+			font-style: normal;
+}
+
+.sapMCbBg > .sapMCbMark {
+	height: 1em;
+	width: 1em;
+	border: solid 1px @sapUiBaseBorder;
+	margin: 0.5em;
+	-webkit-appearance:none; 
+	-webkit-focus-ring-color: none;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	background: transparent; 
+}
+
+.sapMCbBg.sapMCbBgDis > .sapMCbMark {
+	border: solid 1px fade(@sapUiBaseBorder,50);
+}
+
+.sapMActive .sapMCbBg.sapMCbActiveStateOff > .sapMCbMark.sapMCbMarkChecked:before,
+.sapMCbBg:active.sapMCbActiveStateOff > .sapMCbMark.sapMCbMarkChecked:before,
+.sapMCbBg > .sapMCbMark.sapMCbMarkChecked:before{
+	font-family: "android-icons";
+	text-shadow: 0 -1px 0 lighten(spin(@sapUiSelected,354),4);
+	font-size: 24px;
+	line-height: 1em;
+	color: darken(spin(@sapUiSelected,4),5);
+	position: relative;
+	top:-17px;
+	left:3px;
+	-webkit-text-stroke: 4px fade(lighten(spin(@sapUiSelected,352),3),30); 
+}
+
+.sapMActive .sapMCbBg > .sapMCbMark.sapMCbMarkChecked:before,
+.sapMCbBg:active > .sapMCbMark.sapMCbMarkChecked:before {
+	text-shadow: none;
+	color: @sapUiBaseText;
+	-webkit-text-stroke: 4px fade(@sapUiBaseText, 50);
+}
+
+.sapMCbBg.sapMCbBgDis > .sapMCbMark.sapMCbMarkChecked:before {
+	text-shadow: none;
+	color: fade(@sapUiBaseText, 50);
+	-webkit-text-stroke: 4px fade(@sapUiBaseText, 10);
+}
+
+.sapMCbBg:active,
+.sapMActive .sapMCbBg { 
+	background-color: fade(lighten(spin(@sapUiSelected,358),4),50);
+}
+
+.sapMCbBg:active.sapMCbActiveStateOff,
+.sapMActive .sapMCbBg.sapMCbActiveStateOff,
+.sapMCbBg.sapMCbBgDis:active,
+.sapMActive .sapMCbBg.sapMCbBgDis { 
+	background-color: transparent;
+}
+
+.sap-ios{
+	.sapMLIB-CTX .sapMCb {
+		height: 2.75em;
+		width: 2.75em;
+	}
+	
+	.sapMCbBg {
+		padding: 0.3125em;
+		height: 1.375em;
+		width: 1.375em;
+		top: 0.65em;
+	}
+	
+	.sapMLIB-CTX .sapMCbBg {
+		top: 0.375em;
+		left: 0.375em;
+	}
+	
+	.sapMCbBg:active,
+	.sapMActive	.sapMCbBg { 
+		background-color: transparent;
+	}
+	
+	.sapMCbMark {
+		display: block;
+		height: 1.125em;
+		width: 1.125em;
+		border: solid 2px darken(@sapUiBaseBorder, 20);
+		border-radius: 0.5625em;
+		margin: 0.125em;
+	}
+	
+	.sapMCbBg.sapMCbBgDis > .sapMCbMark {
+		border: solid 2px fade(darken(@sapUiBaseBorder, 20), 30);
+	}
+	
+	.sapMCbMark.sapMCbMarkChecked {
+		height: 1.375em;
+		width: 1.375em;
+		border-radius: 0.6875em;
+		margin: 0;
+		border-color: lighten(@sapUiBaseBorder,40);
+		box-shadow: 0 0 0.1875em darken(@sapUiBaseBorder,40);
+		background-image: -webkit-radial-gradient(center, darken(spin(@sapUiSelected,1),4.3) 50%, lighten(desaturate(@sapUiSelected,48),16.5) 54%); 
+		background-size: 4em 4em; 
+		background-position:-1.375em -0.125em;
+		font-family: "ios-icons";
+		color: @sapUiTextInverted;
+		text-align: center;	
+		line-height:1.125em;
+	}
+	
+	.sapMActive .sapMCbBg > .sapMCbMark.sapMCbMarkChecked:before,
+	.sapMCbBg:active > .sapMCbMark.sapMCbMarkChecked:before,
+	.sapMCbMark.sapMCbMarkChecked:before {
+		font-family: "ios-icons";
+		content:"\2713";
+		text-shadow: 0 -1px 0 darken(desaturate(@sapUiHighlight,55),12); 
+		color: @sapUiTextInverted;
+		-webkit-text-stroke: 0;
+		top: -7px;
+		left: 0px;
+		font-size: 7px;
+	}
+
+	.sapMCbBg.sapMCbBgDis > .sapMCbMark.sapMCbMarkChecked {
+		border-color: lighten(@sapUiBaseBorder,40);
+		box-shadow: 0 0 0.1875em fade(darken(@sapUiBaseBorder,40),30);
+		background-image: -webkit-radial-gradient(center, fade(darken(spin(@sapUiSelected,1),4.3), 30) 50%, fade(lighten(desaturate(@sapUiSelected,48),16.5), 30) 54%); 
+		color: @sapUiTextInverted;
+	}
+	
+	.sapMCbBg.sapMCbBgDis > .sapMCbMark.sapMCbMarkChecked:before {
+		text-shadow: 0 -1px 0 fade(darken(desaturate(@sapUiHighlight,55),12), 30);
+		color: fade(@sapUiTextInverted, 30);
+		-webkit-text-stroke: 0;
+	}
+	
+/* 	.sapMCbLabel { */
+/* 		vertical-align: top; */
+/* 		line-height: 2em; */
+/* 	} */
+}

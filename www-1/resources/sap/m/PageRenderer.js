@@ -1,7 +1,77 @@
 /*!
  * SAP UI development toolkit for HTML5 (SAPUI5)
  * 
- * (c) Copyright 2009-2012 SAP AG. All rights reserved
+ * (c) Copyright 2009-2013 SAP AG. All rights reserved
  */
-jQuery.sap.declare("sap.m.PageRenderer");sap.m.PageRenderer={};
-sap.m.PageRenderer.render=function(r,p){var h=null;if(p.getShowHeader()){h=p._getAnyHeader()}var s=p.getSubHeader();var f=p.getFooter();r.write("<div");r.writeControlData(p);r.addClass("sapMPage");if(f){r.addClass("sapMPageWithFooter")}r.writeClasses();r.write(">");if(h){r.renderControl(h)}if(s){s._context='header';r.renderControl(s.addStyleClass('sapMPageSubHeader'))}var S=p._hasScrolling();var b=p.getBackgroundDesign();var P=S?"":" class='sapMPageBg"+b+"'";var a=S?" sapMPageBg"+b:"";r.write("<section id='"+p.getId()+"-cont'"+P+">");if(S){r.write("<div id='"+p.getId()+"-scroll' class='sapMPageScroll"+a+"'>")}var c=p.getContent();var l=c.length;for(var i=0;i<l;i++){r.renderControl(c[i])}if(S){r.write("</div>")}r.write("</section>");if(f){f._context='footer';r.renderControl(f)}r.write("</div>")};
+
+jQuery.sap.declare("sap.m.PageRenderer");
+
+/**
+ * @class Page renderer. 
+ * @static
+ */
+sap.m.PageRenderer = {
+};
+
+
+/**
+ * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
+ * 
+ * @param {sap.ui.core.RenderManager} oRenderManager the RenderManager that can be used for writing to the Render-Output-Buffer
+ * @param {sap.ui.core.Control} oControl an object representation of the control that should be rendered
+ */
+sap.m.PageRenderer.render = function(rm, oPage) {
+	var hdr = null;
+	if (oPage.getShowHeader()) {
+		hdr = oPage._getAnyHeader();
+	}
+	var oSubHeader = oPage.getSubHeader();
+	
+	var oFooter = oPage.getFooter();
+	rm.write("<div");
+	rm.writeControlData(oPage);
+	rm.addClass("sapMPage");
+	if (oFooter){
+		rm.addClass("sapMPageWithFooter"); //it is used in the PopOver to remove additional margin bottom for page with footer 
+	}
+	rm.writeClasses(); 
+	rm.write(">");
+
+	// render header
+	if (hdr){
+		rm.renderControl(hdr);
+	}
+	
+	if (oSubHeader){
+		oSubHeader._context = 'header';
+		rm.renderControl(oSubHeader.addStyleClass('sapMPageSubHeader'));
+	}
+	// render child controls
+	var bScrolling = oPage._hasScrolling();
+	var sBgDesign = oPage.getBackgroundDesign();
+	var sPageBgOuter = bScrolling ? "" : " class='sapMPageBg" + sBgDesign +"'";
+	var sPageBgInner = bScrolling ? " sapMPageBg" + sBgDesign : "";
+	rm.write("<section id='" + oPage.getId() + "-cont'" + sPageBgOuter + ">");
+	if (bScrolling) {
+		rm.write("<div id='" + oPage.getId() + "-scroll' class='sapMPageScroll" + sPageBgInner + "'>");
+	}
+
+	// render child controls
+	var aContent = oPage.getContent();
+	var l = aContent.length;
+	for (var i = 0; i < l; i++) {
+		rm.renderControl(aContent[i]);
+	}
+
+	if (bScrolling) {
+		rm.write("</div>");
+	}
+	rm.write("</section>");
+	
+	// render footer Element
+	if (oFooter) {
+		oFooter._context = 'footer';
+		rm.renderControl(oFooter);
+	}
+	rm.write("</div>");
+};

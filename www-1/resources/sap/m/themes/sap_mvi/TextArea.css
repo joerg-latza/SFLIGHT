@@ -1,0 +1,16 @@
+/* ********* */
+/* MVI Theme */
+/* ********* */
+
+/* overwrite sapMInput styles */
+html[class*="sap-"] textarea.sapMInputInner {
+	height: auto;
+	resize: none;
+	width: auto;
+}
+
+
+/* transform is blocking scroll for android so disable it */ 
+.sap-android textarea.sapMInputInner{
+	-webkit-transform: none;
+}

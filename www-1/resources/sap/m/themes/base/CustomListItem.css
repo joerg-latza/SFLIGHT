@@ -1,0 +1,18 @@
+
+/* ============================================= */
+/* CSS for controlsap.m/CustomListItem.control */
+/* ============================================= */
+
+.sapMCLI{
+	-webkit-user-select: none;
+	display: -webkit-box;
+}
+
+.sapMCLIActive{
+	background-image:-webkit-linear-gradient(bottom, darken(spin(@sapUiActive,4),5) 0%, lighten(@sapUiActive,4) 100%);
+  	color: @sapUiTextInverted;
+}
+
+.sapMCLI .sapMLIBContent{
+	-webkit-box-flex: 1;
+}

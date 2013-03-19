@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>List</name>
+	<author>SAP AG</author>
+	<documentation>sap.m.List Control is the container for all list items. Selection, deletion, unread states  and inset style are also maintained here.
+
+Note: The List including all contained items is completely re-rendered when the data of a bound model is changed. Due to the limited hardware resources of mobile devices this can lead to longer delays for lists with many items. As such the usage of a list is not recommended for these use cases.</documentation>
+
+	<baseType>sap.ui.core/Control</baseType>
+	<properties>
+		<property group="Misc" name="inset" type="sap.ui.core/boolean" defaultValue="false">
+			<documentation>Inset style false/true</documentation>
+		</property>
+		<property group="Appearance" name="visible" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Invisible lists are not rendered</documentation>
+		</property>
+		<property group="Misc" name="headerText" type="sap.ui.core/string">
+			<documentation>Header Text</documentation>
+		</property>
+		<property group="Misc" name="footerText" type="sap.ui.core/string">
+			<documentation>Footer Text</documentation>
+		</property>
+		<property group="Appearance" name="mode" type="sap.m/ListMode" defaultValue="None">
+			<documentation>Mode of a list (e.g. None, SingleSelect, MultiSelect, Delete, etc.)</documentation>
+		</property>
+		<property group="Dimension" name="width" type="sap.ui.core/CSSSize" defaultValue="'100%'">
+			<documentation>Sets the width of the list</documentation>
+		</property>
+		<property group="Misc" name="includeItemInSelection" type="sap.ui.core/boolean" defaultValue="false">
+			<documentation>This property decides if the list item interacts with the selection. If it is 'true', a tap on the item will set the selection control in front of the list item.</documentation>
+		</property>
+		<property group="Misc" name="showUnread" type="sap.ui.core/boolean" defaultValue="false">
+			<documentation>Activates the unread feature for all list items.</documentation>
+		</property>
+		<property group="Misc" name="noDataText" type="sap.ui.core/string">
+			<documentation>This is the text shown, when the list has no data</documentation>
+		</property>
+		<property group="Misc" name="showNoData" type="sap.ui.core/boolean" defaultValue="true">
+			<documentation>Enables an information text, when no list items are in the list.</documentation>
+		</property>
+		<property group="Misc" name="swipeDirection" type="sap.m/SwipeDirection" defaultValue="Both">
+			<documentation>Direction of swipe(e.g LeftToRight, RightToLeft, Both) to bring in a control on the right hand side of the list item.</documentation>
+		</property>
+	</properties>
+	<events>
+		<event name="select">
+			<documentation>Event is fired when selection is changed by user interaction.</documentation>
+			<parameters>
+				<parameter name="listItem" type="sap.m/ListItemBase">
+					<documentation>The listitem which fired the select.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+		<event name="delete">
+			<documentation>Event is fired when delete icon is pressed by user.</documentation>
+			<parameters>
+				<parameter name="listItem" type="sap.m/ListItemBase">
+					<documentation>The listitem which fired the delete.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+		<event name="swipe" allowPreventDefault="true">
+			<documentation>This event is fired when user swipe to bring in a control and before swipeContent is shown on the right hand side of list item. So, you can easily change swipeContent according to swiped list item. Call the preventDefault method of the event object to disable swipe.</documentation>
+			<parameters>
+				<parameter name="listItem" type="sap.m/ListItemBase">
+					<documentation>The listitem which fired the swipe.</documentation>
+				</parameter>
+				<parameter name="swipeContent" type="sap.ui.core/Control">
+					<documentation>Given swipeContent control to show on the right hand side of a list item.</documentation>
+				</parameter>
+				<parameter name="srcControl" type="sap.ui.core/Control">
+					<documentation>Holds which control caused the swipe event in List Item.</documentation>
+				</parameter>
+			</parameters>
+		</event>
+	</events>
+	<aggregations default="items">
+		<aggregation cardinality="0..n" name="items" type="ListItemBase" bindable="bindable">
+			<documentation>The items of this list</documentation>
+		</aggregation>
+		<aggregation cardinality="0..1" name="swipeContent" type="sap.ui.core/Control">
+			<documentation>User can swipe to bring in this control on the right hand side of a list item.</documentation>
+		</aggregation>
+	</aggregations>
+	<methods>
+		<method name="getSelectedItem" type="sap.m/ListItemBase">
+			<documentation>Returns selected list item. When no item is selected, &quot;null&quot; is returned. When multi-selection is enabled and multiple items are selected, only the first selected item is returned.</documentation>
+		</method>
+		<method name="setSelectedItem" type="sap.m/List">
+			<documentation>Sets a list item to be selected. In single mode the method removes the previous selection. </documentation>
+			<parameters>
+				<parameter name="item" type="sap.m/ListItemBase">
+					<documentation>The list item to be selected</documentation>
+				</parameter>
+				<parameter name="select" type="sap.ui.core/boolean">
+					<documentation>sets the listitem to true/false</documentation>
+				</parameter>
+			</parameters>
+		</method>
+		<method name="getSelectedItems" type="sap.m/ListItemBase[]">
+			<documentation>Returns an array containing the selected list items. In the case of no selection, an empty array is returned.</documentation>
+		</method>
+		<method name="setSelectedItemById" type="sap.m/List">
+			<documentation>Sets a list item to be selected by id. In single mode the method removes the previous selection. </documentation>
+			<parameters>
+				<parameter name="id" type="sap.ui.core/string">
+					<documentation>The id of the list item to be selected</documentation>
+				</parameter>
+				<parameter name="select" type="sap.ui.core/boolean">
+					<documentation>sets the listitem to true/false</documentation>
+				</parameter>
+			</parameters>
+		</method>
+		<method name="removeSelections" type="sap.m/List">
+			<documentation>Removes all selections of the current selection mode. Applies to the modes &quot;SingleSelect&quot;, &quot;MultiSelect&quot; and &quot;Delete&quot;.</documentation>
+		</method>
+		<method name="getSwipedItem" type="sap.m/ListItemBase">
+			<documentation>Returns swiped list item. When no item is swiped, &quot;null&quot; is returned.</documentation>
+		</method>
+		<method name="swipeOut" type="sap.m/List">
+			<documentation>After swipeContent is shown, user can interact with this control(e.g Tap). After interaction is done, you can/should use this method to hide swipeContent from screen.
+NOTE: If user try to tap inside of the list but outside of the swipeContent then control hides automatically.</documentation>
+			<parameters>
+				<parameter name="callback" type="sap.ui.core/any">
+					<documentation>This callback function is called with two parameters(swipedListItem and swipedContent) after swipe-out animation is finished.</documentation>
+				</parameter>
+			</parameters>
+		</method>
+	</methods>
+</control>

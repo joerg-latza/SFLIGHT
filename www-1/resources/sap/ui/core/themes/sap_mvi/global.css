@@ -1,0 +1,133 @@
+/* Global CSS for 'sap_mvi' theme */
+
+// Public Theme Parameters
+
+
+// NOTE: those with a long trailing comment can be considered quite stable. The others also can be used but may be touched again.
+
+
+// Brand
+// [ThemingScope "Quick"]
+@sapUiBrand:          #F0AB00;          // SAP Gold  #f0ab00 - used in few dedicated places where the SAP branding Gold should be displayed
+// [ThemingScope "Quick"]
+@sapUiHighlight:      #007CC0;          // SAP Blue  #007cc0 - used for elements which are highlighted, like title texts or important buttons; should NOT be used for interactive elements to show that they are turned on, should also NOT be used DURING touch interaction
+// [ThemingScope "Advanced"] 
+@sapUiSelected:       @sapUiHighlight;  // SAP Blue  #007cc0 - used for editable elements that are in some way switched on; do NOT use to highlight something DURING touch interaction
+// [ThemingScope "Advanced"] 
+@sapUiActive:         @sapUiHighlight;  // SAP Blue  #007cc0 - used during touch interaction, e.g. for a Slider handle while being dragged or a Button while being pressed; do not use outside touch interactions
+
+
+// Base Colors
+// [ThemingScope "Quick"]
+@sapUiBase:           hsl(hue(@sapUiHighlight), 0%, 50%);                  // #808080 - do NOT use directly in controls, only used as base for other colors
+// [ThemingScope "Advanced"]
+@sapUiBaseBG:         hsl(hue(@sapUiBase), saturation(@sapUiBase), 97%);   // #f7f7f7 - do NOT use directly in controls, only used as base for other colors
+// [ThemingScope "Advanced"]
+@sapUiElement:        hsl(hue(@sapUiBase), saturation(@sapUiBase), 87%);   // #dddddd - use for all UI elements which are sort of substantial, have a grip or 3D-looking element, e.g. Slider, Switch. Do NOT use for Buttons (and variants like SegmentedButton).
+@sapUiBaseBorder:     hsl(hue(@sapUiBase), saturation(@sapUiBase), 60%);   // #999999
+@sapUiBaseText:       hsl(hue(@sapUiBase), saturation(@sapUiBase), 0%);    // #000000 - do NOT use directly in controls, only used as base for other colors
+
+
+// Backgrounds
+
+@sapUiPageBG:         lighten(@sapUiBaseBG, 15);  // white            #fff
+@sapUiInputBG:        @sapUiPageBG;               // white            #fff
+@sapUiLightBG:        darken(@sapUiBaseBG,10);    // SAP Light grey   #dddddd
+@sapUiMediumBG:       hsl(hue(@sapUiBaseBG), saturation(@sapUiBaseBG), 60%);  // SAP Medium grey  #999999
+@sapUiDarkBG:         hsl(hue(@sapUiBaseBG), saturation(@sapUiBaseBG), 40%);  // SAP dark grey    #666666
+@sapUiBlackBG:        hsl(hue(@sapUiBaseBG), saturation(@sapUiBaseBG), 0%);   // SAP black        #000000 - use as dark inverted background where the text is in a light color 
+
+
+// Text Colors
+
+// [ThemingScope "Advanced"]
+@sapUiText:           @sapUiBaseText;                                                          // black - use for text on normal (bright) background; on Android the color is usually lightened:  lighten(@sapUiText,20)
+// [ThemingScope "Advanced"]
+@sapUiTextDisabled: lighten(@sapUiText,60);
+// [ThemingScope "Advanced"]
+@sapUiTextInverted:   hsl(hue(@sapUiText), saturation(@sapUiText), 100-lightness(@sapUiText)); // white - use for text on dark backgrounds like @sapUiBlackBG or some strong active/highlight colors
+
+
+// Semantic Colors
+
+@sapUiError:     @sapUiRed;
+@sapUiErrorBG:   lighten(@sapUiError,43);  // #FFD9D9   TODO: needed??
+@sapUiWarningBG: #FFFCB5;
+
+
+// Control Colors
+
+// Button
+// [ThemingScope "Advanced"]
+@sapUiButton:         @sapUiElement;                // #dddddd - used for all types of Buttons, but not for other UI elements like switches or sliders: use sapUiElement for those 
+@sapUiButtonAccept:   darken(@sapUiHighlight, 5%);  // #006ca7
+@sapUiButtonReject:   @sapUiRed;                    // #b21212
+@sapUiBarButton:      lighten(@sapUiBarBG,29);      // #4a4a4a - use for Button-like controls inside Bar-like controls which have @sapUiBarBG as main color
+
+// Bar
+
+// [ThemingScope "Quick"]
+@sapUiBarBG:          @sapUiBlackBG;      // #000             - use as main tint for Bars and Bar-like controls
+@sapUiBarText:        @sapUiTextInverted; // #fff             - standard text color in Bars and Bar-like controls
+@sapUiBarHeading:     @sapUiBrand;        // SAP Gold #f0ab00 - highlighted text color in Bars  and Bar-like controls
+
+// List
+
+// [ThemingScope "Advanced"]
+@sapUiListBG:         @sapUiBaseBG;
+@sapUiListDarkBG:	  darken(@sapUiBaseBG,10);
+
+
+// Extra Brand Colors
+
+/* not in use right now
+
+@sapUiPurpleLight:    lighten(saturate(spin(@sapUiPurpleMedium,22),12),4);   // #ab218e;
+@sapUiPurpleMedium:   #812990;
+@sapUiPurpleDark:     darken(spin(@sapUiPurpleMedium,339),4);                // #52247f;
+
+@sapUiOrangeLight:    saturate(spin(@sapUiOrangeMedium,7),2);                // #f68b1f;
+@sapUiOrangeMedium:   #f37021;
+@sapUiOrangeDark:     darken(desaturate(spin(@sapUiOrangeMedium,349),26),6); // #cb4d2c;
+
+@sapUiGreenLight:     lighten(saturate(spin(@sapUiGreenMedium,337),12),5);   // #b1d34a;
+@sapUiGreenMedium:    #72bf44;
+@sapUiGreenDark:      darken(saturate(spin(@sapUiGreenMedium,48),51),24);    // #008a3b;
+
+@sapUiBlueLight:      lighten(spin(@sapUiBlueMedium,357),5);                 // #00a1e4;
+@sapUiBlueMedium:     #0083ca;
+@sapUiBlueDark:       darken(spin(@sapUiBlueMedium,9),12);                   // #004990;
+*/
+
+@sapUiRed:            #b21212;
+@sapUiYellow:         #f8e100;
+@sapUiGreen:          #008a3b;
+@sapUiOrange:		  #F37021;
+@sapUiBlue: 		  @sapUiHighlight;
+
+
+// Shadow
+
+@sapUiShadowTint:     #000;
+@sapUiShadow: 0px 5px 12px fade(@sapUiShadowTint,50%);
+
+
+
+// NON-Color Parameters
+
+// [ThemingScope "Advanced"]
+@sapUiFontFamily: 'Helvetica Neue',Roboto,'Droid Sans', 'BBGlobal Sans', 'Segoe WP' ,Helvetica,Arial,sans-serif; // the right font for each platform...
+// [ThemingScope "Advanced"]
+@sapUiFontSize: 16px;
+
+
+
+// obsolete:
+
+// @sapUiAndroidText:    lighten(@sapUiText,20);  // #333
+// @sapUiButtonActive:   lighten(spin(@sapUiActive,354),4);  // #009ed4
+// @sapUiButtonSelected: darken(@sapUiHighlight, 5%);  // TODO: ??
+// @sapUiLightBorder:    lighten(@sapUiBaseBorder, 17);   // #c4c4c4
+// @sapUiDarkBorder:     darken(@sapUiBaseBorder, 20);    // #666666  TODO: really?
+// @sapUiExtraLightBG:   hsl(hue(@sapUiBaseBG), saturation(@sapUiBaseBG), 97%);  // Extra light grey #f7f7f7
+// @sapUiDeepBG:         hsl(hue(@sapUiBaseBG), saturation(@sapUiBaseBG), 20%);  // SAP deep grey    #333333

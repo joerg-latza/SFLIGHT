@@ -1,12 +1,9 @@
 {
   "name" : "untitledproject",
-  "description" : "Simple Application",
+  "description" : "Timecard Application",
   "contributors" : [ {
-    "name" : "Tino Butz",
-    "email" : "tino.butz@sap.com"
-  }, {
-    "name" : "Stefan Hipfel",
-    "email" : "stefan.hipfel@sap.com"
+    "name" : "Christoph Haefner",
+    "email" : "christoph.haefner@sap.com"
   } ],
   "version" : "1.0",
   "main" : "Application.js",
@@ -14,7 +11,5 @@
     "sap.m" : "1.7"
   },
   "keywords" : [ ],
-  "images" : {
-    "large" : "img/icon/large.jpg"
-  }
+  "images" : { }
 }

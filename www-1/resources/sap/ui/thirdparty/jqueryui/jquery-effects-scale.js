@@ -10,4 +10,169 @@
  * Depends:
  *	jquery.effects.core.js
  */
-(function($,u){$.effects.puff=function(o){return this.queue(function(){var e=$(this),m=$.effects.setMode(e,o.options.mode||'hide'),p=parseInt(o.options.percent,10)||150,f=p/100,a={height:e.height(),width:e.width()};$.extend(o.options,{fade:true,mode:m,percent:m=='hide'?p:100,from:m=='hide'?a:{height:a.height*f,width:a.width*f}});e.effect('scale',o.options,o.duration,o.callback);e.dequeue()})};$.effects.scale=function(o){return this.queue(function(){var e=$(this);var a=$.extend(true,{},o.options);var m=$.effects.setMode(e,o.options.mode||'effect');var p=parseInt(o.options.percent,10)||(parseInt(o.options.percent,10)==0?0:(m=='hide'?0:100));var d=o.options.direction||'both';var b=o.options.origin;if(m!='effect'){a.origin=b||['middle','center'];a.restore=true}var c={height:e.height(),width:e.width()};e.from=o.options.from||(m=='show'?{height:0,width:0}:c);var f={y:d!='horizontal'?(p/100):1,x:d!='vertical'?(p/100):1};e.to={height:c.height*f.y,width:c.width*f.x};if(o.options.fade){if(m=='show'){e.from.opacity=0;e.to.opacity=1};if(m=='hide'){e.from.opacity=1;e.to.opacity=0}};a.from=e.from;a.to=e.to;a.mode=m;e.effect('size',a,o.duration,o.callback);e.dequeue()})};$.effects.size=function(o){return this.queue(function(){var e=$(this),p=['position','top','bottom','left','right','width','height','overflow','opacity'];var a=['position','top','bottom','left','right','overflow','opacity'];var b=['width','height','overflow'];var c=['fontSize'];var P=['borderTopWidth','borderBottomWidth','paddingTop','paddingBottom'];var h=['borderLeftWidth','borderRightWidth','paddingLeft','paddingRight'];var m=$.effects.setMode(e,o.options.mode||'effect');var r=o.options.restore||false;var s=o.options.scale||'both';var d=o.options.origin;var f={height:e.height(),width:e.width()};e.from=o.options.from||f;e.to=o.options.to||f;if(d){var g=$.effects.getBaseline(d,f);e.from.top=(f.height-e.from.height)*g.y;e.from.left=(f.width-e.from.width)*g.x;e.to.top=(f.height-e.to.height)*g.y;e.to.left=(f.width-e.to.width)*g.x};var i={from:{y:e.from.height/f.height,x:e.from.width/f.width},to:{y:e.to.height/f.height,x:e.to.width/f.width}};if(s=='box'||s=='both'){if(i.from.y!=i.to.y){p=p.concat(P);e.from=$.effects.setTransition(e,P,i.from.y,e.from);e.to=$.effects.setTransition(e,P,i.to.y,e.to)};if(i.from.x!=i.to.x){p=p.concat(h);e.from=$.effects.setTransition(e,h,i.from.x,e.from);e.to=$.effects.setTransition(e,h,i.to.x,e.to)}};if(s=='content'||s=='both'){if(i.from.y!=i.to.y){p=p.concat(c);e.from=$.effects.setTransition(e,c,i.from.y,e.from);e.to=$.effects.setTransition(e,c,i.to.y,e.to)}};$.effects.save(e,r?p:a);e.show();$.effects.createWrapper(e);e.css('overflow','hidden').css(e.from);if(s=='content'||s=='both'){P=P.concat(['marginTop','marginBottom']).concat(c);h=h.concat(['marginLeft','marginRight']);b=p.concat(P).concat(h);e.find("*[width]").each(function(){var j=$(this);if(r)$.effects.save(j,b);var k={height:j.height(),width:j.width()};j.from={height:k.height*i.from.y,width:k.width*i.from.x};j.to={height:k.height*i.to.y,width:k.width*i.to.x};if(i.from.y!=i.to.y){j.from=$.effects.setTransition(j,P,i.from.y,j.from);j.to=$.effects.setTransition(j,P,i.to.y,j.to)};if(i.from.x!=i.to.x){j.from=$.effects.setTransition(j,h,i.from.x,j.from);j.to=$.effects.setTransition(j,h,i.to.x,j.to)};j.css(j.from);j.animate(j.to,o.duration,o.options.easing,function(){if(r)$.effects.restore(j,b)})})};e.animate(e.to,{queue:false,duration:o.duration,easing:o.options.easing,complete:function(){if(e.to.opacity===0){e.css('opacity',e.from.opacity)}if(m=='hide')e.hide();$.effects.restore(e,r?p:a);$.effects.removeWrapper(e);if(o.callback)o.callback.apply(this,arguments);e.dequeue()}})})}})(jQuery);
+(function( $, undefined ) {
+
+$.effects.puff = function(o) {
+	return this.queue(function() {
+		var elem = $(this),
+			mode = $.effects.setMode(elem, o.options.mode || 'hide'),
+			percent = parseInt(o.options.percent, 10) || 150,
+			factor = percent / 100,
+			original = { height: elem.height(), width: elem.width() };
+
+		$.extend(o.options, {
+			fade: true,
+			mode: mode,
+			percent: mode == 'hide' ? percent : 100,
+			from: mode == 'hide'
+				? original
+				: {
+					height: original.height * factor,
+					width: original.width * factor
+				}
+		});
+
+		elem.effect('scale', o.options, o.duration, o.callback);
+		elem.dequeue();
+	});
+};
+
+$.effects.scale = function(o) {
+
+	return this.queue(function() {
+
+		// Create element
+		var el = $(this);
+
+		// Set options
+		var options = $.extend(true, {}, o.options);
+		var mode = $.effects.setMode(el, o.options.mode || 'effect'); // Set Mode
+		var percent = parseInt(o.options.percent,10) || (parseInt(o.options.percent,10) == 0 ? 0 : (mode == 'hide' ? 0 : 100)); // Set default scaling percent
+		var direction = o.options.direction || 'both'; // Set default axis
+		var origin = o.options.origin; // The origin of the scaling
+		if (mode != 'effect') { // Set default origin and restore for show/hide
+			options.origin = origin || ['middle','center'];
+			options.restore = true;
+		}
+		var original = {height: el.height(), width: el.width()}; // Save original
+		el.from = o.options.from || (mode == 'show' ? {height: 0, width: 0} : original); // Default from state
+
+		// Adjust
+		var factor = { // Set scaling factor
+			y: direction != 'horizontal' ? (percent / 100) : 1,
+			x: direction != 'vertical' ? (percent / 100) : 1
+		};
+		el.to = {height: original.height * factor.y, width: original.width * factor.x}; // Set to state
+
+		if (o.options.fade) { // Fade option to support puff
+			if (mode == 'show') {el.from.opacity = 0; el.to.opacity = 1;};
+			if (mode == 'hide') {el.from.opacity = 1; el.to.opacity = 0;};
+		};
+
+		// Animation
+		options.from = el.from; options.to = el.to; options.mode = mode;
+
+		// Animate
+		el.effect('size', options, o.duration, o.callback);
+		el.dequeue();
+	});
+
+};
+
+$.effects.size = function(o) {
+
+	return this.queue(function() {
+
+		// Create element
+		var el = $(this), props = ['position','top','bottom','left','right','width','height','overflow','opacity'];
+		var props1 = ['position','top','bottom','left','right','overflow','opacity']; // Always restore
+		var props2 = ['width','height','overflow']; // Copy for children
+		var cProps = ['fontSize'];
+		var vProps = ['borderTopWidth', 'borderBottomWidth', 'paddingTop', 'paddingBottom'];
+		var hProps = ['borderLeftWidth', 'borderRightWidth', 'paddingLeft', 'paddingRight'];
+
+		// Set options
+		var mode = $.effects.setMode(el, o.options.mode || 'effect'); // Set Mode
+		var restore = o.options.restore || false; // Default restore
+		var scale = o.options.scale || 'both'; // Default scale mode
+		var origin = o.options.origin; // The origin of the sizing
+		var original = {height: el.height(), width: el.width()}; // Save original
+		el.from = o.options.from || original; // Default from state
+		el.to = o.options.to || original; // Default to state
+		// Adjust
+		if (origin) { // Calculate baseline shifts
+			var baseline = $.effects.getBaseline(origin, original);
+			el.from.top = (original.height - el.from.height) * baseline.y;
+			el.from.left = (original.width - el.from.width) * baseline.x;
+			el.to.top = (original.height - el.to.height) * baseline.y;
+			el.to.left = (original.width - el.to.width) * baseline.x;
+		};
+		var factor = { // Set scaling factor
+			from: {y: el.from.height / original.height, x: el.from.width / original.width},
+			to: {y: el.to.height / original.height, x: el.to.width / original.width}
+		};
+		if (scale == 'box' || scale == 'both') { // Scale the css box
+			if (factor.from.y != factor.to.y) { // Vertical props scaling
+				props = props.concat(vProps);
+				el.from = $.effects.setTransition(el, vProps, factor.from.y, el.from);
+				el.to = $.effects.setTransition(el, vProps, factor.to.y, el.to);
+			};
+			if (factor.from.x != factor.to.x) { // Horizontal props scaling
+				props = props.concat(hProps);
+				el.from = $.effects.setTransition(el, hProps, factor.from.x, el.from);
+				el.to = $.effects.setTransition(el, hProps, factor.to.x, el.to);
+			};
+		};
+		if (scale == 'content' || scale == 'both') { // Scale the content
+			if (factor.from.y != factor.to.y) { // Vertical props scaling
+				props = props.concat(cProps);
+				el.from = $.effects.setTransition(el, cProps, factor.from.y, el.from);
+				el.to = $.effects.setTransition(el, cProps, factor.to.y, el.to);
+			};
+		};
+		$.effects.save(el, restore ? props : props1); el.show(); // Save & Show
+		$.effects.createWrapper(el); // Create Wrapper
+		el.css('overflow','hidden').css(el.from); // Shift
+
+		// Animate
+		if (scale == 'content' || scale == 'both') { // Scale the children
+			vProps = vProps.concat(['marginTop','marginBottom']).concat(cProps); // Add margins/font-size
+			hProps = hProps.concat(['marginLeft','marginRight']); // Add margins
+			props2 = props.concat(vProps).concat(hProps); // Concat
+			el.find("*[width]").each(function(){
+				var child = $(this);
+				if (restore) $.effects.save(child, props2);
+				var c_original = {height: child.height(), width: child.width()}; // Save original
+				child.from = {height: c_original.height * factor.from.y, width: c_original.width * factor.from.x};
+				child.to = {height: c_original.height * factor.to.y, width: c_original.width * factor.to.x};
+				if (factor.from.y != factor.to.y) { // Vertical props scaling
+					child.from = $.effects.setTransition(child, vProps, factor.from.y, child.from);
+					child.to = $.effects.setTransition(child, vProps, factor.to.y, child.to);
+				};
+				if (factor.from.x != factor.to.x) { // Horizontal props scaling
+					child.from = $.effects.setTransition(child, hProps, factor.from.x, child.from);
+					child.to = $.effects.setTransition(child, hProps, factor.to.x, child.to);
+				};
+				child.css(child.from); // Shift children
+				child.animate(child.to, o.duration, o.options.easing, function(){
+					if (restore) $.effects.restore(child, props2); // Restore children
+				}); // Animate children
+			});
+		};
+
+		// Animate
+		el.animate(el.to, { queue: false, duration: o.duration, easing: o.options.easing, complete: function() {
+			if (el.to.opacity === 0) {
+				el.css('opacity', el.from.opacity);
+			}
+			if(mode == 'hide') el.hide(); // Hide
+			$.effects.restore(el, restore ? props : props1); $.effects.removeWrapper(el); // Restore
+			if(o.callback) o.callback.apply(this, arguments); // Callback
+			el.dequeue();
+		}});
+
+	});
+
+};
+
+})(jQuery);
