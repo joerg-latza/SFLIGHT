@@ -1,4 +1,4 @@
-* BLUE STYLE */
+/* BLUE STYLE */
 /* ===========================
 
    custom swatch colors
@@ -42,7 +42,15 @@ p.comment {
 }
 
 .sapMSplitApp, .sapMApp {
-  background: #eaeff5 url(images/mobileBG.png) no-repeat right top;
+  background: #fbfdfe;
+  filter: '';
+  background: url(images/bg-tile2.png),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod�EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: url(images/bg-tile2.png),-moz-linear-gradient(top,#fbfdfe 0%,#e8f5fb 50%,#cde9f6 100%);
+  background: url(images/bg-tile2.png),-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fbfdfe),color-stop(50%,#e8f5fb),color-stop(100%,#cde9f6));
+  background: url(images/bg-tile2.png),-webkit-linear-gradient(top,#fbfdfe 0%,#e8f5fb 50%,#cde9f6 100%);
+  background: url(images/bg-tile2.png),-o-linear-gradient(top,#fbfdfe 0%,#e8f5fb 50%,#cde9f6 100%);
+  background: url(images/bg-tile2.png),-ms-linear-gradient(top,#fbfdfe 0%,#e8f5fb 50%,#cde9f6 100%);
+  background: url(images/bg-tile2.png),linear-gradient(to bottom,#fbfdfe 0%,#e8f5fb 50%,#cde9f6 100%);
 }
 body.sapUiBody div.sapMPage {
   background: transparent;
@@ -78,21 +86,33 @@ body.sapUiBody div.sapMPage {
   }
 }
 
+
 body.sapUiBody header.sapMBar.sapMHeader-CTX {
-  background: none;
-  background-color: rgba(97, 152, 203, 0.25);
-  border: none;
-  border-bottom:solid 1px #94aac0;
-  -webkit-box-shadow: none;
+  border-top: 5px solid #F0AB00;
+  border-bottom: 1px solid #eff7fc;
+  background: #f5f5f5; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkN2Q3ZDciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #f5f5f5 0%, #d7d7d7 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#d7d7d7)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f5f5f5 0%,#d7d7d7 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f5f5f5 0%,#d7d7d7 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f5f5f5 0%,#d7d7d7 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f5f5f5 0%,#d7d7d7 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#d7d7d7',GradientType=0 ); /* IE6-8 */
+  /* box-shadow:0 1px 6px rgba(0,0,0,0.2); */
+  box-shadow: 0 0 0 rgba(0,0,0,0.2) !important;
   color: #3f6093;
-  height: 53px;
+  height: 50px;
 }
 
 body.sapUiBody header.sapMBar.sapMHeader-CTX label.sapMLabel {
-  color: #2e618d;
-  font-size: 22px;
-  line-height: 56px;
-  text-shadow: 0 1px 1px white;
+	color: #666;
+	text-transform:uppercase;
+	font-family: OpenSansRegular, Arial, sans-serif;
+	font-size: medium;
+	line-height: 54px;
+	font-weight: normal;
 }
 
 body.sapUiBody .sap-mobile div.sapMPage {
@@ -143,7 +163,6 @@ body.sapUiBody .sapMPopover div.sapMPage .sapMBar {
 }
 
 .sap-ios .sapMListInset {
-	border-radius: 0px;
 	border: solid 1px #CCC;
 	margin: 0.75em 9px 0.75em 9px;
 	box-shadow: 0 1px 0 white;
@@ -167,7 +186,6 @@ body.sapUiBody .sapMPopover div.sapMPage .sapMBar {
 	line-height: 1em;
 	background-image: -webkit-linear-gradient(top, #b5bdbd 10%, 
                                          #949494 100%);
-	border-radius: 5px 5px 0 0 ;
 	padding: 0 0.625rem;
 	height: 25px;
 }
@@ -178,10 +196,6 @@ body.sapUiBody .sapMPopover div.sapMPage .sapMBar {
 
 .sapMListInset .sapMLIB:last-child {
   border-bottom: none !important;
-}
-
-.sap-ios .sapMListInset li:first-child {
-border-radius: 0px 0px 0px 0px;
 }
 
 .sapMListUl .sapMDLILabel {
@@ -274,7 +288,6 @@ border-radius: 0px 0px 0px 0px;
 
 .sap-ios .sapMBar-CTX .sapMBtnBack {
   background: transparent !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
   /* -webkit-border-image: url('data:image/svg+xml;utf8,<svg width="25" height="36" viewBox="0 0 25 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="surface" gradientUnits="objectBoundingBox" x1="1" x2="1" y1="0" y2="1"><stop stop-color="#7a9dbc" offset="0"/><stop stop-color="#3b6b96" offset="0.75"/></linearGradient><linearGradient id="light" gradientUnits="objectBoundingBox" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#7a9dbc" offset="0.45" stop-opacity="0.4"/><stop stop-color="#3b6b96" offset="0.65" stop-opacity="0.4"/></linearGradient></defs><path d="M 1,18 Q 9,1 16,1 L 17,1 Q 24,1 24,8 L 24,28 Q 24,35 17,35 Q 9,35 1,18 z" fill="url(#surface)" stroke="#000" stroke-opacity="0.5"/><path d="M 2,18 Q 9,3 16,3 L 17,3 Q 23,3 23,8 L 23,28 Q 23,34 17,34 Q 9,34 2,18 z" fill="url(#light)" stroke="#FFFFFF" stroke-opacity="0.3"/></svg>') 8 8 8 16 stretch; */
@@ -305,7 +318,6 @@ border-radius: 0px 0px 0px 0px;
 
 .sap-ios .sapMBar-CTX .sapMBtnReject, 
 .sap-ios .sapMBar-CTX .sapMBtnAccept {
-  border-radius: 10px !important;
   border-width: 0 !important;
   margin-top: 3px !important;
 }

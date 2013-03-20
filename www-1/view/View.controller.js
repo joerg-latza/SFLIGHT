@@ -12,7 +12,11 @@ untitledproject.view.View = function () {
 	var oRoundtripDescription;
 	var oResult;
 	var oCheckBox;
-	var baseURL = "http://pub10-201.env.cloudshare.com:8000";
+	var oldstate;
+//	var baseURL = "http://ld8608.wdf.sap.corp:8014";
+	var baseURL = "http://pub4-111.env.cloudshare.com:8000";
+	var baseODataURL = baseURL+"/StayHungry/StayHungry.xsodata";
+//	var baseODataURL = baseURL+"/appdesigner/StayHungry.xsodata";
 	
 	/**
 	* Called when a controller is instantiated and its View controls (if available) are already created.
@@ -30,15 +34,12 @@ untitledproject.view.View = function () {
 		var me = this;
 		   OData.read(
 			   {
-				   requestUri: baseURL+"/StayHungry/StayHungry.xsodata/MyRenounceMeals/$count",
+				   requestUri: baseODataURL+"/MyRenounceMeals/$count",
 				   method: "GET"
 			   },
 			   jQuery.proxy(function (data) {
-				   if(data === "0") {
-					   oCheckBox.setSelected(true);
-				   } else {
-					   oCheckBox.setSelected(false);
-				   }
+				   oldstate = (data === "1");
+				   oCheckBox.setSelected(oldstate);
     			},this),
     			function (err) { //Error Callback:
 				   me.showError(err.message);
@@ -47,8 +48,13 @@ untitledproject.view.View = function () {
 	   };
 	   
 	   untitledproject.view.View.prototype.onSelect = function() {
-		   this.hideLabels();
-		   this.activateConfirm();
+		   if(oldstate == oCheckBox.getSelected()) {
+			   this.deactivateConfirm();
+			   this.showLabels();
+		   } else {
+			   this.activateConfirm();
+			   this.hideLabels();
+		   }
 	   };
 	   
 	   untitledproject.view.View.prototype.showRoundtripDescription = function() {
@@ -66,10 +72,11 @@ untitledproject.view.View = function () {
 			url: baseURL+"/sflight/sflight/app/hungry.xsjs/toggle",
 			method: "GET",
 			success: function(data){
+				oldstate = oCheckBox.getSelected();
 				me.deactivateConfirm();
 				OData.read(
 				   {
-					   requestUri: baseURL+"/StayHungry/StayHungry.xsodata/MyNumberOfRenounceMeals/$count",
+					   requestUri: baseODataURL+"/MyNumberOfRenounceMeals/$count",
 					   method: "GET"
 				   },
 				   jQuery.proxy(function (data) {
@@ -105,8 +112,13 @@ untitledproject.view.View = function () {
 		   oResult.setVisible(false);
 	   };
 	   
+	   untitledproject.view.View.prototype.showLabels = function() {
+		   oRoundtripDescription.setVisible(true);
+		   oResult.setVisible(true);
+	   };
+	   
 	   untitledproject.view.View.prototype.showError = function(message) {
 		   oRoundtripDescription.setVisible(true);
-		   oRoundtripDescription.setText(err.message);
+		   oRoundtripDescription.setText(message);
 		   oResult.setVisible(false);
 		   };
